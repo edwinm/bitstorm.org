@@ -1,0 +1,16 @@
+---
+title: Archive
+layout: page
+permalink: /archive.html
+---
+
+<main>
+
+    <ul>
+        {%- for post in collections.weblog -%}
+            <li><a href="{{ post.data.url }}">{{ post.data.title }}</a></li>
+        {%- endfor -%}
+    </ul>
+
+</main>
+
