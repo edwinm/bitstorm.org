@@ -1,14 +1,18 @@
 const util = require('util');
 
 const Image = require('@11ty/eleventy-img');
-// const path = require('path');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+// const path = require('path');
 
 async function imageShortcode (
     src,
     caption,
     alt,
 ) {
+  console.log('----')
+  console.log('src', src)
+  console.log('this.page.url', this.page.url)
+  console.log('this.page.filePathStem', this.page.filePathStem)
   const path = this.page.filePathStem == '/pages/month' ? this.page.url.split('/')[2] : this.page.filePathStem.split('/')[1];
 
   const imageMetadata = await Image(`weblogdata/${path}/${src}`, {
@@ -22,11 +26,6 @@ async function imageShortcode (
     }
   });
 
-  // console.log('imageMetadata', imageMetadata);
-
-  // const thumb = imageMetadata.webp[0];
-  // const screen = imageMetadata.webp.at(-1);
-  // return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}"></a>`;
   let thumb = imageMetadata.webp[0]; // 150px
   if (thumb.width > thumb.height) {
     thumb = imageMetadata.webp[1]; // 200px
@@ -67,8 +66,6 @@ module.exports = function(eleventyConfig) {
     return (data) => `${data.page.filePathStem}.${data.page.outputFileExtension}`;
   });
 
-  // eleventyConfig.addPassthroughCopy('./assets');
-
   eleventyConfig.addCollection("weblogByMonth", (collection) => {
     const posts = collection.getFilteredByTag('weblog');
     const years = posts.map(post => post.filePathStem.split('/')?.[1]);
@@ -92,8 +89,7 @@ module.exports = function(eleventyConfig) {
     return `<div style="white-space: pre-wrap;">${unescape(str)}</div>;`
   });
 
-  // eleventyConfig.addShortcode('image', imageShortcode);
-  eleventyConfig.addShortcode('image', testShortcode);
+  eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('month', monthShortcode);
   eleventyConfig.addShortcode("readable-date", dateShortcode);
   eleventyConfig.addFilter("limit", (array, limit) => array.slice(0, limit));
