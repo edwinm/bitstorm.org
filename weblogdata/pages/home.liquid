@@ -1,0 +1,17 @@
+---
+title: Homepage
+layout: page
+permalink: /index.html
+eleventyExcludeFromCollections: true
+---
+
+<main>
+
+    {% assign lastTen = collections.weblog | reverse | limit:10 %}
+
+    {%- for post in lastTen-%}
+        {%  include 'item' %}
+    {%- endfor -%}
+
+</main>
+

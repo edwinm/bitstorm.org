@@ -1,0 +1,17 @@
+---
+title: List of articles
+layout: page
+permalink: /weblog/index.html
+eleventyExcludeFromCollections: true
+---
+
+<main>
+
+    {% assign lastTen = collections.weblog | reverse | limit:10 %}
+
+    {%- for post in lastTen-%}
+        {%  include 'item' %}
+    {%- endfor -%}
+
+</main>
+

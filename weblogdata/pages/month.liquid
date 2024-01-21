@@ -1,0 +1,21 @@
+---
+pagination:
+    data: collections.weblogByMonth
+    size: 1
+    alias: weblog
+permalink: "/weblog/{{ weblog.key }}/index.html"
+eleventyExcludeFromCollections: true
+---
+
+<h1>{% month weblog.key %}</h1>
+
+<ul>
+    {%- for post in weblog reversed-%}
+        <article>
+            {% include 'item' %}
+        </article>
+    {%- endfor -%}
+</ul>
+
+
+
