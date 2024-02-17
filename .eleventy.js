@@ -70,12 +70,12 @@ module.exports = function(eleventyConfig) {
     // /(?<year>[0-9]+)-/.exec('/weblog/2010-4/Introduction').groups.year
     const posts = collection.getFilteredByTag('weblog');
     // const years = posts.map(post => post.filePathStem.split('/')?.[1]);
-    const years = posts.map(post => /(?<year>[0-9-]+)/.exec(post.filePathStem).groups.year);
+    const years = posts.map(post => /(?<year>[0-9]+)-/.exec(post.filePathStem).groups.year);
     const uniqueYears = [...new Set(years)];
 
     const postsByYear = uniqueYears.reduce((prev, year) => {
       // const filteredPosts = posts.filter(post => post.filePathStem.split('/')?.[1] === year);
-      const filteredPosts = posts.filter(post => /(?<year>[0-9-]+)/.exec(post.filePathStem).groups.year === year);
+      const filteredPosts = posts.filter(post => /(?<year>[0-9]+)-/.exec(post.filePathStem).groups.year === year);
       filteredPosts.key = year;
 
       return [

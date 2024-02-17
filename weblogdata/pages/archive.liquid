@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
 
 <main>
         {%- for weblog in collections.weblogByMonth reversed -%}
-            <h4><a href="/weblog/{{ weblog.key }}">{% month weblog.key %}</a></h4>
+            <h4><a href="/weblog/{{ weblog.key }}">{{ weblog.key }}</a></h4>
             <ul>
             {%- for item in weblog -%}
                 <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
