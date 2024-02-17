@@ -56,8 +56,8 @@ function dateShortcode (
 function testShortcode (
     arg,
 ) {
-  // console.log('arg', arg);
-  // console.log('this.page', this.page);
+  console.log('arg', arg);
+  console.log('this.page', this.page);
   return `[${arg}]`;
 }
 
@@ -67,12 +67,15 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("weblogByMonth", (collection) => {
+    // /(?<year>[0-9]+)-/.exec('/weblog/2010-4/Introduction').groups.year
     const posts = collection.getFilteredByTag('weblog');
-    const years = posts.map(post => post.filePathStem.split('/')?.[1]);
+    // const years = posts.map(post => post.filePathStem.split('/')?.[1]);
+    const years = posts.map(post => /(?<year>[0-9-]+)/.exec(post.filePathStem).groups.year);
     const uniqueYears = [...new Set(years)];
 
     const postsByYear = uniqueYears.reduce((prev, year) => {
-      const filteredPosts = posts.filter(post => post.filePathStem.split('/')?.[1] === year);
+      // const filteredPosts = posts.filter(post => post.filePathStem.split('/')?.[1] === year);
+      const filteredPosts = posts.filter(post => /(?<year>[0-9-]+)/.exec(post.filePathStem).groups.year === year);
       filteredPosts.key = year;
 
       return [
@@ -80,6 +83,9 @@ module.exports = function(eleventyConfig) {
         filteredPosts
       ]
     }, []);
+
+    console.log('-->', posts)
+    console.log('-->', postsByYear)
 
     return postsByYear;
   });
@@ -92,7 +98,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('month', monthShortcode);
   eleventyConfig.addShortcode("readable-date", dateShortcode);
+  eleventyConfig.addShortcode("test", testShortcode);
+
   eleventyConfig.addFilter("limit", (array, limit) => array.slice(0, limit));
+  eleventyConfig.addFilter("console", (s) => console.log('>>>', s), '');
 
   eleventyConfig.addPlugin(pluginRss);
 

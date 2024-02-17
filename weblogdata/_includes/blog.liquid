@@ -2,5 +2,15 @@
 layout: page
 ---
 
-{% include 'blog-item' %}
+<main>
+
+    <h2><a href="{{ post.url }}">{{ title }}</a></h2>
+
+    {% include 'media' %}
+
+    <p class="datum">{% readable-date date %}</p>
+
+    {{ content }}
+
+</main>
 

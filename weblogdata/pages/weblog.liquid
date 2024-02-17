@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
     {% assign lastTen = collections.weblog | reverse | limit:10 %}
 
     {%- for post in lastTen-%}
-        {%  include 'item' %}
+        {%  include 'item-short' %}
     {%- endfor -%}
 
 </main>
