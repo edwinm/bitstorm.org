@@ -11,5 +11,5 @@ date: 2010-04-28T16:08
 <p>
 	In my work or with my own little projects, I sometimes stumble on some interesting uses of technology. Or I have an opinion about something. Or I think some technology is <span class="short_text" id="result_box"><span style="background-color: rgb(255, 255, 255);" title="onderbelicht">underexposed. I want to write them down, for use for everybody. And maybe, sometimes, as a reference for myself. So I started this blog. Let me know what you think about it. And when you see a spelling error, you can also let me know, English is not my first language.</span></span></p>
 <p>
-	<span class="short_text"><span style="background-color: rgb(255, 255, 255);" title="onderbelicht">A bit about me: I almost lived my whole life in Amsterdam. </span></span>A couple of years ago I moved to Hilversum, a village 20 minutes from Amsterdam. I live there with my wife <a href="https://jolie.nl/">Jolie</a> and two daughters L. and Rosalie.</p>
+	<span class="short_text"><span style="background-color: rgb(255, 255, 255);" title="onderbelicht">A bit about me: I almost lived my whole life in Amsterdam. </span></span>A couple of years ago I moved to Hilversum, a village 20 minutes from Amsterdam. I live there with my wife <a href="https://jolie.nl/">Jolie</a> and two children L. and Rosalie.</p>
 

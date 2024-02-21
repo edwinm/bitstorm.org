@@ -28,7 +28,7 @@ You can find the final [Love is in the air demo here](http://js1k.com/2012-love/
 
 Here is the (non-minified) source code:
 
-~~~ javascript
+```javascript
 var width, height, fsize, ts, d, h, hd, hi, hx, hy, i, x, y, k, vx, vy;
 var layer, pow, air, airLayer, airContext, cloud, airx, size, lw, hdi, path;
 
@@ -154,7 +154,7 @@ setInterval(function () {
 
 }, 50); // 20 fps
 
-~~~
+```
 
 Update: to save more bytes for the fuzzy and realistic clouds, I replaced the drawing of the heart by just printing the Unicode character â™¥. Unfortunately, this made the wave effect stutter a bit. Apparently, text can only positioned at whole pixel values. I even tried use canvas scale, but that didn't help. I see this as a current shortcoming of canvas and I hope browsers will fix this. Hopefully the [sub-pixel rendering in IE10](https://blogs.msdn.com/b/ie/archive/2012/02/17/sub-pixel-rendering-and-the-css-object-model.aspx) will be a start.
 

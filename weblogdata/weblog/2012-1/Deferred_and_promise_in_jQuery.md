@@ -14,13 +14,13 @@ Now we have a similar problem with Ajax calls. This time it's not the events, bu
 
 Until jQuery 1.5, a typical $.ajax() call looked like this:
 
-~~~ javascript
+```javascript
 $.ajax({
   url: "/myServerScript",
   success: mySuccessFunction,
   error: myErrorFunction
 });
-~~~
+```
 
 The $.ajax() call returns a jQuery XMLHttpRequest object. Nothing new so far.
 
@@ -28,24 +28,24 @@ Since version 1.5, the returned object implements the [CommonJS Promises/A inter
 
 The way of assigning callbacks with Promises is quite different:
 
-~~~ javascript
+```javascript
 var promise = $.ajax({
   url: "/myServerScript"
 });
 
 promise.done(mySuccessFunction);
 promise.fail(myErrorFunction);
-~~~
+```
 
 You can combine the done() and fail() functions in one then() function. The code above can be rewritten as:
 
-~~~ javascript
+```javascript
 var promise = $.ajax({
   url: "/myServerScript"
 });
 
 promise.then(mySuccessFunction, myErrorFunction);
-~~~
+```
 
 â€œOkay, the interface has changed, so what's in it for me?â€, you might ask.
 
@@ -54,7 +54,7 @@ The advantages of promises are:
 1) You can call the done() and fail() functions more times, with different callbacks. Maybe you have a callback function that stops an animation, one that does a new Ajax call and another function that shows the received data to the visitor.
 
 
-~~~ javascript
+```javascript
 var promise = $.ajax({
   url: "/myServerScript"
 });
@@ -63,24 +63,24 @@ promise.done(myStopAnimationFunction);
 promise.done(myOtherAjaxFunction);
 promise.done(myShowInfoFunction);
 promise.fail(myErrorFunction);
-~~~
+```
 
 2) Even after the Ajax call has finished, you can still call the done() and fail() functions and the callbacks are executed immediately. So no messing around with variables holding different states. When a Ajax call has finished, it will end up in either the success state or the failed state and this state will not change.
 
 3) You can combine promises. Sometimes you need to do two simultaneous Ajax calls and you want to execute a function when both are successfully finished. To do this, you use the new $.when() function.
 
-~~~ javascript
+```javascript
 var promise1 = $.ajax("/myServerScript1");
 var promise2 = $.ajax("/myServerScript2");
 
 $.when(promise1, promise2).done(function(data1, data2) {
   // Handle data from both Ajax calls
 });
-~~~
+```
 
 4) Since jQuery 1.8, you can chain the then() function sequentially. In the code below, first promise1 is run and when resolved successfully, getStuff is run, returning a promise and when this is resolved successfully, the anonymous function is executed.
 
-~~~ javascript
+```javascript
 var promise1 = $.ajax("/myServerScript1");
 
 function getStuff() {
@@ -90,7 +90,7 @@ function getStuff() {
 promise1.then(getStuff).then(function(myServerScript2Data){
   // Both promises are resolved
 });
-~~~
+```
 
 Every callback function receives the result of the previous asynchronous function,
 in the case of Ajax, that would be the returned data.
@@ -110,7 +110,7 @@ The promise object does not have resolve() or reject() functions. This is becaus
 
 Below is a simple script that illustrates how it works. The html is just an empty div with id "result".
 
-~~~ javascript
+```javascript
 $('#result').html('waiting...');
 
 var promise = wait();
@@ -129,7 +129,7 @@ function wait() {
 
   return deferred.promise();
 }
-~~~
+```
 
 You can also find this script on [jsFiddle](http://jsfiddle.net/TT3G5/), so that you can experiment with it yourself.
 
@@ -139,9 +139,9 @@ The wait() function is the function returning a promise. This will be resolved w
 
 Domenic Denicola wrote the article [You're Missing the Point of Promises](https://gist.github.com/3889970) in which he criticizes jQuery's implementation of Promises/A. Take for example the following code:
 
-~~~ javascript
+```javascript
 promise.then(fn1).then(fn2).then(fn3, fail);
-~~~
+```
 
 If an error is thrown in fn1, the fail function should be called. This is a very nice way to handle errors in asynchronous functions. This does not work in jQuery and the writer sees this as a major shortcoming of jQuery.
 

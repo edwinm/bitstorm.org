@@ -14,14 +14,14 @@ The script even provides some options: you can prevent loading images that you w
 
 Here's some example code:
 
-~~~javascript
+```javascript
 twitterFetch.fetch('345615146724495360', {}, function (tweets) {
 	if (!tweets || tweets.length == 0) {
 		return;
 	}
 	document.getElementById('tweets').innerHTML = tweets[0];
 });
-~~~
+```
 
 But don't use the widget id 345615146724495360, that belongs to my own [@edwinmdev](https://twitter.com/edwinmdev) Twitter account.
  
@@ -31,9 +31,9 @@ Since this script is using the Twitter Widget in a way that's not supported by T
 
 You can fetch [twitterFetch](https://github.com/edwinm/twitterFetch) from GitHub, or you can install [twitterfetch](https://www.npmjs.com/package/twitterfetch) from npm:
 
-~~~bash
+```bash
 npm install twitterfetch
-~~~
+```
 
 You can find all (updated) information on the [twitterFetch page](http://www.bitstorm.org/javascript/twitterfetch/).
 

@@ -15,13 +15,13 @@ style will pollute the versioning system.
 
 Style of Gerard:
 
-~~~javascript
+```javascript
 const hc = h => h>300?'hoogte-'+hcls:null
-~~~
+```
 
 Style of Sergey:
 
-~~~javascript
+```javascript
 function getHeaderClass ( height )
 {
 	headerClass = null;
@@ -33,7 +33,7 @@ function getHeaderClass ( height )
 
 	return headerClass;
 }
-~~~
+```
 
 Many companies therefore often use code guidelines that state how code should be written so that different styles are not used interchangeably. In the past they were often written by teams themselves, but nowadays you choose one that has already been written by others. A well known code guideline for JavaScript is the [Airbnb code guideline](https://github.com/airbnb/javascript).
 
@@ -54,15 +54,15 @@ Prettier does the opposite: it is based on a single code style, which they have 
 
 You can install Prettier globally with:
 
-~~~bash
+```bash
 npm install --global prettier
-~~~
+```
 
 You can then format a file with:
 
-~~~bash
+```bash
 prettier --write filename.js
-~~~
+```
 
 However, it's much more convenient to include Prettier in your editor. You can then ensure that the tool is executed with a certain key combination or even every time you save the file.
 
@@ -80,9 +80,9 @@ It is better to re-format all files once and do not make other adjustments and i
 
 You can apply prettier to all JavaScript files on a UNIX-based system such as Linux or macOS with this command:
 
-~~~bash
+```bash
 find . -name "*.js" | grep -v node_modules | xargs npx prettier --write
-~~~
+```
 
 Change `*.js` in `*.ts` when you're using TypeScript.
 
@@ -107,12 +107,12 @@ You can add exceptions to the `.prettierrc.json` file in the root of your projec
 
 With the above two exceptions, it looks like this:
 
-~~~javascript
+```javascript
 {
   "trailingComma": "es5",
   "arrowParens": "always"
 }
-~~~
+```
 
 At first Prettier was meant for JavaScript, but soon other languages â€‹â€‹were added such as TypeScript, JSX for React and CSS.
 

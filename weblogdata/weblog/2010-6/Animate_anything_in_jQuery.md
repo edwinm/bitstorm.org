@@ -21,7 +21,7 @@ date: 2010-06-09T14:27
 <p>
 	So how can you make your own custom animation? Just like the other jQuery-customizations, it's actually quite simple. Take for example the code to animate the background color:</p>
 
-~~~ javascript
+```javascript
 $.fx.step.backgroundColor = function(fx) {
 	if (!fx.init) {
 		fx.begin = parseColor($(fx.elem).css('backgroundColor'));
@@ -30,16 +30,16 @@ $.fx.step.backgroundColor = function(fx) {
 	}
 	fx.elem.style.backgroundColor = calculateColor(fx.begin, fx.end, fx.pos);
 }
-~~~
+```
 
 <p>
 	Give $.fx.step a new property and assign it a function which will handle the animation. This function has one argument, say fx, which belongs to that one animation, so you can use it anyway you like. It has some properties already set. The most important are fx.elem, fx.end and fx.pos. In fx.elem you'll find the element on which the animation is applied, and in fx.end you'll find the end-value you want to animate to. fx.pos is a float, going form zero to one during the animation.</p>
 <p>
 	In the example above, some initialization is done at the first call of the function in an animation. Here, the begin and end values are calculated. The rest of the functions assigns the calculated value to the CSS-property of the element. The calculation looks like this:</p>
 
-~~~ javascript
+```javascript
 begin + pos * (end - begin)
-~~~
+```
 
 <p>
 	If the animation is called with the end-value being a string, then fx.end will be that string. So when calling a.animate({color: "#ccc"}), fx.end will be "#ccc". However, if the string starts with a number then fx.end becomes that number. So when calling a.animate({myProp: "10px 20px"}), fx.end will be 10 and you'll lose the rest of the string. To get the whole string you should look at fx.options.curAnim.myProp instead of fx.end. In this last example, myProp is a self defined property.</p>

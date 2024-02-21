@@ -31,7 +31,7 @@ It turnes ugly straight quotes into curly quotes. Did you know straight quotes w
 
 With GeSHi, you can apply syntax highlighting to about 200 programming languages. It has several nice options, like line numbers and custom colour themes.
 
-Just put your source code between ~~~ <language-name\> and ~~~, each on a seperate line, to apply the highlighter.
+Just put your source code between \`\`\` <language-name\> and \`\`\`, each on a seperate line, to apply the highlighter.
 
 * [GeSHi homepage](http://qbnz.com/highlighter/)
 
@@ -41,7 +41,7 @@ Dot is part of the Graphviz graph visualization software. It is an easy to learn
 
 Here is an example:
 
-~~~ dot
+```dot
 digraph G {
     input -> split;
     split -> text;
@@ -55,11 +55,11 @@ digraph G {
     other -> merge;
     merge -> result;
 }
-~~~
+```
 
 The result is:
 
-~~~ dot-view
+```dot-view
 digraph G {
     input -> split;
     split -> text;
@@ -73,11 +73,11 @@ digraph G {
     other -> merge;
     merge -> result;
 }
-~~~
+```
 
 Graphs can be much more advanced. See the manual for all possibilities.
 
-Just put your dot code between ~~~ dot-view and ~~~, each on a seperate line, to convert it to SVG.
+Just put your dot code between ```dot-view and ```, each on a seperate line, to convert it to SVG.
 
 The advantage of SVG is that it gives very smooth graphics, even when you zoom in, print the page or view it on a high-resolution display like a Retina display.
 
@@ -99,9 +99,9 @@ I also put Markdown, SmartyPants and GeSHi in the same directory for easy start-
 
 Use Git to get the files:
 
-~~~ bash
+```bash
 git clone https://github.com/edwinm/Beautify.git
-~~~
+```
 
 * [Beautify on GitHub](https://github.com/edwinm/Beautify)
 

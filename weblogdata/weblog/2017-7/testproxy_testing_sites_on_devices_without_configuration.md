@@ -16,9 +16,9 @@ But typing in http://test.mycompany.com on a mobile device or other computer won
 
 Type:
 
-~~~bash
+```bash
 testproxy http://test.mycompany.com
-~~~
+```
 
 And it will return an URL and a QR code. Type the URL in the browser of another device or scan the QR code and presto: the website will show up.
 
@@ -28,7 +28,7 @@ There's only one condition to make this work: the device with the virtual machin
 
 To install testproxy:
 
-~~~bash
+```bash
 npm install -g testproxy
-~~~
+```
 

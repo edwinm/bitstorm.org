@@ -26,7 +26,7 @@ See [tests.js](https://github.com/edwinm/newClass/blob/master/tests.js) for exam
 
 Here's a simple example from tests.js:
 
-~~~ javascript
+```javascript
 var Bird = newClass({
 	// inherit from another class
 	extends: Animal,
@@ -40,7 +40,7 @@ var Bird = newClass({
 });
 
 var bird = new Bird();
-~~~
+```
 
 Possible features to add in the future: augmentation, interfaces and ES5 object methods support.
 

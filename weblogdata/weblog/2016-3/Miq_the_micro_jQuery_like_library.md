@@ -21,15 +21,15 @@ As an experiment, I also started to write vanilla JavaScript. And then I found o
 
 So this powerful jQuery construct:
 
-~~~javascript
+```javascript
 $(selector).each(function);
-~~~
+```
 
 Becomes this in vanilla JavaScript:
 
-~~~javascript
+```javascript
 Array.prototype.forEach.call(document.querySelectorAll(selector), function);
-~~~
+```
 
 What? I'm not going to type that every time! Can't I make a little library combining querySelectorAll with array functions? Yes, it was possible. I added some common jQuery functions and kept the library very small. Miq was born.
 

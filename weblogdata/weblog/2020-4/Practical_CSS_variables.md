@@ -4,9 +4,11 @@ date: 2020-04-25T17:31
 
 ---
 
-In HTML and JavaScript, you can easily apply some styling with the `style` attribute or property. But if you just want to pass a value, like a color, `style` falls short.
+This line should be "removed" since '79. In 't Harde.
 
-[test]
+This line should be ”removed” since ’79. In ’t Harde.
+
+In HTML and JavaScript, you can easily apply some styling with the `style` attribute or property. But if you just want to pass a value, like a color, `style` falls short.
 
 Fortunately, there is a solution for this, which has now been adopted by [all
 modern browsers](https://caniuse.com/#feat=css-variables): [CSS Custom Properties for Cascading Variables](https://www.w3.org/TR/css-variables/),
@@ -16,7 +18,7 @@ How do CSS variables work?
 
 Let's start with an example in CSS:
 
-~~~css
+```css
 :root {
   --warning-color: orange;
 }
@@ -25,7 +27,7 @@ Let's start with an example in CSS:
   color: var(--warning-color, red);
   border: 1px solid var(--warning-color, red);
 }
-~~~
+```
 
 So you can set a custom property within CSS and use it again in other places. Changing a property has now become much easier.
 
@@ -59,18 +61,18 @@ CSS custom property, after which you can decide exactly what to do with it in CS
 Changing the property `-â€‹-warning-color` is done in JavaScript
 as follows:
 
-~~~javascript
+```javascript
 element.style.setProperty("--warning-color", "maroon");
-~~~
+```
 
 The warning from the previous example will now turn maroon.
 
 To use a CSS variable throughout a document,
 put it on the root element:
 
-~~~javascript
+```javascript
 document.documentElement.style.setProperty("--warning-color", "maroon");
-~~~
+```
 
 ## Calculate
 
@@ -79,16 +81,16 @@ You can also do calculations with CSS variables.
 Suppose you have a box that has been determined in JavaScript to be
 shown 80 pixels from the left:
 
-~~~javascript
+```javascript
 boxElement.style.setProperty("--box-left", "80px");
-~~~
+```
 
 But in your CSS you know you have to add the left margin to that as well,
 which you also stored in a CSS variable.
 
 Then your CSS might look like this:
 
-~~~css
+```css
   : root {
     --margin-left: 10px;
   }
@@ -97,7 +99,7 @@ Then your CSS might look like this:
     position: relative;
     left: calc(var(--box-left) + var(--margin-left));
   }
-~~~
+```
 
 The `left` property of the box now becomes `90px`.
 
@@ -110,9 +112,9 @@ You would use the `getPropertyValue()` function to do that, but this function on
 are directly set on that element. To also find the inherited and calculated properties and values, you
 first have to use the `getComputedStyle()` function, like this:
 
-~~~javascript
+```javascript
 getComputedStyle(myElement).getPropertyValue('--my-variable-name')
-~~~
+```
 
 ## No unit
 
@@ -120,19 +122,19 @@ Even better, don't set a unit like `px` in the `setProperty` function. It is bes
 
 Take, for example, a progress indicator that goes from 0 to 100.
 
-~~~javascript
+```javascript
 document.documentElement.style.setProperty ("--progress", bytes / totalBytes * 100);
-~~~
+```
 
 Your CSS can then look like this:
 
-~~~css
+```css
   .progress box {
     background-color: deepskyblue;
     width: calc(var(--progress) * 0.6rem);
     height: 1rem;
   }
-~~~
+```
 
 If the progress is 40%, the width will be equal to 40 Ã— 0.6rem = 24rem. The unit to use (rem) is now defined in the CSS.
 
@@ -141,7 +143,7 @@ If the progress is 40%, the width will be equal to 40 Ã— 0.6rem = 24rem. The 
 CSS variables are very useful in media queries.
 For example, to make everything fit properly on very small screens, you can make the margins smaller:
 
-~~~css
+```css
 : root {
     --margin: 8px;
 }
@@ -155,7 +157,7 @@ For example, to make everything fit properly on very small screens, you can make
 .some-text-box {
   margin: var(--margin);
 }
-~~~
+```
 
 ## Theming
 
@@ -166,7 +168,7 @@ it quickly becomes very cumbersome the old way.
 CSS variables are very suitable for this. Also for
 _dark mode_, where the dark / light mode of the page changes with the operating system:
 
-~~~css
+```css
 :root {
   --background: white;
   --text: black;
@@ -189,7 +191,7 @@ html {
 .some-box {
   border: 3px solid var(--accent);
 }
-~~~
+```
 
 You can work with different color palettes in this way
 and assign them in the CSS to different properties.
@@ -202,7 +204,7 @@ That works best if you use `hsl()` or `hsla()` notation.
 For example, you can record the hue in a variable
 and define all kinds of variations in the CSS:
 
-~~~css
+```css
 :root {
     --theme-hue: 120; /* 120 is green */
 }
@@ -212,7 +214,7 @@ and define all kinds of variations in the CSS:
     background-color: hsl(var(--theme-hue), 50%, 30%);
     border: 2px solid hsl(var(--theme-hue), 100%, 50%);
 }
-~~~
+```
 
 Now only changing `-â€‹-theme-hue` from, for example
 120 (green) to 0 (red), will also change the style of `.themed-box`,
@@ -243,7 +245,7 @@ from the rectangle to the edges of the screen.
 
 An example in CSS:
 
-~~~css
+```css
 safe box {
   position: absolute;
   top: env(safe-area-inset-top, 8px);
@@ -251,7 +253,7 @@ safe box {
   bottom: env(safe-area-inset-bottom, 8px);
   left: env(safe-area-inset-left, 8px);
 }
-~~~
+```
 
 In `env()`, as with `var()`, the second parameter is the
 default parameter if the variable is not set.
@@ -270,14 +272,14 @@ If you still want to support this browser (and other old browsers),
 then you can apply _graceful degradation_, which is actually always a
 good idea:
 
-~~~css
+```css
 .warning {
   color: red;
   color: var(--warning-color, red);
   border: 1px solid red;
   border: 1px solid var(--warning-color, red);
 }
-~~~
+```
 
 In this case, the warning is always displayed in red in old browsers.
 It may not be exactly the color the designer had come up with, however
@@ -300,7 +302,7 @@ to think about for a moment.
 
 What color is "Hello World"? Pink, blue or red?
 
-~~~html
+```html
 <style>
   #blue {--myVar: blue}
   .red {--myVar: red}
@@ -313,7 +315,7 @@ What color is "Hello World"? Pink, blue or red?
     </div>
   </div>
 </div>
-~~~
+```
 
 First think for yourself what your answer will be and only then look
 for the [answer](https://codepen.io/edwinm/pen/bGGOdpa).

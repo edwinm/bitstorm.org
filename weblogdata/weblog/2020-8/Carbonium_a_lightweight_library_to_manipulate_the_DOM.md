@@ -8,9 +8,9 @@ This summer, I've been working on updating my [Game of Life](https://playgameofl
 
 When you write in native DOM, you probably use `document.querySelectorAll(selector)` a lot. After a while, you probably write a helper function like this:
 
-~~~javascript
+```javascript
 const $ = (selector, dom) => Array.from((dom || document).querySelectorAll(selector));
-~~~
+```
 
 But writing code this way is still a bit cumbersome.
 
@@ -24,17 +24,17 @@ I also had to find a name. You can view the result of the `$(â€¦)` function 
 
 With carbonium, you can run code like this:
 
-~~~javascript
+```javascript
 $(".indent").style.left = "40px";
-~~~
+```
 
 and this:
 
-~~~javascript
+```javascript
 $("div")
   .filter((el) => el.textContent == "priority")
   .classList.add("important");
-~~~
+```
 
 In this latest snippet, all div's with "priority" as content, will get the class `important`.
 
@@ -46,23 +46,23 @@ Carbonium is written in TypeScript, so when you use TypeScript too, you get to u
 
 You can install carbonium like this:
 
-~~~bash
+```bash
 npm install --save-dev carbonium
-~~~
+```
 
 And then import it like this:
 
-~~~javascript
+```javascript
 import { $ } from "carbonium";
-~~~
+```
 
 You can also use carbonium without installing or using a bundler like webpack or rollup.js:
 
-~~~javascript
+```javascript
 const { $ } = await import(
   "https://cdn.jsdelivr.net/npm/carbonium/dist/bundle.min.js"
 );
-~~~
+```
 
 You can `git clone` or `npm install` carbonium here:
 

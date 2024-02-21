@@ -10,14 +10,14 @@ date: 2011-02-12T14:20
 
 <p>If you've ever written code with a lot of callbacks, for example in a ajax-intensive website, it might have looked like this:</p>
 
-~~~ javascript
+```javascript
 function dothis {
 	// do something
 	someCallback( function() {
 		// do more
 	}); // etcetera
 });
-~~~
+```
 
 <p>Maybe your code had even more levels of callbacks. This style of code is hard to understand, hard to change, hard to debug and hard to maintain.</p>
 
@@ -27,7 +27,7 @@ function dothis {
 
 <p>One of the ways to write high quality code is to make your code loosely coupled. In the ideal situation, all callback functions are decoupled and don't know each others existance. With jQuery's queue function we can do exactly that. The code will look like this.</p>
 
-~~~ javascript
+```javascript
 $(someElement).queue(dothis).queue(dothat);
 
 function dothis(next) {
@@ -41,7 +41,7 @@ function dothat(next) {
 Â Â Â  // do more
 Â Â Â  next();
 }
-~~~
+```
 
 <p>Now the functions are decoupled, so it's very easy to understand each function seperately, it's easy to replace a function and it's easy to refactor the code. In the first line, you can also easily see in which order which functions are called.</p>
 

@@ -1,8 +1,10 @@
 const util = require('util');
+// const path = require('path');
 
 const Image = require('@11ty/eleventy-img');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-// const path = require('path');
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const typographyPlugin = require("@jamshop/eleventy-plugin-typography");
 
 async function imageShortcode (
     src,
@@ -34,14 +36,6 @@ async function imageShortcode (
   return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}"></a>`;
 }
 
-function monthShortcode (
-    date,
-) {
-  const months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
-  const [year, month] = date.split('-');
-  return `${months[month - 1]} ${year}`;
-}
-
 function dateShortcode (
     dateStr,
 ) {
@@ -53,7 +47,7 @@ function dateShortcode (
   return dateTimeFormat.format(date);
 }
 
-function testShortcode (
+function consoleShortcode (
     arg,
 ) {
   console.log('arg', arg);
@@ -84,9 +78,6 @@ module.exports = function(eleventyConfig) {
       ]
     }, []);
 
-    console.log('-->', posts)
-    console.log('-->', postsByYear)
-
     return postsByYear;
   });
 
@@ -96,14 +87,15 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode('image', imageShortcode);
-  eleventyConfig.addShortcode('month', monthShortcode);
   eleventyConfig.addShortcode("readable-date", dateShortcode);
-  eleventyConfig.addShortcode("test", testShortcode);
+  eleventyConfig.addShortcode("test", consoleShortcode);
 
   eleventyConfig.addFilter("limit", (array, limit) => array.slice(0, limit));
   eleventyConfig.addFilter("console", (s) => console.log('>>>', s), '');
 
+  eleventyConfig.addPlugin(typographyPlugin);
   eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy("weblogdata/assets");
 
