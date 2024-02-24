@@ -1,0 +1,132 @@
+<svg width="279pt" height="476pt"
+     viewBox="0.00 0.00 278.54 476.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="graph0_1" class="graph" transform="scale(1 1) rotate(0) translate(4 472)">
+        <title>G</title>
+        <!-- input -->
+        <g id="node1_1" class="node">
+            <title>input</title>
+            <ellipse fill="none" stroke="#000000" cx="102.9452" cy="-450" rx="28.6953" ry="18"/>
+            <text text-anchor="middle" x="102.9452" y="-446.3" font-family="Times,serif" font-size="14.00" fill="#000000">input</text>
+        </g>
+        <!-- split -->
+        <g id="node2_1" class="node">
+            <title>split</title>
+            <ellipse fill="none" stroke="#000000" cx="102.9452" cy="-378" rx="27" ry="18"/>
+            <text text-anchor="middle" x="102.9452" y="-374.3" font-family="Times,serif" font-size="14.00" fill="#000000">split</text>
+        </g>
+        <!-- input&#45;&gt;split -->
+        <g id="edge1_1" class="edge">
+            <title>input&#45;&gt;split</title>
+            <path fill="none" stroke="#000000" d="M102.9452,-431.8314C102.9452,-424.131 102.9452,-414.9743 102.9452,-406.4166"/>
+            <polygon fill="#000000" stroke="#000000" points="106.4453,-406.4132 102.9452,-396.4133 99.4453,-406.4133 106.4453,-406.4132"/>
+        </g>
+        <!-- text -->
+        <g id="node3_1" class="node">
+            <title>text</title>
+            <ellipse fill="none" stroke="#000000" cx="75.9452" cy="-306" rx="27" ry="18"/>
+            <text text-anchor="middle" x="75.9452" y="-302.3" font-family="Times,serif" font-size="14.00" fill="#000000">text</text>
+        </g>
+        <!-- split&#45;&gt;text -->
+        <g id="edge2_1" class="edge">
+            <title>split&#45;&gt;text</title>
+            <path fill="none" stroke="#000000" d="M96.2711,-360.2022C93.1976,-352.0064 89.4836,-342.1024 86.0757,-333.0145"/>
+            <polygon fill="#000000" stroke="#000000" points="89.3311,-331.7274 82.5426,-323.593 82.7767,-334.1853 89.3311,-331.7274"/>
+        </g>
+        <!-- code -->
+        <g id="node4_1" class="node">
+            <title>code</title>
+            <ellipse fill="none" stroke="#000000" cx="155.9452" cy="-234" rx="27.0966" ry="18"/>
+            <text text-anchor="middle" x="155.9452" y="-230.3" font-family="Times,serif" font-size="14.00" fill="#000000">code</text>
+        </g>
+        <!-- split&#45;&gt;code -->
+        <g id="edge3_1" class="edge">
+            <title>split&#45;&gt;code</title>
+            <path fill="none" stroke="#000000" d="M109.4441,-360.3428C118.5433,-335.6202 135.1645,-290.4608 145.8738,-261.3639"/>
+            <polygon fill="#000000" stroke="#000000" points="149.2237,-262.3951 149.3932,-251.8017 142.6545,-259.9773 149.2237,-262.3951"/>
+        </g>
+        <!-- smartypants -->
+        <g id="node5_1" class="node">
+            <title>smartypants</title>
+            <ellipse fill="none" stroke="#000000" cx="53.9452" cy="-234" rx="53.8905" ry="18"/>
+            <text text-anchor="middle" x="53.9452" y="-230.3" font-family="Times,serif" font-size="14.00" fill="#000000">smartypants</text>
+        </g>
+        <!-- text&#45;&gt;smartypants -->
+        <g id="edge4_1" class="edge">
+            <title>text&#45;&gt;smartypants</title>
+            <path fill="none" stroke="#000000" d="M70.507,-288.2022C68.0663,-280.2146 65.1299,-270.6045 62.4118,-261.7087"/>
+            <polygon fill="#000000" stroke="#000000" points="65.7432,-260.6339 59.4737,-252.0931 59.0487,-262.6794 65.7432,-260.6339"/>
+        </g>
+        <!-- dotview -->
+        <g id="node7_1" class="node">
+            <title>dotview</title>
+            <ellipse fill="none" stroke="#000000" cx="155.9452" cy="-162" rx="38.9931" ry="18"/>
+            <text text-anchor="middle" x="155.9452" y="-158.3" font-family="Times,serif" font-size="14.00" fill="#000000">dotview</text>
+        </g>
+        <!-- code&#45;&gt;dotview -->
+        <g id="edge6_1" class="edge">
+            <title>code&#45;&gt;dotview</title>
+            <path fill="none" stroke="#000000" d="M155.9452,-215.8314C155.9452,-208.131 155.9452,-198.9743 155.9452,-190.4166"/>
+            <polygon fill="#000000" stroke="#000000" points="159.4453,-190.4132 155.9452,-180.4133 152.4453,-190.4133 159.4453,-190.4132"/>
+        </g>
+        <!-- other -->
+        <g id="node8_1" class="node">
+            <title>other</title>
+            <ellipse fill="none" stroke="#000000" cx="241.9452" cy="-162" rx="28.6953" ry="18"/>
+            <text text-anchor="middle" x="241.9452" y="-158.3" font-family="Times,serif" font-size="14.00" fill="#000000">other</text>
+        </g>
+        <!-- code&#45;&gt;other -->
+        <g id="edge7_1" class="edge">
+            <title>code&#45;&gt;other</title>
+            <path fill="none" stroke="#000000" d="M172.936,-219.7751C185.4576,-209.2919 202.6925,-194.8628 216.8057,-183.0471"/>
+            <polygon fill="#000000" stroke="#000000" points="219.2745,-185.5448 224.6953,-176.4418 214.7809,-180.1775 219.2745,-185.5448"/>
+        </g>
+        <!-- markdown -->
+        <g id="node6_1" class="node">
+            <title>markdown</title>
+            <ellipse fill="none" stroke="#000000" cx="49.9452" cy="-162" rx="48.9926" ry="18"/>
+            <text text-anchor="middle" x="49.9452" y="-158.3" font-family="Times,serif" font-size="14.00" fill="#000000">markdown</text>
+        </g>
+        <!-- smartypants&#45;&gt;markdown -->
+        <g id="edge5_1" class="edge">
+            <title>smartypants&#45;&gt;markdown</title>
+            <path fill="none" stroke="#000000" d="M52.9358,-215.8314C52.508,-208.131 51.9993,-198.9743 51.5239,-190.4166"/>
+            <polygon fill="#000000" stroke="#000000" points="55.0176,-190.2037 50.9682,-180.4133 48.0284,-190.592 55.0176,-190.2037"/>
+        </g>
+        <!-- merge -->
+        <g id="node9_1" class="node">
+            <title>merge</title>
+            <ellipse fill="none" stroke="#000000" cx="155.9452" cy="-90" rx="33.2948" ry="18"/>
+            <text text-anchor="middle" x="155.9452" y="-86.3" font-family="Times,serif" font-size="14.00" fill="#000000">merge</text>
+        </g>
+        <!-- markdown&#45;&gt;merge -->
+        <g id="edge8_1" class="edge">
+            <title>markdown&#45;&gt;merge</title>
+            <path fill="none" stroke="#000000" d="M73.47,-146.0209C89.1558,-135.3664 109.8919,-121.2815 126.6476,-109.9003"/>
+            <polygon fill="#000000" stroke="#000000" points="128.6935,-112.7417 134.9991,-104.2276 124.7603,-106.9512 128.6935,-112.7417"/>
+        </g>
+        <!-- dotview&#45;&gt;merge -->
+        <g id="edge9_1" class="edge">
+            <title>dotview&#45;&gt;merge</title>
+            <path fill="none" stroke="#000000" d="M155.9452,-143.8314C155.9452,-136.131 155.9452,-126.9743 155.9452,-118.4166"/>
+            <polygon fill="#000000" stroke="#000000" points="159.4453,-118.4132 155.9452,-108.4133 152.4453,-118.4133 159.4453,-118.4132"/>
+        </g>
+        <!-- other&#45;&gt;merge -->
+        <g id="edge10_1" class="edge">
+            <title>other&#45;&gt;merge</title>
+            <path fill="none" stroke="#000000" d="M224.5418,-147.4297C212.3153,-137.1936 195.7478,-123.3231 181.9578,-111.778"/>
+            <polygon fill="#000000" stroke="#000000" points="184.1276,-109.0299 174.2132,-105.2941 179.634,-114.3972 184.1276,-109.0299"/>
+        </g>
+        <!-- result -->
+        <g id="node10_1" class="node">
+            <title>result</title>
+            <ellipse fill="none" stroke="#000000" cx="155.9452" cy="-18" rx="30.5947" ry="18"/>
+            <text text-anchor="middle" x="155.9452" y="-14.3" font-family="Times,serif" font-size="14.00" fill="#000000">result</text>
+        </g>
+        <!-- merge&#45;&gt;result -->
+        <g id="edge11_1" class="edge">
+            <title>merge&#45;&gt;result</title>
+            <path fill="none" stroke="#000000" d="M155.9452,-71.8314C155.9452,-64.131 155.9452,-54.9743 155.9452,-46.4166"/>
+            <polygon fill="#000000" stroke="#000000" points="159.4453,-46.4132 155.9452,-36.4133 152.4453,-46.4133 159.4453,-46.4132"/>
+        </g>
+    </g>
+</svg>

@@ -59,21 +59,7 @@ digraph G {
 
 The result is:
 
-```dot-view
-digraph G {
-    input -> split;
-    split -> text;
-    split -> code;
-    text -> smartypants;
-    smartypants -> markdown;
-    code -> dotview;
-    code -> other;
-    markdown -> merge;
-    dotview -> merge;
-    other -> merge;
-    merge -> result;
-}
-```
+{%image '2012-8/dot-example.png' %}
 
 Graphs can be much more advanced. See the manual for all possibilities.
 
