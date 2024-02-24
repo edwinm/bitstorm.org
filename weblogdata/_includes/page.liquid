@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ title }} - bitstorm.org</title>
     <link rel="stylesheet" href="/assets/style.css" title="Main style">
-    <link rel="stylesheet" href="/assets/prism-okaidia.css">
+    <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
 </head>
 <body>
 
@@ -23,7 +23,9 @@
 
     <p class="datum">{% readable-date date %}</p>
 
-    {{ content | smartypants }}
+    [page.liquid]
+
+    {{ content | typogrify }}
 
 </main>
 
