@@ -95,7 +95,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(typographyPlugin);
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(syntaxHighlight);
+  // eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy("weblogdata/assets");
 

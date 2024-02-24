@@ -4,10 +4,6 @@ date: 2020-04-25T17:31
 
 ---
 
-This line should be "removed" since '79. In 't Harde.
-
-This line should be ”removed” since ’79. In ’t Harde.
-
 In HTML and JavaScript, you can easily apply some styling with the `style` attribute or property. But if you just want to pass a value, like a color, `style` falls short.
 
 Fortunately, there is a solution for this, which has now been adopted by [all
