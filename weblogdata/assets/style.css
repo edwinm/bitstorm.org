@@ -28,7 +28,7 @@ html, body {
 
 body {
     font-family: Exo2, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 header {
@@ -75,7 +75,7 @@ h2.subtitle {
 }
 
 h3, h4 {
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 30px;
 }
 
