@@ -35,7 +35,7 @@ async function imageShortcode (
     thumb = imageMetadata.webp[1]; // 200px
   }
   const screen = imageMetadata.webp.at(-1); // 800px
-  return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}"></a>`;
+  return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}" rel="lightbox"></a>`;
 }
 
 function dateShortcode (

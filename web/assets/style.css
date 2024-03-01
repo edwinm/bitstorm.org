@@ -1,0 +1,81 @@
+@font-face {
+    font-family: Exo2;
+    src: url("/assets/fonts/Exo_2/Exo2-var-subset.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: Exo2;
+    src: url("/assets/fonts/Exo_2/Exo2-var-italic-subset.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+html {
+    box-sizing: border-box;
+    --theme: #F9B068;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html, body {
+    margin: 0;
+}
+
+body {
+    font-family: Exo2, sans-serif;
+    font-weight: 400;
+}
+
+header {
+    height: max(12.5vw, 132px);
+    background: top/cover no-repeat url(/assets/pix/header.webp);
+    text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
+}
+
+header .page-width {
+    height: 100%;
+    color: white;
+    background: #88380057;
+    padding: 0;
+}
+
+.page-width {
+    position: relative;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+aside {
+    font-weight: 100;
+}
+
+h1.title {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    margin: 0;
+    font-size: 5rem;
+    font-weight: 500;
+}
+
+h2.subtitle {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+h3, h4 {
+    font-weight: 600;
+    font-size: 30px;
+}
+
