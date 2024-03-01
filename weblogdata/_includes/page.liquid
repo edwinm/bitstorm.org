@@ -21,6 +21,14 @@
 <main class="page-width">
     <h3>{{ title }}</h3>
 
+    <ul class="images" rel="lightbox">
+        {%- for image in media -%}
+            <li>
+                {% image image.image image.caption image.alt %}
+            </li>
+        {%- endfor -%}
+    </ul>
+
     <p class="datum">{% readable-date date %}</p>
 
     {{ content }}

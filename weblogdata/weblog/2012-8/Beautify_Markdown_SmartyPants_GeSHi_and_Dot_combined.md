@@ -59,7 +59,7 @@ digraph G {
 
 The result is:
 
-{%image '2012-8/dot-example.png' %}
+{%image 'dot-example.png' %}
 
 Graphs can be much more advanced. See the manual for all possibilities.
 

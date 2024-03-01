@@ -2,7 +2,7 @@
 title: "Multi-video chat written during Fronteers hackaton"
 date: 2012-05-20T12:33
 media:
-     - image: "hackaton-small.jpg"
+     - image: "hackaton.jpg"
        caption: "Our team presenting the multi-video chat"
        alt: ""
 

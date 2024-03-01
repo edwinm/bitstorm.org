@@ -15,9 +15,11 @@ async function imageShortcode (
   console.log('src', src)
   console.log('this.page.url', this.page.url)
   console.log('this.page.filePathStem', this.page.filePathStem)
-  const path = this.page.filePathStem == '/pages/month' ? this.page.url.split('/')[2] : this.page.filePathStem.split('/')[1];
+  // const path = this.page.filePathStem == '/pages/month' ? this.page.url.split('/')[2] : this.page.filePathStem.split('/')[1];
+  const path = this.page.filePathStem.split('/')[2];
+  console.log('path', path)
 
-  const imageMetadata = await Image(`weblogdata/${path}/${src}`, {
+  const imageMetadata = await Image(`weblogdata/weblog/${path}/${src}`, {
     widths: [150, 200, 450, 800],
     formats: ['webp'],
     outputDir: `web/weblog/${path}`,
