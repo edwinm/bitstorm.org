@@ -106,7 +106,8 @@ module.exports = function(eleventyConfig) {
       input: "weblogdata",
       output: "web"
     },
-    // markdownTemplateEngine: 'njk'
+    templateFormats: ["html", "md", "liquid", "njk"],
+    markdownTemplateEngine: 'njk'
   }
 };
 
