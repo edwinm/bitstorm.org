@@ -8,7 +8,7 @@ media:
 
 ---
 
-<p>
+
 	Just like the years before, the <a href="http://fronteers.nl/congres/2010/schedule">Fronteers conference 2010</a> was a success. It was held in the beautifull Tuschinsky theatre in Amsterdam. The event started the evening before with the Code Jam, a initiative of Koen Willems. The idea of the Jam was to have something interesting for everybody coming to Amsterdam a day before. People held short presentation about frontend related subjects. I held a presentation called "Swipe your site, enable touch interfaces". I showed with code and a demo how the touch interface works and how you could get smooth animations on a mobile device by using CSS transforms. Although more people came than expected, it was a very nice and informative evening.<br />
 	<br />
 	The next day the conference would start. As one of the organisers I had to be there at 7:00 o' clock. I was responsible for internet and WiFi and had to make sure the companies providing internet and WiFi could do their work. When the conference started, it quickly turned out using UMTS-boxes for internet didn't work that well. Fortunately, the venue, Tuschinsky, offered their own internet connection. From that moment the connection worked pretty well. Sometimes connections broke, but that could be solved by a simple reconnect.<br />
@@ -21,5 +21,5 @@ media:
 	<br />
 	I also made some <a href="http://picasaweb.google.com/edwinjeroenmartin/FronteersConferentie2010">photos of the Fronteers conference</a>.<br />
 	<br />
-	Every talk has been recorded. So keep an eye on the Fronteers website for the videos and slides of the speakers to appear or take a peek at <a href="http://vimeo.com/fronteers">Vimeo</a> for the raw video's.</p>
+	Every talk has been recorded. So keep an eye on the Fronteers website for the videos and slides of the speakers to appear or take a peek at <a href="http://vimeo.com/fronteers">Vimeo</a> for the raw video's.
 

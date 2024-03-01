@@ -30,5 +30,5 @@ I really think Adobe did the right thing with Muse and I look forward to the 1.0
 
 In the end, HTML, CSS and JavaScript is just technical stuff that sits between the author and the visitor, just like an engine between the driver and his trip or optics between the one making a photo and the photo itself. Techniques used shouldn't be relevant to the user.<br />
 
-A world in which we can all participate, smart or not, is, in my opinion, a better world.</p>
+A world in which we can all participate, smart or not, is, in my opinion, a better world.
 
