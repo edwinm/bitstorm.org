@@ -132,7 +132,7 @@ Your CSS can then look like this:
   }
 ```
 
-If the progress is 40%, the width will be equal to 40 Ã— 0.6rem = 24rem. The unit to use (rem) is now defined in the CSS.
+If the progress is 40%, the width will be equal to 40 — 0.6rem = 24rem. The unit to use (rem) is now defined in the CSS.
 
 ## Media queries
 

@@ -10,7 +10,7 @@ media:
 
 Yesterday I participated in the Fronteers Hackaton in The Hague. To warm us up Vasilis van Gemert gave a presentation about CSS3-effects featuring some [creatures with laser-eyes](http://vimeo.com/42451941) and Peter Nederlof made them interactive with Node.js.
 
-I really wanted to do something with Node.js too and together with Arjen Geerse, JoÃ«l Kuijten and Sander Elias, we formed a team and came up with the idea to make a multi-video chat.
+I really wanted to do something with Node.js too and together with Arjen Geerse, Joël Kuijten and Sander Elias, we formed a team and came up with the idea to make a multi-video chat.
 
 I wrote the server-side code using [Node.js](http://nodejs.org/) and [Socket.IO](http://socket.io/). It was a simple broadcast-mechanism using the socket.io events. The others wrote the frontend and the getUserMedia interface to the camera. GetUserMedia is pretty new and in our setup only worked with Google Chrome Canary.
 
