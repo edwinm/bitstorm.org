@@ -1,5 +1,4 @@
 {
-  "layout": "blog",
   "tags": "weblog",
   "permalink": "{{ page.filePathStem }}.html"
 }

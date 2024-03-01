@@ -8,8 +8,6 @@
 
     <h4><a href="{{ post.url }}">{{ title }}</a></h4>
 
-    {% include 'media' %}
-
     <p class="datum">{% readable-date date %}</p>
 
     {{ content | strip_html | truncate: 500, "…" }}
