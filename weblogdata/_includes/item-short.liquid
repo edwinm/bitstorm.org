@@ -1,15 +1,5 @@
-{%  assign title=post.data.title %}
-{%  assign media=post.data.media %}
-{%  assign date=post.data.date %}
-{%  assign content=post.content %}
-{%  assign url=post.url %}
-
 <main>
 
-    <h4><a href="{{ post.url }}">{{ title }}</a></h4>
-
-    <p class="datum">{% readable-date date %}</p>
-
-    {{ content | strip_html | truncate: 500, "…" }}
+[item-short]
 
 </main>
