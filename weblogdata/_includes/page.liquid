@@ -32,6 +32,9 @@
 
     <p class="datum">{% readable-date date %}</p>
 
+    {% if media.length == 1 %}
+        {% image media.first.image media.first.caption media.first.alt 800 %}
+    {% else %}
     <ul class="images" rel="lightbox">
         {%- for image in media -%}
             <li>
@@ -39,6 +42,7 @@
             </li>
         {%- endfor -%}
     </ul>
+    {% endif %}
 
     {{ content }}
 

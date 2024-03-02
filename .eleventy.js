@@ -10,6 +10,7 @@ async function imageShortcode (
     src,
     caption,
     alt,
+    size=200
 ) {
   // console.log('----')
   // console.log('src', src)
@@ -34,7 +35,11 @@ async function imageShortcode (
     thumb = imageMetadata.webp[1]; // 200px
   }
   const screen = imageMetadata.webp.at(-1); // 800px
-  return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}"></a>`;
+  if (size != 800) {
+    return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}"></a>`;
+  } else {
+    return `<img src="${screen.url}" class="single-image" width="${screen.width}" height="${screen.height}" alt="${alt}" style="--height: ${screen.height}">`;
+  }
 }
 
 function dateShortcode (
