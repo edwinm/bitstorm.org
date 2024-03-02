@@ -153,7 +153,7 @@ Relative time, as you often see on forums and chat channels.
 
 ```javascript
 // Create a RelativeTimeFormat
-const rtf = new Intl.RelativeTimeFormat('nl-NL');
+const rtf = new Intl.RelativeTimeFormat('en-US');
 
 rtf.format(-2, 'minute')
 // returns "2 minutes ago"
@@ -165,7 +165,7 @@ Displaying lists in the desired language.
 
 ```javascript
 // Create a ListFormat
-const listFormat = new Intl.ListFormat('nl-NL', { style: 'long', type: 'conjunction' });
+const listFormat = new Intl.ListFormat('en-US', { style: 'long', type: 'conjunction' });
 
 listFormat.format(["bananas", "apples", "tangerines"])
 // returns "bananas, apples and tangerines"
