@@ -1,0 +1,11 @@
+{
+  "title": "Edwin Martin’s weblog",
+  "site_name": "bitstorm.org",
+  "description": "Weblog by Edwin Martin about frontend webdevelopment and related topics",
+  "language": "en",
+  "url": "https://bitstorm.org/weblog/",
+  "author": {
+    "name": "Edwin Martin",
+    "email": "edwin@bitstorm.org"
+  }
+}

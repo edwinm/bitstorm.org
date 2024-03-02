@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ global.language }}">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }} - bitstorm.org</title>
+    <title>{{ title }} - {{ global.site_name }}</title>
     <link rel="stylesheet" href="/assets/style.css" title="Main style">
     <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
+    <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
+
     <script src="/assets/baguetteBox/baguetteBox.js" async></script>
 
     <script>
@@ -12,7 +14,6 @@
             baguetteBox.run('[rel=lightbox]');
         });
     </script>
-    <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
 
 </head>
 <body>
@@ -20,8 +21,8 @@
 <header>
     <div class="page-width">
         <div class="text">
-            <h1 class="title">bitstorm.org</h1>
-            <h2 class="subtitle">Weblog of Edwin Martin, webdeveloper</h2>
+            <h1 class="title">{{ global.site_name }}</h1>
+            <h2 class="subtitle">{{ global.description }}</h2>
         </div>
     </div>
 </header>
