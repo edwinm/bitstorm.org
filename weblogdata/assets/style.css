@@ -33,7 +33,7 @@ body {
 
 header {
     height: max(12.5vw, 132px);
-    background: top/cover no-repeat url(/assets/pix/header.webp);
+    background: top/cover no-repeat url(/assets/pix/cityscape.png);
     text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
 }
