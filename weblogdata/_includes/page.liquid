@@ -19,16 +19,16 @@
 <body>
 
 <header>
-    <div class="page-width">
-        <div class="text">
-            <h1 class="title">{{ global.site_name }}</h1>
-            <h2 class="subtitle">{{ global.description }}</h2>
-        </div>
+    <div class="header-side"></div>
+    <div class="header-content">
+        <h1 class="title">{{ global.site_name }}</h1>
+        <h2 class="subtitle">{{ global.description }}</h2>
     </div>
+    <div class="header-side"></div>
 </header>
 
-
-<main class="page-width">
+<aside>aside left</aside>
+<main>
     <h3>{{ title }}</h3>
 
     <p class="datum">{% readable-date date %}</p>
@@ -48,6 +48,7 @@
     {{ content }}
 
 </main>
+<aside>aside right</aside>
 
 
 </body>

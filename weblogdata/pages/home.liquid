@@ -5,7 +5,6 @@ permalink: /index.html
 eleventyExcludeFromCollections: true
 ---
 
-<main>
 
     {% assign lastTen = collections.weblog | reverse | limit:10 %}
 
@@ -17,5 +16,4 @@ eleventyExcludeFromCollections: true
         {{ post.content | strip_html | truncate: 500, "…" }}
     {%- endfor -%}
 
-</main>
 

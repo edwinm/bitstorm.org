@@ -14,6 +14,7 @@
 html {
     box-sizing: border-box;
     --theme: #F9B068;
+    --content-width: 50rem;
 }
 
 *,
@@ -27,28 +28,35 @@ html, body {
 }
 
 body {
+    display: grid;
+    grid-template-rows: [header-start] max(12.5vw, 11rem) [header-end content-start] auto [content-end];
+    grid-template-columns: [left-start] 1fr [left-end content-start] min(100vw, var(--content-width)) [content-end right-start] 1fr [right-end];
     font-family: Exo2, sans-serif;
     font-weight: 400;
 }
 
 header {
-    height: max(12.5vw, 132px);
+    display: grid;
+    grid-area: header / span 3;
+    grid-template-columns: subgrid;
     background: top/cover no-repeat url(/assets/pix/cityscape.png);
     text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
 }
 
-header .page-width {
-    height: 100%;
-    color: white;
-    background: #88380057;
-    padding: 0;
+.header-side {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-.page-width {
+.header-content {
     position: relative;
-    max-width: 50rem;
-    margin: 0 auto;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+main {
+    grid-area: content;
 }
 
 aside {
@@ -98,11 +106,22 @@ td {
     padding: 0;
 }
 
+img.single-image {
+    width: var(--content-width, 50rem);
+    height: calc(var(--height) * 100vw / var(--content-width, 50rem));
+}
 
-@media screen and (max-width: 800px) {
-    .page-width {
+@media screen and (max-width: 70rem) {
+    aside {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 50rem) {
+    main {
         padding: 0 20px;
     }
+
 
     img.single-image {
         margin-left: -20px;
