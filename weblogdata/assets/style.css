@@ -30,7 +30,7 @@ html, body {
 body {
     display: grid;
     grid-template-rows: [header-start] max(12.5vw, 11rem) [header-end content-start] auto [content-end];
-    grid-template-columns: [left-start] 1fr [left-end content-start] min(100vw, var(--content-width)) [content-end right-start] 1fr [right-end];
+    grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
     font-family: Exo2, sans-serif;
     font-weight: 400;
 }
@@ -49,10 +49,26 @@ header {
 }
 
 .header-content {
-    position: relative;
+    display: flex;
+    padding: 0 20px;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
 
+}
+
+h1.title {
+    margin: 0;
+    font-size: min(5rem, 15vw);
+    font-weight: 500;
+}
+
+h2.subtitle {
+    align-self: end;
+    margin: 0 0 10px ;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 main {
@@ -63,23 +79,6 @@ aside {
     font-weight: 100;
 }
 
-h1.title {
-    position: absolute;
-    left: 20px;
-    top: 0;
-    margin: 0;
-    font-size: 5rem;
-    font-weight: 500;
-}
-
-h2.subtitle {
-    position: absolute;
-    right: 20px;
-    bottom: 10px;
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 300;
-}
 
 h3, h4 {
     font-weight: 600;
@@ -122,10 +121,9 @@ img.single-image {
         padding: 0 20px;
     }
 
-
     img.single-image {
         margin-left: -20px;
-        width: 100vw;
+        width: calc(100% + 40px);
         height: calc(var(--height) * 100vw / 800);
     }
 }
