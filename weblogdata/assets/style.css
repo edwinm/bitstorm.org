@@ -29,7 +29,7 @@ html, body {
 
 body {
     display: grid;
-    grid-template-rows: [header-start] max(12.5vw, 11rem) [header-end content-start] auto [content-end];
+    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end];
     grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
     font-family: Exo2, sans-serif;
     font-weight: 400;
@@ -39,7 +39,7 @@ header {
     display: grid;
     grid-area: header / span 3;
     grid-template-columns: subgrid;
-    background: top/cover no-repeat url(/assets/pix/cityscape.png);
+    background: top/cover no-repeat url(/assets/pix/cityscape.jpg);
     text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
 }
@@ -66,7 +66,7 @@ h1.title {
 
 h2.subtitle {
     align-self: end;
-    margin: 0 0 10px ;
+    margin: 0 0 16px ;
     font-size: 1rem;
     font-weight: 300;
 }
