@@ -139,9 +139,11 @@ footer {
     align-items: center;
     gap: 5px;
     color: black;
+    text-decoration: none;
 }
 .links a:hover {
     color: blue;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 78rem) {

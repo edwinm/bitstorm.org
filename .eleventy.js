@@ -65,7 +65,29 @@ function consoleShortcode (
 function spriteShortcode (
     arg,
 ) {
-  return `<svg><use xlink:href="/assets/svg-sprite.svg#svg-${arg}"></use></svg>`;
+  return `
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-${arg}">
+              <use xlink:href="/assets/svg-sprite.svg#svg-${arg}" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-${arg})"
+      />
+  </svg>`;
 }
 
 module.exports = function(eleventyConfig) {
