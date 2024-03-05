@@ -181,7 +181,10 @@ footer a:hover img {
     }
 
     .footer-content {
+        display: grid;
         grid-area: content;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
     }
 
     footer a {
