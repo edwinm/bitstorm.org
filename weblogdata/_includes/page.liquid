@@ -48,7 +48,17 @@
     {{ content }}
 
 </main>
-<aside>aside right</aside>
+<aside>
+    <h3>Recent</h3>
+
+    {% assign lastTen = collections.weblog | reverse | limit:10 %}
+
+    <ol class="links">
+    {%- for post in lastTen-%}
+        <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+    {%- endfor -%}
+    </ol>
+</aside>
 
 <footer>
     <h3>About</h3>
