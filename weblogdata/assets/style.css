@@ -29,7 +29,7 @@ html, body {
 
 body {
     display: grid;
-    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end footer-start] 10em [footer-end];
+    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end footer-start] auto [footer-end];
     grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
     font-family: Exo2, sans-serif;
     font-weight: 400;
@@ -116,7 +116,35 @@ img.single-image {
     height: calc(var(--height) * 100vw / var(--content-width, 50rem));
 }
 
-@media screen and (max-width: 70rem) {
+footer {
+    padding: 20px;
+}
+
+.links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.links li {
+    padding: 4px 0;
+}
+
+.links svg {
+    width: 24px;
+    height: 24px;
+}
+.links a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: black;
+}
+.links a:hover {
+    color: blue;
+}
+
+@media screen and (max-width: 78rem) {
     aside {
         display: none;
     }
@@ -131,6 +159,13 @@ img.single-image {
 
     .footer-content {
         grid-area: content;
+    }
+
+    .links a {
+        color: lightgrey;
+    }
+    .links a:hover {
+        color: lightblue;
     }
 }
 

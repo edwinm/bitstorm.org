@@ -33,8 +33,6 @@
 
     <p class="datum">{% readable-date date %}</p>
 
-    {% sprite 'github' %}
-
     {% if media.length == 1 %}
         {% image media.first.image media.first.caption media.first.alt 800 %}
     {% else %}
@@ -54,7 +52,16 @@
 
 <footer>
     <div class="footer-content">
-    Footer
+        <ul class="links">
+            <li><a href="https://github.com/edwinm/">{% sprite 'github' %} edwinm@Github</a></li>
+            <li><a href="https://mastodon.social/@edwin">{% sprite 'mastodon' %} edwinm@Mastodon</a></li>
+            <li><a href="https://www.linkedin.com/in/edwinm/">{% sprite 'linkedin' %} edwinm@Linkedin</a></li>
+            <li><a href="mailto:edwin@bitstorm.org">{% sprite 'envelope' %} edwin@bitstorm.org</a></li>
+            <li><a href="https://bitstorm.org/weblog/rss.xml">{% sprite 'rss' %} RSS feed</a></li>
+        </ul>
+
+
+
     </div>
 </footer>
 
