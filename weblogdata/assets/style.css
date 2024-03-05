@@ -29,7 +29,7 @@ html, body {
 
 body {
     display: grid;
-    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end];
+    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end footer-start] 10em [footer-end];
     grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
     font-family: Exo2, sans-serif;
     font-weight: 400;
@@ -72,10 +72,16 @@ h2.subtitle {
 }
 
 main {
-    grid-area: content;
+    grid-area: content / content;
+    padding-bottom: 3rem;
+}
+
+footer {
+    grid-area: content / left;
 }
 
 aside {
+    grid-area: content / right;
     font-weight: 100;
 }
 
@@ -113,6 +119,18 @@ img.single-image {
 @media screen and (max-width: 70rem) {
     aside {
         display: none;
+    }
+
+    footer {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-area: footer/span 3;
+        color: white;
+        background-color: rgb(40, 40, 40);
+    }
+
+    .footer-content {
+        grid-area: content;
     }
 }
 
