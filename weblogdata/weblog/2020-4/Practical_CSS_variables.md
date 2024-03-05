@@ -28,11 +28,11 @@ Let's start with an example in CSS:
 So you can set a custom property within CSS and use it again in other places. Changing a property has now become much easier.
 
 You set a CSS custom property just like a CSS property, but it always starts with '\--'.
-You can read it out with `var(-â€‹-varname)`.
+You can read it out with `var(--varname)`.
 
 The optional second parameter of `var()`, in the example above `red`,
 is the default value
-in case the variable `-â€‹-warning-color` has not (yet) been set.
+in case the variable `--warning-color` has not (yet) been set.
 
 It is important to know that these variables follow the same rules for
 cascading like all other CSS properties, hence the name
@@ -54,7 +54,7 @@ If you use this on the right side of the colon in a
 In JavaScript it is possible to assign a value to a
 CSS custom property, after which you can decide exactly what to do with it in CSS.
 
-Changing the property `-â€‹-warning-color` is done in JavaScript
+Changing the property `--warning-color` is done in JavaScript
 as follows:
 
 ```javascript
@@ -212,7 +212,7 @@ and define all kinds of variations in the CSS:
 }
 ```
 
-Now only changing `-â€‹-theme-hue` from, for example
+Now only changing `--theme-hue` from, for example
 120 (green) to 0 (red), will also change the style of `.themed-box`,
 including all variations on that color.
 
@@ -256,7 +256,7 @@ default parameter if the variable is not set.
 
 ## Preprocessors
 
-I have seen several projects where Sass of Less was used only to assign a row of values â€‹â€‹to variables and then use these variables in the rest of the style sheets. Isn't it more convenient to omit the preprocessor and use CSS variables?
+I have seen several projects where Sass of Less was used only to assign a row of values to variables and then use these variables in the rest of the style sheets. Isn't it more convenient to omit the preprocessor and use CSS variables?
 I think so. In the build process you skip a step and, for example,
 debugging becomes a lot easier.
 

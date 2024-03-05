@@ -92,7 +92,7 @@ And what if you also use a linter? They can conflict with Prettier. One option i
 
 ##Exceptions
 
-The idea of â€‹â€‹Prettier is that there is one style that applies to everyone and that there aren't dozens of configuration options. But like any other program, Prettier is not perfect and after a while options to add exceptions
+The idea of Prettier is that there is one style that applies to everyone and that there aren't dozens of configuration options. But like any other program, Prettier is not perfect and after a while options to add exceptions
 were added.
 
 One of them is [jsxBracketSameLine](https://prettier.io/docs/en/options.html#jsx-brackets) that came because it was a dealbreaker to use Prettier at Facebook.
@@ -114,7 +114,7 @@ With the above two exceptions, it looks like this:
 }
 ```
 
-At first Prettier was meant for JavaScript, but soon other languages â€‹â€‹were added such as TypeScript, JSX for React and CSS.
+At first Prettier was meant for JavaScript, but soon other languages were added such as TypeScript, JSX for React and CSS.
 
 On November 7, 2018, version 1.15 also included HTML, Vue, Angular and MDX support. So there is almost no front-end code that Prettier can't handle.
 
