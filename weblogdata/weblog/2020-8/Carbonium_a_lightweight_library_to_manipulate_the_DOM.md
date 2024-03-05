@@ -9,7 +9,8 @@ This summer, I've been working on updating my [Game of Life](https://playgameofl
 When you write in native DOM, you probably use `document.querySelectorAll(selector)` a lot. After a while, you probably write a helper function like this:
 
 ```javascript
-const $ = (selector, dom) => Array.from((dom || document).querySelectorAll(selector));
+const $ = (selector, dom) => 
+                    Array.from((dom || document).querySelectorAll(selector));
 ```
 
 But writing code this way is still a bit cumbersome.
