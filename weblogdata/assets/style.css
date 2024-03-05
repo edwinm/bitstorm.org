@@ -58,6 +58,15 @@ header {
 
 }
 
+@keyframes shift-background {
+    from {
+        background-position-y: 8px;
+    }
+    to {
+        background-position-y: 0;
+    }
+}
+
 .title {
     margin: 0;
     font-size: min(5rem, 15vw);
@@ -67,7 +76,18 @@ header {
 .title a {
     color: currentColor;
     text-decoration: none;
+    transition: color 250ms ease;
 }
+
+.title a:hover {
+    color: transparent;
+    background: repeating-linear-gradient(0deg, #00a2a2, #00a2a2 2px, blue 2px, blue 4px);
+    background-clip: text;
+    animation: shift-background 1s infinite linear;
+    text-decoration: none;
+}
+
+
 
 .subtitle {
     align-self: end;
