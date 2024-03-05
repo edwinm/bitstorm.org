@@ -56,7 +56,11 @@
 
     <ol class="links">
     {%- for post in lastTen-%}
-        <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+            {% if page.url == post.url %}
+                <li aria-current="page">{{ post.data.title }}</li>
+            {% else %}
+                <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+            {% endif %}
     {%- endfor -%}
     </ol>
 </aside>

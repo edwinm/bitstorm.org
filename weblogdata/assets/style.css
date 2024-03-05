@@ -158,6 +158,10 @@ a:hover {
     text-decoration: underline;
 }
 
+li[aria-current="page"] {
+    font-weight: bold;
+}
+
 footer a img {
     filter: grayscale(1) brightness(1.2);
 }
