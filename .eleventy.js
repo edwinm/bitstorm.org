@@ -5,6 +5,7 @@ const Image = require('@11ty/eleventy-img');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const typographyPlugin = require("@jamshop/eleventy-plugin-typography");
+const svgSprite = require("eleventy-plugin-svg-sprite");
 
 async function imageShortcode (
     src,
@@ -61,6 +62,12 @@ function consoleShortcode (
   return `[${arg}]`;
 }
 
+function spriteShortcode (
+    arg,
+) {
+  return `<svg><use xlink:href="/assets/svg-sprite.svg#svg-${arg}"></use></svg>`;
+}
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData("permalink", () => {
     return (data) => `${data.page.filePathStem}.${data.page.outputFileExtension}`;
@@ -69,7 +76,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("weblogByMonth", (collection) => {
     // /(?<year>[0-9]+)-/.exec('/weblog/2010-4/Introduction').groups.year
     const posts = collection.getFilteredByTag('weblog');
-    // const years = posts.map(post => post.filePathStem.split('/')?.[1]);
     const years = posts.map(post => /(?<year>[0-9]+)-/.exec(post.filePathStem).groups.year);
     const uniqueYears = [...new Set(years)];
 
@@ -87,6 +93,8 @@ module.exports = function(eleventyConfig) {
     return postsByYear;
   });
 
+  // weblogdata/assets/icons
+
   eleventyConfig.addFilter('console', function(value) {
     const str = util.inspect(value);
     return `<div style="white-space: pre-wrap;">${unescape(str)}</div>;`
@@ -95,6 +103,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode("readable-date", dateShortcode);
   eleventyConfig.addShortcode("test", consoleShortcode);
+  eleventyConfig.addShortcode("sprite", spriteShortcode);
 
   eleventyConfig.addFilter("limit", (array, limit) => array.slice(0, limit));
   eleventyConfig.addFilter("console", (s) => console.log('>>>', s), '');
@@ -102,6 +111,10 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.addPlugin(typographyPlugin);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(svgSprite, {
+    path: "./weblogdata/assets/icons",
+    outputFilepath: "./web/assets/svg-sprite.svg"
+  });
 
   eleventyConfig.addPassthroughCopy("weblogdata/assets");
 

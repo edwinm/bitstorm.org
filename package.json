@@ -20,6 +20,7 @@
     "typogr": "^0.6.8"
   },
   "devDependencies": {
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "eleventy-plugin-svg-sprite": "^2.4.2"
   }
 }
