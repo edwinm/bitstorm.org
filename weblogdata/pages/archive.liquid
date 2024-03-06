@@ -1,19 +1,18 @@
 ---
-title: Archive
+title: Blog archive
 layout: page
 permalink: /weblog/archive.html
 eleventyExcludeFromCollections: true
 ---
 
-<main>
-        {%- for weblog in collections.weblogByMonth reversed -%}
-            <h4>{{ weblog.key }}</h4>
-            <ul>
-            {%- for item in weblog -%}
-                <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
-            {%- endfor -%}
-            </ul>
+<section class="archive">
+    {%- for weblog in collections.weblogByMonth reversed -%}
+        <h3>{{ weblog.key }}</h3>
+        <ul>
+        {%- for item in weblog -%}
+            <li class="links"><a href="{{ item.url }}">{{ item.data.title }}</a></li>
         {%- endfor -%}
-
-</main>
+        </ul>
+    {%- endfor -%}
+</section>
 

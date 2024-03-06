@@ -1,19 +1,20 @@
 ---
-title: Homepage
+title:
 layout: page
 permalink: /index.html
 eleventyExcludeFromCollections: true
 ---
 
+{% assign lastTen = collections.weblog | reverse | limit:10 %}
 
-    {% assign lastTen = collections.weblog | reverse | limit:10 %}
+{%- for post in lastTen-%}
+    <article class="home-article">
+        <p class="date home-date">{% readable-date post.data.date %}</p>
 
-    {%- for post in lastTen-%}
-        <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
+        <h3 class="links"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
 
-        <p class="datum">{% readable-date post.data.date %}</p>
-
-        {{ post.content | strip_html | truncate: 500, "…" }}
-    {%- endfor -%}
+        <p class="intro">{{ post.content | strip_html | truncate: 500, "…" }}</p>
+    </article>
+{%- endfor -%}
 
 
