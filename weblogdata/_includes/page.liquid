@@ -49,7 +49,7 @@
 
 </main>
 
-<aside>
+<nav class="recent">
     <h3>Recent</h3>
 
     {% assign lastTen = collections.weblog | reverse | limit:10 %}
@@ -63,16 +63,18 @@
             {% endif %}
     {%- endfor -%}
     </ol>
-</aside>
 
-<footer>
+    <p class="links links-bottom"><a href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
+</nav>
+
+<aside class="about">
     <div class="footer-content">
         <section>
         <h3>About</h3>
 
         <p>Edwin Martin is a freelance webdeveloper living in the Netherlands.</p>
 
-        <p><a href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
+        <p class="links"><a href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
         </section>
 
         <section>
@@ -82,7 +84,7 @@
 
         <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
 
-        <p><a href="https://playgameoflife.com/">{% sprite 'gameoflife' %} playgameoflife.com</a></p>
+        <p class="links"><a href="https://playgameoflife.com/">{% sprite 'gameoflife' %} playgameoflife.com</a></p>
         </section>
 
         <section>
@@ -96,9 +98,7 @@
             </ul>
         </section>
     </div>
-</footer>
-
-
+</aside>
 
 </body>
 </html>

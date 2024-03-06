@@ -101,11 +101,11 @@ main {
     padding-bottom: 3rem;
 }
 
-footer {
+.about {
     grid-area: content / left;
 }
 
-aside {
+.recent {
     grid-area: content / right;
 }
 
@@ -139,11 +139,11 @@ img.single-image {
     height: calc(var(--height) * 100vw / var(--content-width, 50rem));
 }
 
-footer, aside {
+.about, .recent {
     padding: 0 50px;
 }
 
-footer img {
+.about img {
     width: 100%;
 }
 
@@ -157,20 +157,21 @@ footer img {
     padding: 4px 0;
 }
 
-footer svg {
+.links svg {
     width: 24px;
     height: 24px;
 }
 
-footer a {
+.links a {
     display: flex;
     align-items: center;
     gap: 5px;
-}
-
-footer a, aside a {
     color: black;
     text-decoration: none;
+}
+
+.links-bottom {
+    margin-top: 1rem;
 }
 
 a:hover {
@@ -182,21 +183,21 @@ li[aria-current="page"] {
     font-weight: bold;
 }
 
-footer a img {
+.about a img {
     filter: grayscale(1) brightness(1.2);
     transition: all 250ms ease;
 }
 
-footer a:hover img {
+.about a:hover img {
     filter: grayscale(0);
 }
 
 @media screen and (max-width: 78rem) {
-    aside {
+    .recent {
         display: none;
     }
 
-    footer {
+    .about {
         display: grid;
         grid-template-columns: subgrid;
         grid-area: footer/span 3;
@@ -211,10 +212,10 @@ footer a:hover img {
         gap: 50px;
     }
 
-    footer a {
+    .about a {
         color: lightgrey;
     }
-    footer a:hover {
+    .about a:hover {
         color: lightblue;
     }
 }
