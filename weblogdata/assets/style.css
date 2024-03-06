@@ -70,7 +70,7 @@ header {
 .title {
     margin: 0;
     font-size: min(5rem, 15vw);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .title a {
@@ -87,7 +87,11 @@ header {
     text-decoration: none;
 }
 
-
+.date {
+    color: #999;
+    margin-top: 0;
+    text-align: right;
+}
 
 .subtitle {
     align-self: end;
@@ -101,6 +105,18 @@ main {
     padding-bottom: 3rem;
 }
 
+h3 {
+    font-size: 2rem;
+}
+
+main h3, main h4 {
+    font-weight: 600;
+}
+
+main h3 {
+    margin-bottom: 0;
+}
+
 .about {
     grid-area: content / left;
 }
@@ -109,9 +125,23 @@ main {
     grid-area: content / right;
 }
 
-h3, h4 {
+.aside {
+    opacity: 0.7;
+    transition: all 250ms ease;
+}
+
+.aside:hover {
+    opacity: 1;
+}
+
+.aside h3 {
     font-weight: 600;
-    font-size: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.aside p {
+    margin: 4px 0;
 }
 
 table {
@@ -139,8 +169,8 @@ img.single-image {
     height: calc(var(--height) * 100vw / var(--content-width, 50rem));
 }
 
-.about, .recent {
-    padding: 0 50px;
+.aside {
+    padding: 0 3rem 1rem;
 }
 
 .about img {
@@ -170,7 +200,7 @@ img.single-image {
     text-decoration: none;
 }
 
-.links-bottom {
+p.links-bottom {
     margin-top: 1rem;
 }
 
@@ -192,7 +222,7 @@ li[aria-current="page"] {
     filter: grayscale(0);
 }
 
-@media screen and (max-width: 78rem) {
+@media screen and (max-width: 84rem) {
     .recent {
         display: none;
     }
@@ -210,6 +240,10 @@ li[aria-current="page"] {
         grid-area: content;
         grid-template-columns: repeat(3, 1fr);
         gap: 50px;
+    }
+
+    .aside {
+        opacity: 1;
     }
 
     .about a {

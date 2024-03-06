@@ -31,7 +31,7 @@
 <main>
     <h3>{{ title }}</h3>
 
-    <p class="datum">{% readable-date date %}</p>
+    <p class="date">{% readable-date date %}</p>
 
     {% if media.length == 1 %}
         {% image media.first.image media.first.caption media.first.alt 800 %}
@@ -49,7 +49,7 @@
 
 </main>
 
-<nav class="recent">
+<nav class="aside recent">
     <h3>Recent</h3>
 
     {% assign lastTen = collections.weblog | reverse | limit:10 %}
@@ -67,14 +67,14 @@
     <p class="links links-bottom"><a href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
 </nav>
 
-<aside class="about">
+<aside class="aside about">
     <div class="footer-content">
         <section>
         <h3>About</h3>
 
         <p>Edwin Martin is a freelance webdeveloper living in the Netherlands.</p>
 
-        <p class="links"><a href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
+        <p class="links links-bottom"><a href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
         </section>
 
         <section>
@@ -84,7 +84,7 @@
 
         <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
 
-        <p class="links"><a href="https://playgameoflife.com/">{% sprite 'gameoflife' %} playgameoflife.com</a></p>
+        <p class="links links-bottom"><a href="https://playgameoflife.com/">{% sprite 'gameoflife' %} playgameoflife.com</a></p>
         </section>
 
         <section>
