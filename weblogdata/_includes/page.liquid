@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }} - {{ global.site_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if description != "" %}
+        <meta name="description" content="{{ description }}">
+    {% else %}
+        <meta name="description" content="{{ content | strip_html | truncate: 250, "…" }}">
+    {% endif %}
+
     <link rel="stylesheet" href="/assets/style.css" title="Main style">
     <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
     <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
