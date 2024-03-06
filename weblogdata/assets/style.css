@@ -106,7 +106,7 @@ main {
 }
 
 h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 main h3, main h4 {
@@ -114,7 +114,7 @@ main h3, main h4 {
 }
 
 main h3 {
-    margin: 1rem 0 0;
+    margin: 2rem 0 0;
 }
 
 .about {
@@ -170,7 +170,7 @@ img.single-image {
 }
 
 .aside {
-    padding: 0 3rem;
+    padding: 1rem 3rem 0;
 }
 
 .about img {
