@@ -25,6 +25,7 @@ html {
 body {
     -webkit-hyphens: auto;
     hyphens: auto;
+    background: rgb(40, 40, 40) linear-gradient(white, white);
 }
 
 code, var, kbd, samp, tt, dir,
