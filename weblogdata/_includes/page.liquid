@@ -17,6 +17,25 @@
     <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
     <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
 
+    {% if page.url == "/" %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "name": "{{ global.site_name }}",
+        "description": "{{ global.description }}",
+        "about": "webdevelopment",
+        "author": {
+            "@type": "Person",
+            "name": "{{ global.author.name }}",
+            "email": "{{ global.author.email }}",
+            "url": "{{ global.author.url }}"
+        },
+        "url": "{{ global.url }}"
+    }
+    </script>
+    {% endif %}
+
     <script src="/assets/baguetteBox/baguetteBox.js" async></script>
 
     <script>

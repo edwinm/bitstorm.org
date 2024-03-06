@@ -3,9 +3,10 @@
   "site_name": "bitstorm.org",
   "description": "Weblog by Edwin Martin about frontend webdevelopment and related topics",
   "language": "en",
-  "url": "https://bitstorm.org/weblog/",
+  "url": "https://bitstorm.org/",
   "author": {
     "name": "Edwin Martin",
-    "email": "edwin@bitstorm.org"
+    "email": "edwin@bitstorm.org",
+    "url": "https://bitstorm.org/"
   }
 }
