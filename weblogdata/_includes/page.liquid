@@ -10,6 +10,9 @@
         <meta name="description" content="{{ content | strip_html | truncate: 250, "…" }}">
     {% endif %}
 
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:site_name" content="{{ global.site_name }}">
+
     <link rel="stylesheet" href="/assets/style.css" title="Main style">
     <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
     <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
