@@ -184,11 +184,11 @@ li[aria-current="page"] {
 
 footer a img {
     filter: grayscale(1) brightness(1.2);
+    transition: all 250ms ease;
 }
 
 footer a:hover img {
     filter: grayscale(0);
-    transition: all 250ms ease;
 }
 
 @media screen and (max-width: 78rem) {
