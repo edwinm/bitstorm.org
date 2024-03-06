@@ -49,7 +49,7 @@ function dateShortcode (
   if (!dateStr) {
     return '';
   }
-  const dateTimeFormat = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'short' })
+  const dateTimeFormat = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' })
   const date = d = new Date(dateStr);
   return dateTimeFormat.format(date);
 }
