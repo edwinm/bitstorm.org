@@ -49,24 +49,6 @@
 
 </main>
 
-<nav class="aside recent">
-    <h3>Recent</h3>
-
-    {% assign lastTen = collections.weblog | reverse | limit:10 %}
-
-    <ol class="links">
-    {%- for post in lastTen-%}
-            {% if page.url == post.url %}
-                <li aria-current="page">{{ post.data.title }}</li>
-            {% else %}
-                <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
-            {% endif %}
-    {%- endfor -%}
-    </ol>
-
-    <p class="links links-bottom"><a href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
-</nav>
-
 <aside class="aside about">
     <div class="footer-content">
         <section>
@@ -99,6 +81,24 @@
         </section>
     </div>
 </aside>
+
+<nav class="aside recent">
+    <h3>Recent</h3>
+
+    {% assign lastTen = collections.weblog | reverse | limit:10 %}
+
+    <ol class="links">
+        {%- for post in lastTen-%}
+            {% if page.url == post.url %}
+                <li aria-current="page">{{ post.data.title }}</li>
+            {% else %}
+                <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+            {% endif %}
+        {%- endfor -%}
+    </ol>
+
+    <p class="links links-bottom"><a href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
+</nav>
 
 </body>
 </html>
