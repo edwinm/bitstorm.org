@@ -221,7 +221,10 @@ img.single-image {
 .links a {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
+}
+
+.links a, .links-plain a {
     color: black;
     text-decoration: none;
 }
