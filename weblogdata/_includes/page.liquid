@@ -41,7 +41,7 @@
 <main>
     <h3>{{ title }}</h3>
 
-    <p class="date">{% readable-date date %}</p>
+    <time class="date" datetime="{{ date }}">{% readable-date date %}</time>
 
     {% if media.length == 1 %}
         {% image media.first.image media.first.caption media.first.alt 800 %}

@@ -10,7 +10,7 @@ description: Weblog by Edwin Martin about frontend webdevelopment and related to
 
 {%- for post in lastTen-%}
     <article class="home-article">
-        <p class="date home-date">{% readable-date post.data.date %}</p>
+        <time class="date home-date" datetime="{{ post.data.date }}">{% readable-date post.data.date %}</time>
 
         <h3 class="links"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
 
