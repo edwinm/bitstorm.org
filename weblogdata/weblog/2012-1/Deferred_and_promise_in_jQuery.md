@@ -10,7 +10,7 @@ Let's do a step back in time. A time without iPod or Xbox or Facebook. If you wa
 
 Now we have a similar problem with Ajax calls. This time it's not the events, but the fact that Ajax supports only one callback function. Not only the jQuery $.ajax() call, but also the underlying XMLHttpRequest object.
 
-## Promise
+### Promise
 
 Until jQuery 1.5, a typical $.ajax() call looked like this:
 
@@ -96,7 +96,7 @@ Every callback function receives the result of the previous asynchronous functio
 in the case of Ajax, that would be the returned data.
 
 
-## Deferred
+### Deferred
 
 So what is a deferred and what is the difference with a promise? As you have seen above, a promise is an object that is returned from an asynchronous function. You need a deferred when you write such a function yourself.
 
@@ -135,7 +135,7 @@ You can also find this script on [jsFiddle](http://jsfiddle.net/TT3G5/), so that
 
 The wait() function is the function returning a promise. This will be resolved with a setTimeout of two seconds. Instead of setTimeout, everything can be used that is asynchronous, like animations, Web workers etcetera. It should be clear that inside the wait() function, we use the deferred object, but we return the limited promise object.
 
-## Criticism
+### Criticism
 
 Domenic Denicola wrote the article [You're Missing the Point of Promises](https://gist.github.com/3889970) in which he criticizes jQuery's implementation of Promises/A. Take for example the following code:
 
@@ -149,7 +149,7 @@ If you want to use "pure" Promises/A, you better use promises introduced in ECMA
 
 <i>Update July 15th, 2015: jQuery 3.0 will fix this problem: <a href="http://blog.jquery.com/2015/07/13/jquery-3-0-and-jquery-compat-3-0-alpha-versions-released/">jQuery.Deferred is now Promises/A+ compatible</a> and errors thrown can now be catched in a catch() method.</i>
 
-## Other possibilities
+### Other possibilities
 
 This article is just an introduction to the deferred object. jQuery supports even more functions. Look at the [jQuery deferred documentation](http://api.jquery.com/category/deferred-object/) for all possibilities. It is, for example, possible to track the progress of a process.
 

@@ -23,7 +23,7 @@ Unfortunately, you cannot deviate from the standard time/date display of these f
 
 If you want to influence how the time is displayed, you could (in the past) write something yourself or turn to JavaScript libraries. A widely used library that can also handle time zones and daylight saving time is Moment.js.
 
-## Moment.js
+### Moment.js
 
 Since 2016, all browsers support Intl, the ECMAScript internationalization API.
 With Intl you can display dates and times in many different ways, taking into account
@@ -61,7 +61,7 @@ Further explanation of this decision can be found on their [Project Status page]
    but if you only update your JavaScript libraries occasionally, or at worst
    never, then you know that you will soon end up with outdated data.
 
-## Erdogan time
+### Erdogan time
 
 An interesting example took place in Turkey in 2015. Winter time would start
 October 25, but because there were elections on November 1, this was made a few weeks in advance
@@ -79,7 +79,7 @@ you're not really making the problem any smaller.
 Instead of Moment.js you can also use a more modern library such as Luxon, which
 is based on Intl. But why wouldn't you use Intl right away?
 
-## Intl
+### Intl
 
 Intl may seem a bit complicated at first glance, but as you can see below,
 that's not so bad.
@@ -147,7 +147,7 @@ dateTimeFormat.formatToParts(date);
 
 In addition to DateTimeFormat, Intl contains a series of options that are useful for internationalization.
 
-## RelativeTimeFormat
+### RelativeTimeFormat
 
 Relative time, as you often see on forums and chat channels.
 
@@ -159,7 +159,7 @@ rtf.format(-2, 'minute')
 // returns "2 minutes ago"
 ```
 
-## ListFormat
+### ListFormat
 
 Displaying lists in the desired language.
 

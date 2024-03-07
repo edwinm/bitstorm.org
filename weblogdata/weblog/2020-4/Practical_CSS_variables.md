@@ -38,7 +38,7 @@ It is important to know that these variables follow the same rules for
 cascading like all other CSS properties, hence the name
 Cascading Variables.
 
-## Custom Properties or Variables?
+### Custom Properties or Variables?
 
 The terms custom properties and variables appears to be used interchangeably in texts about this topic, but what is what?
 
@@ -49,7 +49,7 @@ it is always a custom property.
 If you use this on the right side of the colon in a
 `var()` function, then it is a variable.
 
-## JavaScript
+### JavaScript
 
 In JavaScript it is possible to assign a value to a
 CSS custom property, after which you can decide exactly what to do with it in CSS.
@@ -70,7 +70,7 @@ put it on the root element:
 document.documentElement.style.setProperty("--warning-color", "maroon");
 ```
 
-## Calculate
+### Calculate
 
 You can also do calculations with CSS variables.
 
@@ -99,7 +99,7 @@ Then your CSS might look like this:
 
 The `left` property of the box now becomes `90px`.
 
-## Read CSS variables
+### Read CSS variables
 
 Instead of setting a CSS variable from JavaScript, you can also read CSS variables.
 A useful example is having a media query in CSS and you don't want to copy the same logic to JavaScript.
@@ -112,7 +112,7 @@ first have to use the `getComputedStyle()` function, like this:
 getComputedStyle(myElement).getPropertyValue('--my-variable-name')
 ```
 
-## No unit
+### No unit
 
 Even better, don't set a unit like `px` in the `setProperty` function. It is best to set this where it belongs: in the CSS.
 
@@ -134,7 +134,7 @@ Your CSS can then look like this:
 
 If the progress is 40%, the width will be equal to 40 — 0.6rem = 24rem. The unit to use (rem) is now defined in the CSS.
 
-## Media queries
+### Media queries
 
 CSS variables are very useful in media queries.
 For example, to make everything fit properly on very small screens, you can make the margins smaller:
@@ -155,7 +155,7 @@ For example, to make everything fit properly on very small screens, you can make
 }
 ```
 
-## Theming
+### Theming
 
 You can of course keep a theme very simple with a foreground and background color and a few classes.
 But if you want to give some text, borders or icons certain accent colors,
@@ -192,7 +192,7 @@ html {
 You can work with different color palettes in this way
 and assign them in the CSS to different properties.
 
-## Vary with colors
+### Vary with colors
 
 You can also vary colors with a little creativity.
 That works best if you use `hsl()` or `hsla()` notation.
@@ -224,7 +224,7 @@ Combine this technique with calc, media queries, theming and dark mode
 and a new world opens up. You will probably see a rainbow outside.
 And maybe a unicorn!
 
-## Browser variables
+### Browser variables
 
 In addition to `var()` for reading CSS variables, there is also
 `env()` for reading browser environment variables.
@@ -254,13 +254,13 @@ safe box {
 In `env()`, as with `var()`, the second parameter is the
 default parameter if the variable is not set.
 
-## Preprocessors
+### Preprocessors
 
 I have seen several projects where Sass of Less was used only to assign a row of values to variables and then use these variables in the rest of the style sheets. Isn't it more convenient to omit the preprocessor and use CSS variables?
 I think so. In the build process you skip a step and, for example,
 debugging becomes a lot easier.
 
-## Internet Explorer 11
+### Internet Explorer 11
 
 What about Internet Explorer 11? No, unfortunately it does not support CSS variables.
 In April 2020, IE11 had a [market share of 1.1%  worldwide](https://gs.statcounter.com/browser-version-market-share#monthly-201904-202004).
@@ -281,7 +281,7 @@ In this case, the warning is always displayed in red in old browsers.
 It may not be exactly the color the designer had come up with, however
 a user of such an old browser is happy when a website is usable.
 
-## Future
+### Future
 
 Lea Verou also wanted to be able to draw diagrams in CSS, including
 angled connecting lines. That doesn't work well with only `calc()`,
@@ -291,7 +291,7 @@ At the time of writing, in 2020, there is
 to add the functions `sin()`, `cos()`, `tan()`, `acos()`, `asin()`,
 `atan()`, `atan2()`, `hypot()`, `sqrt()` and `pow()` to CSS.
 
-## Brain teaser
+### Brain teaser
 
 Finally a nice piece of code from a [tweet from Micah Godbolt](https://twitter.com/micahgodbolt/status/1131626097349496833?s=20)
 to think about for a moment.

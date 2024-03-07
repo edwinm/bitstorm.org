@@ -8,7 +8,7 @@ For the third time, I visited the [Dutch PHP Conference](http://phpconference.nl
 
 The conference has three tracks, so planning which presentations to see is a task on itself. There was also an unconference-track. Because during the whole conference there was always something interesting in the regular tracks and because you never know what the quality of the unconference-track will be, I didn't visit any unconference-track.
 
-## Friday
+### Friday
 
 The conference started with a keynote from Kevlin Henney, editor of <strong>[97 Things Every Programmer Should Know](http://oreilly.com/catalog/9780596809492)</strong>. This book contains little pieces of wisdom written by different programmers. Kevlin took a couple of them and explained them. For example how to make estimates, how to have code reviews, why you shouldn't change code on the production server, why you should test, etcetera. Very informative, especially if you haven't already learned it the hard way.
 
@@ -26,7 +26,7 @@ The talk <strong>Crash, Burn, Recover!</strong> from from Cal Evans showed Flex 
 
 I didn't go to the DPC Conference Social that evening (with free beer!). Maybe next year.
 
-## Saturday
+### Saturday
 
 The second day started off with <strong>Security-Centered Design: Exploring the Impact of Human Behavior</strong> by Chris Shiflett. He showed, nicely illustrated, how humans are sensitive to certain kind of security attacks. He explained Ambient signifiers: how you can subconsciously direct your users. For example, in Tokyo they introduced different kinds of background music in the subway, depending on where you are. It turned out that as a result, many more people didn't forget to leave the train on time, resulting in a more profitable subway system (and, of course, happier customers). He showed the movie <a href="http://www.youtube.com/watch?v=vBPG_OBgTWg">Person Swap</a> and the <a href="http://www.youtube.com/watch?v=voAntzB7EwE">Colour changing card trick</a>, which shows how easy it is to deceive people. He also explained the <a href="http://www.darkreading.com/security/vulnerabilities/showArticle.jhtml?articleID=213000919">Twitter Clickjacking Hack</a>. Although it didn't really had much to do with PHP, it was a very good presentation.
 

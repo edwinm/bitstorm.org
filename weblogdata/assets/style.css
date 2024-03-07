@@ -39,6 +39,16 @@ h1, h2, h3, h4 {
     text-wrap: balance;
 }
 
+h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
 p {
     text-wrap: pretty;
 }
@@ -131,15 +141,7 @@ main {
     padding-bottom: 3rem;
 }
 
-h3 {
-    font-size: 1.5rem;
-}
-
-main h3, main h4 {
-    font-weight: 600;
-}
-
-main h3 {
+main h2 {
     margin: 2rem 0 0;
 }
 
@@ -191,8 +193,10 @@ td {
 }
 
 img.single-image {
+    display: block;
     width: var(--content-width, 50rem);
     height: calc(var(--height) * 100vw / var(--content-width, 50rem));
+    margin: 1rem 0;
 }
 
 .aside {

@@ -37,7 +37,7 @@ function getHeaderClass ( height )
 
 Many companies therefore often use code guidelines that state how code should be written so that different styles are not used interchangeably. In the past they were often written by teams themselves, but nowadays you choose one that has already been written by others. A well known code guideline for JavaScript is the [Airbnb code guideline](https://github.com/airbnb/javascript).
 
-## Default code style
+### Default code style
 
 Wouldn't it be useful to have a tool that automatically rewrites your code to the correct style? Here comes Prettier around the corner, because that is exactly what it does. Prettier converts your code to a default code style.
 
@@ -50,7 +50,7 @@ Default code style? What is that? In many editors with their own code formatter 
 
 Prettier does the opposite: it is based on a single code style, which they have thought carefully about and which applies to everyone.
 
-## How do you use prettier?
+### How do you use prettier?
 
 You can install Prettier globally with:
 
@@ -72,7 +72,7 @@ You may think that a program never makes the code as neat as you do. That was my
 
 In addition to not having to format myself, I discovered another benefit. Searching in code is getting better. For example, if you search for `varname =` you do not have to be afraid that `varname=` or `varname <tab> =` will be skipped because all this code has already changed by Prettier to `varname =`.
 
-## Adding to an existing project
+### Adding to an existing project
 
 How do you add Prettier to an existing project? If you start using Prettier, it may be that you fix a bug somewhere, adjust one line and that Prettier will also re-format the entire file. In your version control system, you do not see that one changed rule, but a lot of adjustments in the layout. Your version management system becomes badly polluted.
 
@@ -86,11 +86,11 @@ find . -name "*.js" | grep -v node_modules | xargs npx prettier --write
 
 Change `*.js` in `*.ts` when you're using TypeScript.
 
-## Linter
+### Linter
 
 And what if you also use a linter? They can conflict with Prettier. One option is to add an exception to the linter configuration file every time there is a conflict, as I did. But on the internet you can also find linter configuration files that are suitable for Prettier. Switching off the linter is certainly not a good idea. In contrast to Prettier, a linter looks further than just the layout, it also looks for common programming errors.
 
-## Exceptions
+### Exceptions
 
 The idea of Prettier is that there is one style that applies to everyone and that there aren't dozens of configuration options. But like any other program, Prettier is not perfect and after a while options to add exceptions
 were added.

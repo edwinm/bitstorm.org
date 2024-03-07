@@ -11,7 +11,7 @@ when you dropped support for IE8](http://www.bitstorm.org/weblog/2013-12/Drop_su
 
 Below you'll find all new features supported in Chrome, Firefox, Safari, Internet Explorer 11 and Edge.
 
-## CSS
+### CSS
 
 While all the other browsers supported impressive CSS effects for years, we had to wait until version 10 to see it in Internet Explorer. Now we can use these features without workarounds or fall-backs:
 
@@ -37,7 +37,7 @@ Some other CSS features we can use now:
 
 As a bonus, IE can now support more than 31 style sheets per webpage (yes, that limit existed) and pixel values can now be specified in decimals.
 
-## HTML
+### HTML
 
 Most HTML improvements are about forms.
 
@@ -77,7 +77,7 @@ There are also a couple of new attributes:
 
 [Conditional comments](https://msdn.microsoft.com/en-us/library/ms537512(v=vs.85).aspx) are no longer supported and are now treated like the other browsers do: as comments.
 
-## Binary files
+### Binary files
 
 JavaScript always had a hard time dealing with binary data. This is fixed with the addition of the following API's.
 
@@ -87,7 +87,7 @@ JavaScript always had a hard time dealing with binary data. This is fixed with t
 * [File](https://developer.mozilla.org/en-US/docs/Web/API/File) and [FileReader](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) - read files from the local computer
 * [XMLHttpRequest 2](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) - send and receive binary data to and from the server and also track upload and download progress
 
-## Webapps
+### Webapps
 
 Writing a webapp and running it on all devices sounds ideal, except when webapps are very restricted. A lot of API's are added to make webapps more capable.
 
@@ -103,7 +103,7 @@ Writing a webapp and running it on all devices sounds ideal, except when webapps
 * [Cryptography](https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto) - an API to encrypt, decrypt, hash, verify and sign data within the browser
 * [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) - use the power of your GPU and play, for example, impressive video games
 
-## EcmaScript 2015
+### EcmaScript 2015
 
 A small subset of EcmaScript 2015 (ES6) can already be used.
 
@@ -111,13 +111,13 @@ A small subset of EcmaScript 2015 (ES6) can already be used.
 * [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)/[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)/[WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) - Set and Map are standard data structures. WeakMap is like Map, but data can also be garbage collected
 * [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) - Define arrays of a certain type, for example 32 bit unsigned, very useful in combination with WebGL
 
-## Zepto and Polymer
+### Zepto and Polymer
 
 Now we can finally use some modern JavaScript libraries and frameworks. For example [Zepto](http://zeptojs.com/), a lightweight jQuery replacement. 
 
 A interesting framework that can now be used is [Polymer](https://www.polymer-project.org/), build on top of [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), a set of powerful and promising web standards still in development.
 
-## HTTP
+### HTTP
 
 The following two security features require changes in the webserver, so they're probably more interesting for system operators:
 
@@ -126,7 +126,7 @@ The following two security features require changes in the webserver, so they're
 
 HTTP/2, formerly SPDY, is the next version of the HTTP protocol with several improvements, so now is a good time to update your webserver.
 
-## Other improvements
+### Other improvements
 
 * [Strict Mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) - enable the ES5 strict mode and catch more bugs
 * [SVG filters](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/SVG_Filters_Tutorial) - use the powerful SVG filters like blurring and blending
@@ -137,7 +137,7 @@ HTTP/2, formerly SPDY, is the next version of the HTTP protocol with several imp
 * [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format) - add subtitles to video
 * [Media Source Extensions](https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API) - have more control of the media that is played in an audio or video element, enables streaming audio and video
 
-## Safari is the new IE
+### Safari is the new IE
 
 In the past, the features you could use on your website were limited by IE. While other browsers supported many features for years, you had to wait for support in IE before you could use them, or use workarounds or fall-backs.
 
@@ -154,7 +154,7 @@ Features in IE11, Chrome and Firefox, but not in Safari, are:
 
 Take a look at [caniuse.com](http://caniuse.com/) to see which features are supported in which browser.
 
-## Conclusion
+### Conclusion
 
 Internet Explorer and its successor Edge made great progress and catched up with the other browsers. The web platform is becoming more and more mature and the horizon of a webdeveloper becomes wider and wider. Which new features can improve the website you're working on? Share it with the rest of your team and push the web forward.
 

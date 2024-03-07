@@ -10,7 +10,7 @@ Beautify is a simple PHP-function which combines these four powerful tools. It t
 
 Below I explain more about each tool.
 
-## Markdown
+### Markdown
 
 Markdown is similar to the input text used in Wiki's. It is used in a lot of projects, GitHub being a well known one. For example, you can put "#" in front of a line to make it a header or a "*" to make it a list item. The advantage is that, in contrast to HTML, the source file is very readable.
 
@@ -20,14 +20,14 @@ I use the improved PHP-Markdown-Extra because it handles HTML better.
 * [Markdown manual](http://daringfireball.net/projects/markdown/syntax)
 * [PHP Markdown Extra homepage](http://michelf.ca/projects/php-markdown/extra/)
 
-## SmartyPants
+### SmartyPants
 
 SmartyPants is, just like Markdown, a project by Daring Fireball. It improves the typography of a text.
 It turnes ugly straight quotes into curly quotes. Did you know straight quotes were introduced with the appearance of the typewriter and keys for every punctuation character was just too expensive? With SmartyPants we can correct this. SmartyPants also turnes multiple dashes into en- and em-dashes and three dots (...) into an ellipsis.
 
 * [SmartyPants homepage](http://daringfireball.net/projects/smartypants/)
 
-## GeSHi
+### GeSHi
 
 With GeSHi, you can apply syntax highlighting to about 200 programming languages. It has several nice options, like line numbers and custom colour themes.
 
@@ -35,7 +35,7 @@ Just put your source code between \`\`\` <language-name\> and \`\`\`, each on a 
 
 * [GeSHi homepage](http://qbnz.com/highlighter/)
 
-## Dot
+### Dot
 
 Dot is part of the Graphviz graph visualization software. It is an easy to learn language to describe graphs. This language can be converted into several output formats, like PNG, PDF and SVG. We convert it to SVG for inclusion in the output text.
 
@@ -77,7 +77,7 @@ Dot is the only non-PHP tool, it is a program that has to be installed. If you h
 * [Graphviz download](http://www.graphviz.org/Download..php)
 * [Dot manual](http://www.graphviz.org/pdf/dotguide.pdf) [PDF]
 
-## Beautify
+### Beautify
 
 Beautify makes these tools available into one simple function and is available for forking on GitHub as open source.
 

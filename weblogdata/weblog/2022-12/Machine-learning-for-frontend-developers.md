@@ -15,7 +15,7 @@ In addition, machine learning can help front-end developers by providing them wi
 
 Overall, machine learning can help front-end developers by providing them with powerful tools and techniques to solve complex problems and improve and accelerate their work. By harnessing the power of machine learning, front-end developers can improve their skills and contribute to the creation of innovative and advanced websites and web applications.
 
-## Content generation
+### Content generation
 
 I did not write the above text myself, but had it written by ChatGPT. I had the drawing drawn by Midjourney.
 
@@ -24,7 +24,7 @@ Both the text and the image were created using engines released in November.
 Developments are moving very quickly, if you look at the progress that has been made in the last few years.
 The engines will only get better in the coming years.
 
-## AI, ML, DL: what is it actually about?
+### AI, ML, DL: what is it actually about?
 
 AI (artificial intelligence) is the umbrella term for
 anything a computer does that would otherwise require a human brain, such as
@@ -41,7 +41,7 @@ processing layers.
 Neural network is the technique used in machine learning and is inspired by
 how brains work.
 
-## Practical examples you can use now
+### Practical examples you can use now
 
 Suppose you have to create a page for a client about a motorized three-way ball valve
 and you don't know what it is and the client can't come up with a text either.
@@ -80,14 +80,14 @@ I don't think many people will find this a good website user interface.
 
 {% image 'good-website-user-interface.png', 'AI generated website interface', 'AI generated website interface that looks impressive but is hardly useful', 800 %}
 
-## Try it yourself
+### Try it yourself
 
 You can try most AI services for free.
 
 - [ChatGPT](https://openai.com/blog/chatgpt/)
 - [Midjourney](https://www.midjourney.com/)
 
-## Objections
+### Objections
 
 With every new development there are doomsayers, but there are a number of points we should pay attention to with these developments.
 
