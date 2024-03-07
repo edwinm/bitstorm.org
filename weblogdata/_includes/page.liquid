@@ -96,7 +96,9 @@
             <p class="links links-bottom"><a rel="contents" href="/">{% sprite 'home' %} Home</a></p>
         {% endif %}
 
+        {% if page.url != '/weblog/archive.html' %}
         <p class="links{% if page.url == '/' %} links-bottom{% endif %}"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
+        {% endif %}
         </section>
 
         <section>
@@ -139,7 +141,9 @@
             {% endif %}
         {%- endfor -%}
     </ol>
+    {% if page.url != '/weblog/archive.html' %}
     <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
+    {% endif %}
 </nav>
 
 </body>
