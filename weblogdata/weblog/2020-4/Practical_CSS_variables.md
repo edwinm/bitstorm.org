@@ -1,7 +1,7 @@
 ---
 title: "Practical CSS variables"
 date: 2020-04-25T17:31
-
+tags: highlight
 ---
 
 In HTML and JavaScript, you can easily apply some styling with the `style` attribute or property. But if you just want to pass a value, like a color, `style` falls short.

@@ -1,7 +1,7 @@
 ---
 title: "Prettier, the Opinionated Code Formatter"
 date: 2019-01-19T15:41
-
+tags: highlight
 ---
 
 With HTML, CSS and JavaScript, it's not prescribed how to format your code.

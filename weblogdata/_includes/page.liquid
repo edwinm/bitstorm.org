@@ -123,9 +123,12 @@
 </aside>
 
 <nav class="aside recent">
+    {% if page.url == '/' or page.url == '/weblog/archive.html' or page.url == '/weblog/' %}
+    <h3>Highlight</h3>{% assign lastTen = collections.highlight | reverse | limit:10 %}
+    {% else %}
     <h3>Recent</h3>
-
     {% assign lastTen = collections.weblog | reverse | limit:10 %}
+    {% endif %}
 
     <ol class="links">
         {%- for post in lastTen-%}
@@ -136,7 +139,6 @@
             {% endif %}
         {%- endfor -%}
     </ol>
-
     <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
 </nav>
 
