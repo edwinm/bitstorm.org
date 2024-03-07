@@ -74,7 +74,7 @@ header {
     display: grid;
     grid-area: header / span 3;
     grid-template-columns: subgrid;
-    background: top/cover no-repeat url(/assets/pix/cityscape.jpg);
+    background: top/cover no-repeat url(/assets/pix/cityscape.webp);
     text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
 }
