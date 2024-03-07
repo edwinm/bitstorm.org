@@ -92,7 +92,11 @@
 
         <p class="links-plain">Edwin Martin is a <a href="https://bitstorm.nl/">freelance webdeveloper</a> living in the Netherlands.</p>
 
-        <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
+        {% if page.url != '/' %}
+            <p class="links links-bottom"><a rel="contents" href="/">{% sprite 'home' %} Home</a></p>
+        {% endif %}
+
+        <p class="links{% if page.url == '/' %} links-bottom{% endif %}"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
         </section>
 
         <section>
