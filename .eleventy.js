@@ -1,10 +1,9 @@
 const util = require('util');
-// const path = require('path');
 
+const markdownIt = require("markdown-it");
 const Image = require('@11ty/eleventy-img');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const typographyPlugin = require("@jamshop/eleventy-plugin-typography");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 
 async function imageShortcode (
@@ -13,12 +12,7 @@ async function imageShortcode (
     alt,
     size=200
 ) {
-  // console.log('----')
-  // console.log('src', src)
-  // console.log('this.page.url', this.page.url)
-  // console.log('this.page.filePathStem', this.page.filePathStem)
   const path = this.page.filePathStem.split('/')[2];
-  // console.log('path', path)
 
   const imageMetadata = await Image(`weblogdata/weblog/${path}/${src}`, {
     widths: [150, 200, 450, 800],
@@ -36,7 +30,7 @@ async function imageShortcode (
     thumb = imageMetadata.webp[1]; // 200px
   }
   const screen = imageMetadata.webp.at(-1); // 800px
-  if (size != 800) {
+  if (size !== 800) {
     return `<a href="${screen.url}" title="${caption}"><img src="${thumb.url}" class="${thumb.width > thumb.height ? 'landscape' : 'portrait'}" width="${thumb.width}" height="${thumb.height}" alt="${alt}"></a>`;
   } else {
     return `<img src="${screen.url}" class="single-image" width="${screen.width}" height="${screen.height}" alt="${alt}" style="--height: ${screen.height}">`;
@@ -96,13 +90,11 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("weblogByMonth", (collection) => {
-    // /(?<year>[0-9]+)-/.exec('/weblog/2010-4/Introduction').groups.year
     const posts = collection.getFilteredByTag('weblog');
     const years = posts.map(post => /(?<year>[0-9]+)-/.exec(post.filePathStem).groups.year);
     const uniqueYears = [...new Set(years)];
 
-    const postsByYear = uniqueYears.reduce((prev, year) => {
-      // const filteredPosts = posts.filter(post => post.filePathStem.split('/')?.[1] === year);
+    return uniqueYears.reduce((prev, year) => {
       const filteredPosts = posts.filter(post => /(?<year>[0-9]+)-/.exec(post.filePathStem).groups.year === year);
       filteredPosts.key = year;
 
@@ -111,11 +103,13 @@ module.exports = function(eleventyConfig) {
         filteredPosts
       ]
     }, []);
-
-    return postsByYear;
   });
 
-  // weblogdata/assets/icons
+  eleventyConfig.setLibrary("md", markdownIt({
+    html: true,
+    linkify: true,
+    typographer: true
+  }));
 
   eleventyConfig.addFilter('console', function(value) {
     const str = util.inspect(value);
@@ -130,7 +124,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("limit", (array, limit) => array.slice(0, limit));
   eleventyConfig.addFilter("console", (s) => console.log('>>>', s), '');
 
-  // eleventyConfig.addPlugin(typographyPlugin);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(svgSprite, {
