@@ -5,14 +5,15 @@
     <title>{{ title }} - {{ global.site_name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if description != "" %}
-        <meta name="description" content="{{ description }}">
+    <meta name="description" content="{{ description }}">
     {% else %}
-        <meta name="description" content="{{ content | strip_html | truncate: 250, "…" }}">
+    <meta name="description" content="{{ content | strip_html | truncate: 250, "…" }}">
     {% endif %}
-
     <meta property="og:title" content="{{ title }}">
     <meta property="og:site_name" content="{{ global.site_name }}">
-
+    {% if media.length > 0 %}
+        {% og-image media.first.image media.first.alt %}
+    {% endif %}
     <link rel="alternate" type="application/rss+xml" title="{{ global.site_name }}" href="https://bitstorm.org/weblog/rss.xml" />
 
     <link rel="stylesheet" href="/assets/style.css" title="Main style">
@@ -20,7 +21,6 @@
     <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
 
     <link rel="icon" href="/assets/pix/favicon.ico">
-
     {% if page.url == "/" %}
     <script type="application/ld+json">
     {
@@ -39,7 +39,6 @@
     }
     </script>
     {% endif %}
-
     <script src="/assets/baguetteBox/baguetteBox.js" async></script>
 
     <script>

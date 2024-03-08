@@ -37,6 +37,32 @@ async function imageShortcode (
   }
 }
 
+async function ogImageShortcode (
+    src,
+    alt,
+) {
+  const path = this.page.filePathStem.split('/')[2];
+
+  const imageMetadata = await Image(`weblogdata/weblog/${path}/${src}`, {
+    widths: [800],
+    formats: ['webp'],
+    outputDir: `web/weblog/${path}`,
+    urlPath: `/weblog/${path}`,
+    filenameFormat: function (id, src, width, format, options) {
+      const base = src.split('/').at(-1).split('.')[0];
+      return `${base}~${width}.${format}`;
+    }
+  });
+
+  const screen = imageMetadata.webp.at(0); // 800px
+
+  return `
+    <meta property="og:image" content="https://bitstorm.org${screen.url}">
+    <meta property="og:image:width" content="${screen.width}">
+    <meta property="og:image:height" content="${screen.height}">
+    <meta property="og:image:alt" content="${alt}">`
+}
+
 function dateShortcode (
     dateStr,
 ) {
@@ -117,6 +143,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode('image', imageShortcode);
+  eleventyConfig.addShortcode('og-image', ogImageShortcode);
   eleventyConfig.addShortcode("readable-date", dateShortcode);
   eleventyConfig.addShortcode("test", consoleShortcode);
   eleventyConfig.addShortcode("sprite", spriteShortcode);
