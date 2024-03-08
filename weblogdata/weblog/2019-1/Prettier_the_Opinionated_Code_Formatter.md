@@ -43,10 +43,7 @@ Wouldn't it be useful to have a tool that automatically rewrites your code to th
 
 Default code style? What is that? In many editors with their own code formatter you can specify exactly what your favorite style is. Do you want spaces within the brackets of an `if`? Do you want a space before the accolade of a `while`?
 
-<figure>
-<img src="stylesettings.png" width="100%" alt="">
-<figcaption>Style settings in an IDE</figcaption>
-</figure>
+{% image 'stylesettings.png', 'Style settings in an IDE', 'Image of style settings in an IDE', 800 %}
 
 Prettier does the opposite: it is based on a single code style, which they have thought carefully about and which applies to everyone.
 
