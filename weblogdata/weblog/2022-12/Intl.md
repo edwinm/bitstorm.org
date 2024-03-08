@@ -5,7 +5,7 @@ media:
    - image: "meme.jpg"
      caption: "Intl is being undervalued"
      alt: "Boyfriend looking at other woman meme with other woman being moment and luxon and the girlfriend being Intl" 
-tags: highlight
+tags: featured
 ---
 
 Developers often complain when they have to support time zones or daylight saving time.

@@ -126,7 +126,7 @@
 
 <nav class="aside recent">
     {% if page.url == '/' or page.url == '/weblog/archive.html' or page.url == '/weblog/' %}
-    <h3>Highlight</h3>{% assign lastTen = collections.highlight | reverse | limit:10 %}
+    <h3>Featured</h3>{% assign lastTen = collections.featured | reverse | limit:10 %}
     {% else %}
     <h3>Recent</h3>
     {% assign lastTen = collections.weblog | reverse | limit:10 %}
