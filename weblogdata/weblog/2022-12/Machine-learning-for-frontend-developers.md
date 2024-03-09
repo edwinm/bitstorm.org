@@ -20,7 +20,7 @@ Overall, machine learning can help front-end developers by providing them with p
 I did not write the above text myself, but had it written by ChatGPT. I had the drawing drawn by Midjourney.
 
 This would not have been possible a month ago, or with much lower quality.
-Both the text and the image were created using engines released in November.
+Both the text and the image were created using engines released in November 2021.
 Developments are moving very quickly, if you look at the progress that has been made in the last few years.
 The engines will only get better in the coming years.
 
@@ -45,17 +45,18 @@ how brains work.
 
 Suppose you have to create a page for a client about a motorized three-way ball valve
 and you don't know what it is and the client can't come up with a text either.
-You could then have a description generated for each product,
-complete with a list of pros, cons and alternatives.
+You could then have AI generate a description for the product,
+complete with a list of pros and cons and name alternative products.
 
 If you want to write a text yourself, there are solutions such as [Lex](https://lex.page/)
-who will help you with that.
+that will assist you with writing.
 
 Some web pages contain a lot of text. You can make it a bit more interesting by:
 add one or two pictures. You can now easily generate that, like I did
 did this article. I generated the image for this article with the prompt "home office, happy woman working on laptop, giant cute friendly robot helping her, ghibli style, dramatic".
+The drawing does contain several things that are not really correct.
 
-You can also give some pages a background image, which you can also generate.
+You can also generate background images for a webpage.
 If you want, you can even connect them seamlessly.
 
 {% image 'pastel_leaves.png', 'Pastel leaves', 'AI generated drawing of pastel leaves', 800 %}
@@ -69,13 +70,13 @@ ChatGPT can also help you, because you can also ask programming questions there.
 
 {% image 'javascript.png', 'ChatGPT answers JavaScript question', 'ChatGPT gives good answer to JavaScript question', 800 %}
 
-For example, AI can also help you create a multilingual website and
+Other examples where AI can help is creating a multilingual website and
 writing alternative texts for images.
 
 Many AI services also offer APIs, allowing you to automate some things.
 
-I also tried to generate a website layout, but that worked again
-less good. This is the result of the "good website user interface" prompt.
+I also tried to generate a website layout, but again, but that didn't really work well.
+This is the result of the "good website user interface" prompt.
 I don't think many people will find this a good website user interface.
 
 {% image 'good-website-user-interface.png', 'AI generated website interface', 'AI generated website interface that looks impressive but is hardly useful', 800 %}
@@ -93,7 +94,7 @@ With every new development there are doomsayers, but there are a number of point
 
 In 2016, Microsoft launched a self-learning chatbot Tay.
 Users fed the chatbot with racist texts and at one point
-the chatbot also said this itself.
+the chatbot started saying racist things itself.
 
 [Twitter taught Microsoft's AI chatbot to be a racist asshole in less than a day](https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist)
 
@@ -118,4 +119,4 @@ is extracted from content creation.
 
 It is almost certain that AI will change our world.
 
-Follow it, use it, but remain critical and alert to the side effects.
+Follow it, use it, but remain critical and be alert to the side effects.

@@ -9,9 +9,9 @@ tags: featured
 ---
 
 Developers often complain when they have to support time zones or daylight saving time.
-The time they want to show differs by one (or more) hour from the time
-is in the data. Sometimes they solve this by adding the difference themselves,
-not knowing that this only made the problem worse and the time after the next one
+The time they want to show differs by one (or more) hours from the time
+in the data. Sometimes they solve this by adding the difference themselves,
+not knowing that this only made the problem worse and the time after the next
 summer-winter time change is probably incorrect again.
 
 While the solution is very simple. Always save time as GMT, so without time zone offset and without daylight saving time. You can use the Unix epoch for this, which is the number of seconds since January 1, 1970 GMT.
@@ -19,7 +19,7 @@ While the solution is very simple. Always save time as GMT, so without time zone
 _Tip: don't use a 32-bit integer for this, because then you will have a problem again in 2038._
 
 From this GMT time you can easily display the local time with JavaScript. The Date object has long had functions to display both the time and date in the desired locale
-(date.toLocaleDateString(), date.toLocaleString() and date.toLocaleTimeString()).
+(`date.toLocaleDateString()`, `date.toLocaleString()` and `date.toLocaleTimeString()`).
 Unfortunately, you cannot deviate from the standard time/date display of these functions.
 
 If you want to influence how the time is displayed, you could (in the past) write something yourself or turn to JavaScript libraries. A widely used library that can also handle time zones and daylight saving time is Moment.js.
@@ -46,18 +46,17 @@ As can be read on the [Documentation page](https://momentjs.com/docs/)
 Further explanation of this decision can be found on their [Project Status page](https://momentjs.com/docs/#/-project-status/).
 
 2. Moment.js contains all time zone and daylight saving time data for all countries
-   quite big.
+   which makes it quite big.
 
 3. Moment is not suitable for tree shaking, so you always load the entire library,
-   no matter how much you use it.
+   no matter how little you use.
 
-4. Moment.js is not immutable. If you have a time x and you want the time to be two hours
-   calculate later, the value of x will change, which is usually not what you want.
-   Once you know this, you care
-   that you first make a copy of x, but it remains inconvenient.
+4. Moment.js is not immutable. If you have a time variable x and you want to calculate the time two hours
+   later, the value of variable x will change, which is usually not what you want.
+   Once you know this, you make sure that you first make a copy of x, but it remains inconvenient.
 
 5. A reason I don't see in other places: because of the time zone and daylight saving time data
-   in your JavaScript, they cannot be easily modified.
+   is in the JavaScript library itself, they cannot be easily updated.
    With a few hundred countries you can imagine that this data changes regularly,
    but if you only update your JavaScript libraries occasionally, or at worst
    never, then you know that you will soon end up with outdated data.
@@ -65,11 +64,12 @@ Further explanation of this decision can be found on their [Project Status page]
 ### Erdogan time
 
 An interesting example took place in Turkey in 2015. Winter time would start
-October 25, but because there were elections on November 1, this was made a few weeks in advance
-moved to November 8, so that there was an extra hour of light for voters.
+October 25th, but because there were elections on November 1st, the start of Winter time was moved to November 8th,
+so that there was an extra hour of light for voters.
+This change of the start of Winter time was done only a few weeks in advance.
 Microsoft, Apple, Google (Android) released updates quickly, but as you can imagine,
-not all systems were updated on time. The Turks lived with it for two weeks
-part of the clocks on normal time and another part on "Erdogan time".
+not all systems were updated on time.
+The Turks lived for two weeks with part of the clocks on normal time and another part on "Erdogan time".
 
 See also Matt Johnson-Pint's On the Timing of [Time Zone Changes](https://codeofmatt.com/on-the-timing-of-time-zone-changes/) for other examples
 of time zone chaos. 
@@ -82,8 +82,7 @@ is based on Intl. But why wouldn't you use Intl right away?
 
 ### Intl
 
-Intl may seem a bit complicated at first glance, but as you can see below,
-that's not so bad.
+Intl may seem a bit complicated at first glance, but as you can see below, it's not so bad.
 
 Here's an example:
 
@@ -102,10 +101,9 @@ dateTimeFormat.format(date)
 
 The first parameter of DateTimeFormat is the locale. That is the language in which the date
 should be displayed, not to be confused with the time zone. Usually this is the language of the page
-itself, but if you want to use the user's language setting, you can set value
-pass `undefined`.
+itself, but if you want to use the user's language setting, you can set the value to `undefined`.
 
-The second parameter contains the options. The following values are possible for both dateStyle and timeStyle: "full", "long", "medium" and "short".
+The second parameter contains the options. The following values are possible for both dateStyle and timeStyle: `"full"`, `"long"`, `"medium"` and `"short"`.
 
 If that is not enough, you can also indicate for each part of the date how it should be displayed. For example, for the month you can give month the following values:
 
@@ -117,11 +115,11 @@ If that is not enough, you can also indicate for each part of the date how it sh
   "narrow" (e.g. M)
 ```
 
-If you want to display the date for a specific time zone, you can specify the timeZone option, for example timeZone: "Asia/Tokyo".
+If you want to display the date for a specific time zone, you can specify the timeZone option, for example `timeZone: "Asia/Tokyo"`.
 
 Almost every conceivable date format is possible. For the list of all possible options, see the [Intl.DateTimeFormat() constructor page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat).
 
-format() always returns a string, but what if you want to display the seconds in a smaller font? Or AM/PM in a different color? That is also possible. Instead of format(date), call formatToParts(date) and you will get an array of all date parts and their values. You can then decide how to display each of these values.
+format() always returns a string, but what if you want to display the seconds in a smaller font? Or AM/PM in a different color? That is also possible. Instead of `format(date)`, call `formatToParts(date)` and you will get an array of all date parts and their values. You can then decide how to display each of these values.
 
 ```javascript
 dateTimeFormat.formatToParts(date);
