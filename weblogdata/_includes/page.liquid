@@ -9,10 +9,15 @@
     {% else %}
     <meta name="description" content="{{ content | strip_html | truncate: 250, "…" }}">
     {% endif %}
+    {% if date %}
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="{{ date }}"/>
+    <meta property="article:author" content="{{ global.author.name }}"/>
+    {% endif %}
     <meta property="og:title" content="{{ title }}">
     <meta property="og:site_name" content="{{ global.site_name }}">
     {% if media.length > 0 %}
-        {% og-image media.first.image media.first.alt %}
+    {% og-image media.first.image media.first.alt %}
     {% else %}
     <meta property="og:image" content="https://bitstorm.org/assets/pix/cityscape-og.webp">
     <meta property="og:image:width" content="1370">
@@ -54,7 +59,6 @@
 
 </head>
 <body>
-
 
 <header>
     <div class="header-side"></div>
