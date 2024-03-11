@@ -51,6 +51,7 @@ For example, a script on a rogue website or even a link can cause unintended act
 The solution is simple: never rely solely on cookies for authentication.
 Always send another secret key to confirm authenticity.
 Giving cookies the `HttpOnly` and `SameSite` (with values `Strict` or `Lax`) attributes also makes abuse much more difficult.
+These measures are now common practice and this attack is rare these days.
 
 As a frontend developer, he/she must ensure that with an Ajax POST request
 the secret key is sent along.
