@@ -76,7 +76,9 @@
 <main>
     <h2>{{ title }}</h2>
 
+    {% if date %}
     <time class="date" datetime="{{ date }}">{% readable-date date %}</time>
+    {% endif %}
 
     {% if media.length == 1 %}
         {% image media.first.image media.first.caption media.first.alt 800 %}
