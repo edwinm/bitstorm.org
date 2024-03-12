@@ -53,7 +53,7 @@ Always send another secret key to confirm authenticity.
 Giving cookies the `HttpOnly` and `SameSite` (with values `Strict` or `Lax`) attributes also makes abuse much more difficult.
 These measures are now common practice and this attack is rare these days.
 
-As a frontend developer, he/she must ensure that with an Ajax request
+As a frontend developer, you must ensure that with an Ajax request
 the secret key is sent along.
 
 ### HTTPS and Strict-Transport-Security
@@ -97,12 +97,11 @@ Make sure you set the `Content-Type` header with the correct value of all docume
 
 ### Subresource Integrity
 
-If you load an external script, it is possible that the external site will be hacked and malicious code will be inserted into the script.
+If you load an external script, it is possible that the external site will be compromised and malicious code will be inserted into the script.
 This can be prevented with subresource integrity. An `integrity` attribute is added to the script tag that
 contains a hash of the script. If the script changes, the hash will no longer match and the script will be rejected.
 
-This is of course not useful if the script is legitimately modified, which is why it is important that each version of the script has its own
-has url.
+This is of course not useful if the script is legitimately modified, which is why it is important that each version of the script has its own url.
 
 ### Terminology
 
