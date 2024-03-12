@@ -53,7 +53,7 @@ Always send another secret key to confirm authenticity.
 Giving cookies the `HttpOnly` and `SameSite` (with values `Strict` or `Lax`) attributes also makes abuse much more difficult.
 These measures are now common practice and this attack is rare these days.
 
-As a frontend developer, he/she must ensure that with an Ajax POST request
+As a frontend developer, he/she must ensure that with an Ajax request
 the secret key is sent along.
 
 ### HTTPS and Strict-Transport-Security
