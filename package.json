@@ -7,7 +7,8 @@
     "serve": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "cd extractor; node extract.js"
+    "generate": "cd extractor; node extract.js",
+    "brotli": "npx brotli-cli compress -v --glob \"web/**/*.{js,css,svg,ico,html}\""
   },
   "author": "Edwin Martin",
   "license": "None",
