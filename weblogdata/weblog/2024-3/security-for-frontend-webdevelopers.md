@@ -15,7 +15,7 @@ He did have a point. Topics such as injection, path traversal and DDoS attacks t
 If you look at the [OWASP Top 10 Web Application Security Risks](https://owasp.org/www-project-top-ten/),
 you only see server side vulnerabilities.
 
-And also, a browser cannot be trusted. Someone's computer may have been hacked or the user may have installed a rogue browser extension.
+And also, a browser cannot be trusted. Someone's computer may have been compromised or the user may have installed a rogue browser extension.
 Someone can also open the browser inspector themselves and manipulate the website or the traffic with the server.
 
 But a frontend developer can certainly do things to make a site more secure.
@@ -78,7 +78,7 @@ Fortunately, Jake Archibald has written a good article about CORS:
 
 CSP is an HTTP header that limits a browser from where images and scripts, among other things, can be loaded.
 
-This can be relevant for a frontend developer if he wants to include an external script, for example
+This can be relevant for frontend developers if they want to include an external script, for example
 for ads or tracking and it doesn't work. It is then good to know what CSP is and which rules are active.
 
 It is possible to start with a site that is only allowed to retrieve content from its own site and then, in
