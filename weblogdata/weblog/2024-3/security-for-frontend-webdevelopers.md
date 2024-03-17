@@ -34,10 +34,15 @@ If you don't use a framework and write plain JavaScript, be very careful about a
 Use the `textContent` property instead. The disadvantage of `textContent` is that you cannot use your own HTML tags.
 
 Would you like to build your HTML string including the insecure text? Then you can first run the text through an HTML sanitizer.
-For this you can use a JavaScript library like [sanitize-html](https://www.npmjs.com/package/sanitize-html)
+For this you can use a JavaScript library like [sanitize-html](https://www.npmjs.com/package/sanitize-html).
+The advantage of a HTML sanitizer is that you can also declare which tags and attributes are declared, like `<strong>` and `<i>`.
 
 ```javascript
-element.innerHTML = `<article>${sanitizeHtml(userContent)}</article>`;
+const allowed = {
+    allowedTags: ['strong', 'i']
+};
+
+element.innerHTML = `<article>${sanitizeHtml(userContent, allowed)}</article>`;
 ```
 
 Work is underway to make the [sanitizer part of the Browser API](https://wicg.github.io/sanitizer-api/).
