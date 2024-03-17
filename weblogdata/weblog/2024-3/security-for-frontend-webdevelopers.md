@@ -61,12 +61,16 @@ These measures are now common practice and this attack is rare these days.
 As a frontend developer, you must ensure that with an Ajax request
 the secret key is sent along.
 
-### HTTPS and Strict-Transport-Security
+### HTTPS and Strict-Transport-Security (HSTS)
 
 Nowadays it goes without saying that a website only uses https and no longer http.
 To prevent a user from (accidentally) going to the http site, you can use a
 the `Strict-Transport-Security` (HSTS) HTTP header. If the browser sees this header, it will from that moment on
 prevent the http site from being visited and will lead the user directly to the https site.
+
+```http request
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+```
 
 ### Cross-Origin Resource Sharing (CORS)
 
@@ -100,6 +104,10 @@ Years ago, Internet Explorer was known to also look at the contents of the docum
 causing many security flaws. While Internet Explorer is obsolete now, It won't hurt to add this header.
 Make sure you set the `Content-Type` header with the correct value of all documents that are served.
 
+```http request
+X-Content-Type-Options: nosniff
+```
+
 ### Subresource Integrity
 
 If you load an external script, it is possible that the external site will be compromised and malicious code will be inserted into the script.
@@ -107,6 +115,11 @@ This can be prevented with subresource integrity. An `integrity` attribute is ad
 contains a hash of the script. If the script changes, the hash will no longer match and the script will be rejected.
 
 This is of course not useful if the script is legitimately modified, which is why it is important that each version of the script has its own url.
+
+```html
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+```
+
 
 ### Terminology
 
