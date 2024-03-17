@@ -35,7 +35,7 @@ Use the `textContent` property instead. The disadvantage of `textContent` is tha
 
 Would you like to build your HTML string including the insecure text? Then you can first run the text through an HTML sanitizer.
 For this you can use a JavaScript library like [sanitize-html](https://www.npmjs.com/package/sanitize-html).
-The advantage of a HTML sanitizer is that you can also declare which tags and attributes are declared, like `<strong>` and `<i>`.
+The advantage of a HTML sanitizer is that you can also declare which tags and attributes are allowed, like `<strong>` and `<i>`.
 
 ```javascript
 const allowed = {
