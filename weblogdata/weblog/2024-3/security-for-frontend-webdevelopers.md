@@ -42,7 +42,7 @@ const allowed = {
     allowedTags: ['strong', 'i']
 };
 
-element.innerHTML = `<article>${sanitizeHtml(userContent, allowed)}</article>`;
+element.innerHTML = `<aside>${sanitizeHtml(userContent, allowed)}</aside>`;
 ```
 
 Work is underway to make the [sanitizer part of the Browser API](https://wicg.github.io/sanitizer-api/).
@@ -117,7 +117,9 @@ contains a hash of the script. If the script changes, the hash will no longer ma
 This is of course not useful if the script is legitimately modified, which is why it is important that each version of the script has its own url.
 
 ```html
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+        crossorigin="anonymous"></script>
 ```
 
 
