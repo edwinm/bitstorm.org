@@ -26,6 +26,7 @@ body {
     -webkit-hyphens: auto;
     hyphens: auto;
     background: rgb(40, 40, 40) linear-gradient(white, white);
+    min-height: 100vh;
 }
 
 code, var, kbd, samp, tt, dir,
