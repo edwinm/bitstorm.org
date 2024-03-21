@@ -274,6 +274,12 @@ li[aria-current="page"] {
     line-clamp: 3;
 }
 
+.giant {
+    font-size: clamp(20px, 20vw, 350px);
+    margin: 0;
+    text-align: center;
+}
+
 @media screen and (max-width: 84rem) {
     .recent {
         display: none;
