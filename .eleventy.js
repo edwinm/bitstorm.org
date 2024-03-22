@@ -63,6 +63,18 @@ async function ogImageShortcode (
     <meta property="og:image:alt" content="${alt}">`
 }
 
+async function rssImageShortcode (
+    url,
+    src,
+) {
+
+  const imgUrl = `${url.match(/.+\//)?.[0]}${src.replace(/\.webp$/, '~800.webp')}`;
+
+  return `<enclosure
+                      url="https://bitstorm.org${imgUrl}"
+                      type="image/webp" length="0"/>`;
+}
+
 function dateShortcode (
     dateStr,
 ) {
@@ -77,7 +89,7 @@ function dateShortcode (
 function consoleShortcode (
     arg,
 ) {
-  console.log('arg', arg);
+  console.log('>>>', arg);
   console.log('this.page', this.page);
   return `[${arg}]`;
 }
@@ -144,6 +156,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('og-image', ogImageShortcode);
+  eleventyConfig.addShortcode('rssimage', rssImageShortcode);
   eleventyConfig.addShortcode("readable-date", dateShortcode);
   eleventyConfig.addShortcode("test", consoleShortcode);
   eleventyConfig.addShortcode("sprite", spriteShortcode);
