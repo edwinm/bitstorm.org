@@ -280,6 +280,12 @@ li[aria-current="page"] {
     text-align: center;
 }
 
+.comments {
+    margin-top: 4rem;
+    border-top: 1px solid #ccc;
+    padding-top: 2rem;
+}
+
 @media screen and (max-width: 84rem) {
     .recent {
         display: none;

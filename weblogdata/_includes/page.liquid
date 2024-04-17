@@ -95,6 +95,13 @@
     {% endif %}
 
     {{ content }}
+
+    {% if date %}
+    <section class="comments">
+        <script defer src="https://comment.bitstorm.org/comentario.js"></script>
+        <comentario-comments no-fonts="true" live-update="false"></comentario-comments>
+    </section>
+    {% endif %}
 </main>
 
 <aside class="aside about">
