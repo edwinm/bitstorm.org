@@ -54,6 +54,14 @@ p {
     text-wrap: pretty;
 }
 
+blockquote {
+    background-color: #e3eaf2;
+    border-left: 9px solid purple;
+    margin: 0;
+    padding: 1rem 2rem;
+    font-style: italic;
+}
+
 ::selection {
     background-color: #ffed00;
     color: black;
