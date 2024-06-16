@@ -226,11 +226,6 @@ img.single-image {
     padding: 4px 0;
 }
 
-.links svg {
-    width: 24px;
-    height: 24px;
-}
-
 .links a {
     display: flex;
     align-items: center;
@@ -253,6 +248,14 @@ a:hover {
 
 li[aria-current="page"] {
     font-weight: bold;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(currentColor, currentColor);
+    mask-image: var(--icon);
+    mask-size: contain;
 }
 
 .about a img {

@@ -1,0 +1,11 @@
+{
+    "path": "out",
+    "mode": {
+        "view": {
+            "dest": "weblogdata/assets",
+            "sprite": "sprites.svg",
+            "bust": false,
+            "example": false
+        }
+    }
+}

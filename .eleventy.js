@@ -97,29 +97,7 @@ function consoleShortcode (
 function spriteShortcode (
     arg,
 ) {
-  return `
-  <svg
-      viewBox="0 0 100 100"
-  >
-      <filter id="invert">
-          <feColorMatrix in="SourceGraphic" type="matrix" values="
-               -1  0  0  0  1
-                0 -1  0  0  1
-                0  0 -1  0  1
-                0  0  0  1  0"/>
-      </filter>
-      <defs>
-          <mask id="mask-id-${arg}">
-              <use xlink:href="/assets/svg-sprite.svg#svg-${arg}" filter="url(#invert)"></use>
-          </mask>
-      </defs>
-      <rect
-          width="100"
-          height="100"
-          style="fill: currentColor"
-          mask="url(#mask-id-${arg})"
-      />
-  </svg>`;
+  return `<span class="icon" style="--icon: url(/assets/sprites.svg#${arg})"></span>`;
 }
 
 module.exports = function(eleventyConfig) {
@@ -166,10 +144,6 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(svgSprite, {
-    path: "./weblogdata/assets/icons",
-    outputFilepath: "./web/assets/svg-sprite.svg"
-  });
 
   eleventyConfig.addPassthroughCopy("weblogdata/assets");
 
