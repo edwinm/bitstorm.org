@@ -253,7 +253,7 @@ li[aria-current="page"] {
 .icon {
     width: 24px;
     height: 24px;
-    background: linear-gradient(currentColor, currentColor);
+    background: currentColor;
     mask-image: var(--icon);
     mask-size: contain;
 }
