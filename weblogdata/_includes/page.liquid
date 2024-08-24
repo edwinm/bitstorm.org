@@ -50,6 +50,17 @@
     }
     </script>
     {% endif %}
+    <script type="speculationrules">
+        {
+          "prerender": [{
+            "source": "document",
+            "where": {
+              "href_matches": "/*"
+            },
+            "eagerness": "moderate"
+          }]
+        }
+    </script>
     <script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
     <script src="/assets/baguetteBox/baguetteBox.js" async></script>
 
