@@ -7,5 +7,10 @@
             "bust": false,
             "example": false
         }
+    },
+    "shape": {
+        "spacing": {
+            "box": "icon"
+        }
     }
 }

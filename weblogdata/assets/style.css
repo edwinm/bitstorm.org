@@ -257,7 +257,7 @@ li[aria-current="page"] {
     height: 24px;
     background: currentColor;
     mask-image: var(--icon);
-    mask-size: contain;
+    mask-size: 24px 24px;
 }
 
 .about a img {
