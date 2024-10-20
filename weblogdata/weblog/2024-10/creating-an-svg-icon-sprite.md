@@ -29,7 +29,7 @@ Next, we put all configuration data in a configuration file called `svg-sprite.c
     "mode": {
         "view": {
             "dest": "assets/icons",
-            "sprite": "sprite.SVG",
+            "sprite": "sprite.svg",
             "bust": false,
             "example": false
         }
