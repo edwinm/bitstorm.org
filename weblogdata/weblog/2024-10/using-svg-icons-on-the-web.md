@@ -121,7 +121,7 @@ You can also make the icon size proportional to the text size so a larger text g
 Because we control the icon color with the CSS `background` property,
 we can apply all the effects that `background` allows, such as gradients and transitions.
 
-Hover over the icons to see the transitions.
+Here's an example. Hover over the icons to see the transitions.
 
 {% raw %}
 <style>
@@ -204,7 +204,6 @@ For those curious about the code, you can look at the code on this page, but for
     padding: 40px 20px;
     list-style: none;
 }
-</style>
 ```
 
 And this is the HTML:
@@ -303,7 +302,7 @@ This is the icon with the above CSS applied, in case you want to test it in an o
 
 ## Creating an SVG icon sprite
 
-Using a lot of SVG icons can be bad for performance.
+Using a lot of SVG icon files can be bad for performance.
 The solution is to bundle the icons in one file: the sprite.
 This article describes how to do this.
 
