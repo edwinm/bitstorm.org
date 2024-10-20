@@ -4,7 +4,8 @@ date: 2024-10-20T11:43
 media:
   - image: "neon-icons.png"
     caption: ""
-    alt: "Wall with web icon shaped neon lamps" 
+    alt: "Wall with web icon shaped neon lamps"
+tags: featured
 ---
 
 This article describes how to give monochrome SVG icons different colors with CSS and how to apply some effects.
@@ -299,3 +300,11 @@ This is the icon with the above CSS applied, in case you want to test it in an o
 
 <div class="star-icon-compat"></div>
 {% endraw %}
+
+## Creating an SVG icon sprite
+
+Using a lot of SVG icons can be bad for performance.
+The solution is to bundle the icons in one file: the sprite.
+This article describes how to do this.
+
+* [Creating an SVG icon sprite](creating-an-svg-icon-sprite.html)

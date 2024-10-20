@@ -4,7 +4,8 @@ date: 2024-10-20T10:18
 media:
   - image: "svg-sprite.png"
     caption: ""
-    alt: "Wall of wooden blocks with web related images" 
+    alt: "Wall of wooden blocks with web related images"
+tags: featured
 ---
 
 If you use a lot of SVG icons on your website, it is better for the performance of the site to merge them into one file:
@@ -196,3 +197,8 @@ And the HTML:
 
 Scroll to the side to see that the file names used are `sprite.svg#star`, `sprite.SVG#circle-user-round` etc.
 
+## Using SVG icons on the web
+
+If you want to use more graphical effects using `mask-image`, see my other article about SVG icons:
+
+* [Using SVG icons on the web](using-svg-icons-on-the-web.html)
