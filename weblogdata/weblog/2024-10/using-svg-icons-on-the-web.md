@@ -10,7 +10,7 @@ tags: featured
 
 This article describes how to give monochrome SVG icons different colors with CSS and how to apply some effects.
 
-Why do you want to use SVG icons? SVG is an ideal format for for stylized icons.
+Why do you want to use SVG icons? SVG is an ideal format for stylized icons.
 SVG (Scalable Vector Graphics) is made out of vectors which makes them very small (as in file size) and are scalable,
 which makes them look sharp even at high resolutions.
 
