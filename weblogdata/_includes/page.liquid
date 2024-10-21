@@ -123,7 +123,7 @@
         {% endif %}
 
         {% if page.url != '/weblog/archive.html' %}
-            <p class="links{% if page.url == '/' %} links-bottom{% endif %}"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} Blog archive</a></p>
+            <p class="links{% if page.url == '/' %} links-bottom{% endif %}"><a rel="contents" href="/weblog/archive.html">{% sprite 'archive' %} Blog archive</a></p>
         {% endif %}
 
         <h3>About</h3>
@@ -175,7 +175,7 @@
         {%- endfor -%}
     </ol>
     {% if page.url != '/weblog/archive.html' %}
-    <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">{% sprite 'folder' %} More in the archive</a></p>
+    <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">{% sprite 'archive' %} More in the archive</a></p>
     {% endif %}
 </nav>
 
