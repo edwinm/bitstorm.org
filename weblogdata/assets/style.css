@@ -248,6 +248,10 @@ a:hover {
     text-decoration: underline;
 }
 
+a:active {
+    color: orange;
+}
+
 li[aria-current="page"] {
     font-weight: bold;
 }
