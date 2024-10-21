@@ -3,7 +3,7 @@
     "mode": {
         "view": {
             "dest": "weblogdata/assets",
-            "sprite": "sprites.svg",
+            "sprite": "sprite.svg",
             "bust": false,
             "example": false
         }

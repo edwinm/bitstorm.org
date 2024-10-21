@@ -97,7 +97,7 @@ function consoleShortcode (
 function spriteShortcode (
     arg,
 ) {
-  return `<span class="icon" style="--icon: url(/assets/sprites.svg#${arg})"></span>`;
+  return `<span class="icon" style="--icon: url(/assets/sprite.svg#${arg})"></span>`;
 }
 
 module.exports = function(eleventyConfig) {
