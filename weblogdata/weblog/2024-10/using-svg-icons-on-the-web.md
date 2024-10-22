@@ -274,14 +274,14 @@ This is the icon with the above CSS applied, in case you want to test it in an o
 
 {% raw %}
 <style>
-.star-icon-compat {
+.archive-icon-compat {
     width: 100px;
     height: 100px;
     background: url(/assets/files/mask-svg-icons/archive.svg) 0/cover;
 }
 
 @supports (-webkit-mask-image: url(/)) {
-    .star-icon-compat {
+    .archive-icon-compat {
         background: steelblue;
         -webkit-mask-image: url(/assets/files/mask-svg-icons/archive.svg);
         -webkit-mask-size: 100px 100px;
@@ -289,7 +289,7 @@ This is the icon with the above CSS applied, in case you want to test it in an o
 }
 
 @supports (mask-image: url(/)) {
-    .star-icon-compat {
+    .archive-icon-compat {
         background: steelblue;
         mask-image: url(/assets/files/mask-svg-icons/archive.svg);
         mask-size: 100px 100px;
@@ -297,7 +297,7 @@ This is the icon with the above CSS applied, in case you want to test it in an o
 }
 </style>
 
-<div class="star-icon-compat"></div>
+<div class="archive-icon-compat"></div>
 {% endraw %}
 
 ## Creating an SVG icon sprite
