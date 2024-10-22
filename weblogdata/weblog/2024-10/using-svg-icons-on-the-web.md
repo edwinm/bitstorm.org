@@ -247,14 +247,14 @@ To support these older browsers, you can use the following CSS.
 In older browsers, the icon won't have a color, but at least the icon is visible.
 
 ```css
-.star-icon-compat {
+.archive-icon-compat {
     width: 100px;
     height: 100px;
     background: url(/assets/files/mask-svg-icons/archive.svg) 50%/cover;
 }
 
 @supports (-webkit-mask-image: url(/)) {
-    .star-icon-compat {
+    .archive-icon-compat {
         background: steelblue;
         -webkit-mask-image: url(/assets/files/mask-svg-icons/archive.svg);
         -webkit-mask-size: 100px 100px;
@@ -262,7 +262,7 @@ In older browsers, the icon won't have a color, but at least the icon is visible
 }
 
 @supports (mask-image: url(/)) {
-    .star-icon-compat {
+    .archive-icon-compat {
         background: steelblue;
         mask-image: url(/assets/files/mask-svg-icons/archive.svg);
         mask-size: 100px 100px;
