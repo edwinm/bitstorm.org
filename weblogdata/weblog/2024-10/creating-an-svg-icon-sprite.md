@@ -80,8 +80,10 @@ It's a good idea to include the script above into your `package.json`, so it's e
 ```
 
 Now that we've generated a `sprite.svg`, how do we use it?
-That's very simple. From now on, don't use (for example) `star.svg` as the location of your SVG file, but `sprite.svg#star`.
-The file name of the original SVG icon will be the part after the `#`.
+We will use [SVG fragment identifiers](https://www.w3.org/TR/SVG/linking.html#SVGFragmentIdentifiers).
+It sounds complicated, but it is very simple.
+From now on, don't use (for example) `star.svg` as the location of your SVG file, but `sprite.svg#star`.
+The file name of the original SVG icon will be the part after the `#` (the fragment identifier).
 There's no need to load an extra generated CSS file.
 
 Now you can use one of the icons in an `img` tag:
