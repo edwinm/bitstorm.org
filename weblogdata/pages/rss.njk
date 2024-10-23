@@ -15,9 +15,9 @@
         {%- for post in collections.weblog | reverse | limit(20) %}
             {%- set absolutePostUrl = post.url | absoluteUrl(global.url) %}
             <item>
-                <title>{{ post.data.title }}</title>
+                <title>{{ post.data.title | escape }}</title>
                 <link>{{ absolutePostUrl }}</link>
-                <description>{{ post.templateContent | striptags(true) | truncate(300, false, "…") }}</description>
+                <description>{{ post.templateContent | striptags(true) | truncate(300, false, "…") | escape }}</description>
                 {% if post.data.media.length > 0 %}
                 {% rssimage post.page.url, post.data.media[0].image %}
                 {% endif %}
