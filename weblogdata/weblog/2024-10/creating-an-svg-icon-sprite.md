@@ -199,6 +199,12 @@ And the HTML:
 
 Scroll to the side to see that the file names used are `sprite.svg#star`, `sprite.SVG#circle-user-round` etc.
 
+## Browser support
+
+You can find browser support in [Can I use: SVG fragment identifiers](https://caniuse.com/svg-fragment).
+If you want to support older browsers, then use the separate icon SVG files as a fallback.
+For modern browsers you can use the sprite.
+
 ## Using SVG icons on the web
 
 If you want to use more graphical effects using `mask-image`, see my other article about SVG icons:
