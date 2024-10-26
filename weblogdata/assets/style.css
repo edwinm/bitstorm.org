@@ -260,8 +260,6 @@ li[aria-current="page"] {
     width: 24px;
     height: 24px;
     background: currentColor;
-    -webkit-mask-image: var(--icon);
-    -webkit-mask-size: 24px 24px;
     mask-image: var(--icon);
     mask-size: 24px 24px;
 }
