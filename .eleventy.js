@@ -68,7 +68,7 @@ async function rssImageShortcode (
     src,
 ) {
 
-  const imgUrl = `${url.match(/.+\//)?.[0]}${src.replace(/\.webp$/, '~800.webp')}`;
+  const imgUrl = `${url.match(/.+\//)?.[0]}${src.replace(/\.(webp|png)$/, '~800.webp')}`;
 
   return `<enclosure
                       url="https://bitstorm.org${imgUrl}"
