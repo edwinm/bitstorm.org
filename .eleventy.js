@@ -45,7 +45,7 @@ async function ogImageShortcode (
 
   const imageMetadata = await Image(`weblogdata/weblog/${path}/${src}`, {
     widths: [800],
-    formats: ['webp'],
+    formats: ['webp', 'jpeg'],
     outputDir: `web/weblog/${path}`,
     urlPath: `/weblog/${path}`,
     filenameFormat: function (id, src, width, format, options) {
@@ -68,11 +68,11 @@ async function rssImageShortcode (
     src,
 ) {
 
-  const imgUrl = `${url.match(/.+\//)?.[0]}${src.replace(/\.(webp|png)$/, '~800.webp')}`;
+  const imgUrl = `${url.match(/.+\//)?.[0]}${src.replace(/\.(webp|png)$/, '~800.jpeg')}`;
 
   return `<enclosure
                       url="https://bitstorm.org${imgUrl}"
-                      type="image/webp" length="0"/>`;
+                      type="image/jpeg" length="0"/>`;
 }
 
 function dateShortcode (
