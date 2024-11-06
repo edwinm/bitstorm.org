@@ -1,45 +1,67 @@
-@font-face {
-    font-family: Exo2;
-    src: url("/assets/fonts/Exo_2/Exo2-var-subset.woff2") format("woff2-variations");
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: Exo2;
-    src: url("/assets/fonts/Exo_2/Exo2-var-italic-subset.woff2") format("woff2-variations");
-    font-weight: 100 900;
-    font-style: italic;
-    font-display: swap;
+@layer reset {
+    html {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+    body {
+        -webkit-hyphens: auto;
+        hyphens: auto;
+        margin: 0;
+    }
+
+    code, var, kbd, samp, tt, dir,
+    abbr, acronym, code, h1, h2, h3 {
+        -webkit-hyphens: none;
+        hyphens: none;
+    }
+
+    h1, h2, h3, h4 {
+        text-rendering: optimizeLegibility;
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
 }
 
-html {
-    box-sizing: border-box;
+@layer fonts {
+    @font-face {
+        font-family: Exo2;
+        src: url("/assets/fonts/Exo_2/Exo2-var-subset.woff2") format("woff2-variations");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: Exo2;
+        src: url("/assets/fonts/Exo_2/Exo2-var-italic-subset.woff2") format("woff2-variations");
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+    }
+}
+
+:root {
     --content-width: 48rem;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
 body {
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    display: grid;
+    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end footer-start] auto [footer-end];
+    grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
+    font-family: Exo2, sans-serif;
+    font-weight: 400;
     background: rgb(40, 40, 40) linear-gradient(white, white);
     min-height: 100vh;
-}
-
-code, var, kbd, samp, tt, dir,
-abbr, acronym, code, h2, h3, h4 {
-    -webkit-hyphens: none;
-    hyphens: none;
-}
-
-h1, h2, h3, h4 {
-    text-rendering: optimizeLegibility;
-    text-wrap: balance;
 }
 
 h2 {
@@ -50,10 +72,6 @@ h2 {
 h3 {
     font-size: 1.4rem;
     font-weight: 600;
-}
-
-p {
-    text-wrap: pretty;
 }
 
 blockquote {
@@ -67,18 +85,6 @@ blockquote {
 ::selection {
     background-color: #ffed00;
     color: black;
-}
-
-html, body {
-    margin: 0;
-}
-
-body {
-    display: grid;
-    grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end footer-start] auto [footer-end];
-    grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
-    font-family: Exo2, sans-serif;
-    font-weight: 400;
 }
 
 header {
@@ -123,14 +129,14 @@ header {
     color: currentColor;
     text-decoration: none;
     transition: color 250ms ease;
-}
 
-.title a:hover {
-    color: transparent;
-    background: repeating-linear-gradient(0deg, #00a2a2, #00a2a2 2px, blue 2px, blue 4px);
-    background-clip: text;
-    animation: shift-background 1s infinite linear;
-    text-decoration: none;
+    &:hover {
+        color: transparent;
+        background: repeating-linear-gradient(0deg, #00a2a2, #00a2a2 2px, blue 2px, blue 4px);
+        background-clip: text;
+        animation: shift-background 1s infinite linear;
+        text-decoration: none;
+    }
 }
 
 .date {
@@ -142,7 +148,7 @@ header {
 
 .subtitle {
     align-self: end;
-    margin: 0 0 16px ;
+    margin: 0 0 16px;
     font-size: 1rem;
     font-weight: 300;
 }
@@ -167,10 +173,10 @@ main h2 {
 .aside {
     opacity: 0.7;
     transition: all 250ms ease;
-}
 
-.aside:hover {
-    opacity: 1;
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .aside h3 {
@@ -243,13 +249,15 @@ p.links-bottom {
     margin-top: 1rem;
 }
 
-a:hover {
-    color: blue;
-    text-decoration: underline;
-}
+a {
+    &:hover {
+        color: blue;
+        text-decoration: underline;
+    }
 
-a:active {
-    color: orange;
+    &:active {
+        color: orange;
+    }
 }
 
 li[aria-current="page"] {
@@ -332,9 +340,10 @@ li[aria-current="page"] {
 
     .about a {
         color: lightgrey;
-    }
-    .about a:hover {
-        color: lightblue;
+
+        &:hover {
+            color: lightblue;
+        }
     }
 }
 
