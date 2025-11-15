@@ -55,6 +55,40 @@
     --content-width: 48rem;
 }
 
+@keyframes header-initial-scroll {
+    from {
+        height: max(14vw, 12rem);
+        background-size: 2000px 100%;
+    }
+
+    to {
+        height: max(6vw, 6rem);
+        background-size: 2100px 100%;
+    }
+}
+
+@keyframes header-initial-scroll-wide {
+    from {
+        height: max(14vw, 12rem);
+        background-size: cover;
+    }
+
+    to {
+        height: max(6vw, 6rem);
+        background-size: cover;
+    }
+}
+
+@keyframes heading-initial-scroll {
+    from {
+        font-size: 4rem;
+    }
+
+    to {
+        font-size: 3rem;
+    }
+}
+
 body {
     display: grid;
     grid-template-rows: [header-start] max(14vw, 12rem) [header-end content-start] auto [content-end footer-start] auto [footer-end];
@@ -63,6 +97,14 @@ body {
     font-weight: 400;
     background: rgb(40, 40, 40) linear-gradient(white, white);
     min-height: 100vh;
+}
+
+h1 {
+    font-size: 4rem;
+    animation: heading-initial-scroll auto linear;
+    animation-timeline: scroll();
+    animation-range: 0px 100px;
+    animation-fill-mode: forwards;
 }
 
 h2 {
@@ -88,17 +130,37 @@ blockquote {
     color: black;
 }
 
+
+
 header {
+    position: sticky;
+    top: 0;
     display: grid;
+    width: 100%;
+    height: max(14vw, 12rem);
+    animation: header-initial-scroll auto linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0px 100px;
+
     grid-area: header / span 3;
     grid-template-columns: subgrid;
-    background: top/cover no-repeat url(/assets/pix/cityscape.webp), linear-gradient(to right, #1D72AA, #F0667D, #FED968, #6A2455);
-    text-shadow: rgba(0, 0, 0, 0.2) 5px 5px 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 10px;
+    background: center/cover no-repeat url(/assets/pix/cityscape.webp), linear-gradient(to right, #1D72AA, #F0667D, #FED968, #6A2455);
+    text-shadow: rgba(0 0 0 / 0.2) 5px 5px 10px;
+    box-shadow: rgba(255 255 255 / 0.6) 5px 5px 10px;
+    border-bottom: 2px solid white;
+    z-index: 100;
+}
+
+@media screen and (min-width: 2000px) {
+    header {
+        animation: header-initial-scroll-wide auto linear forwards;
+        animation-timeline: scroll();
+        animation-range: 0px 100px;
+    }
 }
 
 .header-side {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255 255 255 / 0.3);
 }
 
 .header-content {
@@ -107,7 +169,7 @@ header {
     flex-flow: column nowrap;
     justify-content: space-between;
     color: white;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0 0 0 / 0.1);
 
 }
 
