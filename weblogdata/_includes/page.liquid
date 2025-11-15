@@ -88,7 +88,9 @@
 </header>
 
 <main>
-    <h2>{{ title }}</h2>
+    {% if page.url != '/' %}
+        <h2>{{ title }}</h2>
+    {% endif %}
 
     {% if date %}
     <time class="date" datetime="{{ date }}">{% readable-date date %}</time>
