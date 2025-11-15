@@ -71,7 +71,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
 }
 
@@ -155,6 +155,7 @@ header {
 }
 
 main {
+    margin-top: 2rem;
     grid-area: content / content;
     padding-bottom: 3rem;
 }
@@ -296,6 +297,7 @@ li[aria-current="page"] {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin: 0.6rem 0;
     -webkit-line-clamp: 3;
     line-clamp: 3;
 }
