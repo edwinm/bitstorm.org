@@ -251,7 +251,7 @@ p.links-bottom {
     margin-top: 1rem;
 }
 
-a {
+a:not(:has(article)) {
     &:hover {
         color: blue;
         text-decoration: underline;
@@ -259,6 +259,21 @@ a {
 
     &:active {
         color: orange;
+    }
+}
+
+a:has(article) {
+    color: black;
+    text-decoration: none;
+
+    &:hover h3 {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    & p {
+        color: black;
+        text-decoration: none;
     }
 }
 
