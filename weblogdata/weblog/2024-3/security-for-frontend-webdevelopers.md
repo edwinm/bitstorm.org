@@ -83,6 +83,62 @@ Fortunately, Jake Archibald has written a good article about CORS:
 
 [How to win at CORS](https://jakearchibald.com/2021/cors/)
 
+### Secure cookies
+
+Cookies can contain data you want to protect.
+For example, a session ID, which can be misused to hijack a login session.
+Cookies can be protected in several ways.
+
+**HTTPOnly Flag**: Prevents the cookie from being read by JavaScript.
+You can't set this flag using JavaScript.
+
+```http request
+Set-Cookie: sessionId=abcdef123456; HttpOnly
+```
+
+**Secure Flag**: Prevents the cookie from being sent over an insecure http connection.
+The cookie will only be sent over a secure https connection.
+
+```http request
+Set-Cookie: sessionId=abcdef123456; Secure
+```
+
+**SameSite Attribute**: Controls whether cookies are sent with cross-site requests,
+protecting against CSRF (Cross-Site Request Forgery) attacks:
+
+- `SameSite=Strict` - cookie only sent to the same site
+- `SameSite=Lax` - cookie sent with top-level navigations (default in modern browsers)
+- `SameSite=None` - cookie sent with all requests (requires Secure flag)
+
+```http request
+Set-Cookie: sessionId=abcdef123456; SameSite=Strict
+```
+
+Here's an example of setting a cookie using the Cookie Store API:
+
+```javascript
+await cookieStore.set({
+  name: 'sessionId',
+  value: 'abcdef123456',
+  expires: Date.now() + 3600000, // 1 hour
+  secure: true,
+  sameSite: 'strict',
+  path: '/'
+});
+```
+
+You can't set cookies using `fetch`. Use the Cookie Store API or let the cookie be set by the server.
+
+**Cookie prefixes**
+
+- `__Secure-` prefix requires the Secure flag
+- `__Host-` prefix requires Secure flag, prevents Domain attribute, and sets Path to /
+- `__Http-` prefix requires Secure and HttpOnly flags
+- `__Host-Http-` prefix is a combination of the `__Host-` and `__Http-` prefix.
+
+Also make sure to limit the domains and paths the cookies are active on and use
+`Max-Age` or `Expires` to let the cookie expire as soon as possible.
+
 ### Content Security Policy (CSP)
 
 CSP is an HTTP header that limits a browser from where images and scripts, among other things, can be loaded.
@@ -121,6 +177,8 @@ This is of course not useful if the script is legitimately modified, which is wh
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
         crossorigin="anonymous"></script>
 ```
+
+
 
 
 ### Terminology
