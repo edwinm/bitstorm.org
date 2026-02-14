@@ -14,7 +14,7 @@
   "author": "Edwin Martin",
   "license": "None",
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-img": "^4.0.2",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@jamshop/eleventy-plugin-typography": "^1.0.0",
