@@ -147,6 +147,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("weblogdata/assets");
 
+  eleventyConfig.addPassthroughCopy({ "static": "/" });
+
   /* ----- */
   return {
     dir: {
