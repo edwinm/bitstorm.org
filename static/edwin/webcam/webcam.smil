@@ -1,0 +1,18 @@
+<smil>
+<head>
+	<layout>
+		<root-layout background-color="#FFF5D5" width="260" height="189"/>
+		<region id="intro" top="155" left="34"/>
+		<region id="webcam" top="5" left="34"/>
+	</layout>
+</head>
+<body>
+	<par>
+	<seq>
+	<img src="evengeduld.jpg" region="webcam" dur="3s"/>
+	<video src="rtsp://thuis.dhs.org/encoder/webcam.rm" region="webcam" dur="1000s"/>
+	</seq>
+	<img src="onderschrift.png" region="intro" dur="1000s"/>
+	</par>
+</body>
+</smil>

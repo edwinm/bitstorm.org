@@ -1,0 +1,382 @@
+<html>
+<head>
+<title>Freesco hands-on</title>
+<meta  name="description" content="Nederlandstalige Freesco hands-on. Maak van een oude PC een router en deel het internet met meerdere computers."/>
+<meta  name="keywords" content="freesco router linux hands-on internet delen uitleg netwerk firewall floppy floppydisk diskette ethernet"/>
+<link rel="stylesheet" type="text/css" href="simpel.css">
+<script>
+function openWin( location, width, height ) {
+	window.open( location, '_blank', 'scrollbars,width='+(width+40)+',height='+(height+32) );
+}
+</script>
+</head>
+<body>
+
+
+<h1>Freesco hands-on</h1>
+
+<p><a href="http://www.bitstorm.org/edwin/">Edwin Martin</a> &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;</p>
+
+<p><small>Laatst gewijzigd: 1 juni 2002</small></p>
+
+<p><img src="logo.gif" width=200 height=168 align=right>
+Deze hands-on verscheen op de CD-Rom's bij de <a href="http://www.pc-active.nl/">PC-Active</a> van december 2000 en februari 2001.</p>
+
+<p><i>De kans is groot dat u thuis allang niet meer de enige internet-gebruiker bent. Als u bij uw ouders thuis woont, maken zij misschien ook
+gebruik van het internet en anders wel uw broer of zus. Of u hebt een vriendin, vriend, vrouw of man die net als u ook wilt e-mailen. En als u
+kinderen hebt dan willen die vast ook op het internet of anders wel over een paar jaar.
+Hoe krijgt u dat voor elkaar?</i></p>
+<br clear=all>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-2050318500162917";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="7309130364";
+google_ad_type = "text_image";
+google_color_border = "999999";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "006699";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<h2>Inleiding</h2>
+
+<p>Met meer mensen tegelijkertijd op het internet, dat kan vaak niet. Bijvoorbeeld omdat er maar ��n computer is. Maar zelfs
+als iedereen zijn eigen computer heeft, kan het nog steeds lastig zijn om samen het internet op te gaan. Er is bijvoorbeeld maar ��n
+telefoonlijn. Of op de kabelmodem kan maar ��n computer worden aangesloten.</p>
+
+<p>Een oplossing is om een klein netwerkje aan te leggen en op de op internet aangesloten computer een proxy te installeren. De proxy kan in de
+webbrowsers op de andere computers worden ingesteld en iedereen kan het web op. Een groter probleem wordt het om van de andere
+computers te e-mailen, laat staan te ICQ-en en Quaken.</p>
+
+<p>Daarnaast is het internet niet toegankelijk als de internetcomputer vastloopt, herstart of gewoon uitstaat.</p>
+
+<h2>Freesco</h2>
+
+<p>De beste oplossing voor deze problemen is het installeren van een router. Nu denkt u misschien: "routers zijn toch peperdure machines die
+<a href="http://www.cisco.nl/">Cisco</a> maakt?". Inderdaad. maar met Freesco kunt u van een oude 486-computer een prima routertje maken. En Freesco is helemaal gratis,
+vandaar "Freesco", een samentrekking van "Free Cisco".</p>
+
+<p>Het klinkt misschien een beetje ingewikkeld om van een oude computer een router te maken, maar dat valt best mee. Freesco is een
+soort mini-Linux die op ��n floppydisk past. Door van deze floppy op te starten bent u nog maar een paar stappen verwijderd van een heuse
+eigen router.</p>
+
+<p>De router doet ook dienst als firewall, dus de computers zijn ook nog eens goed beschermd tegen kwaadwillenden die via het internet uw
+computer onder handen willen nemen. Dit betekent onder andere dat u nu zonder problemen mappen en printers tussen computers kunt
+delen.</p>
+
+<h2>Wat heeft u nodig?</h2>
+
+<ul>
+<li>Het belangrijkste: een PC. Dit kan een oude 386 zijn. Maar er moet wel minimaal 6 MB geheugen in zitten.
+Een stuk beter is een 486 met 8 MB geheugen.
+Oude, tweedehands PC's zijn
+te koop voor zo'n honderd euro. Er hoeft geen harddisk in te zitten.
+<li>Een ethernetkaart voor het eigen netwerk. Een eenvoudige NE2000 ethernetkaart is al te koop voor 15 euro. 3Com 509, 595 en
+905 kaarten worden ook ondersteund. Met wat technische kennis zijn ook andere ethernetkaarten te installeren.
+<li>Een modem om in te bellen of een extra ethernetkaart als u een kabelmodem heeft die op een ethernetkaart wordt aangesloten.
+<li>Een floppydisk om Freesco op te installeren.
+<li>Kennis hoe u computers met elkaar kunt verbinden met ethernet.
+<li>Inloggevens van de internet-provider (Waaronder het IP-adres van de DNS. Deze is in de regel te vinden op de
+support/helpdesk-pagina van de provider).
+<li>Freesco zelf. Deze handleiding bespreekt versie 0.2.6, maar is waarschijnlijk ook goed
+bruikbaar voor nieuwere versies.
+Bedenk dat nieuwere beta-versies fouten kunnen bevatten.
+</ul>
+
+<ul>
+<li class=pijltje><a href="http://www.freesco.info/freesco.org/dload/">Freesco download pagina</a>.
+<li class=pijltje><a href="freesco-026.zip">Download Freesco 0.2.6 van deze site</a>.
+</ul>
+
+<h2>Hardware installatie</h2>
+
+<p>Als u wilt inbellen, installeert u de modem en de netwerkkaart. Heeft u een kabelmodem met ethernet, dan installeert u twee ethernetkaarten:
+��n voor de modem en ��n voor het thuisnetwerk.</p>
+
+<p>In deze hands-on wordt bij een kabelmodem uitgegaan van een kabelmodem met een ethernetaansluiting. Heeft u een kabelmodem met een
+serie�le (COM) aansluiting, dan dient u de installatieprocedure van een normaal modem te volgen. Eventueel dient u van de beschreven
+procedure enigszins af te wijken.</p>
+
+<h2>Ethernetkaart</h2>
+
+<p>Ethernetkaarten zijn er in verschillende soorten. Voor Freesco is het van belang of kaart geschikt is voor een ISA of PCI-bus.
+Een goedkope NE2000 is gewoonlijk het ISA-type. Het type bus voor een 3Com kaart is te vinden in de
+<a href="http://www.3com.nl/products/prodfinder/matrix/matrix_nic.html">3Com produkt matrix</a>.
+Intel-bezitters kunnen kijken in de lijst van <a href="http://www.intel.com/network/connectivity/products/desktop_adapters.htm?iid=netsite+inc">Desktop Adapters</a>.
+Als u nog niet weet of het een ISA of PCI-model is, dan kunt u ook de PC-kast openmaken en kijken in wat voor kleur sleuf de
+kaart zit (of past). Zwart is ISA en wit is PCI.</p>
+
+<p>ISA ethernetkaarten kunnen op twee manieren ge�nstalleerd worden: Plug-en-play en Jumperless. Zet voor Freesco de kaarten op
+Jumperless. U kunt dit doen met een programma dat met de kaart wordt meegeleverd (setup.exe of config.exe).
+Dit programma dient u meestal onder DOS uit te voeren.</p>
+
+<p>Bij het instellen op
+Jumperless wordt om een IRQ en een port gevraagd. IRQ's 10 en 11 en poorten 0x300, 0x320 en 0x340 zijn hiervoor gebruikelijke
+waarden. Zet bijvoorbeeld bij twee kaarten de ene kaart op IRQ 10 en port 0x300 en de andere op IRQ 11 en port 0x340. Maar bij
+conflicten met andere apparaten zijn natuurlijk ook andere waarden te gebruiken.</p>
+
+<p>Schrijf de waarden op, want die moeten straks worden ingevuld.</p>
+
+<p>Hebt u een PCI-versie, dan kunt u straks gewoon op &lt;enter&gt; drukken als om de IRQ en poort wordt gevraagd.</p>
+
+<h2>Floppydisk maken</h2>
+
+<img src="floppy.gif" align=right>
+
+<p>Het Freesco zipbestand bevat een floppy-image, die op de Freesco bootflop moet komen. De image (freesco.026) kunt u niet zomaar naar
+de floppy kopie�ren, maar dat moet met een speciaal programma gebeuren.
+Onder DOS of Windows kan dat met make_fd.bat, dat ook in het zipbestand te vinden.
+Voer dit batchprogramma uit om de floppy van begin tot einde te beschrijven.
+Zo wordt ook de bootsector beschreven, zodat de flop gelijk klaar is om van op te starten.</p>
+
+<h2>Freesco installatie</h2>
+
+<p>Nu is het nog een kwestie van de computer opstarten van de Freesco floppydisk.
+Stop (of laat) de floppy in de computer en herstart de computer.
+Type, als de 'boot:'-prompt verschijnt, 'setup' en druk op
+&lt;enter&gt;. Linux wordt nu gestart.</p>
+
+<p>Even later verschijnt de 'login:'-prompt. Login met 'root' en gebruik als wachtwoord ook 'root'. Als de setup niet vanzelf start, kunt u hem
+ook zelf starten door 'setup' te typen en op &lt;enter&gt; te drukken. Druk na het eerste scherm op &lt;enter&gt;.</p>
+
+<p><a href="mainmenu.gif" onClick="openWin('mainmenu.gif', 802, 433 );return false"><img src="mainmenu-klein.gif" width=200 height=108></a><br>
+<small>Hoofdmenu - klik voor een vergroting</small></a></p>
+
+<p>Nu verschijnt een scherm waarin u het type router kunt kiezen. Vanaf hier kunt u kiezen voor de installatie van een kabelmodem of van een
+gewoon inbelmodem.</p>
+
+<p>Bedenk dat hoe minder geheugen de computer heeft, hoe minder diensten (services) u kunt aanzetten. Kies bij minder dan 8MB voor zo min
+mogelijk diensten, dus geen DHCP, DNS, telnet en http-server.</p>
+
+<h2>(Kabel)modem configuratie</h2>
+
+<h3>Modem</h3>
+
+<p>Heeft u een gewoon inbelmodem, dan kiest u in het hoofdmenu voor <b>d</b>.
+De reeks vragen die worden gesteld, worden hieronder verklaard.</p>
+
+<ul>
+<li class=pijltje><a href="modem.html">Installatie-instructies voor inbelmodem</a>
+</ul>
+
+<h3>Kabelmodem</h3>
+
+<p>Heeft u een kabelmodem met ethernet, dan kiest u in het hoofdmenu voor <b>e</b>.
+De reeks vragen die worden gesteld, worden hieronder verklaard.</p>
+
+<ul>
+<li class=pijltje><a href="kabel.html">Installatie-instructies voor kabelmodem</a>
+</ul>
+
+<h2>Na de configuratie</h2>
+
+<p>Als de lange lijst met vragen doorlopen is, drukt u op &lt;enter&gt; om naar het volgende scherm te gaan. Kies nu 's' en &lt;enter&gt; om alle instellingen op de
+floppy te bewaren. Als dat gedaan is, herstart u de computer door op de reset-knop te drukken.</p>
+
+<p>Het moment van de waarheid is daar: de computer start op van de zojuist geconfigureerde floppydisk. Doet hij het gelijk goed of hebben we
+een configuratiefout gemaakt?</p>
+
+<p>Als de computer is opgestart, staat op het scherm een lijstje met geactiveerde programma's. Als hier foutmeldingen tussen staan, probeer dan
+aan de hand van de melding en waar de melding achter staat erachter te komen wat er fout gaat. Kijk ook onder het kopje
+<a href="#probleemoplossing">'probleemoplossing'</a> voor oplossingen.</p>
+
+<p>Ziet u geen foutmeldingen? Dan is de kans groot dat alles goed is gegaan.</p>
+
+<a name="wachtwoorden"></a>
+<h2>Wachtwoorden wijzigen</h2>
+
+<p>Let op! Zelfs als alles nu werkt, bent u nog niet helemaal klaar! U heeft het belangrijke root-wachtwoord nog niet veranderd. Zo kan
+iedereen vanaf het internet inloggen op de router en zo op uw interne netwerk komen.</p>
+
+<p>Log in als 'root', met als wachtwoord ook 'root'. Type nu 'passwd' en &lt;enter&gt;. U kunt nu een nieuw wachtwoord opgeven.</p>
+
+<p>Als u 'router control via HTTP' hebt ingeschakeld, dient u ook daarvan het wachtwoord te wijzigen. Dat gaat net iets anders. Type het
+volgende in: 'htpasswd /wwa/cgi/.htpasswd admin' en druk &lt;enter&gt;. Voer nu opnieuw een nieuw wachtwoord in.</p>
+
+<a name="dhcp"></a>
+<h2>DHCP inschakelen</h2>
+
+<p>Als u in Freesco de DHCP-server heeft ingeschakeld (Enable DHCP server: y), dan kunt u
+op de werkcomputers ook DHCP inschakelen. Als u dan uw computer opstart, dan worden de
+internet-instellingen zoals het IP-adres automatisch door Freesco toegekend.
+Alle moderne besturingssystemen kunnen met DHCP overweg.</p>
+
+<h3>Windows 95, Windows 98 of Windows Me</h3>
+
+<h4>DHCP inschakelen</h4>
+
+<p>Klik met de rechtermuisknop op het ikoon Netwerkomgeving op de desktop en kies Eigenschappen.
+Selecteer in het lijstje met netwerkonderdelen TCP/IP -> (uw netwerkkaart).
+Klik Eigenschappen. In het tabblad IP-adres selecteert u 'Automatisch een IP-adres verkrijgen'.
+In het tabblad DNS-configuratie selecteert u 'DNS uitschakelen'.
+Klik OK en nogmaals OK.</p>
+
+<p><a href="dhcp-win98.gif" onClick="openWin('dhcp-win98.gif', 356, 453 );return false">Afbeelding</a></p>
+
+<h4>DHCP controleren</h4>
+
+<p>Werkt DHCP? Klik Start en Uitvoeren. Type achter Openen: winipcfg en klik OK.
+Selecteer in het uitklapmenu uw netwerkkaart.
+Achter Standaardgateway moet het IP-nummer van de Freesco-computer staan en achter
+IP-(autoconfiguratie)adres het IP-adres van uw werkcomputer. Dit IP-nummer moet
+in het eerder (in Freesco) opgegeven IP-range liggen.
+Als u bij IP-range '192.168.0.100 192.168.0.200' hebt ingevuld, dan is dit
+nummer bijvoorbeeld 192.168.0.100 of 192.168.0.101.
+Als dit niet het geval is, klikt u op Vernieuwen.
+Als de IP-nummers nog niet kloppen, dan is er iets mis met de verbinding tussen de
+werkcomputer en de Freesco-computer.</p>
+
+<p><a href="ipconf-win98.gif" onClick="openWin('ipconf-win98.gif', 363, 240 );return false">Afbeelding</a></p>
+
+<h3>Windows 2000</h3>
+
+<h4>DHCP inschakelen</h4>
+
+<p>Klik met de rechtermuisknop op 'Mijn netwerklocaties' en kies Eigenschappen.
+Klik vervolgens met de rechtermuisknop op 'LAN-verbinding' en kies weer Eigenschappen.
+Kies in het lijstje met protocollen 'Internet-Protocol (TCP/IP)'.
+Klik eigenschappen.
+Zorg dat zowel 'Automatisch een IP-adres verkrijgen' en 'DNS-serveradres automatisch verkrijgen'
+beide geselecteerd zijn. Klik OK en nogmaals OK.</p>
+
+<p><a href="dhcp-w2k.gif" onClick="openWin('dhcp-w2k.gif', 431, 448 );return false">Afbeelding</a></p>
+
+<h4>DHCP controleren</h4>
+
+<p>Klik Start en Uitvoeren. Type achter Openen: command en klik OK.
+Type 'ipconfig /all'.
+Achter Standaardgateway moet het IP-nummer van de Freesco-computer staan en achter
+IP-(autoconfiguratie)adres het IP-adres van uw werkcomputer. Dit IP-nummer moet
+in het eerder (in Freesco) opgegeven IP-range liggen.
+Als u bij IP-range '192.168.0.100 192.168.0.200' hebt ingevuld, dan is dit
+nummer bijvoorbeeld 192.168.0.100 of 192.168.0.101.
+Als dit niet het geval is, dan typt u 'ipconfig /renew'.
+Als de IP-nummers nog niet kloppen, dan is er iets mis met de verbinding tussen de
+werkcomputer en de Freesco-computer.</p>
+
+<p><a href="ipconf-w2k.gif" onClick="openWin('ipconf-w2k.gif', 588, 535 );return false">Afbeelding</a></p>
+
+<h3>Mac OS</h3>
+
+<h4>DHCP inschakelen</h4>
+
+<p>Klik op het Appeltje linksboven en kies Regelpanelen en TCP/IP.
+Zorg dat achter Configuratie 'Gebruik DHCP Server' geselecteerd is.</p>
+
+<p><a href="dhcp-mac.gif" onClick="openWin('dhcp-mac.gif', 466, 334 );return false">Afbeelding</a></p>
+
+<a name="probleemoplossing"></a>
+<h2>Probleemoplossing</h2>
+
+<p>Hieronder vind u een aantal vragen met passende oplossingen.</p>
+
+<dl>
+<dt><b>De computer begint op te starten van de floppy, maar hapert halverwege.</b>
+<dd>Installeer Freesco op een andere, nieuwe floppy.
+
+<dt><b>Er verschijnen meldingen als 'can't fork' en 'bus error'.</b>
+<dd>Er is een goede kans dat de computer niet genoeg geheugen bevat. Voer setup nogmaals uit en schakel nu zoveel mogelijk diensten
+(services) uit. Het is natuurlijk ook mogelijk extra geheugen bij te plaatsen.
+
+<dt><b>Bepaalde internet-programma's of spellen doen het niet meer (ICQ/Realvideo/Quake..)</b>
+<dd>Zorg ervoor dat u bij de instelling 'Extra modules/programs' voor 'y' kiest.
+U hebt dan wel een computer met liefst 16 MB geheugen nodig. De volgende modules worden
+dan geladen:
+<ul>
+<li>quake
+<li>vdolive
+<li>raudio
+<li>irc
+<li>icq
+<li>h3231
+<li>ftp
+<li>cuseeme
+</ul>
+
+<dt><b>Het opstarten blijft hangen bij DHCPOFFER</b>
+<dd>
+<ul>
+<li>Probeer eens de ethernetkabels voor modem en intern netwerk om te wisselen.
+<li>Soms kiest Freesco resoluut steeds de verkeerde ethernetkaarten: Freesco denkt dat de kaart voor het interne netwerk op de kabelmodem is aangesloten en de kaart voor het internet op het lokale netwerk is aangesloten. Het omwisselen van de kabels helpt dan niet. Het is op te lossen door bij de configuratie de interfacenamen te verwisselen:<br>
+Interface name of 1st network interface [eth0]? <b>eth1</b><br>
+Interface name of 2nd network interface [eth1]? <b>eth0</b>
+
+<li>In ieder geval in Amsterdam is het zo dat de kabelmodem van Chello verbonden moet zijn
+met &eacute;&eacute;n specifieke ethernetkaart.
+Bij het wisselen van ethernetkaart werkt de verbinding niet meer.
+Als de originele ethernetkaart niet gebruikt kan worden, dan
+is dit op te lossen door het MAC-adres van de nieuwe kaart aan Chello door te geven.
+Het MAC-adres kunt u vinden bij de <a href="#dhcp">DHCP-instellingen</a>. Het is te vinden achter Adapteradres of
+'Fysiek adres'. Een voorbeeld van een MAC-adres is '00-60-97-65-EE-7B'.
+Met dit MAC-adres kan Chello dan van afstand de kabelmodem configureren zodat deze met de nieuwe kaart werkt.
+Dit kan wel een paar uur duren.
+</ul>
+
+<dt><b>Kan ik Freesco met MXstream gebruiken?</b>
+<dd>Bekijk de
+<a href="http://www.xs4all.nl/~bleekerm/">handleiding</a> van Mark Bleeker.
+
+<dt><b>Ik vind nergens een antwoord op mijn vraag</b>
+<dd>Op
+<a href="http://menem.mine.nu/freesco/">MeneM's Freesco pagina</a> vind u een uitgebreide
+FAQ, How-to's en een verzameling 'packages', waarmee Freesco is uit te breiden.
+Alle informatie is Engelstalig.
+
+<dt><b>Ik vind nergens een oplossing voor mijn probleem</b>
+<dd>
+U kunt een van de Freesco fora op deze website proberen:
+<ul>
+<li><a href="/fora/index.php?c=2">Freesco fora</a>
+</ul>
+
+</dl>
+<p>Als uw Engels goed genoeg is, kunt u natuurlijk altijd de offici&euml;le <a href="http://www.freesco.info/freesco.org/freesco/">Freesco Manual</a> raadplegen.</p>
+<h2>Extra mogelijkheden</h2>
+
+<p>Als u 'router control via HTTP' hebt ingeschakeld, kunt u de router ook via een webbrowser instellen. Zo kunt u bijvoorbeeld een modem
+laten inbellen of juist laten ophangen. Type op de adres-regel van een browser het IP-nummer van de router in, met daarachter een dubbele
+punt en het poortnummer van de router control, bijvoorbeeld '<a href="http://192.168.0.1:82/" target=_blank>192.168.0.1:82</a>'. U krijgt nu de mogelijkheid om in te loggen. Gebruik als
+username 'admin' en als wachtwoord het eerder gewijzigde wachtwoord (zie <a href="#wachtwoorden">'Wachtwoord wijzigen'</a>).</p>
+<p>
+<a href="routerctrl.gif" onClick="openWin('routerctrl.gif', 740, 472 );return false"><img src="routerctrl-klein.gif" width=200 height=128></a><br>
+<small>Router control - klik voor een vergroting</small></a>
+
+<p>De Freesco router kan ook dienst doen als timeserver, printerserver, webserver en nog veel meer. Hier gaan we niet verder op in. Meer informatie over Freesco is te vinden op de Freesco website.</p>
+
+<ul>
+<li class=pijltje><a href="http://www.freesco.info/">http://www.freesco.info/</a>
+</ul>
+
+<h2>Mag het?</h2>
+
+<p>Sommige providers verbieden het delen van de internetverbinding.
+Neem bijvoorbeeld de algemene voorwaarden van Chello:</p>
+
+<blockquote>
+"Het is de Klant niet toegestaan de dienst, of onderdelen daarvan, door te verkopen aan, of te delen met derden, te verspreiden, of anderszins commerci�le activiteiten met behulp van de Chello Service te ontwikkelen"
+</blockquote>
+
+<p>Chello heeft mij verteld dat dit voor particuliere gebruikers die een huisnetwerkje maken,
+door de vingers wordt gezien.
+Deze voorwaarden lijken dus meer van toepassing voor bijvoorbeeld bedrijven en internetcafe's.</p>
+
+<p>Verder is het niet zo dat de internetaanbieder kan 'zien' dat een internetverbinding wordt gedeelt.
+Hoogstens is te zien dat een Linux-computer wordt gebruikt. Maar dit hoeft niet te betekenen dat
+het om een router gaat: Linux is ook prima geschikt om te surfen en e-mailen.</p>
+
+<p>UPC (Chello) is overigens van plan de algemene voorwaarden te versoepelen.
+Lees dit artikel uit Emerce:</p>
+<ul>
+<li><a href="http://www.emerce.nl/archives/nieuws/Technologie/12515.html">UPC gaat delen internetverbinding toestaan</a>
+</ul>
+
+<script>var _gaq=[['_setAccount','UA-93616-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+</body>
+</html>

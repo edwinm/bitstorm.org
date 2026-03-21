@@ -1,0 +1,98 @@
+html, body {
+	height: 100%;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	cursor: default;
+	margin: 0;
+}
+div.slide {
+	margin-left: 60px;
+	height: 100%;
+	overflow: auto;
+	padding: 5px;
+}
+#nav {
+	position: fixed;
+	width: 50px;
+	height: 100%;
+	background-color: beige;
+	border-right: 1px solid brown;
+}
+#nav div.sl {
+	width: 20px;
+	height: 11px;
+	margin: 6px 0 0 10px;
+	border: 1px solid brown;
+}
+#nav div.sl.selected {
+	width: 22px;
+	height: 13px;
+	margin: 8px 0 0 8px;
+	border: 2px solid black;
+}
+h2 {
+	text-align: center;
+}
+ul {
+	margin-left: 20%;
+}
+code {
+	display: block;
+	font-family: "Andale Mono", Consolas, monospace;
+	border: 1px solid #999;
+	background-color: #eee;
+	padding: 4px;
+	white-space: pre;
+	margin-bottom: 1em;
+	line-height: 130%;
+}
+em {
+	font-style: normal;
+	background-color: yellow;
+}
+h3.label {
+	font-size: medium;
+	display: inline;
+	margin-bottom: 0;
+	padding: 0 10px;
+	background: #3cf url(pix/gradient-black-40px.png) repeat-x 0px -32px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+}
+div.out {
+	border: 1px solid #999;
+	padding: 4px;
+}
+code:first-line {
+	line-height: 0;
+}
+
+#naaldbomen li {
+	width: 100px;
+	background-color: pink;
+	padding: 3px;
+	list-style-type: none;
+	margin-bottom: 2px;
+}
+
+#hoog {
+	width: 400px;
+	height: 200px;
+	background-color: orange;
+}
+
+#hoog div {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+}
+
+#eik td.highlight {
+	color: white;
+	background-color: #999;
+}
+#eik2 td.highlight {
+	color: white;
+	background-color: #999;
+}

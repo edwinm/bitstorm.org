@@ -1,0 +1,10 @@
+body {
+	font-family: Trebuchet MS, Arial, Helvetica, Sans-serif;
+}
+#menu {
+	display: none;
+}
+td {
+	vertical-align: top;
+	padding: 1em;
+}

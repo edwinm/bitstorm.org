@@ -1,0 +1,38 @@
+body {
+	color: black;
+	background-color: #BD8D46;
+}
+a {
+	color: #4C1B1B;
+}
+a:visited {
+	color: #BD8D46;
+}
+a:active {
+	color: #B9121B;
+}
+a:hover {
+	color: #B9121B;
+}
+h1, h2 {
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #B9121B;
+}
+td.box {
+	color: black;
+	background-color: #F6E497;
+	text-align: center;
+	padding: 20px;
+}
+td.images {
+	color: black;
+	background-color: #FCFAE1;
+	font-size: 80%;
+}
+td.content {
+	vertical-align: top;
+	background-color: #FCFAE1;
+}
+p.small {
+	font-size: 80%;
+}

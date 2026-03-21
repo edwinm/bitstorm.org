@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	background-color: orange;
+	visibility: hidden;
+}
+</style>
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id="mijnlayer">
+Deze tekst staan in een layer.
+</div>
+
+<h2 class=cursus>DHTML in Netscape 4 en hoger en IE 4 en hoger</h2>
+
+<form>
+<h3>Dit werkt in alle recente browsers vanaf Netscape 4:</h4>
+<input type=button onClick="getStyle('mijnlayer').visibility='visible'" value="getStyle('mijnlayer').visibility='visible'">
+<input type=button onClick="getStyle('mijnlayer').visibility='hidden'" value="getStyle('mijnlayer').visibility='hidden'">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head><body>
+
+
+<code>/* This page is part of <a href="http://www.bitstorm.org/gameoflife/code/">the Game of Life source code</a> */<br><br></code><div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">org.bitstorm.gameoflife;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Every&nbsp;cell&nbsp;in&nbsp;the&nbsp;grid&nbsp;is&nbsp;a&nbsp;Cell-object.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;So&nbsp;it&nbsp;must&nbsp;be&nbsp;as&nbsp;small&nbsp;as&nbsp;possible.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Because&nbsp;every&nbsp;cell&nbsp;is&nbsp;pre-generated,&nbsp;no&nbsp;cells&nbsp;have&nbsp;to&nbsp;be&nbsp;generated&nbsp;when&nbsp;the&nbsp;Game&nbsp;Of&nbsp;Life&nbsp;playw.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Whether&nbsp;a&nbsp;cell&nbsp;is&nbsp;alive&nbsp;or&nbsp;not,&nbsp;is&nbsp;not&nbsp;part&nbsp;of&nbsp;the&nbsp;Cell-object.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">Cell&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>short&nbsp;</b></font><font color="#000000">col;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>short&nbsp;</b></font><font color="#000000">row;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Number&nbsp;of&nbsp;neighbours&nbsp;of&nbsp;this&nbsp;cell.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Determines&nbsp;the&nbsp;next&nbsp;state.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>byte&nbsp;</b></font><font color="#000000">neighbour;&nbsp;</font><font color="#3f7f5f">//&nbsp;Neighbour&nbsp;is&nbsp;International&nbsp;English</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;HASHFACTOR&nbsp;must&nbsp;be&nbsp;larger&nbsp;than&nbsp;the&nbsp;maximum&nbsp;number&nbsp;of&nbsp;columns&nbsp;(that&nbsp;is:&nbsp;the&nbsp;max&nbsp;width&nbsp;of&nbsp;a&nbsp;monitor&nbsp;in&nbsp;pixels).</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;It&nbsp;should&nbsp;also&nbsp;be&nbsp;smaller&nbsp;than&nbsp;65536.&nbsp;(sqrt(MAXINT)).</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">HASHFACTOR&nbsp;=&nbsp;</font><font color="#990000">5000</font><font color="#000000">;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Constructor</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">col&nbsp;column&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">row&nbsp;row&nbsp;or&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">row&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.col&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>short</b></font><font color="#000000">)</font><font color="#000000">col;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.row&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#7f0055"><b>short</b></font><font color="#000000">)</font><font color="#000000">row;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">neighbour&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Compare&nbsp;cell-objects&nbsp;for&nbsp;use&nbsp;in&nbsp;hashtables</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">java.lang.Object#equals(java.lang.Object)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">equals</font><font color="#000000">(</font><font color="#000000">Object&nbsp;o</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">o&nbsp;</font><font color="#7f0055"><b>instanceof&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">)&nbsp;)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">col==</font><font color="#000000">((</font><font color="#000000">Cell</font><font color="#000000">)</font><font color="#000000">o</font><font color="#000000">)</font><font color="#000000">.col&nbsp;&amp;&amp;&nbsp;row==</font><font color="#000000">((</font><font color="#000000">Cell</font><font color="#000000">)</font><font color="#000000">o</font><font color="#000000">)</font><font color="#000000">.row;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Calculate&nbsp;hash&nbsp;for&nbsp;use&nbsp;in&nbsp;hashtables</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">java.lang.Object#hashCode()</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">hashCode</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">HASHFACTOR*row+col;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">java.lang.Object#toString()</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;toString</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#2a00ff">&#34;Cell&nbsp;at&nbsp;(&#34;</font><font color="#000000">+col+</font><font color="#2a00ff">&#34;,&nbsp;&#34;</font><font color="#000000">+row+</font><font color="#2a00ff">&#34;)&nbsp;with&nbsp;&#34;</font><font color="#000000">+neighbour+</font><font color="#2a00ff">&#34;&nbsp;neighbour&#34;</font><font color="#000000">+</font><font color="#000000">(</font><font color="#000000">neighbour==</font><font color="#990000">1</font><font color="#000000">?</font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">:</font><font color="#2a00ff">&#34;s&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><font color="#ffffff">
+</font></code>
+
+   </td>
+  <!-- end source code -->
+   </tr>
+
+  <!-- start Java2Html link -->
+   <tr>
+    <td align="right">
+<small>
+<a href="http://www.java2html.de" target="_blank">Java2html</a>
+</small>
+    </td>
+   </tr>
+  <!-- end Java2Html link -->
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+
+</body></html>

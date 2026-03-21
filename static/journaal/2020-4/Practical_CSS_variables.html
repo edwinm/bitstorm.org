@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Practical CSS variables - Edwins journaal</title>
+<meta charset="UTF-8">
+<meta name="dc.creator.name" content="Edwin Martin">
+<meta name="dc.creator.e-mail" content="edwin@bitstorm.org">
+<link rel="stylesheet" type="text/css" href="/journaal/journaal.css" title="main">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/journaal/show/show.css">
+</head>
+
+<body>
+
+<img src="/journaal/journaal.jpg" class="titel" alt="Edwin's Journaal" width="700" height="127">
+
+<p class="email">&lt;<a href="mailto:edwin&#64;bitstorm.org">edwin&#64;bitstorm.org</a>&gt;</p>
+
+<p class="in">Gedachten en belevenissen van Edwin Martin.</p>
+
+<div class='content'>
+
+<div class="left">
+<ol>
+<a rel="up" href="/journaal/">Edwins journaal</a>
+<li><a rel="archives" href="/journaal/2020-4/">Archief</a></li>
+
+<li><a rel="author" href="/edwin/">Edwins brainwaves</a></li>
+<li><a href="http://www.jolie.nl/weblog/">Jolies weblog</a></li>
+<li><a href="/leora/">Leora</a></li>
+</ol>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-2050318500162917";
+/* Edwins Journaal */
+google_ad_slot = "1374355788";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</div>
+<div class="right">
+<h3><a href="/journaal/2020-4/Practical_CSS_variables.html" name="Practical_CSS_variables" class="nolink">Practical CSS variables</a></h3>
+<p class="datum">za 25 apr 2020 17:31</p>
+<div class="slideshow">
+
+</div>
+
+<h2>CSS variables</h2>
+
+<p>In HTML and JavaScript, you can easily define some CSS with the <code>style</code> attribute and property. If you just want to pass a value, like a color, you can&#8217;t use <code>style</code>.</p>
+
+<p>Fortunately, there is a solution for this, which has now been adopted by [all
+modern browsers] (https://caniuse.com/#feat=css-variables): [CSS Custom Properties for Cascading Variables] (https://www.w3.org/TR/css-variables/),
+CSS variables for short.</p>
+
+<p>How do CSS variables work?</p>
+
+<p>Let&#8217;s start with an example in CSS:</p>
+
+<p>&#8220;`css
+  :root {
+    &#8212;warning-color: orange;
+  }</p>
+
+<p>.warning {
+    color: var(&#8212;warning-color, red);
+    border: 1px solid var(&#8212;warning-color, red);
+  }
+&#8220;`</p>
+
+<p>So you can set a custom property within CSS and use it again in other places. Changing a this value has now become much easier.</p>
+
+<p>You set a CSS custom property in the same way as a CSS property, but
+they always start with &#8216;&#8212;&#8217;.
+You can read it out with <code>var(--varname)</code>.</p>
+
+<p>The optional second parameter of <code>var()</code>, in the example above <code>red</code>,
+is the default value
+in case the variable <code>--warning-color</code> has not (yet) been set.</p>
+
+<p>It is important to know that these variables follow the same rules for
+cascading like all other CSS properties, hence the name
+Cascading Variables.</p>
+
+<h2>Custom Properties or Variables?</h2>
+
+<p>The terms custom properties and variables appears to be used interchangeably in texts about this topic, but what is what?</p>
+
+<p>In CSS you have a declaration such as <code>color: white</code>. To the left of the colon
+is the property and to its right the value. If the property starts with &#8216;&#8212;&#8217;,
+it is always a custom property.</p>
+
+<p>If you use this on the right side of the colon in a
+<code>var()</code> function, then it is a variable.</p>
+
+<h2>JavaScript</h2>
+
+<p>In JavaScript it is possible to give a value to a
+CSS custom property after which you can determine exactly what to do with it in CSS.</p>
+
+<p>Changing the property <code>--warning-color</code> is done in JavaScript
+as follows:</p>
+
+<p><code>javascript
+element.style.setProperty("--warning-color", "maroon");</code></p>
+
+<p>The warning from the previous example will now turn maroon.</p>
+
+<p>To use a CSS variable throughout a document,
+put it on the root element:</p>
+
+<p><code>javascript
+document.documentElement.style.setProperty("--warning-color", "maroon");</code></p>
+
+<h2>Calculate</h2>
+
+<p>You can also calculate with CSS variables.</p>
+
+<p>Suppose you have a box that has been determined in JavaScript to be
+shown 80 pixels from the left:</p>
+
+<p><code>javascript
+boxElement.style.setProperty("--box-left", "80px");</code></p>
+
+<p>But in your CSS you know you have to add the left margin to that as well,
+which you also stored in a CSS variable.</p>
+
+<p>Then your CSS can look like this:</p>
+
+<dl>
+<dt>&#8220;`css</dt>
+<dd>
+<p>root {
+&#8212;margin-left: 10px;
+}</p>
+
+<p>.box {
+position: relative;
+left: calc(var(&#8212;box-left) + var(&#8212;margin-left));
+}
+&#8220;`</p>
+</dd>
+</dl>
+
+<p>The <code>left</code> property of the box now becomes <code>90px</code>.</p>
+
+<h2>No unit</h2>
+
+<p>Even better, don&#8217;t set a unit like <code>px</code> in the <code>setProperty</code> function. It is best to determine where this belongs: in the CSS.</p>
+
+<p>Take a progress indicator that goes from 0 to 100, for example.</p>
+
+<p><code>javascript
+document.documentElement.style.setProperty ("--progress", bytes / totalBytes * 100);</code></p>
+
+<p>Your CSS can then look like this:</p>
+
+<p><code>css
+  .progress box {
+    background-color: deepskyblue;
+    width: calc(var(--progress) * 0.6rem);
+    height: 1rem;
+  }</code></p>
+
+<p>If the progress is 40%, the width will be equal to 40 × 0.6rem = 24rem.</p>
+
+<h2>Media queries</h2>
+
+<p>CSS variables are very useful in media queries.
+For example, to make all margins small to make everything fit properly on very small screens:</p>
+
+<dl>
+<dt>&#8220;`css</dt>
+<dd>root {
+&#8212;margin: 8px;
+}</dd>
+</dl>
+
+<p>@media (max-width: 360px) {
+   &#160;: root {
+        &#8212;margin: 2px;
+    }
+}</p>
+
+<p>.some-text-box {
+  margin: var(&#8212;margin);
+}
+&#8220;`</p>
+
+<h2>Theming</h2>
+
+<p>You can of course keep a theme very simple with a foreground and background color and a few classes.
+But if you want to give some text, borders or icons certain accent colors,
+it quickly becomes very cumbersome the old way.</p>
+
+<p>CSS variables are very suitable for this. And also for
+<em>dark mode</em>, where the dark / light mode of the page changes with the operating system:</p>
+
+<p>&#8220;`css
+:root {
+  &#8212;background: white;
+  &#8212;text: black;
+  &#8212;accent: lightblue;
+}</p>
+
+<p>@media(prefers-color-scheme: dark) {
+    :root {
+      &#8212;background: black;
+      &#8212;text: white;
+      &#8212;accent: purple;
+    }
+}</p>
+
+<p>html {
+  color: var(&#8212;text);
+  background-color: var(&#8212;background);
+}</p>
+
+<p>.some-box {
+  border: 3px solid var(&#8212;accent);
+}
+&#8220;`</p>
+
+<p>You can work with different color palettes in this way
+and assign them in the CSS to different properties,
+in this case the <code>border</code>.</p>
+
+<h2>Vary with colors</h2>
+
+<p>You can also vary colors with a little creativity.
+That works best if you use <code>hsl()</code> or <code>hsla()</code> notation.</p>
+
+<p>For example, you can record the hue (hue) in a variable
+and define all kinds of variations in the CSS:</p>
+
+<p>&#8220;`css
+:root {
+    &#8212;theme-hue: 120; / * 120 is green * /
+}</p>
+
+<p>.themed-box {
+    color: hsl(var(&#8212;theme-hue), 50%, 90%);
+    background-color: hsl(var(&#8212;theme-hue), 50%, 30%);
+    border: 2px solid hsl(var(&#8212;theme-hue), 100%, 50%);
+}
+&#8220;`</p>
+
+<p>Now only changing <code>--theme-hue</code> from, for example
+120 (green) to 0 (red), will also change the style of <code>.themed-box</code>,
+including all variations on that color.</p>
+
+<p>Of course you can also change the saturation in this way to make a page / element brighter or more subdued.
+Or change the brightness (lightness) to make a page lighter or
+darker.</p>
+
+<p>Combine this technique with calc, media queries, theming and dark mode
+and a new world opens up. You will probably see a rainbow outside.
+And maybe a unicorn!</p>
+
+<h2>Browser variables</h2>
+
+<p>In addition to <code>var()</code> for reading CSS variables, there is also
+<code>env()</code> for reading browser environment variables.</p>
+
+<p>Currently (2020) there are four of these environmental variables
+defined:
+<code>safe-area-inset-top</code>,<code>safe-area-inset-right</code>,
+<code>safe-area-inset-bottom</code> and<code>safe-area-inset-left</code>.</p>
+
+<p>These four variables indicate the distance from the edge within which the
+content can be viewed completely. Think for example of a round watch
+with a rectangle with text in it. The variables indicate the distances
+from the rectangle to the edges of the screen.</p>
+
+<p>An example in CSS:</p>
+
+<p><code>css
+  safe box {
+    position: absolute;
+    top: env(safe-area-inset-top, 8px);
+    right: env(safe-area-inset-right, 8px);
+    bottom: env(safe-area-inset-bottom, 8px);
+    left: env(safe-area-inset-left, 8px);
+  }</code></p>
+
+<p>In <code>env()</code>, as with <code>var()</code>, the second parameter is the
+default parameter if the variable is not set.</p>
+
+<h2>Preprocessors</h2>
+
+<p>I have seen several projects where Sass of Less was used only to assign a row of values ​​to variables and then use these variables in the rest of the style sheets. Isn&#8217;t it more convenient to omit the preprocessor
+and use CSS variables?
+I think so. In the build process you skip a step and for example
+debugging becomes a lot easier.</p>
+
+<h2>Internet Explorer 11</h2>
+
+<p>What about Internet Explorer 11? No, unfortunately it does not support CSS variables.
+In April 2020, IE11 had a <a href="https://gs.statcounter.com/browser-version-market-share#monthly-201904-202004">market share of 1.1%  worldwide</a>.
+If you still want to support this browser (and other old browsers),
+then you can apply <em>graceful degradation</em>, which is actually always a
+good idea:</p>
+
+<p><code>css
+  .warning {
+    color: red;
+    color: var(--warning-color, red);
+    border: 1px solid red;
+    border: 1px solid var(--warning-color, red);
+  }</code></p>
+
+<p>In this case, the warning is always displayed in red in old browsers.
+It may not be exactly the color the designer had come up with, however
+a user of such an old browser is happy when a website is usable.</p>
+
+<h2>Future</h2>
+
+<p>Lea Verou also wanted to be able to draw diagrams in CSS, including
+angled connecting lines. That doesn&#8217;t work well with only <code>calc()</code>,
+because you also need trigonometric functions.
+At the time of writing, in 2020, there is
+<a href="https://github.com/w3c/csswg-drafts/issues/2331">work being done</a>
+to add the functions <code>sin()</code>, <code>cos()</code>, <code>tan()</code>, <code>acos()</code>, <code>asin()</code>,
+<code>atan()</code>, <code>atan2()</code>, <code>hypot()</code>, <code>sqrt()</code> and <code>pow()</code> to CSS.</p>
+
+<h2>Brain teaser</h2>
+
+<p>Finally a nice piece of code from a <a href="https://twitter.com/micahgodbolt/status/1131626097349496833?s=20">tweet from Micah Godbolt</a>
+to think about for a moment.</p>
+
+<p>&#8220;`html
+<style>
+  #blue {&#8212;myVar: blue}
+  .red {&#8212;myVar: red}
+</style></p>
+
+<div style='--myVar: pink'>
+  <div id='blue'>
+    <div class='red'>
+      <span style='color: var(--myVar)'> Hello World </span>
+    </div>
+  </div>
+</div>
+
+<p>&#8220;`</p>
+
+<p>First think for yourself what your answer will be and only then look
+to the <a href="https://codepen.io/edwinm/pen/bGGOdpa">answer</a>.
+As can be seen from the voting bars in the <a href="https://twitter.com/micahgodbolt/status/1131626097349496833?s=20">tweet</a>
+quite a few people are wrong.
+Also consider why the correct answer is the correct answer.</p>
+
+
+
+
+
+<div class='comments' id='comments'>
+<a href="//comment.bitstorm.org/comments.php?key=2&page=journaal_891&lang=nl">Reacties</a>
+
+
+<p class='status'></p>
+
+  <ol class="template">
+      <li id="comment_{id}">
+          <p class="name"></p>
+          <a class="date" href="#comment_{id}"></a>
+          <p class="comment"></p>
+      </li>
+  </ol>
+
+  <ol class="comments">
+  </ol>
+
+  <form method="post">
+      <p>Voeg je reactie toe:</p>
+      <label class="userid">Je naam</label>
+      <input disabled required type="text" class="userid" name="userid">
+      <label class="url">Je url [optioneel]</label>
+      <input disabled type="url" class="url" name="url">
+      <textarea disabled required name="comment"></textarea>
+        <input disabled type="submit" value="send" id="send">
+        <input type="hidden" name="referrer">
+        <input type="hidden" name="key">
+        <input type="hidden" name="page">
+        <input type="hidden" name="lastId">
+        <input type="hidden" name="lang">
+        <input type="hidden" name="recaptcha" id="recaptcha">
+  </form>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+<script src="//cdn.jsdelivr.net/jquery/2/mainfile"></script>
+<script src="/journaal/show/show-min.js"></script>
+<script src="/journaal/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LeMg-QUAAAAABWBTzjMhmWGehg9VDv8Jf4Pn5AT"></script>
+<script src="//comment.bitstorm.org/jtemplate-1.0-min.js"></script>
+<script src="//comment.bitstorm.org/init-2.js"></script>
+<script src="/journaal/analytics.js"></script>
+
+</body>
+</html>

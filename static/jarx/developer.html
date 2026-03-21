@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Jarx - Developers</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link title="Main" rel="stylesheet" type="text/css" href="jarx.css">
+</head>
+
+<body>
+
+<div id="logo">
+<a href="./"><img src="jarx-logo.png" alt="jarx" width="547" height="146" border="0"></a><br>
+<p>Jarx - The JAR executer</p>
+</div>
+
+<div id="body">
+
+
+<h2>Jarx for developers</h2>
+
+<p>You can add Jarx to your own Java programs and provide a better experience to the user.</p>
+
+<h3>Disadvantages of distributing just the JAR file</h3>
+
+<p>You might think distributing only a JAR file to Windows users is enough.
+Unfortunately, a JAR file has some serious drawbacks:</p>
+
+<ol>
+<li>Java might not be installed. The JAR file just won't work and users will think your program is broken.
+You can mention in the manual that the user has to download Java, but many users don't read the manual and
+don't know how to install Java.</li>
+<li>Even when Java is installed, the .jar file extension association can be "stolen", e.g. when installing an unzip program.</li>
+<li>Currently, JAR files have a standard Windows document icon, which doesn't look like an executable.
+So even when Java is set up right, the user looking for an executable might skip the JAR file.</li>
+</ol>
+
+<p>Jarx overcomes all these problems.</p>
+
+<p>When you distribute a Java 1.1 program, Jarx has even more advantages:</p>
+
+<ol>
+<li>Java 1.1 JVM's don't read the manifest file. Jarx does, even with a Java 1.1 JVM installed.</li>
+<li>Jarx will first try to load a Sun JVM and when that fails, it loads the Microsoft VM.
+Microsoft's VM still has a large installed base, so Jarx does not force users to download the
+JRE when it is not really necessary.</li>
+</ol>
+
+<h3>There are three ways to use Jarx together with your Java software</h3>
+
+<ol>
+<li><h4>Associate .jar with jarx.</h4>
+
+<p>By associating the .jar file extension with the jarx program, every JAR file will become "executable".
+The JAR file can be double clicked, selected from the Start menu etcetera. To have a executable JAR file, it must contain a manifest file.
+You can find more information about the manifest file in the <a href="http://java.sun.com/j2se/1.4.2/docs/guide/jar/jar.html">JAR File Specification</a>.</p></li>
+
+<li><h4>Associate .jarx with jarx.</h4>
+
+<p>A file with the .jarx file extension is a configuration file, just like the manifest file.
+See below for the format. In this file you can describe which JAR file to load and which class contains the main method to execute. You can start your Java software by double clicking a jarx configuration file.</p></li>
+
+<li><h4>Associate your own extension with jarx.</h4>
+
+<p>If your Java program is document-oriented, you can associate your own file extension with jarx. Jarx will then execute your JAR file with the document as a parameter.
+A document can be anything, including, for example, an image. You can do this by making a default.jarx file in the same directory as the Jarx executable.
+See below for more information about the .jarx file format.</p></li>
+</ol>
+<h3>The .jarx file format</h3>
+
+<p>The Jarx configuration file, with the .jarx extension, gives the Jarx program information about which JAR file to load and which class to execute.</p>
+
+<p>The Jarx configuration file is a text file. Every line starts with a name, followed by a colon ':', folowed by one or more spaces, followed by the value.</p>
+
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Name</th><th>Value</th><th></th></tr>
+<td>jar-file</td><td>(Relative) location of the JAR file.</td><td>Obligatory</td></tr>
+<td>main-class</td><td>The full class name of the class containing the <i>static void main</i> method, just like in a manifest.mf file</td><td>Obligatory</td></tr>
+<td>class-path</td><td>The classpath. When left out, the JAR file will be the only entry in the classpath.</td><td>Optional</td></tr>
+<td>version-min</td><td>Minimum supported Java version. When the installed version is older, the user will be asked to download the newest version. The value must have the format &lt;number&gt;.&lt;number&gt;.</td><td>Optional</td></tr>
+</table>
+
+<p>An example Jarx configuration file is:</p>
+
+<pre>
+jar-file: GameOfLife.jar
+main-class: org.bitstorm.gameoflife.StandaloneGameOfLife
+version-min: 1.1
+</pre>
+
+<p>You can <a href="http://www.bitstorm.org/gameoflife/standalone/">download the Game of Life</a> to see how Jarx works with other software.
+On the <a href="http://www.bitstorm.org/gameoflife/code/">Game of Life source code page</a>, you can find an installer script for the free NSIS installer program.</p>
+
+<h3>Download</h3>
+
+<p>You can download the plain <a href="jarx.exe">jarx.exe</a> or download and install the end user installer from the Jarx web page:</p>
+
+<ul>
+<li><a href="./">Download the Jarx installer</a></li>
+</ul>
+
+<h3>Open Source</h3>
+
+<p>Jarx is Open Source and licensed under the MIT license.</p>
+
+<p>You can fork the code at GitHub:</p>
+
+<p><a href="https://github.com/edwinm/Jarx">https://github.com/edwinm/Jarx</a></p>
+
+<h3>License</h3>
+
+<pre>
+	Copyright (c) 2004 Edwin Martin
+
+	Permission is hereby granted, free of charge, to any person
+	obtaining a copy of this software and associated documentation
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the
+	Software is furnished to do so, subject to the following
+	conditions:
+
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+	OTHER DEALINGS IN THE SOFTWARE.
+</pre>
+
+
+<p>For further questions, please contact Edwin Martin &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;.</p>
+
+</div>
+
+</body>
+</html>

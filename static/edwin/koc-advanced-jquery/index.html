@@ -1,0 +1,657 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Advanced jQuery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<meta name="dc.creator.name" content="Edwin Martin"/>
+<meta name="dc.creator.e-mail" content="edwin@bitstorm.org"/>
+
+<script language="javascript" type="text/javascript" src="jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="jqueryui/lib/js/jquery-ui-1.7.2.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="presentor.css" title="main">
+<script language="javascript" type="text/javascript" src="presentor.js"></script>
+
+<script type="text/javascript" src="syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shThemeEdwin.css"/>
+</head>
+
+<body>
+
+<div id="nav">
+</div>
+
+<div class="slide">
+<h1>Advanced jQuery</h1>
+<p class="author">Edwin Martin</p>
+<p class="author">Fronteers side-session, Kings of Code, June 29th 2009</p>
+
+<img src="pix/jquery_logo_color_onwhite-468.png" alt="jQuery. Write less, do more"><br>
+<img src="pix/fronteers-468x60.png" alt="Fronteers: vakvereniging voor front-end developers">
+</div>
+
+<div class="slide">
+<h2>Phases of a JavaScript developer</h2>
+
+<ol>
+	<li>Why do I need a library?</li>
+	<li>Starts writing functions for common, tedious tasks.</li>
+	<li>Handfull of functions becomes a library of functions.</li>
+	<li>Discovers that another library does the same, but better on all fronts.</li>
+</ol>
+
+</div>
+
+<div class="slide">
+<h2>Why a JavaScript library?</h2>
+
+<ul>
+<li>Masks browser incompatibilities</li>
+<li>Prevents memory leaks</li>
+<li>Optimised for speed and size</li>
+<li>Maintained by specialists</li>
+</ul>
+</div>
+
+<div class="slide">
+<h2>Which library?</h2>
+<ul>
+<li>Functionality (widgets? framework?)</li>
+<li>Speed</li>
+<li>Size (bytes)</li>
+<li>Documentation</li>
+<li>Community</li>
+<li>Extensible</li>
+<li>Use of globals</li>
+<li>License (Open Source)</li>
+</ul>
+
+</div>
+
+<div class="slide">
+<h2>Most popular</h2>
+
+<h3>Core libraries</h3>
+
+<ul>
+<li>jQuery</li>
+<li>Prototype</li>
+<li>Mootools</li>
+</ul>
+
+<h3>RIA frameworks</h3>
+
+<ul>
+<li>ExtJS</li>
+<li>YUI</li>
+<li>Dojo</li>
+<li>qooxdoo</li>
+<li>jQuery UI</li>
+</ul>
+
+</div>
+
+<div class="slide">
+<h2>What does jQuery offer?</h2>
+<ul>
+<li>Selectors</li>
+<li>Traversing</li>
+<li>Manipulation</li>
+<li>Events</li>
+<li>Effects</li>
+<li>Ajax</li>
+<li>Tools</li>
+</ul>
+
+</div>
+
+
+<div class="slide">
+<h2>Very quick introduction to jQuery</h2>
+
+<style>
+	.highlight {
+		font-weight: bold;
+		color: orange;
+	}
+</style>
+
+<h3 class="label">html</h3>
+<code class="brush: html;">&lt;p>Time is &lt;span class='date'>&lt;/span>&lt;/p&gt;
+</code>
+
+<h3 class="label">css</h3>
+<code class="brush: css;">.highlight {
+	font-weight: bold;
+	color: orange;
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">$(function() {
+	$('p span.date').addClass('highlight')
+		.html(new Date().toLocaleTimeString());
+});
+</code>
+
+<div class="out">
+<p>Time is <span class='date'></span></p>
+</div>
+
+<script>
+$(function() {
+	$('p span.date').addClass('highlight').html(new Date().toLocaleTimeString());
+});
+</script>
+</div>
+
+
+<div class="slide">
+<h2>.end()</h2>
+
+<h3 class="label">html</h3>
+<code class="brush: html;">
+&lt;div id="larch"&gt;&lt;/div&gt;
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$(function() {
+	$('#larch')
+		.append('&lt;h3>The Larch&lt;/h3>')
+		.find('h3')
+			.css('color', 'blue')
+			.end()
+		.append('&lt;p>How to Recognise Different Types of Trees From Quite a Long Way Away.&lt;/p>')
+		.find('p')
+			.css('color', 'green');
+});
+</code>
+
+<div class="out">
+<div id='larch'></div>
+</div>
+
+<script>
+$(function() {
+$('#larch').append('<h3>The Larch</h3>').find('h3').css('color', 'blue').end().append('<p>How to Recognise Different Types of Trees From Quite a Long Way Away.</p>').find('p').css('color', 'green')
+});
+</script>
+
+</div>
+
+</div>
+
+<div class="slide">
+<h2>Plugins</h2>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+jQuery.fn.pluginName = function() {
+	return this.each(function() {
+		// Do something with $(this)
+	}
+};
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$('p').pluginName();
+</code>
+</div>
+
+<div class="slide">
+<h2>Plugin example</h2>
+
+<h3 class="label">html</h3>
+<code class="brush: html;">
+&lt;ul id="larch-trees">
+	&lt;li>Himalayan Larch&lt;/li>
+	&lt;li>Japanese Larch&lt;/li>
+	&lt;li>Yunnan Larch&lt;/li>
+&lt;/ul>
+</code>
+
+<h3 class="label">css</h3>
+<code class="brush: css;">
+#larch-trees li {
+	width: 170px;
+	background-color: pink;
+	padding: 3px;
+	list-style-type: none;
+	margin-bottom: 2px;
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+jQuery.fn.animatedSelector = function() {
+	return this.each(function() {
+		$(this).toggle(
+			function() {
+				$(this).animate({width: 250}, 'fast');
+			},
+			function() {
+				$(this).animate({width: 170}, 'fast');
+			}
+		);
+	});
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$(function() {
+	$('#larch-trees li').animatedSelector();
+})
+</code>
+
+<script>
+jQuery.fn.animatedSelector = function() {
+	return this.each(function() {
+		$(this).toggle(
+			function() {
+				$(this).animate({width: 250}, 'fast');
+			},
+			function() {
+				$(this).animate({width: 170}, 'fast');
+			}
+		);
+	});
+}
+$(function() {
+	$('#larch-trees li').animatedSelector();
+})
+</script>
+
+<ul id="larch-trees">
+	<li>Himalayan Larch</li>
+	<li>Japanese Larch</li>
+	<li>Yunnan Larch</li>
+</ul>
+
+</div>
+
+<div class="slide">
+<h2>Aptana code assist</h2>
+<img src="pix/aptana-code-assist.png">
+</div>
+
+<div class="slide">
+<h2>Add your own filter</h2>
+
+<p>Miscelaneous (CSS3) pseudo-selectors: :first, :last, :not(selector), :even, :odd, :eq(index)...</p>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">$(function() {
+	$.expr[':'].findStar = function(elem) {
+		return $(elem).html().indexOf('(*)') != -1;
+	};
+});
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$('#larix tr:findStar td').addClass('highlight')
+</code>
+
+
+<table id="larix">
+<tbody>
+<tr><td>Larix decidua</td><td>European Larch</td><td>(*)</td></tr>
+<tr><td>Larix griffithii</td><td>Himalayan Larch</td><td></td></tr>
+<tr><td>Larix himalaica</td><td>Langtang Larch</td><td></td></tr>
+<tr><td>Larix kaempferi</td><td>Japanese Larch</td><td>(*)</td></tr>
+<tr><td>Larix laricina</td><td>Tamarack Larch</td><td></td></tr>
+<tr><td>Larix mastersiana</td><td>Masters' Larch</td><td></td></tr>
+<tr><td>Larix potaninii</td><td>Chinese Larch</td><td></td></tr>
+<tr><td>Larix principis-rupprechtii</td><td>Prince Rupprecht's Larch</td><td>(*)</td></tr>
+<tr><td>Larix speciosa</td><td>Yunnan Larch</td><td></td></tr>
+</tbody>
+</table>
+
+<p>Species marked with an asterisk (*) are Northern  Eurasian, short-bracted</p>
+
+<script>
+$(function() {
+	$.expr[':'].findStar = function(elem) {
+		return $(elem).html().indexOf('(*)') != -1;
+	};
+});
+</script>
+
+<button onclick="$('#larix tr:findStar td').addClass('highlight')">execute</button>
+
+</div>
+
+
+<div class="slide">
+<h2>Live events</h2>
+
+<p>Not live:</p>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$(function() {
+	$('#live1 li').bind('click', function() {
+		$(this).text(parseInt($(this).text())+1);
+	});
+	$('#more1').click(function() {
+		$('#live').append('&lt;li>1&lt;/li>');
+	});
+});
+</code>
+
+<ul id="live1">
+	<li>1</li>
+</ul>
+
+<button id="more1">More</button>
+
+<script>
+$(function() {
+	$('#live1 li').bind('click', function() {
+		$(this).text(parseInt($(this).text())+1);
+	});
+	$('#more1').click(function() {
+		$('#live1').append('<li>1</li>');
+	});
+});
+</script>
+</div>
+
+<div class="slide">
+<h2>Live events (live)</h2>
+
+<p>Live:</p>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$(function() {
+	$('#live2 li').live('click', function() {
+		$(this).text($(this).text()*1+1);
+	});
+	$('#more2').click(function() {
+		$('#live2').append('&lt;li>1&lt;/li>');
+	});
+});
+</code>
+
+<ul id="live2">
+	<li>1</li>
+</ul>
+
+<button id="more2">More</button>
+
+<script>
+$(function() {
+	$('#more2').click(function() {
+		$('#live2').append('<li>1</li>');
+	});
+	$('#live2 li').live('click', function() {
+		$(this).text($(this).text()*1+1);
+	});
+});
+</script>
+</div>
+
+<div class="slide">
+<script>
+$(function() {
+	var startPosition = true;
+	var func;
+	$('#easing-go').click(function() {
+		$('#easing-block').animate({'left': startPosition ? 496 : 4}, 'slow', func ? 'myEasingFunction' : null);
+		startPosition = !startPosition;
+	});
+	$('#easing').bind('blur', function() {
+		func = $('#easing').val();
+		if (func) {
+			var evalStr = 'jQuery.easing.myEasingFunction = function (x, t, b, c, d) {return '+func+';};';
+			eval(evalStr);
+		}
+	});
+	
+	$('#easing-functions li').each(function() {
+		$(this).click(function() {
+			$('#easing').val($(this).text()).blur();
+		})
+	})
+});
+</script>
+
+<style>
+#easing {
+	width: 550px;
+	font-family: monospace;
+}
+#easing-container {
+	position: relative;
+	border: 1px solid #ccc;
+	width: 608px;
+	height: 114px;
+	margin: 10px 0;
+}
+#easing-block {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 4px;
+	left: 4px;
+	border: 3px solid #666;
+	background-color: #ccc;
+}
+</style>
+<h2>Easing</h2>
+
+<p>animate( params, [duration], [easing], [callback] )</p>
+
+<ul id="easing-functions">
+	<li>c*t/d+b</li>
+	<li>c*((t=t/d-1)*t*t + 1) + b</li>
+	<li>-c * Math.cos(t/d * (Math.PI/2)) + c + b</li>
+	<li>c * Math.sqrt(1 - (t=t/d-1)*t) + b</li>
+	<li>c*(t/=d)*t*t*t*t + b</li>
+	<li>c*t/d*((Math.cos(t/d * (Math.PI/2))+1))*1.1-0.1+b</li>
+</ul>
+
+<h3 class="label">javascript</h3>
+<code>jQuery.easing.myEasingFunction = function (x, t, b, c, d) {
+    return <input id="easing"><input type='button' value='go' id='easing-go'>
+};
+</code>
+
+<p>$('#block').animate( {width: 500}, 'slow', 'myEasingFunction' )</p>
+
+
+<div id="easing-container">
+<div id="easing-block">
+	
+</div>
+</div>
+
+<p>Predefined functions in jQuery UI's effects.core.js.</p>
+
+</div>
+
+<div class="slide">
+<h2>XML-parser</h2>
+
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+var title = $('rss channel title', xmlDocument).text();
+</code>
+</div>
+
+<div class="slide">
+<h2>Feed fetcher-parser-renderer jQuery-plugin</h2>
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$(function() {
+	$('#feed').renderFeed('feed.xml');
+});
+jQuery.fn.renderFeed = function(location) {
+	return this.each(function() {
+		var el = $(this);
+		$.get(location, function(xml) {
+			var ul = $('&lt;ul>');
+			$('rss channel item', xml).each(function() {
+				var a = $('&lt;a>')
+					.attr('href', $('link', this).text())
+					.text($('title', this).text());
+				ul.append($('&lt;li>').append(a));
+			});
+			el.append(ul);
+		});
+	});
+};
+</code>
+
+<div id="feed" class="out">
+</div>
+
+<script>
+$(function() {
+	$('#feed').renderFeed('feed.xml');
+});
+jQuery.fn.renderFeed = function(location) {
+	return this.each(function() {
+		var el = $(this);
+		$.get(location, function(xml) {
+			var ul = $('<ul>');
+			$('rss channel item', xml).each(function() {
+				var a = $('<a>')
+					.attr('href', $('link', this).text())
+					.text($('title', this).text());
+				ul.append($('<li>').append(a));
+			});
+			el.append(ul);
+		});
+	});
+};
+</script>
+</div>
+
+<div class="slide">
+<h2>jQuery UI</h2>
+
+<ul>
+	<li>Few widgets</li>
+	<li>Not really a framework</li>
+	<li>No Graceful Degradation</li>
+	<li>CSS-framework</li>
+	<li>ThemeRoller</li>
+</ul>
+
+<p><a href="jqueryui/lib/index.html">jQuery UI widgets</a></p>
+<p><a href="jqueryui/lib/development-bundle/demos/index.html">jQuery UI demos</a></p>
+<p><a href="http://jqueryui.com/themeroller/">ThemeRoller demo (online)</a></p>
+<p><a href="http://wiki.jqueryui.com/">Planning (online)</a></p>
+
+</div>
+
+<div class="slide">
+<h2>Animated addClass</h2>
+
+<h3 class="label">html</h3>
+<code class="brush: html;">
+&lt;ul id="larch-trees2">
+	&lt;li>Himalayan Larch&lt;/li>
+	&lt;li>Japanese Larch&lt;/li>
+	&lt;li>Yunnan Larch&lt;/li>
+&lt;/ul>
+</code>
+
+<h3 class="label">css</h3>
+<code class="brush: css;">
+#larch-trees2 li {
+	width: 170px;
+	background-color: pink;
+	padding: 3px;
+	list-style-type: none;
+	margin-bottom: 2px;
+}
+#larch-trees2 li.selected {
+	width: 250px;
+	background-color: red;
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+jQuery.fn.animatedSelector2 = function() {
+	return this.each(function() {
+		$(this).toggle(
+			function() {
+				$(this).addClass('selected', 'fast');
+			},
+			function() {
+				$(this).removeClass('selected', 'fast');
+			}
+		);
+	});
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code class="brush: javascript;">
+$(function() {
+	$('#larch-trees2 li').animatedSelector2();
+})
+</code>
+
+<script>
+jQuery.fn.animatedSelector2 = function() {
+	return this.each(function() {
+		$(this).toggle(
+			function() {
+				$(this).addClass('selected', 'fast');
+			},
+			function() {
+				$(this).removeClass('selected', 'fast');
+			}
+		);
+	});
+}
+$(function() {
+	$('#larch-trees2 li').animatedSelector2();
+})
+</script>
+
+<ul id="larch-trees2">
+	<li>Himalayan Larch</li>
+	<li>Japanese Larch</li>
+	<li>Yunnan Larch</li>
+</ul>
+
+</div>
+
+<div class="slide">
+<h2>Best practices</h2>
+
+<ol>
+	<li>Don't mix html and JavaScript.</li>
+	<li>Make functions plugins.</li>
+	<li>Don's use .css(), but add/removeClass.</li>
+</ol>
+
+</div>
+
+<div class="slide">
+<h2>Questions?</h2>
+
+<p>http://jquery.com/</p>
+
+<p>Edwin Martin &lt;edwin@bitstorm.org&gt;</p>
+
+</div>
+
+<script>var _gaq=[['_setAccount','UA-93616-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+</body>
+</html>

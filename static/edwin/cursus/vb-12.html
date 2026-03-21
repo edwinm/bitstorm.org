@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+</script>
+
+</head>
+<body>
+
+<h2 class=cursus id=kopje>W3C DOM voor Netscape 6+ en Internet Explorer 4+</h2>
+
+<form>
+<input type=button onClick="getStyle('kopje').color='orange'" value="getStyle('kopje').color='orange'">
+<input type=button onClick="getStyle('kopje').color='black'" value="getStyle('kopje').color='black'">
+<br>
+<input type=button onClick="getStyle('kopje').backgroundColor='orange'" value="getStyle('kopje').backgroundColor='orange'">
+<input type=button onClick="getStyle('kopje').backgroundColor='lightgrey'" value="getStyle('kopje').backgroundColor='lightgrey'">
+<br>
+<input type=button onClick="getStyle('kopje').borderColor='orange'" value="getStyle('kopje').borderColor='orange'">
+<input type=button onClick="getStyle('kopje').borderColor='darkgray'" value="getStyle('kopje').borderColor='darkgray'">
+<br>
+<input type=button onClick="getStyle('kopje').padding='10px'" value="getStyle('kopje').padding='10px'">
+<input type=button onClick="getStyle('kopje').padding='4px'" value="getStyle('kopje').padding='4px'">
+<br>
+<input type=button onClick="getStyle('kopje').marginLeft='30px'" value="getStyle('kopje').marginLeft='30px'">
+<input type=button onClick="getStyle('kopje').marginLeft='0px'" value="getStyle('kopje').marginLeft='0px'">
+<br>
+<input type=button onClick="getStyle('kopje').fontSize='22pt'" value="getStyle('kopje').fontSize='22pt'">
+<input type=button onClick="getStyle('kopje').fontSize='18pt'" value="getStyle('kopje').fontSize='18pt'">
+</form>
+
+</body>
+</html>

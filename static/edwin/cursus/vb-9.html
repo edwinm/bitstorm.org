@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 180px;
+	left: 0px;
+	background-color: orange;
+}
+</style>
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+xpositie = 0
+function heen() {
+	if ( xpositie < 300 ) {
+		xpositie = xpositie + 5
+		getStyle('mijnlayer').left = xpositie
+		setTimeout( 'heen()', 100 )
+	}
+}
+function terug() {
+	if ( xpositie > 0 ) {
+		xpositie = xpositie - 5
+		getStyle('mijnlayer').left = xpositie
+		setTimeout( 'terug()', 100 )
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id="mijnlayer">
+Deze tekst staat in een layer.
+</div>
+
+<h2 class=cursus>DHTML in Netscape 4 en hoger en IE 4 en hoger</h2>
+
+<form>
+<h3>Dit werkt in alle recente browsers vanaf Netscape 4:</h4>
+<input type=button onClick="heen()" value="heen()">
+<input type=button onClick="terug()" value="terug()">
+</form>
+
+</body>
+</html>

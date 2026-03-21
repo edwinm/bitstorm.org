@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<title>Maskr Unit Tests</title>
+<link rel="stylesheet" href="qunit.css">
+<script src="../jquery-1.4.4.js"></script>
+<script src="../jquery.maskr.js"></script>
+<script src="qunit.js"></script>
+<script src="json2.js"></script>
+<script type="text/javascript">
+
+function testcase(desc, html, map, data, expected) {
+	test(desc, function() {
+		var div = $("<div>");
+		div.append($(html).maskr(map, data));
+		equals( div.html(), expected, "Testing the map " + JSON.stringify(map) + ' on html ' + html.html() + ' and  data ' + JSON.stringify(data));
+	});
+}
+
+
+
+
+
+testcase('JSON Simple',
+	$('<div><h2></h2></div>'),
+	{h2: "foo"},
+	{"foo": "testfoo"},
+	"<div><h2>testfoo</h2></div>");
+
+testcase('JSON root attribute',
+	$('<div><h2></h2></div>'),
+	{"@class": "foo"},
+	{"foo": "testfoo"},
+	'<div class="testfoo"><h2></h2></div>');
+
+testcase('JSON root text replacement',
+	$('<div>Hello {name}, you have {messages} messages left.</div>'),
+	{"{name}": "id", "{messages}": "mesgno"},
+	{"id": "John", "mesgno": 23},
+	"<div>Hello John, you have 23 messages left.</div>");
+
+testcase('JSON Multiple selector matches',
+	$('<div><h2></h2><h2></h2></div>'),
+	{h2: "foo"},
+	{"foo": "testfoo"},
+	"<div><h2>testfoo</h2><h2>testfoo</h2></div>");
+
+testcase('JSON Select by class',
+	$("<div><h2></h2><h2 class='right'></h2></div>"),
+	{"h2.right": "foo"},
+	{"foo": "testfoo"},
+	'<div><h2></h2><h2 class="right">testfoo</h2></div>');
+
+testcase('JSON Empty simple list',
+	$("<div><ul><li class='c'></li></ul></div>"),
+	{"li": ["item"]},
+	{"item": []},
+	'<div><ul></ul></div>');
+
+testcase('JSON One item simple list',
+	$("<div><ul><li class='c'></li></ul></div>"),
+	{"li": ["item"]},
+	{"item": ["a"]},
+	'<div><ul><li class="c">a</li></ul></div>');
+
+testcase('JSON Three item simple list',
+	$("<div><ul><li class='c'></li></ul></div>"),
+	{"li": ["item"]},
+	{"item": ["a", "b", "c"]},
+	'<div><ul><li class="c">a</li><li class="c">b</li><li class="c">c</li></ul></div>');
+
+testcase('JSON Empty complex list',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text"}]},
+	{"items": []},
+	'<div><ul></ul></div>');
+
+testcase('JSON One item complex list',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text"}]},
+	{"items": [{"text": "one"}]},
+	'<div><ul><li class="c"><p>one</p></li></ul></div>');
+
+testcase('JSON Three item complex list',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text"}]},
+	{"items": [{"text": "one"}, {"text": "two"}, {"text": "three"}]},
+	'<div><ul><li class="c"><p>one</p></li><li class="c"><p>two</p></li><li class="c"><p>three</p></li></ul></div>');
+
+testcase('JSON Three item more complex list',
+	$("<div><ul><li class='c'><h3></h3><p class='a'></p><p class='b'></p></li></ul></div>"),
+	{"li": ["items", {"h3": "text", "p.a": "line1", "p.b": "line2"}]},
+	{"items": [{"text": "one", "line1": "item1line1", "line2": "item1line2"}, {"text": "two", "line1": "item2line1", "line2": "item2line2"}, {"text": "three", "line1": "item3line1", "line2": "item3line2"}]},
+	'<div><ul><li class="c"><h3>one</h3><p class="a">item1line1</p><p class="b">item1line2</p></li><li class="c"><h3>two</h3><p class="a">item2line1</p><p class="b">item2line2</p></li><li class="c"><h3>three</h3><p class="a">item3line1</p><p class="b">item3line2</p></li></ul></div>');
+
+testcase('JSON Using attributes',
+	$("<div><ul><li><a></a></li></ul></div>"),
+	{"li": ["items", {"a": "text", "a@href": "href"}]},
+	{"items": [{"text": "Google", "href": "http://www.google.com/"}, {"text": "CNet", "href": "http://cnet.com/"}, {"text": "Yahoo", "href": "http://www.yahoo.com/"}]},
+	'<div><ul><li><a href="http://www.google.com/">Google</a></li><li><a href="http://cnet.com/">CNet</a></li><li><a href="http://www.yahoo.com/">Yahoo</a></li></ul></div>');
+
+testcase('JSON Using placeholders',
+	$("<div><ul><li><a href='http://{site}'>Site {name}</a></li></ul></div>"),
+	{"li": ["items", {"a{name}": "text", "a@href{site}": "href"}]},
+	{"items": [{"text": "Google", "href": "www.google.com/"}, {"text": "CNet", "href": "cnet.com/"}, {"text": "Yahoo", "href": "www.yahoo.com/"}]},
+	'<div><ul><li><a href="http://www.google.com/">Site Google</a></li><li><a href="http://cnet.com/">Site CNet</a></li><li><a href="http://www.yahoo.com/">Site Yahoo</a></li></ul></div>');
+
+testcase('JSON Using string method',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text|toUpperCase"}]},
+	{"items": [{"text": "One Two Three"}]},
+	'<div><ul><li class="c"><p>ONE TWO THREE</p></li></ul></div>');
+
+
+testcase('JSON One item simple list using toUpperCase string method',
+	$("<div><ul><li class='c'></li></ul></div>"),
+	{"li": ["item|toUpperCase"]},
+	{"item": ["&One Two Three^"]},
+	'<div><ul><li class="c">&amp;ONE TWO THREE^</li></ul></div>');
+
+
+testcase('JSON List using else-string method',
+	$("<ul><li>{title} ({rating})</li></ul>"),
+	{ "li": [ "books", {"{title}": "title", "{rating}": "rating|else:no rating"} ] },
+    { "books": [ { "title": "JavaScript Pro", "rating":"5" }, { "title": "JavaScript the Good Parts", "rating":"4" }, { "title": "JavaScript Design Patterns", "rating":"" } ] },
+    "<ul><li>JavaScript Pro (5)</li><li>JavaScript the Good Parts (4)</li><li>JavaScript Design Patterns (no rating)</li></ul>");
+
+testcase('JSON List using if-string method',
+	$("<ul><li>{title} ({available})</li></ul>"),
+	{ "li": [ "books", {"{title}": "title", "{available}": "available|if:a:available:not available"} ] },
+    { "books": [ { "title": "JavaScript Pro", "available":"a" }, { "title": "JavaScript the Good Parts", "available":"a" }, { "title": "JavaScript Design Patterns", "available":"n" } ] },
+        "<ul><li>JavaScript Pro (available)</li><li>JavaScript the Good Parts (available)</li><li>JavaScript Design Patterns (not available)</li></ul>");
+
+testcase('JSON Using combined string methods',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text|toUpperCase|urlEncode"}]},
+	{"items": [{"text": "&One Two Three^"}]},
+	'<div><ul><li class="c"><p>&amp;ONE%20TWO%20THREE%5E</p></li></ul></div>');
+
+testcase('JSON Using string method parameters',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text|substr:1"}]},
+	{"items": [{"text": "&One Two Three"}]},
+	'<div><ul><li class="c"><p>One Two Three</p></li></ul></div>');
+
+testcase('JSON Using string more method parameters',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": "text|substr:1:3"}]},
+	{"items": [{"text": "&One Two Three"}]},
+	'<div><ul><li class="c"><p>One</p></li></ul></div>');
+
+testcase('JSON Using functions',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": function(d){return d.text.toUpperCase()}}]},
+	{"items": [{"text": "one"}, {"text": "two"}, {"text": "three"}]},
+	'<div><ul><li class="c"><p>ONE</p></li><li class="c"><p>TWO</p></li><li class="c"><p>THREE</p></li></ul></div>');
+
+testcase('JSON Using functions with counter',
+	$("<div><ul><li class='c'><p></p></li></ul></div>"),
+	{"li": ["items", {"p": function(d, i){return d.text.toUpperCase()+' '+(i+1)}}]},
+	{"items": [{"text": "one"}, {"text": "two"}, {"text": "three"}]},
+	'<div><ul><li class="c"><p>ONE 1</p></li><li class="c"><p>TWO 2</p></li><li class="c"><p>THREE 3</p></li></ul></div>');
+
+testcase('JSON Escape html',
+	$("<div><h2></h2></div>"),
+	{h2: "foo"},
+	{"foo": "<b>bold</b>"},
+	'<div><h2>&lt;b&gt;bold&lt;/b&gt;</h2></div>');
+
+testcase('JSON Just html',
+	$("<div><h2></h2></div>"),
+	{h2: "foo|html"},
+	{"foo": "<b>bold</b>"},
+	'<div><h2><b>bold</b></h2></div>');
+
+testcase('XML Simple list empty',
+	$("<div><h3 class='c'></h3></div>"),
+	{"h3": ["item"]},
+	$("<root></root>"),
+	'<div></div>');
+
+testcase('XML Simple list one item',
+	$("<div><h3 class='c'></h3></div>"),
+	{"h3": ["item"]},
+	$("<root><item>a</item></root>"),
+	'<div><h3 class="c">a</h3></div>');
+
+testcase('XML Simple list three items',
+	$("<div><h3 class='c'></h3></div>"),
+	{"h3": ["item"]},
+	$("<root><item>a</item><item>b</item><item>c</item></root>"),
+	'<div><h3 class="c">a</h3><h3 class="c">b</h3><h3 class="c">c</h3></div>');
+
+testcase('XML Complex list empty',
+	$("<div><div><h3></h3><p></p></div></div>"),
+	{"div": ["item", {"h3": "header", "p": "text"}]},
+	$("<root></root>"),
+	'<div></div>');
+
+testcase('XML Complex list onr item',
+	$("<div><div><h3></h3><p></p></div></div>"),
+	{"div": ["item", {"h3": "header", "p": "text"}]},
+	$("<root><item><header>a</header><text>one</text></item></root>"),
+	'<div><div><h3>a</h3><p>one</p></div></div>');
+
+testcase('XML Complex list three items',
+	$("<div><div><h3></h3><p></p></div></div>"),
+	{"div": ["item", {"h3": "header", "p": "text"}]},
+	$("<root><item><header>a</header><text>one</text></item><item><header>b</header><text>two</text></item><item><header>c</header><text>three</text></item></root>"),
+	'<div><div><h3>a</h3><p>one</p></div><div><h3>b</h3><p>two</p></div><div><h3>c</h3><p>three</p></div></div>');
+
+
+
+</script>
+</head>
+
+<body>
+
+<h1 id="qunit-header">Maskr Unit Tests</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup</div>
+
+
+
+</body>
+</html>

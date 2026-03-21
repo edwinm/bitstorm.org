@@ -1,0 +1,37 @@
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, Sans-serif;
+}
+
+td.Y {
+	background-color: Green;
+}
+td.N {
+	background-color: Red;
+}
+td.B {
+	background-color: Orange;
+}
+td.P {
+	background-color: Yellow;
+}
+td.Q {
+	background-color: Purple;
+}
+td.U {
+	background-color: Silver;
+}
+td.Y, td.N, td.B, td.P, td.Q, td.U {
+	text-align: center;
+}
+tr.title {
+	background-color: Silver;
+}
+table.tablekey {
+	border: 1px solid Silver;
+	margin-bottom: 1em;
+}
+td.tablekey {
+	color: white;
+	font-size: large;
+	padding-left: 1em;
+}

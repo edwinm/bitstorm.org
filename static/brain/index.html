@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>bitstorm.org</title>
+<meta name="keywords" content="dhtml">
+<meta name="description" content="Various interesting web pages.">
+<link title="Main" rel="stylesheet" type="text/css" href="style.css">
+
+<script language="JavaScript" type="text/javascript" src="dhtml.js"></script>
+<script language="JavaScript" type="text/javascript">
+function init() {
+	initObjects( "fontlist", "gameoflife", "gates", "teatricks", "happyjoy", "mali", "edwin" );
+	initObjects( "fontlistText", "gameoflifeText", "gatesText", "teatricksText", "happyjoyText", "maliText", "edwinText" );
+	initObjects( "fontlistImg", "gameoflifeImg", "gatesImg", "teatricksImg", "happyjoyImg", "maliImg", "edwinImg" );
+
+	obj.fontlist.zwerfBounds(	84, 480, 235, 315);
+	obj.gameoflife.zwerfBounds(	84, 480, 235, 315);
+	obj.gates.zwerfBounds(		84, 480, 235, 315);
+	obj.teatricks.zwerfBounds(		84, 480, 235, 315);
+	obj.happyjoy.zwerfBounds(	84, 440, 235, 315);
+	obj.mali.zwerfBounds(		84, 480, 235, 315);
+	obj.edwin.zwerfBounds(		84, 480, 235, 315);
+
+	obj.fontlist.zwerf();
+	obj.gameoflife.zwerf();
+	obj.gates.zwerf();
+	obj.teatricks.zwerf();
+	obj.happyjoy.zwerf();
+	obj.mali.zwerf();
+	obj.edwin.zwerf();
+}
+
+function show(name) {
+	obj[name+"Text"].filterApply(0);
+	obj[name+"Text"].visible();
+	obj[name+"Text"].filterPlay(0);
+
+	obj[name+"Img"].filterApply(0);
+	obj[name+"Img"].visible();
+	obj[name+"Img"].filterPlay(0);
+
+	obj[name].stop();
+}
+
+function hide(name) {
+	obj[name+"Text"].filterApply(0);
+	obj[name+"Text"].hidden();
+	obj[name+"Text"].filterPlay(0);
+
+	obj[name+"Img"].filterApply(0);
+	obj[name+"Img"].hidden();
+	obj[name+"Img"].filterPlay(0);
+
+	obj[name].zwerf();
+}
+function go( obj ) {
+	if ( window.opener ) {
+		window.opener.location = obj.href;
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+
+<body onLoad="init()">
+
+<div id="venster" style="position:absolute;left:50px;top:20px;z-index:1"><img src="venster.png" width="600" height="400" alt="" border="0" galleryimg="no"></div>
+
+<div id="fontlistImg" class="plaatje" style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/fontlist.png" width="123" height="120" alt=""></div>
+<div id="fontlist" style="position: absolute;left:350px;top:120px;z-index:2"><a class="button" href="/fontlist/" onMouseOver="show('fontlist')" onMouseOut="hide('fontlist')" onclick="return go(this)"">FontList</a></div>
+<div class="content" id="fontlistText">
+FontList is a small freeware Windows utility.
+With FontList, you can create a list of all the fonts installed on your computer
+so you can pick the right font in no time.
+</div>
+
+<div id="gameoflifeImg" class="plaatje" style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/gameoflife.png" width="123" height="120" alt=""></div>
+<div id="gameoflife" style="position: absolute;left:370px;top:150px;z-index:2"><a class="button" href="/gameoflife/" onMouseOver="show('gameoflife')" onMouseOut="hide('gameoflife')" onclick="return go(this)">Game of Life</a></div>
+<div class="content" id="gameoflifeText">
+John Conway's Game of Life is not your typical computer game.
+Depending on the initial conditions, cells form various patterns throughout the course of the game.
+</div>
+
+<div id="gatesImg" class="plaatje"      style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/gates.jpg" width="123" height="120" alt=""></div>
+<div id="gates"      style="position: absolute;left:340px;top:180px;z-index:2"><a class="button" href="/gates/" onMouseOver="show('gates')" onMouseOut="hide('gates')" onclick="return go(this)">Pie for Bill</a></div>
+<div class="content" id="gatesText">
+On February 4th, 1998, Bill Gates has been hit with a cream pie in Brussels.
+View the RealVideo or download the MPG movie.
+</div>
+
+<div id="teatricksImg" class="plaatje"     style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/teatricks.png" width="123" height="120" alt=""></div>
+<div id="teatricks"     style="position: absolute;left:390px;top:200px;z-index:2"><a class="button" href="/teatricks/" onMouseOver="show('teatricks')" onMouseOut="hide('teatricks')" onclick="return go(this)">Tea Tricks</a></div>
+<div class="content" id="teatricksText">
+Tea Tricks, a Tetris-clone, is a simple game and yet very addictive.
+Play this little game in a Java applet.
+</div>
+
+<div id="happyjoyImg" class="plaatje"   style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/happyjoy.png" width="123" height="120" alt=""></div>
+<div id="happyjoy"   style="position: absolute;left:370px;top:220px;z-index:2"><a class="button" href="/happyjoy/" onMouseOver="show('happyjoy')" onMouseOut="hide('happyjoy')" onclick="return go(this)">Happy Happy Joy Joy</a></div>
+<div class="content" id="happyjoyText">
+This is a song about being happy! That's right! It's the Happy Happy Joy Joy song!
+For all fans of Ren and Stimpy.
+</div>
+
+<div id="maliImg" class="plaatje"       style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/mali.jpg" width="123" height="120" alt=""></div>
+<div id="mali"       style="position: absolute;left:450px;top:130px;z-index:2"><a class="button" href="/edwin/mali/" onMouseOver="show('mali')" onMouseOut="hide('mali')" onclick="return go(this)">Mali</a></div>
+<div class="content" id="maliText">
+Mali is a democratic, but poor country in West Africa.
+I made some nice photo's during my visit.
+</div>
+
+<div id="edwinImg" class="plaatje"      style="position: absolute;left:138px;top:121px;z-index:2;visibility: hidden"><img src="pix/edwin.jpg" width="123" height="120" alt=""></div>
+<div id="edwin"      style="position: absolute;left:420px;top:170px;z-index:2"><a class="button" href="/edwin/en/" onMouseOver="show('edwin')" onMouseOut="hide('edwin')" onclick="return go(this)">Edwin Martin</a></div>
+<div class="content" id="edwinText">
+The English version of my personal homepage.
+</div>
+
+<noscript>
+<div class="content" id="nojs" style="visibility: visible">
+No JavaScript, no fun.
+</div>
+</noscript>
+
+</body>
+</html>

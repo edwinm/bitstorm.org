@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> - bitstorm.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="Weblog by Edwin Martin">
+    
+    
+    <meta property="og:title" content="">
+    <meta property="og:site_name" content="bitstorm.org">
+    
+    <meta property="og:image" content="https://bitstorm.org/assets/pix/cityscape-og.webp">
+    <meta property="og:image:width" content="1370">
+    <meta property="og:image:height" content="721">
+    
+    <link rel="alternate" type="application/rss+xml" title="bitstorm.org" href="https://bitstorm.org/weblog/rss.xml" />
+
+    <link rel="preload" fetchpriority="high" as="image" href="/assets/pix/cityscape.webp" type="image/webp">
+
+    <link rel="stylesheet" href="/assets/style.css" title="Main style">
+    <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
+    <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
+
+    <link rel="icon" href="/assets/pix/favicon.ico">
+    
+    <script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
+    <script src="/assets/baguetteBox/baguetteBox.js" async></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            baguetteBox.run('[rel=lightbox]');
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <div class="header-side"></div>
+    <div class="header-content">
+        
+        <h1 class="title"><a href="/">bitstorm.org</a></h1>
+        
+        <h2 class="subtitle">Weblog by Edwin Martin about frontend webdevelopment and related topics</h2>
+    </div>
+    <div class="header-side"></div>
+</header>
+
+<main>
+    <h2></h2>
+
+    
+
+    
+    <ul class="images" rel="lightbox"></ul>
+    
+
+    
+<article class="home-article">
+                <time class="date home-date" datetime="2024-04-01T00:00">1 Apr 2024</time>
+
+                <h3 class="links"><a href="/weblog/2024-4/Introducing-BlendBlastCSS.html">Introducing BlendBlastCSS</a></h3>
+
+                <p class="intro">Released today… BlendBlastCSS, the revolutionary new visual CSS color framework.
+Prepare to have your world ROCKED and your screens SIZZLED with the most electrifying CSS color framework to
+ever grace the digital universe!
+Say goodbye to boring old RGB and HEX codes.
+Who knows which colors #d2691e and rgb(153, 50, 204) are? Exactly: nobody!
+We’re taking CSS color to the NEXT LEVEL
+with our mind-bending, eye-popping, jaw-dropping CSS color system: BlendBlastCSS.
+BlendBlastCSS’s color system is s…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2024-03-11T15:00">11 Mar 2024</time>
+
+                <h3 class="links"><a href="/weblog/2024-3/security-for-frontend-webdevelopers.html">Security for frontend webdevelopers</a></h3>
+
+                <p class="intro">Should frontend web developers worry about security?
+A backend developer once told me that as a frontend developer I didn’t have to worry
+about security. All security would be handled on the backend.
+He did have a point. Topics such as injection, path traversal and DDoS attacks take place on the backend.
+If you look at the OWASP Top 10 Web Application Security Risks,
+you only see server side vulnerabilities.
+And also, a browser cannot be trusted. Someone’s computer may have been compromised or …</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2022-12-20T15:24">20 Dec 2022</time>
+
+                <h3 class="links"><a href="/weblog/2022-12/Intl.html">Introduction to Intl, the ECMAScript internationalization API</a></h3>
+
+                <p class="intro">Developers often complain when they have to support time zones or daylight saving time.
+The time they want to show differs by one (or more) hours from the time
+in the data. Sometimes they solve this by adding the difference themselves,
+not knowing that this only made the problem worse and the time after the next
+summer-winter time change is probably incorrect again.
+While the solution is very simple. Always save time as GMT, so without time zone offset and without daylight saving time. You can …</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2022-12-04T16:03">4 Dec 2022</time>
+
+                <h3 class="links"><a href="/weblog/2022-12/Machine-learning-for-frontend-developers.html">How can machine learning help a frontend developer?</a></h3>
+
+                <p class="intro">Machine learning is a subfield of artificial intelligence that focuses on developing algorithms that are able to automatically learn and improve based on data. This technology can help front-end web developers by providing them with powerful tools and techniques to solve complex problems and improve and accelerate their work.
+There are several ways machine learning can help front-end developers. For example, machine learning algorithms can be used to analyze and predict data, which can help opt…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2020-12-29T00:00">29 Dec 2020</time>
+
+                <h3 class="links"><a href="/weblog/2020-12/introduction-to-web-components.html">Introduction to Web Components</a></h3>
+
+                <p class="intro">Web components is a W3C web standard that allows you, simply put, to create your own HTML tags.
+Adding a map to your web page can be as simple as adding this tag:
+&lt;g-map latitude="52.3812258" longitude="4.9001255">&lt;/g-map>
+With web components, you can work in a component-based way without needing a JavaScript framework like Angular, React, or Vue. However, the tag needs to be made available on the page using JavaScript. We’ll come back to this later.
+According to Wikipedia, web components…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2020-08-27T15:24">27 Aug 2020</time>
+
+                <h3 class="links"><a href="/weblog/2020-8/Carbonium_a_lightweight_library_to_manipulate_the_DOM.html">Carbonium, a lightweight library to manipulate the DOM</a></h3>
+
+                <p class="intro">This summer, I’ve been working on updating my Game of Life site. I looked at several JavaScript frameworks, but was not satisfied with the performance of any of them. I could’ve used my own miq lilbrary, but that mimicks the jQuery API too much.
+When you write in native DOM, you probably use document.querySelectorAll(selector) a lot. After a while, you probably write a helper function like this:
+const $ = (selector, dom) => 
+                    Array.from((dom || document).querySelectorAll(sele…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2020-04-25T17:31">25 Apr 2020</time>
+
+                <h3 class="links"><a href="/weblog/2020-4/Practical_CSS_variables.html">Practical CSS variables</a></h3>
+
+                <p class="intro">In HTML and JavaScript, you can easily apply some styling with the style attribute or property. But if you just want to pass a value, like a color, style falls short.
+Fortunately, there is a solution for this, which has now been adopted by all
+modern browsers: CSS Custom Properties for Cascading Variables,
+or CSS variables for short.
+How do CSS variables work?
+Let’s start with an example in CSS:
+:root {
+  --warning-color: orange;
+}
+
+.warning {
+  color: var(--warning-color, red);
+  border: 1px s…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2019-08-18T14:14">18 Aug 2019</time>
+
+                <h3 class="links"><a href="/weblog/2019-8/The_JavaScript_engineer_and_the_front-end_UI_developer.html">The JavaScript engineer and the front-end UI developer</a></h3>
+
+                <p class="intro">Before the year 2000, people who made websites did it all: designing, programming, deployment, SEO et cetera. It didn’t take long to figure out that programmers weren’t great designers and designers weren’t great programmers. Some people where great at both, but they where rare and a statistical coincidence. So the design and programming of websites where assigned to different roles.
+Around 2007 a new role emerged: the front-end developer. For a long time, front-end was thought of as easy, some…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2019-01-19T15:41">19 Jan 2019</time>
+
+                <h3 class="links"><a href="/weblog/2019-1/Prettier_the_Opinionated_Code_Formatter.html">Prettier, the Opinionated Code Formatter</a></h3>
+
+                <p class="intro">With HTML, CSS and JavaScript, it’s not prescribed how to format your code.
+Everything on one line or not, lots of spaces, tabs or everything packed
+together, for the computer it doesn’t really matter.
+The result is that everybody will develop its own style. On itself, that isn’t bad, but when multiple developers with their own styles will work on the
+same code, it will become a bit harder.
+With different styles, the code will become harder to read and changes to the
+style will pollute the vers…</p>
+        </article><article class="home-article">
+                <time class="date home-date" datetime="2017-07-01T16:22">1 Jul 2017</time>
+
+                <h3 class="links"><a href="/weblog/2017-7/testproxy_testing_sites_on_devices_without_configuration.html">testproxy: testing sites on devices without configuration</a></h3>
+
+                <p class="intro">A while ago I was working on several websites in a Vagrant container. The problem was that we couldn’t test the sites on mobile devices. The IP address of the Vagrant box was known inside my computer, but not outside, on other devices. I could use a proxy like Squid, but it was too big, had to be configured and couldn’t be installed with npm, like the other tools. I wrote a simple tool in Node to provide the necessary functionality.
+Now, I have complete rewritten the tool, named it testproxy an…</p>
+        </article>
+
+    
+</main>
+
+<aside class="aside about">
+    <div class="footer-content">
+        <section>
+        
+            <p class="links links-bottom"><a rel="contents" href="/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-home">
+              <use xlink:href="/assets/svg-sprite.svg#svg-home" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-home)"
+      />
+  </svg> Home</a></p>
+        
+
+        
+            <p class="links"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> Blog archive</a></p>
+        
+
+        <h3>About</h3>
+
+        <p class="links-plain">Edwin Martin is a <a href="https://bitstorm.nl/">freelance webdeveloper</a> living in the Netherlands.</p>
+
+        </section>
+
+        <section>
+        <h3>Game of Life</h3>
+
+        <a href="https://playgameoflife.com/lexicon/Gosper_glider_gun"><img src="/assets/pix/Gosper_glider_gun.png" alt="Image of Gosper glider gun" style="aspect-ratio: 3.5"></a>
+
+        <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
+
+        <p class="links links-bottom"><a href="https://playgameoflife.com/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-gameoflife">
+              <use xlink:href="/assets/svg-sprite.svg#svg-gameoflife" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-gameoflife)"
+      />
+  </svg> playgameoflife.com</a></p>
+        </section>
+
+        <section>
+        <h3>Links</h3>
+            <ul class="links">
+                <li><a href="https://github.com/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-github">
+              <use xlink:href="/assets/svg-sprite.svg#svg-github" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-github)"
+      />
+  </svg> edwinm@Github</a></li>
+                <li><a href="https://mastodon.social/@edwin">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-mastodon">
+              <use xlink:href="/assets/svg-sprite.svg#svg-mastodon" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-mastodon)"
+      />
+  </svg> edwin@Mastodon</a></li>
+                <li><a href="https://www.linkedin.com/in/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-linkedin">
+              <use xlink:href="/assets/svg-sprite.svg#svg-linkedin" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-linkedin)"
+      />
+  </svg> edwinm@LinkedIn</a></li>
+                <li><a href="mailto:edwin@bitstorm.org">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-envelope">
+              <use xlink:href="/assets/svg-sprite.svg#svg-envelope" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-envelope)"
+      />
+  </svg> edwin@bitstorm.org</a></li>
+                <li><a href="https://bitstorm.org/weblog/rss.xml">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-rss">
+              <use xlink:href="/assets/svg-sprite.svg#svg-rss" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-rss)"
+      />
+  </svg> RSS feed</a></li>
+            </ul>
+        </section>
+    </div>
+</aside>
+
+<nav class="aside recent">
+    
+    <h3>Featured</h3>
+    
+
+    <ol class="links">
+                <li><a href="/weblog/2022-12/Intl.html">Introduction to Intl, the ECMAScript internationalization API</a></li>
+            
+                <li><a href="/weblog/2020-8/Carbonium_a_lightweight_library_to_manipulate_the_DOM.html">Carbonium, a lightweight library to manipulate the DOM</a></li>
+            
+                <li><a href="/weblog/2020-4/Practical_CSS_variables.html">Practical CSS variables</a></li>
+            
+                <li><a href="/weblog/2019-8/The_JavaScript_engineer_and_the_front-end_UI_developer.html">The JavaScript engineer and the front-end UI developer</a></li>
+            
+                <li><a href="/weblog/2019-1/Prettier_the_Opinionated_Code_Formatter.html">Prettier, the Opinionated Code Formatter</a></li>
+            </ol>
+    
+    <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> More in the archive</a></p>
+    
+</nav>
+
+</body>
+</html>

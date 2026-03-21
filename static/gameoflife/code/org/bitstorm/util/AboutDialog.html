@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head><body>
+
+
+<code>/* This page is part of <a href="http://www.bitstorm.org/gameoflife/code/">the Game of Life source code</a> */<br><br></code><div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">org.bitstorm.util;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.AWTEvent;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Button;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Dialog;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Event;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.FlowLayout;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Frame;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.GridBagConstraints;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.GridBagLayout;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.GridLayout;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Image;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Label;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Panel;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Toolkit;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.event.ActionEvent;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.event.ActionListener;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Shows&nbsp;a&nbsp;constructed&nbsp;About&nbsp;dialog&nbsp;box.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;The&nbsp;dialog&nbsp;box&nbsp;can&nbsp;contain&nbsp;an&nbsp;image&nbsp;and&nbsp;several&nbsp;lines&nbsp;of&nbsp;text.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">AboutDialog&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">Dialog&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Button&nbsp;okButton;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Construct&nbsp;a&nbsp;AboutDialog.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">parent&nbsp;parent&nbsp;Frame</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">title&nbsp;title&nbsp;of&nbsp;dialog</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">imageName&nbsp;image&nbsp;to&nbsp;show</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">posX&nbsp;x-coordinate</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">posY&nbsp;y-coordinate</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">AboutDialog</font><font color="#000000">(&nbsp;</font><font color="#000000">Frame&nbsp;parent,&nbsp;String&nbsp;title,&nbsp;String</font><font color="#000000">[]&nbsp;</font><font color="#000000">lines,&nbsp;String&nbsp;imageName,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">posX,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">posY&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>super</b></font><font color="#000000">(&nbsp;</font><font color="#000000">parent,&nbsp;title,&nbsp;</font><font color="#7f0055"><b>false&nbsp;</b></font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Image&nbsp;image&nbsp;=&nbsp;Toolkit.getDefaultToolkit</font><font color="#000000">()</font><font color="#000000">.getImage</font><font color="#000000">(</font><font color="#7f0055"><b>this</b></font><font color="#000000">.getClass</font><font color="#000000">()</font><font color="#000000">.getResource</font><font color="#000000">(</font><font color="#000000">imageName</font><font color="#000000">))</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ImageComponent&nbsp;ic&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ImageComponent</font><font color="#000000">(&nbsp;</font><font color="#000000">image&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">okButton&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Button</font><font color="#000000">(</font><font color="#2a00ff">&#34;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">okButton.addActionListener</font><font color="#000000">(</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ActionListener</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">actionPerformed</font><font color="#000000">(</font><font color="#000000">ActionEvent&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">close</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GridBagLayout&nbsp;gridbag&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">GridBagLayout</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GridBagConstraints&nbsp;contraints&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">GridBagConstraints</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setLayout</font><font color="#000000">(</font><font color="#000000">gridbag</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Panel&nbsp;buttonPanel&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">buttonPanel.setLayout</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FlowLayout</font><font color="#000000">(&nbsp;</font><font color="#000000">FlowLayout.CENTER&nbsp;</font><font color="#000000">)&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">buttonPanel.add</font><font color="#000000">(&nbsp;</font><font color="#000000">okButton&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Panel&nbsp;textPanel&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Panel</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textPanel.setLayout</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">GridLayout</font><font color="#000000">(&nbsp;</font><font color="#000000">lines.length,&nbsp;</font><font color="#990000">1&nbsp;</font><font color="#000000">)&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i=</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&lt;lines.length;&nbsp;i++</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textPanel.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Label</font><font color="#000000">(</font><font color="#000000">lines</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]))</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.fill&nbsp;=&nbsp;GridBagConstraints.BOTH;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.weightx&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.weighty&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.gridx&nbsp;=&nbsp;GridBagConstraints.REMAINDER;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.gridy&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.anchor&nbsp;=&nbsp;GridBagConstraints.CENTER;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">gridbag.setConstraints</font><font color="#000000">(</font><font color="#000000">ic,&nbsp;contraints</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(&nbsp;</font><font color="#000000">ic&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.fill&nbsp;=&nbsp;GridBagConstraints.NONE;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.weightx&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.weighty&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.gridy&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">gridbag.setConstraints</font><font color="#000000">(</font><font color="#000000">textPanel,&nbsp;contraints</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(&nbsp;</font><font color="#000000">textPanel&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contraints.gridy&nbsp;=&nbsp;</font><font color="#990000">2</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">gridbag.setConstraints</font><font color="#000000">(</font><font color="#000000">buttonPanel,&nbsp;contraints</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">add</font><font color="#000000">(&nbsp;</font><font color="#000000">buttonPanel&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">enableEvents</font><font color="#000000">(</font><font color="#000000">Event.WINDOW_DESTROY</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setResizable</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>false&nbsp;</b></font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setModal</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>true&nbsp;</b></font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">pack</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setLocation</font><font color="#000000">(&nbsp;</font><font color="#000000">posX,&nbsp;posY&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">show</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Close&nbsp;dialog&nbsp;box.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">close</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.hide</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.dispose</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Process&nbsp;close&nbsp;window&nbsp;button.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">java.awt.Component#processEvent(java.awt.AWTEvent)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">processEvent</font><font color="#000000">(&nbsp;</font><font color="#000000">AWTEvent&nbsp;e&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">e.getID</font><font color="#000000">()&nbsp;</font><font color="#000000">==&nbsp;Event.WINDOW_DESTROY&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">close</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#000000">}</font></code>
+
+   </td>
+  <!-- end source code -->
+   </tr>
+
+  <!-- start Java2Html link -->
+   <tr>
+    <td align="right">
+<small>
+<a href="http://www.java2html.de" target="_blank">Java2html</a>
+</small>
+    </td>
+   </tr>
+  <!-- end Java2Html link -->
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+
+</body></html>

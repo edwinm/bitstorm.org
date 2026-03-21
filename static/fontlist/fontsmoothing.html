@@ -1,0 +1,54 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>FontList - Font smoothing</title>
+<meta name="description" content="Describes how to enable font smoothing.">
+<link href="favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" type="text/css" href="fontlist.css">
+</head>
+<body>
+
+<img src="logo.png" width="394" height="100" alt="Logo">
+
+<p class="short">With FontList, you can create a HTML file that will show all installed fonts.</p>
+
+<h2>Font Smoothing</h2>
+
+<script language="JavaScript">
+if (navigator.appName == "Microsoft Internet Explorer") {
+ 	if ( screen.fontSmoothingEnabled )
+		document.write("<b>You already have font smoothing enabled.</b>");
+	else
+		document.write("<p><b>You don't have font smoothing enabled. Read here how to enable font smoothing.</b></p>");
+}
+</script>
+
+<p>Without font smoothing, large fonts like headings on a web page will look jagged or choppy.
+With Windows, you can easily make things better.</p>
+
+<h4>Open the Display Properties Control Panel</h4>
+
+<p>Font smoothing can be accessed from the Display Properties Control Panel.
+To open the Display Properties Control Panel, right-click on the desktop, then select Properties.</p>
+
+<script language="JavaScript">
+if (navigator.userAgent.indexOf("win95") != -1 || navigator.userAgent.indexOf("Windows 95") != -1)
+	document.write("<h4>Font Smoothing on Windows 95</h4><p>Windows 95 users (without the Plus! pack) have to download a little utility before font smoothing can be enabled. <a href='http://www.microsoft.com/typography/grayscal/smoother.htm'>This page from Microsoft</a> explains everything.</p>")
+else {
+	if (navigator.userAgent.indexOf("NT 5.") == -1 && (navigator.userAgent.indexOf("winNT") != -1 || navigator.userAgent.indexOf("Windows NT") != -1))
+		document.write("<h4>Font Smoothing on NT 4</h4><p>Select the Plus!-tab on the Display Properties Control Panel. Then select the 'Smooth edges of screen fonts' box to turn font smoothing on.</p>")
+	if (navigator.userAgent.indexOf("NT 5.1") != -1)
+		document.write("<h4>Font Smoothing on Windows XP</h4><p>Select the Appearance-tab on the Display Properties Control Panel. Click the Effects-button. Then select the 'Smooth edges of screen fonts' box to turn font smoothing on.</p>")
+	else
+		document.write("<h4>Font Smoothing on Windows 98, Me and 2000</h4><p>Select the Effects-tab on the Display Properties Control Panel. Then select the 'Smooth edges of screen fonts' box to turn font smoothing on.</p><img src='display-properties.png' width='412' height='461'>")
+}
+</script>
+
+<p><a href="./">Back to the FontList homepage</a>.
+
+
+<p>Edwin Martin &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;</p>
+
+
+</body>
+</html>

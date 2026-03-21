@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head><body>
+
+
+<code>/* This page is part of <a href="http://www.bitstorm.org/gameoflife/code/">the Game of Life source code</a> */<br><br></code><div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">/*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Easy&nbsp;text&nbsp;file&nbsp;operations</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;2003,&nbsp;2004&nbsp;Edwin&nbsp;Martin&nbsp;&lt;edwin@bitstorm.org&gt;</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br/>
+
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">org.bitstorm.util;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.FileDialog;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Frame;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.FileInputStream;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.FileNotFoundException;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.FileOutputStream;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.IOException;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.InputStream;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.io.OutputStream;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.net.URL;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Class&nbsp;for&nbsp;easy&nbsp;text&nbsp;file&nbsp;read&nbsp;and&nbsp;write&nbsp;operations.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">EasyFile&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;filepath;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;filename;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">InputStream&nbsp;textFileReader;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">OutputStream&nbsp;textFileWriter;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">bufferLength=</font><font color="#990000">1024</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Frame&nbsp;parent;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;title;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;fileExtension;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Constructs&nbsp;a&nbsp;EasyFile.&nbsp;Open&nbsp;file&nbsp;by&nbsp;filename.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">filepath&nbsp;path&nbsp;of&nbsp;file</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@throws&nbsp;</font><font color="#3f5fbf">FileNotFoundException</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">EasyFile</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;filepath&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.filepath&nbsp;=&nbsp;filepath;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileReader&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileExtension&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Constructs&nbsp;a&nbsp;EasyFile.&nbsp;Open&nbsp;file&nbsp;by&nbsp;url.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">url&nbsp;url&nbsp;of&nbsp;file</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@throws&nbsp;</font><font color="#3f5fbf">FileNotFoundException</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">EasyFile</font><font color="#000000">(&nbsp;</font><font color="#000000">URL&nbsp;url&nbsp;</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>throws&nbsp;</b></font><font color="#000000">IOException&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.filepath&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileExtension&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileReader&nbsp;=&nbsp;url.openStream</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Constructs&nbsp;a&nbsp;EasyFile.&nbsp;Open&nbsp;file&nbsp;with&nbsp;file&nbsp;selector.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">parent&nbsp;parent&nbsp;frame</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">title&nbsp;title&nbsp;of&nbsp;fileselector</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@throws&nbsp;</font><font color="#3f5fbf">FileNotFoundException</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">EasyFile</font><font color="#000000">(&nbsp;</font><font color="#000000">Frame&nbsp;parent,&nbsp;String&nbsp;title&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.parent&nbsp;=&nbsp;parent;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.title&nbsp;=&nbsp;title;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileReader&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileExtension&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Constructs&nbsp;a&nbsp;EasyFile.&nbsp;Read&nbsp;file&nbsp;from&nbsp;stream.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">textFileReader&nbsp;stream&nbsp;to&nbsp;read&nbsp;from</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">EasyFile</font><font color="#000000">(&nbsp;</font><font color="#000000">InputStream&nbsp;textFileReader&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.textFileReader&nbsp;=&nbsp;textFileReader;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filepath&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileExtension&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Constructs&nbsp;a&nbsp;EasyFile.&nbsp;Write&nbsp;file&nbsp;to&nbsp;stream.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">textFileWriter&nbsp;stream&nbsp;to&nbsp;write&nbsp;to</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">EasyFile</font><font color="#000000">(&nbsp;</font><font color="#000000">OutputStream&nbsp;textFileWriter&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.textFileWriter&nbsp;=&nbsp;textFileWriter;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileReader&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filepath&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileExtension&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Reads&nbsp;a&nbsp;text&nbsp;file&nbsp;into&nbsp;a&nbsp;string.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">contents&nbsp;of&nbsp;file</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;readText</font><font color="#000000">()&nbsp;</font><font color="#7f0055"><b>throws&nbsp;</b></font><font color="#000000">IOException&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">bytesRead;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">textFileReader&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">filepath&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">FileDialog&nbsp;filedialog&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FileDialog</font><font color="#000000">(&nbsp;</font><font color="#000000">parent,&nbsp;title,&nbsp;FileDialog.LOAD&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filedialog.setFile</font><font color="#000000">(&nbsp;</font><font color="#000000">filename&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filedialog.show</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">filedialog.getFile</font><font color="#000000">()&nbsp;</font><font color="#000000">!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filename&nbsp;=&nbsp;filedialog.getFile</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filepath&nbsp;=&nbsp;filedialog.getDirectory</font><font color="#000000">()</font><font color="#000000">+filename;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else</b></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#2a00ff">&#34;&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileReader&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FileInputStream</font><font color="#000000">(&nbsp;</font><font color="#000000">filepath&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">StringBuffer&nbsp;text&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">StringBuffer</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>byte</b></font><font color="#000000">[]&nbsp;</font><font color="#000000">buffer&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#7f0055"><b>byte</b></font><font color="#000000">[</font><font color="#000000">bufferLength</font><font color="#000000">]</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;(&nbsp;</font><font color="#000000">bytesRead&nbsp;=&nbsp;textFileReader.read</font><font color="#000000">(&nbsp;</font><font color="#000000">buffer,&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;bufferLength&nbsp;</font><font color="#000000">)&nbsp;)&nbsp;</font><font color="#000000">!=&nbsp;-</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">text.append</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">String</font><font color="#000000">(&nbsp;</font><font color="#000000">buffer,&nbsp;</font><font color="#990000">0</font><font color="#000000">,&nbsp;bytesRead&nbsp;</font><font color="#000000">)&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>finally&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileReader.close</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">text.toString</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Writes&nbsp;a&nbsp;string&nbsp;to&nbsp;a&nbsp;text&nbsp;file.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">text&nbsp;text&nbsp;to&nbsp;write</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">writeText</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;text&nbsp;</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>throws&nbsp;</b></font><font color="#000000">IOException&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">textFileWriter&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">filepath&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">FileDialog&nbsp;filedialog&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FileDialog</font><font color="#000000">(&nbsp;</font><font color="#000000">parent,&nbsp;title,&nbsp;FileDialog.SAVE&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filedialog.setFile</font><font color="#000000">(&nbsp;</font><font color="#000000">filename&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filedialog.show</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">filedialog.getFile</font><font color="#000000">()&nbsp;</font><font color="#000000">!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filename&nbsp;=&nbsp;filedialog.getFile</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filepath&nbsp;=&nbsp;filedialog.getDirectory</font><font color="#000000">()</font><font color="#000000">+filename;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">fileExtension&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">&amp;&amp;&nbsp;filepath.indexOf</font><font color="#000000">(</font><font color="#990000">'.'</font><font color="#000000">)&nbsp;</font><font color="#000000">==&nbsp;-</font><font color="#990000">1&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filepath&nbsp;=&nbsp;filepath+fileExtension;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else</b></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">FileOutputStream</font><font color="#000000">(&nbsp;</font><font color="#000000">filepath&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter.write</font><font color="#000000">(&nbsp;</font><font color="#000000">text.getBytes</font><font color="#000000">()&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>finally&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">textFileWriter.close</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Sets&nbsp;filename&nbsp;to&nbsp;use</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">s&nbsp;filename</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setFileName</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;s&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filename&nbsp;=&nbsp;s;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Gets&nbsp;filename</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">filename</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;getFileName</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">filename&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">?&nbsp;filepath&nbsp;:&nbsp;filename;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Sets&nbsp;file&nbsp;extension&nbsp;to&nbsp;use</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">s&nbsp;filename</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setFileExtension</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;s&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileExtension&nbsp;=&nbsp;s;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#000000">}</font></code>
+
+   </td>
+  <!-- end source code -->
+   </tr>
+
+  <!-- start Java2Html link -->
+   <tr>
+    <td align="right">
+<small>
+<a href="http://www.java2html.de" target="_blank">Java2html</a>
+</small>
+    </td>
+   </tr>
+  <!-- end Java2Html link -->
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+
+</body></html>

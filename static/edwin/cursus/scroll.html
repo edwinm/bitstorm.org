@@ -1,0 +1,484 @@
+<html>
+<head>
+<title>DHTML - scroll</title>
+<!-- Copyright 2002 Edwin Martin edwin@bitstorm.org -->
+<style type="text/css">
+#content {
+	position: absolute;
+	top: 20px;
+	left: 100px;
+	width: 300px;
+	clip: rect(0px 300px 200px 0px);
+	padding: 3px;
+}
+#achtergrond {
+	position: absolute;
+	top: 12px;
+	left: 96px;
+	width: 330px;
+	height: 212px;
+	background-color: silver;
+	border: 3px solid slategray;
+}
+#buttons {
+	position: absolute;
+	top: 20px;
+	left: 405px;
+	background-color: lightgrey;
+	padding: 2px;
+}
+A {
+	text-decoration: none;
+	text-weight: bold;
+	color: black;
+}
+A:hover {
+	color: orange;
+}
+</style>
+<script language="JavaScript">
+var dy;
+var pos=20;
+var klokje=null;
+
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function clip( layer, top, right, bottom, left ) {
+	if( document.getElementById || document.all ) {
+		getStyle( layer ).clip='rect('+top+' '+right+' '+bottom+' '+left+')'
+	} else {
+		document[layer].clip.top = top
+		document[layer].clip.left = left
+		document[layer].clip.bottom = bottom
+		document[layer].clip.right = right
+	}
+}
+function scroll() {
+	if ( pos+dy <= 20 ) {
+		pos += dy;
+		getStyle('content').top = pos;
+		clip('content', 20-pos, 300, 220-pos, 0);
+		klokje = setTimeout( 'scroll()', 40 );
+	}
+}
+function stop() {
+	clearTimeout( klokje );
+}
+</script>
+
+</head>
+<body>
+
+<div id="achtergrond">
+<spacer type="vertical" size="212">
+</div>
+
+<div id="buttons">
+<a href="" onclick="return false" onmouseover="dy= 2;scroll()" onmouseout="stop()">/\</a><br>
+<a href="" onclick="return false" onmouseover="dy=-2;scroll()" onmouseout="stop()">\/</a></div>
+
+
+<div id="content">
+
+<h4>De Slaper in het Voorhout, de Vorst van éénen dag of de Vroolijke
+Willem</h4>
+
+<i>Josef Cohen, 1886</i>
+
+<p>In den tijd, dat Filips de Goede, hertog van Bourgondië, graaf van
+Vlaanderen, van Holland, Zeeland en Friesland, Den Haag bezocht,
+om er met zijn gemalin, de vrome Isabella van Portugal den eed van
+getrouwheid te ontvangen, woonde er in de Korte Poten een vroolijke
+schoenlapper, genaamd Willem van Nieuwen, die meende zich ter eere van
+zijn soeverein te moeten bedrinken. Hij had een paar guldens bespaard,
+en binnen korten tijd had hij de gezondheid van den goeden Filips
+zoo dikwijls aangeroepen, dat hij er zelf zijn gezonde gedachten mede
+verloor. Hij wilde naar zijn woning, doch in het Voorhout weigerden
+zijn beenen hun plicht	--  en hij viel neer als een blok. Nog luider
+snurkte hij dan zijn gewoonte was.</p>
+
+<p>In dienzelfden nacht verliet  --  nadat de klapwaker middernacht
+had geroepen  --  Filips de Goede het Binnenhof en, den moestuin
+van het paleis doorgaande, ging hij linksaf het Tournooiveld op en
+kwam in het Voorhout. Hij had drie edellieden bij zich, die met name
+worden genoemd: Jacob de Roussay, Hue de Lannoy en jan de Berghes,
+grappenmakers, zooals Den Haag ze sinds dien nooit meer heeft gekend,
+waardige kornuiten van den goeden Filips. Ze trokken Willem aan zijn
+been, en Jacob de Roussay zeide met een kennersblik:</p>
+
+<p>"Hij heeft te veel bier en brandewijn."</p>
+
+<p>Jan de Berghes riep uit:</p>
+
+<p>"Bij den Hollandschen leeuw! die slapende man is de vroolijke Willem,
+die voorzeker de gezondheid Uwer Hoogheid vandaag gedronken heeft."</p>
+
+<p>"Wij hebben deernis met het ontwaken van dezen man," aldus peinsde
+Filips, "en wijl hij de vroolijkheid mint, zullen wij hem morgen met
+een onverwachtsch feest verrassen. Daardoor zal hij tegelijk ook ons
+vroolijk stemmen. Neemt den man op uwen rug, heer de Berghes, heer
+de Lannoy, en draagt hem naar ons paleis. Het wordt morgen een dag,
+die ons zal heugen."</p>
+
+<p>Op zijn bevel trok men Willem de kleeren uit, men waschte hem met
+reukwater, en trok hem een fijn Haarlemsch-linnen hemd aan. Een zijden
+muts zette men hem los op zijn verwilderd haar, en daarna legde men
+hem in het eigen bed van den hertog.</p>
+
+<p>De schoenlapper snurkte.</p>
+
+<p>En terwijl hij sliep, fluisterden de hovelingen het elkander toe:</p>
+
+<p>"Filips wil, dat de vroolijke Willem zich voor den graaf van Holland
+zal houden."</p>
+
+<p>Met ongeduld wachtte men den morgen.</p>
+
+<p>Terwijl lach en gefluister in den nacht niet ophielden, sliep de
+schoenlapper den slaap der rechtvaardigen en der dronkaards, in het
+bed van den hertog, gelijk hij had geslapen in de koele nachtlucht,
+gelijk hij zou hebben geslapen in een varkenskot. Hij sliep, als had
+hij dagen lang gewaakt, en onafgebroken trompette zijn snurken in
+het hertogelijk vertrek, zoodat 't door 't gansche paleis te hooren
+was. 't Geheele hof verzamelde zich in den morgen om zijn legerstede
+... een heir met kletterende wapens had hem niet kunnen wekken,
+laat staan wat jonge edellieden, hofdames, kameniers, pages .... 't
+Zonlicht streelde hem over 't gelaat, de geluiden van den dag drongen
+naar binnen  --  hij snurkte slechts.</p>
+
+<p>Eindelijk naderde de maarschalk van Bourgondië in groot kostuum hem,
+en raakte hem even den schouder aan.</p>
+
+<p>"Heer Graaf," zeide hij, "het uur van Uwer Hoogheids ontwaken is ook
+thans gekomen."</p>
+
+<p>Om deze plechtige woorden bekommerde zich de slapende niet.</p>
+
+<p>Een page sloeg hem tegen de hand. Een jong edelman:</p>
+
+<p>stampte met zwaren voet op den grond.</p>
+
+<p>De maarschalk in eigen persoon schudde hem.</p>
+
+<p>Willem ontwaakte, richtte zich op, en zag verdwaasd om zich heen.</p>
+
+<p>Liefelijke muziek was er, zoodra zijn gesnurk ophield. Hij, die gewoon
+was aan het gekijf zijner vrouw, hoorde nu het zachte tokkelen van
+snarenspel, en een stem, zoo vol en schoon als hij nog nimmer had
+gehoord, zong  --  Toen werd het stil.</p>
+
+<p>Willem zag van den een naar den ander, doch allen behielden hun ernstig
+wezen. Hij lachte. "Ik droom zeker. Ja, ik heb te veel gedronken."</p>
+
+<p>"Heer graaf," sprak de maarschalk van Bourgondië, "dit is het uur,
+waarop Uwe Hoogheid opstaat."</p>
+
+<p>"Heer graaf  --  zoo heeft nog niemand tegen een
+schoenlappergesproken. Die droom moest maar altijd voortduren."</p>
+
+<p>Hij betastte de zijden gordijnen, die om zijn bed hingen, het rijk
+geborduurde kamizool, waarmede hij was gekleed, de fijne lakens,
+die hem dekten, het vorstelijk hemd. Hij nam de muts en bekeek ze
+van onder tot boven. Hij rook aan zijn handen, en schudde zijn hoofd.</p>
+
+<p>"Heer graaf? Ik ruik er wel naar."</p>
+
+<p>"De maarschalk van Bourgondië vroeg met ernstig-verwijtende stem:</p>
+
+<p>"Herkent gij ons niet? Heeft Uwe Hoogheid soms niet geslapen, dat
+haar geest beneveld is. Ik ben haar maarschalk van Bourgondië."</p>
+
+<p>Één voor één gingen ze langs zijn bed, en noemden hunne titels.</p>
+
+<p>"Ik ben Uw zegelbewaarder."</p>
+
+<p>"Ik ben Uw opperschenker."</p>
+
+<p>"Ik Uw broodmeester."</p>
+
+<p>"Ik een hofjonker."</p>
+
+<p>"Ik de bevelhebber Uwer wacht."</p>
+
+<p>"Ik de gouverneur van Uw paleis."</p>
+
+<p>Toen naderde hem de schoone Isabella van Portugal, en liefelijk
+zeide zij:</p>
+
+<p>"Wij zijn Uw vorstelijke gade."</p>
+
+<p>"Mijn vrouw," riep de vroolijke Willem. "Wilt gij beweren, dat ge
+mijn vrouw zijt? Al 't andere moge waar zijn, ja, ik geloof, dat ik de
+graaf van Holland ben, maar mijn vrouw zijt ge niet. Mijn vrouw heeft
+zooveel wratten op haar gezicht, als ik gisteren glazen heb geledigd,
+en dat is heel wat, en mijn vrouw heeft een stem, om den Duivel te
+verjagen. Haar oogen zijn zoo groen als gras, en de kleur van haar
+huid is zoo geel als een blad in den herfst. Mijn vrouw heeft een
+middel als een groote ton bier. Neen, nu gij zegt, dat ge mijn vrouw
+zijt, weet ik, dat ik droom en met verlof van deze edele ridders zal
+ik weer gaan slapen."</p>
+
+<p>Zoet antwoordde hem de heerlijke vrouw:</p>
+
+<p>"Ge zijt de graaf van Holland, en wij zijn Uw getrouwe echtgenoote,
+die uit liefde voor U zou willen sterven  -- "</p>
+
+<p>"Sterven?" riep de schoenlapper wanhopig. "Zoo waar ik Willem van
+Nieuwen ben en in de Korte Poten woon...."</p>
+
+<p>"De heer graaf wil ons bedroeven."</p>
+
+<p>"Dus ben ik de zeer dappere, zeer machtige, zeer edele Filips,
+hertog van Lotharingen en Bourgondië, graaf van Holland en Zeeland,
+van Vlaanderen en Henegouwen, Heer van Friesland  -- "</p>
+
+<p>"Zijne Hoogheid weet wel, wie zij is. Zijne Hoogheid wil zich ten
+koste van ons vermaken."</p>
+
+<p>"Zoo gij 't zegt, ben ik de graaf van Holland. En toch had ik bij
+alle Heiligen willen zweren, dat ik de schoenlapper uit de Korte
+Poten ben. Ge weet wel ... Willem van Nieuwen. Zoo er iemand uit dit
+doorluchtig gezelschap iets te repareeren heeft  -- "</p>
+
+<p>"Kom  --  wij zullen ons thans verwijderen, behalve de opzichter Uwer
+garderobe, opdat Uwe Hoogheid zich kan kleeden	-- "</p>
+
+<p>Weder was er zachte muziek, van een blijde melodie, zingende van de
+lente, zingende van geluk. Het lied van den glimlach, of de wereld
+zonder zorgen ware, rimpelloos gelijk een Meiedag.</p>
+
+<p>"Vandaag moet Uwe Hoogheid haar beste kleederen aantrekken,"
+sprak de opzichter der garderobe, en hij reikte hem de roode
+schoenen met gespen, de granaten kousebanden, de groen fluweelen
+met goud geborduurde broek, den satijnen overrok, den bruinzijden
+vlet. zilver geborduurden gordel, de zwarte muts met purperen
+kleppen, den hermelijnen mantel, alles neerliggende op een kostbaar
+kussen. Eerbiedig boog zich de dienaar, om zijn vorst te kleeden.</p>
+
+<p>"Stil! stil!" riep Willem uit, "dat speel ik zelf wel klaar."</p>
+
+<p>"Dat zou tegen de gewoonte van Uwe Hoogheid zijn."</p>
+
+<p>Toen hij gekleed was, geleidde men hem naar de eetzaal, waar hem zijn
+gade reeds wachtte.</p>
+
+<p>"O! onze held, hoe hebben wij naar u verlangd," zeide ze
+zachtkens. "Zijt ge verlost van uw kwaden droom, dat ge slechts een
+arme schoenlapper zijt?"</p>
+
+<p>Willem bekeek zijn kleederen, en peinzend bleef eindelijk zijn blik
+op zijn roode schoenen rusten.</p>
+
+<p>"Kijk eens, geliefde echtgenoote  --  wat die broek of die kousebanden
+van me waard zijn, weet ik niet, doch zulke schoenen als ik, heeft
+alleen maar de graaf van Holland, en daarom moet ik wel gelooven,
+dat ik ben, wat ge zegt, hoewel ik me ook niet kan verklaren, hoe een
+graaf van Holland zooveel verstand van schoenen heeft." Hij krabde
+zich 't hoofd. "En ziet ge, alles zou ik nog wel aannemen, maar de
+vrouw van den vroolijken Willem met haar wratten en haar schelle stem,
+zit me in den weg  -- "</p>
+
+<p>"Spreek, edele heer, niet van een andere vrouw in onze
+tegenwoordigheid. Wij hebben U lief, en liefde is ijverzucht."</p>
+
+<p>"IJverzuchtig behoeft ge op de vrouw van den schoenlapper van Nieuwen
+niet te zijn." Hij zuchtte. "Wij gelooven u, onze gemalin. Wij zijn
+de graaf van Holland! Wij zijn de graaf van Holland! Het overige is
+een kwade droom."</p>
+
+<p>Zijn oogen schitterden.</p>
+
+<p>"Vertel ons, gemalin, wat doet de graaf van Holland den heelen dag?"</p>
+
+<p>"Weet ge dat dan niet?" berispte ze hem. "Eerst behoort ge ter kerke
+te gaan, en na den noen moet ge rechtspreken."</p>
+
+<p>"En dan?"</p>
+
+<p>"Dan zet gij U met Uw edellieden tezamen, en zoo ge wilt, komen wij
+bij U en schenken U den wijn."</p>
+
+<p>"Wijn? Daarin zullen wij ons sterk betoonen, dat verzekeren wij u."</p>
+
+<p>Omringd door zijne hovelingen trok hij ter kerke. Omringd door zijne
+hovelingen wendde hij zich naar de zaal, om recht te. spreken. Men
+wees hem den troon. Bevallig wierp hij zijn hermelijnen mantel over
+den arm, en plechtig wachtte hij de dingen, die zouden komen.</p>
+
+<p>Een jonge man trad binnen en bleef aarzelend voor den zetel staan.</p>
+
+<p>"Wat wilt gij?" vroeg hem Willem.</p>
+
+<p>"Recht."</p>
+
+<p>"Dat beloven wij u. Spreek vrindje  -- "</p>
+
+<p>De klager, die niemand minder was dan de echte graaf, boog zich
+terneder.</p>
+
+<p>"Wij hebben lang genoeg gewacht  --  Zeg eindelijk, wat gij verlangt</p>
+
+<p>"Mijn schoonvader houdt een herberg aan de Korte Poten, Uwe
+Hoogheid. Één zijner klanten is een liederlijke guit, een dronkaard,
+Willem van Nieuwen., die zijn beroep slecht verstaat  -- "</p>
+
+<p>"Halt!" viel hem de rechter in de rede. "Dat is een leugen, want er
+is geen betere schoenmaker in de stad dan Willem van Nieuwen, en het
+is daarom ook, dat wij u als onzen vorstelijken wil te kennen geven,
+om slechts bij dien schoenmaker te koopen."</p>
+
+<p>Een oogenblik was het stilte. De lach kriebelde de hovelingen in de
+keel, doch allen wisten hun vroolijkheid tot daartoe in te houden.</p>
+
+<p>De graaf zette zijn verhoor voort:</p>
+
+<p>"Vertel ons, wat uw vader voor klacht heeft tegen den vroolijken
+Willem. Doch wees in uw woorden voorzichtig! Wij kennen den man
+nauwkeurig."</p>
+
+<p>"Mijn vader heeft den onwaardigen schelm  -- "</p>
+
+<p>"Beleedig den man niet! Wees op uw hoede."</p>
+
+<p>"Hij heeft hem steeds op goed vertrouwen geschonken, doch nimmer
+eenen duit van hem ontvangen. Thans is Willem hem elf gulden schuldig,
+welke hij weigert te betalen. Heer graaf! brengt gij den man tot rede."</p>
+
+<p>"Wij weten van het geval, en we weten, wie uw schoonvader is. Het is
+de waard met de hazenlip en met den geknapten neus, dien hij in een
+vechtpartij heeft gekregen. Hij is zoo scheel, dat hij alles dubbel
+ziet, behalve de glazen, waarin hij schenkt, want die geeft hij maar
+voor de helft, en het is meer schuim dan bier, dat hij daarbij nog
+geeft. Wanneer Willem van Nieuwen hem meer dan vijf gulden schuldig
+is, laten wij ons hangen. Daar wij echter een genadig vorst zijn  --
+" hierbij stond hij op	-- "zullen wij ditmaal genade voor recht
+doen gelden, en daar Willem een vroolijk kompaan is, dien wij een
+toegenegen hart toedragen, bevelen wij onzen rentmeester den klager
+elf gulden uit te betalen.'</p>
+
+<p>Dit geschiedde:</p>
+
+<p>De rentmeester telde den jongen man elf gulden uit.</p>
+
+<p>Willem oogde hem na, tot hij de zaal had verlaten: Toen riep hij uit:</p>
+
+<p>"Een onbeschaamd gezel. Het is jammer, dat wij hem niet hebben
+gevraagd, waar hij woont, want wij voelen lust, om hem eens te
+gelegener tijd af te rossen. Dat is voorbij. Is er nog een geding
+te beslissen?"</p>
+
+<p>"Uwe Hoogheid is zeker vermoeid van dit rechtsgeding," zoo sprak de
+maarschalk van Bourgondië, "en ik raad Uwe Hoogheid aan, een frisschen
+dronk te nemen, opdat de gedachten van Uwe Hoogheid kunnen rusten."</p>
+
+<p>"Hiertegen hebben wij niets in te brengen," schaterde de
+schoenlapper. "Haal ons den lekkersten wijn, dien ge in den kelder
+hebt, en voorwaar! nu zullen wij u laten zien, dat niemand den graaf
+van Holland in het drinken evenaart." `</p>
+
+<p>"Zeg dat niet te spoedig, heer graaf!" zoo zeide hem jan de Berghes,
+"want voorzeker! ik heb reeds alle edellieden van Brabant in dat
+tournooi doen sneven."</p>
+
+<p>"De wedstrijd worde onmiddellijk aangegaan! Edele gemalin, reik ons
+de bekers."</p>
+
+<p>Niet zag de schoenmaker, dat zij jan de Berghes' roemer slechts voor
+de helft, zijn eigen beker daarentegen telkens vol schonk. Hij dronk
+in een teug, en hij glimlachte, toen jan de Berghes drie malen over
+zijn deel deed.</p>
+
+<p>"Beken het ons maar," schreeuwde hij, "dat ge niet tegen ons kunt
+overwinnen."</p>
+
+<p>"Het einde zal het leeren."</p>
+
+<p>Ze deden elkander bescheid. Weder ledigde Willem den beker in éénen
+teug, jan de Berghes in drie.</p>
+
+<p>"Hahaha! ge zijt voorzichtig ... ge ziet, dat ge met een vermaard'
+drinker hebt aangebonden, en daarom vreezen wij voor u.</p>
+
+<p>"Het zal anders komen dan ge denkt," hitste jan.</p>
+
+<p>De schoone Isabella lachte.</p>
+
+<p>"Ons dunkt, dat onze gemaal zal winnen."</p>
+
+<p>Met schorre stem antwoordde Willem:</p>
+
+<p>,,Bijlo! dat zijn goede woorden. Als de heer van Berghes tegen den
+grond ligt, zullen wij er u met een kus mede beloonen."</p>
+
+<p>Onafgewend bleef ze hem aanzien, terwijl ze hem den boordevollen
+beker reikte.</p>
+
+<p>"Doe thans ons met eenen teug bescheid," zoo smeekte ze.</p>
+
+<p>En weder dronk hij.</p>
+
+<p>Toen de avond kwam, viel de vroolijke Willem als een overwonnene ter
+aarde, en hij snurkte, of hij de dooden moest wekken. Haastig kleedde
+men hem in zijn oude lompen. Hij bemerkte het niet, dat weder de heeren
+de Berghes en de Lannoy hem op de sterke schouderen droegen, thans om
+hem 't paleis uit te voeren. Zonder hem te schommelen, brachten. ze
+hem naar het Voorhout, en legden hem daar ter plaatse, waar hij den
+vorigen avond gezonken was. Onhoorbaar verwijderden zij zich.</p>
+
+<p>Willem snurkte.</p>
+
+<p>Wat deerde 't hem, dat zijn kussen de aarde was, en zijn deken de
+koude nachtlucht? Hij was in een wereld van gelukzaligheid, waarin
+het leven een droom is. De echo van een blijde melodie was er in zijn
+sprookjesachtig bewustzijn en nooit had hij in den zonderlingen waan,
+die zijn slaap begeleidde, kunnen denken, dat hij de vroolijke Willem
+was, snurkend onder den blooten hemel. Ach neen! hij was de graaf
+van Holland, de schoone Isabella was zijn gemalin.</p>
+
+<p>De wreede dag brak aan. 't Eerste roerlooze licht van den morgen
+schemerde bleekwit langs de takken der boomen, en alle hanen van
+'s Gravenhage kraaiden elkander tegemoet. Nog weifelde de zonnegloed
+boven de vage schemering, die de dag troebelde door den nacht. Het
+geheim van het duister was steeds nog in het Haagsche Voorhout, de
+zware boomen wilden den nacht behouden, doch daar in een onbewaakt
+oogenblik was 't het eerste zonnestraaltje, dat over 't mos schoot,
+en vol-uit volgde een bundel van rooden glans. Blijde begonnen ineens
+alle vogelen te zingen. Voor de huizen der 's Gravenhaagsche burgers
+kakelden de kippen, knorden de zwijnen. Smeden en timmerlieden
+hervatten 't ambacht .... En langzamerhand begonnen ook de mieren
+in het Voorhout haar dagelijksche taak. Haar drommen stieten tegen
+'t lichaam van den snurkenden schoenlapper. Ze beten.</p>
+
+<p>Wee! zijn ontwaken.</p>
+
+<p>Hij richtte zich op, keek om zich heen, wreef zich in de oogen, en
+greep toen naar zijn beenen en lendenen, waar de verontruste mieren
+haar ergernis toonden. Hij sprong op, bekeek zijn ellendige plunje,
+en krabde zich 't hoofd. Hij zeide niets. Hij zette alleen maar zijn
+mond wijd open, en bleef onbeweeglijk staan.</p>
+
+<p>Toen zuchtte hij, en langzaam ging hij naar zijn huis.</p>
+
+<p>Niet de schoone Isabella van Portugal, maar zijn vrouw met de wratten
+wachtte hem. Hare handen waren niet zacht. Ze voerden den bezemsteel,
+en ze hanteerden dien danig tegen den armen schelm, die niets van
+zijn vroolijkheid had behouden. Hij zette zich aan zijn werk. Zijn
+muren waren met oude schoenen behangen. Zijn vloer was van aarde,
+en er waren geen kleeden op. Ook was er geen zachte muziek in zijn
+woning	--  en terwijl de schelle stem zijner vrouw hem honende trilde
+in zijn verdoofde ooren, mompelde hij:</p>
+
+<p>"'t Was alles maar een droom. Ik had 't wel kunnen denken  --
+'t was maar een droom."</p>
+
+</div>
+
+</body>
+</html>

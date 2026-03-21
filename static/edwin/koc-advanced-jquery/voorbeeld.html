@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Voorbeeld</title>
+		<style>
+			body {
+				font-family: arial, helvetica, sans-serif;
+			}
+			input.ok {
+				background-color: lightgreen;
+			}
+			
+		</style>
+		<script language="javascript" type="text/javascript" src="jquery.min.js"></script>
+		<script>
+$(function() {
+	$('input.url').validate();
+	$('#meer').moreInput();
+	
+});
+
+/** 
+* More Input.
+* @alias jQuery.prototype.moreInput
+* @return {jQuery}
+*/
+jQuery.fn.moreInput = function() {
+	return this.each(function(){
+		$(this).click(function() {
+			var input = $("<p>url: <input class='url'></p>");
+			$(this).before(input);
+			input.hide().slideDown(function(){input.focus()});
+		})
+	});
+};
+/** 
+* validate
+* @alias jQuery.prototype.validate
+* @return {jQuery}
+*/
+jQuery.fn.validate = function() {
+		console.log(this);
+	return this.each(function(){
+		console.log(this);
+		$(this).bind('keypress', function() {
+			if ($(this).val() == '')
+				$(this).removeClass('ok');
+			else
+				$(this).addClass('ok');
+		})
+	});
+};
+		</script>
+	</head>
+	<body>
+		<form id="mijnForm">
+			<p>url: <input class='url'></p>
+			<input type="button" value="meer" id="meer">
+		</form>
+	</body>
+</html>

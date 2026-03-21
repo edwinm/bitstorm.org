@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Arrows</title>
+<style type="text/css">
+body {
+	font-family: arial, helvetica, sans-serif;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	background: #ccc;
+	width: 14em;
+	margin-bottom: 2px;
+	padding: 4px;
+	cursor: pointer;
+}
+
+li.selected {
+	background: #ccc url(arrow2.png) center right no-repeat;
+	padding-right: 1em;
+}
+</style>
+<script src="jquery-1.2.6.min.js"></script>
+<script>
+$(function() {
+	$('li').click(function() {
+		$(this).toggleClass('selected');
+	});
+
+});
+</script>
+</head>
+
+<body>
+
+<h1>Arrows</h1>
+
+<p>Proof of concept.</p>
+
+<p>Arrows stay intact, even when the page is scaled.</p>
+
+<ul>
+<li class='selected'>Fronteers</li>
+<li>Een item met wat meer tekst</li>
+<li>Binnenkort naar Rotterdam</li>
+<li>Gaat toch liever wat dichter bij huis</li>
+</ul>
+
+<p>Click the items to toggle the arrow.</p>
+</body>
+</html>

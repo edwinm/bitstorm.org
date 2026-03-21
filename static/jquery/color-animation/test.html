@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Get color</title>
+	<style type="text/css">
+		#fff {
+			color: #fff;
+		}
+		#ffffff {
+			color: #ffffff;
+		}
+		#rgb {
+			color: rgb(100, 100, 200);
+		}
+		#rgbprocent {
+			color: rgb(50.1%, 50.5%, 70%);
+		}
+	</style>
+</head>
+<body>
+
+<div id="fff"></div>
+<div id="ffffff"></div>
+<div id="rgb"></div>
+<div id="rgbprocent"></div>
+
+<div id="result"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var r = [];
+
+		r.push($('#fff').css('color'));
+		r.push($('#ffffff').css('color'));
+		r.push($('#rgb').css('color'));
+		r.push($('#rgbprocent').css('color'));
+
+		$('#result').html(r.join('<br>'));
+	});
+
+</script>
+
+</body>
+</html>

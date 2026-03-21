@@ -1,0 +1,575 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Style Sheet Reference Guide</title>
+	<link title="Main" rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+
+<h2>Master Compatibility Chart</h2>
+<p>By <a href="http://www.meyerweb.com/eric/css/">Eric A. Meyer</a></p>
+
+<p>Published under a <a href="http://creativecommons.org/">Creative Commons</a> license.</p>
+
+<table border="1" cellpadding="4" cellspacing="0">
+<tr class="title">
+<td colspan="4">
+<h3>Basic Concepts</h3>
+</td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="11import">1.1</a></td><td class="prop"><strong>Containment in HTML</strong><br>@import</td>
+<td class="notes">
+<p>
+WinIE4 and WinIE5 both import files even when the @import statement is at the end of the document stylesheet.  This is technically in violation of the CSS1 specification, although obviously not a major failing; thus the "Quirk" rating.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#containment-in-html">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec11.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="11x">1.1</a></td><td class="prop"><strong>Containment in HTML</strong><br><x style="dec;"></td>
+
+<td class="notes">
+<p>
+Navigator 4 has particular trouble with list items, which is most of the reason for the B.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#containment-in-html">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec11.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="13">1.3</a></td><td class="prop"><strong>Inheritance</strong></td>
+<td class="notes">
+<p>
+Navigator 4's inheritance is unstable at best, and fatally flawed at worst.  It would take too long to list all occurrences, but partiularly troublesome areas include tables and lists.
+</p>
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#inheritance">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec13.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="14">1.4</a></td><td class="prop"><strong>Class selector</strong></td>
+<td class="notes">
+<p>
+WinIE4/5 allows class names to begin with digits; this is not permitted under CSS1.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#class-as-selector">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec14.htm">Suite</a></td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="15">1.5</a></td><td class="prop"><strong>ID selector</strong></td>
+<td class="notes">
+<p>
+WinIE4/5 allows ID names to begin with digits; this is not permitted under CSS1.  All browsers apply the style for a given ID to more than one instance of that ID in an HTML document, which is not permitted.  This is properly an error-checking problem, and not a failing of the CSS implementations, but I feel it is significant enough to warrant the ratings shown.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#id-as-selector">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec15.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="16x">1.6</a></td><td class="prop"><strong>Contextual selectors</strong><br>x y z {dec;}</td>
+
+<td class="notes">
+<p>
+MacNav4 has the most trouble with contextual selectors involving tables.  For example, <code>HTML BODY TABLE P</code> is not properly handled.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#contextual-selectors">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec16.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>Pseudo-Classes and Pseudo-Elements</h3>
+</td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="23">2.3</a></td><td class="prop"><strong>first-line</strong></td>
+<td class="notes">
+IE3 incorrectly applies :first-line styles to the entire element.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#the-first-line-pseudo-element">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec23.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="24">2.4</a></td><td class="prop"><strong>first-letter</strong></td>
+<td class="notes">
+
+IE3 incorrectly applies :first-letter styles to the entire element.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#the-first-letter-pseudo-element">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec24.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>The Cascade</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="32">3.2</a></td><td class="prop"><strong>Cascading Order</strong></td>
+<td class="notes">
+
+<p>
+Again, there are simply far too many instances of problems to list here.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#cascading-order">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec32.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>Font Properties</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="522cursive">5.2.2</a></td><td class="prop"><strong>font-family</strong><br>cursive</td>
+
+<td class="notes">
+<p>
+Despite a preferences setting for cursive fonts, Opera does not seem to apply the perference, but instead substitutes another font.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#font-family">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec522.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="524small-caps">5.2.4</a></td><td class="prop"><strong>font-variant</strong><br>small-caps</td>
+<td class="notes">
+<p>
+IE4/5 approximates the <code>small-caps</code> style by making all such text uppercase.  While this can be justified under the CSS1 specification, visually, it does not render the text in small caps.
+
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#font-variant">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec524.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="526xx-small">5.2.6</a></td><td class="prop"><strong>font-size</strong><br>xx-small - xx-large</td>
+<td class="notes">
+<p>
+IE4/5's values for absolute sizes assigns <code>small</code> to be the same size as unstyled text, instead of medium, as one might expect.  Thus, declaring an absolute font size (such as <code>font-size: medium</code> will almost certainly lead to different size fonts in Navigator and Explorer.  While this is not incorrect under the specification, it is confusing to many authors.
+
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#font-size">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec526.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>Color and Background Properties</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="532color">5.3.2</a></td><td class="prop"><strong>background-color</strong><br><color></td>
+<td class="notes">
+
+<p>
+Nav4 does not apply the background color to the entire content box and padding, but rather just to the text in the element.  This can be worked around by declaring a zero-width border.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#background-color">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec532.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="532transparent">5.3.2</a></td><td class="prop"><strong>background-color</strong><br>transparent</td>
+<td class="notes">
+<p>
+Nav4 insists on applying this value to the parent of an element, not the element itself.  This can lead to 'holes' in the parent element's background.
+</p>
+
+<p>
+Opera 4 has a bug which only shows up when a background has been repeated, and the rest of the background of the element is transparent (either by default or when explicitly declared).  Scrolling the element "offscreen" and then bringing it back can cause "holes" to be punched through the repeated images of ancestor elements, thus creating visual anomalies.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#background-color">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec532.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="534repeat">5.3.4</a></td><td class="prop"><strong>background-repeat</strong><br>repeat</td>
+<td class="notes">
+<p>
+WinIE4 only repeats down and to the right.  The correct behavior is for the background image to be tiled in both vertical directions for <code>repeat-y</code>, and both horiztonal for <code>repeat-x</code>.  Nav4 gets this property correct on a technicality:  since it does not support <code>background-position</code>, there is no way to know whether or not it would tile in all four directions if given the chance, or instead emulate WinIE4's behavior.  Opera 3.6, MacIE4.5, and WinIE5 all behave correctly.
+
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#background-repeat">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec534.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="534repeat-x">5.3.4</a></td><td class="prop"><strong>background-repeat</strong><br>repeat-x</td>
+<td class="notes">
+<p>
+WinIE4 only repeats to the right, instead of both left and right.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#background-repeat">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec534.htm">Suite</a></td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="534repeat-y">5.3.4</a></td><td class="prop"><strong>background-repeat</strong><br>repeat-y</td>
+<td class="notes">
+<p>
+WinIE4 only repeats down, instead of both up and down.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#background-repeat">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec534.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="537">5.3.7</a></td><td class="prop"><strong>background</strong></td>
+
+<td class="notes">
+Navigator 4.x is legendary for its inability to correctly render backgrounds.  If there is no border around an element, then the background will only be visible behind the text of the element, instead of throughout the entire content-area and padding.  Unfortunately, if a border is added then there will be a transparent gap between the content-area and the border itself.  This is not the padding, and there is no way to get rid of the gap.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#background">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec537.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>Text Properties</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="543none">5.4.3</a></td><td class="prop"><strong>text-decoration</strong><br>none</td>
+
+<td class="notes">
+<p>
+According to the specification, if an element is is decorated, but one of its children is not, the parent's effect will still be visible on the child; in a certain sense, it "shines through."  Thus, if a paragraph is underlined, but a <code>STRONG</code> element within it is set to have no underlining, the paragraph underline will still "span" the <code>STRONG</code> element.  This also means that the underlining of child elements should be the same color as the parent element, unless the child element has also been set to be underlined.
+</p>
+<p>
+In practice, however, setting an inline element to <code>none</code> will turn off all decorations, regardless of the parent's decoration.  The only exceptions to this are Opera and IE5/Mac, which implement this part of the specification correctly.  Unfortunately, Opera 4 and 5  and Netscape 6 will not "span" inline images with the text decoration of a parent element.  In addition, Netscape 6 appears not to use the parent element's decoration, but instead "replicates" the underline onto child elements, which is clearly wrong.  Despite its seeming simplicity, this property remains a thorny problem for browser developers.
+</p>
+</td>
+
+<td><a href="http://www.w3.org/TR/REC-CSS1#text-decoration">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec543.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="543blink">5.4.3</a></td><td class="prop"><strong>text-decoration</strong><br>blink</td>
+<td class="notes">
+<p>
+Since this value is not required under CSS1, only Navigator supports it (surprise).
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#text-decoration">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec543.htm">Suite</a></td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="545uppercase">5.4.5</a></td><td class="prop"><strong>text-transform</strong><br>uppercase</td>
+<td class="notes">
+<p>
+Opera 3.6 uppercases the first letter in each inline element within a word, which (according to the CSS1 Test Suite) it should not do.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#text-transform">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec545.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="546justify">5.4.6</a></td><td class="prop"><strong>text-align</strong><br>justify</td>
+
+<td class="notes">
+<p>
+In Nav4, this value has a tendency to break down in tables, but generally works in other circumstances.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#text-align">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec546.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="548length">5.4.8</a></td><td class="prop"><strong>line-height</strong><br><length></td>
+<td class="notes">
+<p>
+Nav4 incorrectly permits negative values for this property.
+</p>
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#line-height">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec548.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="548">5.4.8</a></td><td class="prop"><strong>line-height</strong></td>
+<td class="notes">
+Opera 3.6 applies background colors to the space between lines, as opposed to just the text itself, when the background is set for an inline element within the text.  (See the CSS1 Test Suite for more details.)
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#line-height">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec548.htm">Suite</a></td>
+</tr>
+<tr class="title">
+
+<td colspan="4">
+<h3>Box Properties</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5501">5.5.01</a></td><td class="prop"><strong>margin-top</strong></td>
+<td class="notes">
+All margin properties seem to be problematic, or else completely unsupported, on inline elements; see 'margin' for details.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#margin-top">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5501.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+
+<td class="secn"><a name="5502">5.5.02</a></td><td class="prop"><strong>margin-right</strong></td>
+<td class="notes">
+All margin properties seem to be problematic, or else completely unsupported, on inline elements; see 'margin' for details.  Opera 4 sometimes applies right margins to all of the boxes of an inline element, not just the last one.  This seems to come and go somewhat randomly, but it is common enough to be easily noticeable.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#margin-right">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5502.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5503">5.5.03</a></td><td class="prop"><strong>margin-bottom</strong></td>
+<td class="notes">
+All margin properties seem to be problematic, or else completely unsupported, on inline elements; see 'margin' for details.
+</td>
+
+<td><a href="http://www.w3.org/TR/REC-CSS1#margin-bottom">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5503.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5504">5.5.04</a></td><td class="prop"><strong>margin-left</strong></td>
+<td class="notes">
+All margin properties seem to be problematic, or else completely unsupported, on inline elements; see 'margin' for details.  Opera 4 sometimes applies left margins to all of the boxes of an inline element, not just the first one.  This seems to come and go somewhat randomly, but it is common enough to be easily noticeable.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#margin-left">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5504.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5505">5.5.05</a></td><td class="prop"><strong>margin</strong></td>
+
+<td class="notes">
+All margin properties seem to be problematic, or else completely unsupported, on inline elements.  In the case of 'margin', support is pretty good on block-level elements in IE4/Win and IE5/Win, while with inline elements, IE4/Win and IE5/Win ignore this property completely.  IE5/Mac correctly honors margins on all elements.  Navigator 4.x does fairly well so long as margins are not applied to floating or inline elements, in which case major bugs can be tripped.
+
+Opera 4's problems with correctly applying right and left margins to inline elements seems to get worse with 'margin'.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#margin">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5505.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5506">5.5.06</a></td><td class="prop"><strong>padding-top</strong></td>
+<td class="notes">
+All padding properties seem to be problematic, or else completely unsupported, on inline elements; see 'padding' for details.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#padding-top">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5506.htm">Suite</a></td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5507">5.5.07</a></td><td class="prop"><strong>padding-right</strong></td>
+<td class="notes">
+All padding properties seem to be problematic, or else completely unsupported, on inline elements; see 'padding' for details.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#padding-right">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5507.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5508">5.5.08</a></td><td class="prop"><strong>padding-bottom</strong></td>
+<td class="notes">
+
+All padding properties seem to be problematic, or else completely unsupported, on inline elements; see 'padding' for details.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#padding-bottom">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5508.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5509">5.5.09</a></td><td class="prop"><strong>padding-left</strong></td>
+<td class="notes">
+All padding properties seem to be problematic, or else completely unsupported, on inline elements; see 'padding' for details.
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#padding-left">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5509.htm">Suite</a></td>
+</tr>
+
+<tr valign="top">
+<td class="secn"><a name="5510">5.5.10</a></td><td class="prop"><strong>padding</strong></td>
+<td class="notes">
+All padding properties seem to be problematic, or else completely unsupported, on inline elements.  Opera 3.6 correctly ignores negative padding values, but will alter the line-height based on values of 'padding' applied to inline elements, which is incorrect.  IE4/Win and IE5/Win will honor padding assignments on block-level elements, but not inline elements.  Navigator 4.x does fairly well so long as padding is not applied to floating or inline elements, in which case major bugs can be tripped.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#padding">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5510.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5511">5.5.11</a></td><td class="prop"><strong>border-top-width</strong></td>
+<td class="notes">
+Navigator will create visible borders even when no 'border-style' is set, and does not set borders on all side when a style is set.  Things get really ugly when borders are applied to inline styles.  IE4 and IE5 correctly handle borders on block-level elements, but ignore them for inlines.
+
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-top-width">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5511.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5512">5.5.12</a></td><td class="prop"><strong>border-right-width</strong></td>
+<td class="notes">
+Navigator 4.x will create visible borders even when no 'border-style' is set, and does not set borders on all side when a style is set.  Things get really ugly when borders are applied to inline styles.  IE4 and IE5 correctly handle borders on block-level elements, but ignore them for inlines.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-right-width">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5512.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+
+<td class="secn"><a name="5513">5.5.13</a></td><td class="prop"><strong>border-bottom-width</strong></td>
+<td class="notes">
+Navigator 4.x will create visible borders even when no 'border-style' is set, and does not set borders on all sides when a style is set.  Things get really ugly when borders are applied to inline styles.  IE4 and IE5/Win correctly handle borders on block-level elements, but ignore them for inlines.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-bottom-width">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5513.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5514">5.5.14</a></td><td class="prop"><strong>border-left-width</strong></td>
+<td class="notes">
+Navigator will create visible borders even when no 'border-style' is set, and does not set borders on all sides when a style is set.  Things get really ugly when borders are applied to inline styles.  IE4 and IE5 correctly handle borders on block-level elements, but ignore them for inlines.
+
+</td>
+
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-left-width">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5514.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5515">5.5.15</a></td><td class="prop"><strong>border-width</strong></td>
+<td class="notes">
+Navigator will create visible borders even when no 'border-style' is set, and does not set borders on all side when a style is set.  Things get really ugly when borders are applied to inline styles.  IE4 and IE5 correctly handle borders on block-level elements, but ignore them for inlines.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-width">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5515.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5516">5.5.16</a></td><td class="prop"><strong>border-color</strong></td>
+
+<td class="notes">
+Navigator 4.x and Opera 3.6 do not set colors on individual sides, as in 'border-color: red blue green purple'.  Explorer cannot apply border colors to inilne elements, since it does not apply borders to inlines, but this is not penalized here.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-color">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5516.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5517">5.5.17</a></td><td class="prop"><strong>border-style</strong></td>
+<td class="notes">
+Navigator 4.x does not reset the 'border-width' to zero if 'border-style' is 'none', but instead incorrectly honors the width setting. 
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-style">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5517.htm">Suite</a></td>
+
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5518">5.5.18</a></td><td class="prop"><strong>border-top</strong></td>
+<td class="notes">
+Opera does not apply border styles to table elements, which is the reason for the "P" rating.  IE4 and IE5 do not apply borders to inline elements.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-top">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5518.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5519">5.5.19</a></td><td class="prop"><strong>border-right</strong></td>
+<td class="notes">
+
+Opera does not apply border styles to table elements, which is the reason for the "P" rating.  IE4 and IE5 do not apply borders to inline elements.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-right">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5519.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5520">5.5.20</a></td><td class="prop"><strong>border-bottom</strong></td>
+<td class="notes">
+Opera does not apply border styles to table elements, which is the reason for the "P" rating.  IE4 and IE5/Win do not apply borders to inline elements, which is the reason for those "P" ratings.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-bottom">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5520.htm">Suite</a></td>
+</tr>
+
+<tr valign="top">
+<td class="secn"><a name="5521">5.5.21</a></td><td class="prop"><strong>border-left</strong></td>
+<td class="notes">
+Opera does not apply border styles to table elements, which is the reason for the "P" rating.  IE4 and IE5 do not apply borders to inline elements.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border-left">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5521.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5522">5.5.22</a></td><td class="prop"><strong>border</strong></td>
+<td class="notes">
+Opera 3 does not apply border styles to table elements, which is the reason for the "P" rating.  IE4 and Win/IE5 do not apply borders to inline elements, which is the reason for those "P" ratings.  Opera 5 has an odd, semi-random bug that cuases it to improperly place the border around the first inline element (or part thereof) in the document.  The border is drawn too high, making it appear as though the border has been "superscripted" while the content remains where it should.
+
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#border">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5522.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5523">5.5.23</a></td><td class="prop"><strong>width</strong></td>
+<td class="notes">
+Navigator 4.x applies 'width' in a very inconsistent fashion, but appears to honor it on most simple text elements and images.  WinIE4/5 applies it to images and tables, but ignores it for most text elements such as P and headings.  Opera 3.6, weirdly, seems to set the width of images to 100%-- but this is largely an illusion, since minimizing the window and then maximizing it again will reveal correctly-sized images.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#width">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5523.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+
+<td class="secn"><a name="5525">5.5.25</a></td><td class="prop"><strong>float</strong></td>
+<td class="notes">
+'float< is one of the most complicated and hardest-to-implement aspects of the entire specification.  Basic floating is generally supported by all browsers, especially on images, but when the specification is closely tested, or the document structure becomes complicated, floating most often happens incorrectly, or not at all.  The floating of text elements is especially inconsistent, although IE5 and Opera have cleaned up their act to alarge degree, leaving WinIE4 and Nav4 the major transgressors in this respect.  Authors should use 'float' with some care, and thoroughly test any pages employing it with great care.
+
+Opera 4 seems to place floated elements a little bit off from where the "ideal" place would seem to be, but in general, its support is extremely robust and can generally be counted upon.
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#float">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5525.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="5526">5.5.26</a></td><td class="prop"><strong>clear</strong></td>
+<td class="notes">
+Like 'float', 'clear' is not a simple thing to support.  There is typically basic support, but as things get more complicated, browser behavior tends to break down.  Thoroughly test pages using this property.
+
+
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#clear">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec5526.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>Classification Properties</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="561inline">5.6.1</a></td><td class="prop"><strong>display</strong><br>inline</td>
+<td class="notes">
+
+<p>
+Opera 3.6 almost gets <code>inline</code> right, but seems to honor the occasional carriage return as though it were a <code>&lt;BR&gt;</code> element, instead of plain whitespace.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#display">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec561.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="563none">5.6.3</a></td><td class="prop"><strong>list-style-type</strong><br>none</td>
+
+<td class="notes">
+<p>
+MacNav4 displays question marks for bullets when using this value.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#list-style-type">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec563.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="565inside">5.6.5</a></td><td class="prop"><strong>list-style-position</strong><br>inside</td>
+<td class="notes">
+<p>
+The positioning and formatting of list-items when set to this value are a bit odd under MacIE4.
+
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#list-style-position">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec565.htm">Suite</a></td>
+</tr>
+<tr class="title">
+<td colspan="4">
+<h3>Units</h3>
+</td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="61ex">6.1</a></td><td class="prop"><strong>Length Units</strong><br>ex</td>
+
+<td class="notes">
+<p>
+All supporting browsers appear to calculate <code>ex</code> as one-half <code>em</code>.  This is arguably a reasonable approximation, but it is technically incorrect.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#length-units">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec61.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="63keyword">6.3</a></td><td class="prop"><strong>Color Units</strong><br><keyword></td>
+
+<td class="notes">
+<p>
+Navigator will generate a color for any apparent keyword.  For example, <code>color: invalidValue</code> will yield a dark blue, and <code>color: inherit</code>) (a valid declaration under CSS2) comes out as a vaguely nauseous green.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#color-units">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec63.htm">Suite</a></td>
+</tr>
+<tr valign="top">
+<td class="secn"><a name="64url">6.4</a></td><td class="prop"><strong>URLs</strong><br><url></td>
+
+<td class="notes">
+<p>
+Navigator determines relative URLs with respect to the HTML document, not the stylesheet.
+</p>
+</td>
+<td><a href="http://www.w3.org/TR/REC-CSS1#url">Spec.</a><br><a href="http://www.w3.org/Style/CSS/Test/current/sec64.htm">Suite</a></td>
+</tr>
+</table>
+
+</body>
+</html>

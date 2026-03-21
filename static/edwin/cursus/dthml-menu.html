@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>DHTML Menu's</title>
+<style type="text/css">
+BODY {
+	font-family: Trebuchet MS, Arial, Helvetica, Sans-serif;
+	background: darkgray;
+	margin: 16px;
+}
+H4.menu {
+	display: inline;
+	height: 25px;
+	margin: 0px 4px;
+	padding: 0px 4px;
+	background-color: orange;
+	border: 1px solid orange;
+	cursor: default;
+	font-weight: normal;
+}
+DL.menu {
+	position: absolute;
+	visibility: hidden;
+	margin: 0px;
+	padding: 0px;
+	background-color: orange;
+	border: 1px outset orange;
+	xfilter: Alpha(opacity=80);
+}
+A.menu {
+	display: block;
+	width: 260px;
+	margin: 0px;
+	padding: 0px 3px;
+	color: black;
+	cursor: default;
+	text-decoration: none;
+}
+A.menu:hover {
+	background-color: brown;
+	color: white;
+}
+</style>
+<script language="JavaScript">
+menuopen = null
+klokje = null
+function swapMenu() {
+	clearTimeout( klokje )
+	if ( menuopen ) {
+		sluitMenu()
+		if ( this != menuopen ) {
+			this.style.borderStyle = 'inset'
+			document.getElementById(this.id+'div').style.visibility = 'visible'
+			menuopen = this
+		} else {
+			menuopen = null
+		}
+	} else {
+		this.style.borderStyle = 'inset'
+		document.getElementById(this.id+'div').style.visibility = 'visible'
+		menuopen = this
+	}
+}
+function sluitMenu() {
+	if ( menuopen ) {
+		menuopen.style.borderStyle = 'solid'
+		document.getElementById(menuopen.id+'div').style.visibility = 'hidden'
+	}
+}
+function overmenu() {
+	if ( menuopen!=this )
+		this.style.borderStyle = 'outset'
+}
+function uitmenu() {
+	if ( menuopen!=this )
+		this.style.borderStyle = 'solid'
+}
+function init(){
+	if( document.getElementById ) {
+		document.getElementById('menuopt1').onclick = swapMenu
+		document.getElementById('menuopt1').onmouseover = overmenu
+		document.getElementById('menuopt1').onmouseout = uitmenu
+		document.getElementById('menuopt2').onclick = swapMenu
+		document.getElementById('menuopt2').onmouseover = overmenu
+		document.getElementById('menuopt2').onmouseout = uitmenu
+		document.getElementById('menuopt1div').style.left = (document.body.offsetLeft+document.getElementById('menuopt1').offsetLeft)+'px'
+		document.getElementById('menuopt2div').style.left = (document.body.offsetLeft+document.getElementById('menuopt2').offsetLeft)+'px'
+		document.getElementById('menuopt1div').style.top = (document.body.offsetTop+document.getElementById('menuopt1').offsetTop+document.getElementById('menuopt1').offsetHeight)+'px'
+		document.getElementById('menuopt2div').style.top = (document.body.offsetTop+document.getElementById('menuopt2').offsetTop+document.getElementById('menuopt2').offsetHeight)+'px'
+	}
+}
+function mon() {
+	clearTimeout( klokje )
+}
+function moff() {
+	klokje = setTimeout( 'sluitMenu();menuopen=null', 1000 )
+}
+function go( lokatie ) {
+	document.location = lokatie
+}
+</script>
+
+
+</head>
+<body onLoad="init()">
+
+<h4 id=menuopt1 class=menu>DHTML-voorbeelden</h4>
+
+<dl id=menuopt1div class=menu>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.crosscasting.com/crosscasting/index.html">Crosscasting.com</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.iisweb.com/ie5/">Internet Explorer 5.0 Behaviors</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.armegalo.co.uk/design/sites.html">Armegalo sites</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.dynamicdrive.com/dynamicindex12/tetris/index.htm">Dynamicdrive Tetris</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.webreference.com/dhtml/column11/">Webreference puzzle</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://dynapi.sourceforge.net/index.php">Dynapi</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.yaromat.com/">Yaromat Berlin</a>
+</dl>
+
+<h4 id=menuopt2 class=menu>Naslag</h4>
+
+<dl id=menuopt2div class=menu>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.w3.org/DOM/">W3C DOM</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.w3.org/Style/CSS/">W3C CSS</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.w3.org/TR/html4/">W3C HTML</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.ecma.ch/ecma1/STAND/ECMA-262.HTM">ECMAscript (JavaScript)</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://www.dannyg.com/javascript/index.html">Danny Goodman's Quick Reference</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://msdn.microsoft.com/workshop/c-frame.htm?/workshop/author/default.asp">Microsoft Web Workshop</a>
+<dt><a class=menu onMouseOver="mon()" onMouseOut="moff()" href="http://mozilla.org/docs/web-developer/">Mozilla Web-developer</a>
+</dl>
+
+</body>
+</html>

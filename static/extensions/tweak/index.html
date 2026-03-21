@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Firefox extensions - Tweak Network Settings</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script type="text/javascript" src="../extensions.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+		if ( navigator.userAgent.indexOf("Firefox") == -1 )
+			document.getElementById("nogecko").style.display = "block";
+	}
+	</script>
+</head>
+
+<body>
+
+<h1>Firefox extensions - <nobr>Tweak Network Settings</nobr></h1>
+
+<p><a href="/">Bitstorm.org</a> &gt; <a href="../">Firefox extensions</a> &gt; Tweak Network Settings</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+<img src="tweak.png" height="100" width="100" alt="tweak">
+</td>
+<td class="text">
+
+<div id="nogecko">
+<table border="0" cellpadding="8" cellspacing="0">
+<tr><td>
+These extensions only work in the Firefox web browser.
+Firefox is an easy, safe and extensible web browser. And it's free.<br>
+</td></tr></table>
+</div>
+
+<h2>Tweak Network Settings</h2>
+
+<p>Firefox has a couple of hidden network settings. With this extension, you can tweak these settings, and you might be able to speed up the loading of web pages. You can also increase the maximum number of simultaneous downloads from a site (the default is only six).</p>
+
+<p>Instead of changing each setting, you can also choose one of two profiles. The <i>Power profile</i> increases the maximum number of connections and turns on <a href="http://www.mozilla.org/projects/netlib/http/pipelining-faq.html">pipelining</a>. The <i>Default profile</i> will reset the settings to the save, default values.</p>
+
+<p>The Tweak Network Settings extension is compatible with the latest Firefox release.</p>
+
+<!--
+<p><a class="download" href="https://addons.mozilla.org/firefox/downloads/latest/327" onclick="return install('Tweak Network Settings', this.href, 'http://www.bitstorm.org/extensions/tweak-small.png')">Install Tweak Network Settings</a></p>
+-->
+<p><a class="download" href="https://addons.mozilla.org/firefox/downloads/latest/327" onclick="return install('Tweak Network Settings', this.href, 'http://www.bitstorm.org/extensions/tweak-small.png')">Install Tweak Network Settings</a></p>
+
+<p>After installing the extension, the network settings are not changed. You have to change the settings yourself (just choose the Power Profile). You can find Tweak Network in the Tools menu.</p>
+
+<p>View the <a href="tweak-network.jpg" onclick="imgPopup(this.href, 328, 409);return false">screen shot</a>.</p>
+
+<p class='youtube'>Kris Mainieri made a <a href="http://www.youtube.com/watch?v=OmiK1R-2UK4">video about how to speed up Firefox with Tweak Network</a>.</p>
+
+<h3>Explanation</h3>
+	
+<p>So if this extension improves your web browsing, why aren't these network settings improved by default in Firefox? This is because Firefox wants to adhere to the HTTP specification which says: <i>"A
+single-user client SHOULD NOT maintain more than 2 connections with
+any server or proxy."</i> Unfortunately, the specification (from 1999) is outdated at this point.</p>
+	
+<p>First, there is a need from the user: an ordinary webpage contains several images, style sheets, JavaScript files etcetera. Also, most users have broadband and PC's which can handle lot of simultaneous connections easily. More simultaneous connections generally means faster loading of webpages. Just like a highway with more lanes allows more traffic.</p>
+<p>Second, on the server side it doesn't matter. Even the most lightweight webserver can handle hundreds of simultaneous connections. On a high-traffic webserver, your visit is just noise to the server. On a low-traffic webserver, it's only easier to handle your request: the server isn't doing anything else anyway.</p>
+
+<p>Microsoft also thinks two connections is not enough: Internet Explorer 8 supports six simultaneous connections (see <a href="http://www.microsoft.com/windows/products/winfamily/ie/ie8/readiness/DevelopersNew.htm#ajax">IE8 for developers</a>).</p>
+
+<p>So, should your browser adhere to an old specification written in stone or should your browser comply with a changed world? You decide.</p>
+
+<p><i>Update: The latest versions of Firefox also supports more simultaneous connections by default, so improvement is being made.</i></p>
+
+<h3>Page load analysis</h3>
+
+<p>Jan Odvarko uses Firebug to do <a href="http://www.softwareishard.com/blog/firebug/page-load-analysis-using-firebug/">page load analysis</a> with different settings.
+Increasing the maximum number of connections clearly has an impact.
+Use his explanation to measure which settings are best for you.</p>
+
+<h3>Open Source</h3>
+
+<p>Tweak Network is open source. You're welcome to improve the extension or to add support for a new language. Fork Tweak Network at <a href="https://github.com/edwinm/Tweak-Network-Firefox-Extension">GitHub</a></p>
+
+</td>
+<td rowspan="2">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2050318500162917";
+google_alternate_color = "FFFFFF";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_channel ="9620499774";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "666666";
+google_color_url = "3399FF";
+google_color_text = "999999";
+google_ui_features = "rc:10";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</td>
+</tr>
+
+<tr><td></td>
+<td class="text">
+<hr>
+Copyright 2004 - 2013 <a href="http://www.bitstorm.org/edwin/en/">Edwin Martin</a> &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;
+</td>
+</tr>
+
+</table>
+
+<script>var _gaq=[['_setAccount','UA-93616-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
+</body>
+</html>

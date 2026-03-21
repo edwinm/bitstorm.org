@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+<head>
+	<title>Maskr Tutorial</title>
+	<link title="Main" rel="stylesheet" type="text/css" href="../../home.css">
+	<script src="../jquery-1.4.4.js"></script>
+	<script src="../jquery.maskr.js"></script>
+
+
+</head>
+<body>
+<h1>Maskr Tutorial</h1>
+
+<!--
+simple
+text replacement
+attribute replacement
+lists
+arrays
+functions
+string-modifiers - standard String methods
+html-modifier
+pre-defined functions
+self-defined functions
+
+Tips:
+use >li to prevent selecting deeper li's
+{x} only on text, use <span> when neccessary
+
+Practical uses / cookbook
+
+-->
+
+<div id="body">
+
+	<p class="nav"><a href="../">Home</a> | <a href="../quickstart/">Quick start</a> | <a href="../documentation/">Tutorial</a> | <a href="../editor/">Editor</a></p>
+
+	<p class="crumbtrail"><a href="/">Bitstorm.org</a> &gt; <a href="../">jQuery plugins</a> &gt; <a href="../">Maskr</a> &gt; Documentation</p>
+
+	<h2>Mapping data to elements</h2>
+
+	<p>You start with a HTML-structure that has to be filled in:</p>
+
+	<code>
+&lt;div id="order-notification"&gt;
+	&lt;h2&gt;&lt;/h2&gt;
+	&lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;
+	</code>
+
+	<p>This is the data you have, usually retrieved with an AJAX-call:</p>
+
+	<code>
+var data = {
+	"title": "Order status update",
+	"content": "Your order is ready to ship."
+};
+	</code>
+
+	<p>This is the map, which maps the data to the DOM-elements. The h2-element is mapped to the title-property
+		in the data and the p-element is mapped to the content-propertie in the data.</p>
+
+	<code>
+var map = {
+	"h2": "title",
+	"p": "content"
+};
+	</code>
+
+	<p>Now just calling the maskr-plugin with the map- and data-variables will merge the data in the DOM:</p>
+
+	<code>
+$("#order-notification").maskr(map, data);
+	</code>
+
+	<p>And the blanks are filled in:</p>
+
+	<code>
+&lt;div id="order-notification"&gt;
+	&lt;h2&gt;Order status update&lt;/h2&gt;
+	&lt;p&gt;Your order is ready to ship.&lt;/p&gt;
+&lt;/div&gt;
+	</code>
+
+	<h2>Mapping data to properties</h2>
+
+	<p>By using the @-symbol, you can set the properties of elements. This is the DOM-template:</p>
+
+	<code>
+&lt;div id="order-notification"&gt;
+	&lt;h2&gt;&lt;/h2&gt;
+	&lt;p&gt;&lt;/p&gt;
+	&lt;a&gt;more info&lt;/a&gt;
+&lt;/div&gt;
+	</code>
+
+	<p>The data:</p>
+
+	<code>
+var data = {
+	"title": "Order status update",
+	"content": "Your order is ready to ship.",
+	"type": "alert",
+	"info-url": "/notification-info?193"
+};
+	</code>
+
+	<p>This is the map, which maps the data to the DOM-elements and -properties. You can use a selector in front of the
+	@-sign. If you don't use a selector in front of the @-sign, the root element is selected.</p>
+
+	<code>
+var map = {
+	"h2": "title",
+	"p": "content",
+	"@class": "type",
+	"a@href": "info-url"
+};
+	</code>
+
+	<p>Now just calling the maskr-plugin with the map- and data-variables will merge the data with the DOM:</p>
+
+	<code>
+$("#order-notification").maskr(map, data);
+	</code>
+
+	<p>And the blanks are filled in:</p>
+
+	<code>
+&lt;div class="alert" id="order-notification"&gt;
+	&lt;h2&gt;Order status update&lt;/h2&gt;
+	&lt;p&gt;Your order is ready to ship.&lt;/p&gt;
+	&lt;a href="/notification-info?193"&gt;more info&lt;/a&gt;
+&lt;/div&gt;
+	</code>
+
+	<h2>Replacing text</h2>
+
+	<p>You can also replace certain parts in a text. Just mark the placeholders with a name between curly brackets:</p>
+
+	<code>
+&lt;p id="greeting"&gt;Hello {name}, you have {msgnr} messages left.&lt;/p&gt;
+	</code>
+
+	<p>The data:</p>
+
+	<code>
+var data = {
+	"fullname": "John Smith",
+	"messages": "14"
+};
+	</code>
+
+	<p>Enclose the keys in curly brackets to make them replace the placeholders.</p>
+
+	<code>
+var map = {
+	"{name}": "fullname",
+	"{msgnr}": "messages"
+};
+	</code>
+
+	<p>Calling the maskr-plugin</p>
+
+	<code>
+$("#greeting").maskr(map, data);
+	</code>
+
+	<p>Results in this greeting:</p>
+
+	<code>
+&lt;p id="greeting"&gt;Hello John Smith, you have 14 messages left.&lt;/p&gt;
+	</code>
+
+	<h2>Replacing text in attributes.</h2>
+
+	<p>As you can see in the example below, you can use placeholders in DOM-properties too:</p>
+
+	<code>
+&lt;div class="notification {importance}" id="order-notification"&gt;
+	&lt;h2&gt;Order status update for {name}&lt;/h2&gt;
+	&lt;a href="/order-info?nr={ordernr}"&gt;more info about order {ordernr}&lt;/a&gt;
+&lt;/div&gt;
+	</code>
+
+	<p>The data:</p>
+
+	<code>
+var data = {
+	"imp": "alert",
+	"fullname": "John Smith",
+	"oid": "834"
+};
+	</code>
+
+	<p>Enclose the placeholdernames in curly brackets to make them replace the placeholders.</p>
+
+	<code>
+var map = {
+	"@class{importance}": "imp",
+	"h2{name}": "fullname",
+	"a@href{ordernr}": "oid",
+	"a{ordernr}": "oid"
+};
+	</code>
+
+	<p>Calling the maskr-plugin</p>
+
+	<code>
+$("#order-notification").maskr(map, data);
+	</code>
+
+	<p>Results in this notification:</p>
+
+	<code>
+&lt;div class="notification alert" id="order-notification"&gt;
+	&lt;h2&gt;Order status update for John Smith&lt;/h2&gt;
+	&lt;a href="/order-info?nr=834"&gt;more info about order 834&lt;/a&gt;
+&lt;/div&gt;
+	</code>
+
+	<h2>jQuery selectors</h2>
+
+	<p>As a selector, you can use selector that jQuery understands.</p>
+
+	...example with class, 2nd child, [] etc...
+
+	<h2>Simple arrays</h2>
+
+	<p>Data is not always as one-dimensional as in the examples above. Often, you'll have
+	datastructures containing arrays. The simplest form is an array of strings.</p>
+
+	<p>Let's start with this simple, empty list:</p>
+
+	<code>
+&lt;ul id="names"&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>This is the data we want to display:</p>
+
+	<code>
+{
+	"friends": ["John", "Paul", "Gerard"]
+}
+	</code>
+
+	<p>With this map, we couple the li-element to the friends-array. The friends-string is the content of a one-element array.</p>
+
+	<code>
+{
+	"li": ["friends"]
+}
+	</code>
+
+	<p>The result of merging them is that the li-element is repeated for every element in the friends-array:</p>
+
+	<code>
+&lt;ul id="names"&gt;
+&lt;li&gt;John&lt;/li&gt;
+&lt;li&gt;Paul&lt;/li&gt;
+&lt;li&gt;Gerard&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<h2>Complex arrays</h2>
+
+	<p>Often, datastructures are more complex and can consist of arrays of other datastructures.</p>
+
+	<p>For example, you want to show the names of friends with an informational message below.</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;
+		&lt;h2&gt;&lt;/h2&gt;
+		&lt;p&gt;&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>This is the data:</p>
+
+	<code>
+{
+	"friends": [
+		{
+			"name": "John",
+			"mesg": "no messages"
+		},
+		{
+			"name": "Paul",
+			"mesg": "3 messages"
+		},
+		{
+			"name": "Gerard",
+			"mesg": "1 message"
+		}
+	]
+}
+	</code>
+
+	<p>Just like in the example above, we couple the li-elements to the friends-array. But now the one-element array gets
+		a second element: a new map for the li-elements. This is recursive: you can repeat this and go as deep as you want.</p>
+
+	<code>
+{
+	"li": ["friends",
+		{
+			"h2": "name",
+			"p": "mesg"
+		}
+	]
+}
+	</code>
+
+	<p>The result:</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;
+		&lt;h2&gt;John&lt;/h2&gt;
+		&lt;p&gt;no messages&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;h2&gt;Paul&lt;/h2&gt;
+		&lt;p&gt;3 messages&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;h2&gt;Gerard&lt;/h2&gt;
+		&lt;p&gt;1 message&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+<h2>Functions</h2>
+
+<p>Sometimes you want to process the data before inserting it. You can do this with custom functions.</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;
+		&lt;a href="/books/{shortname}"&gt;&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>The data is a list of book titles:</p>
+
+	<code>
+{
+  "books": [
+	{
+	  "title": "Pro JavaScript Techniques"
+	}, {
+	  "title": "JavaScript the Good Parts"
+	}, {
+	  "title": "Pro JavaScript Design Patterns"
+	}
+  ]
+}
+	</code>
+
+	<p>In this example, we use a custom function two times. The function receives two parameters: the data-object and
+		the index, starting with zero.
+	In the first function, we use the index to number the book titles. In the second function, we conveRt the title to
+		lowercase and replace spaces with minus-signs and url-encode it, so we end up with a nice url to the book.
+	</p>
+
+	<code>
+{
+  "li": [
+	"books",
+	{
+	  "a": function(data, i) {return (i + 1) + ". " + data.title},
+ 	  "a@href{shortname}": function(data, i) {return encodeURI(data.title.replace(/ /g, '-').toLowerCase())}
+	}
+  ]
+}
+	</code>
+
+	<p>The result after running maskr:</p>
+
+	<code>
+&lt;ul id="books"&gt;
+	&lt;li&gt;
+		&lt;a href="/books/pro-javascript"&gt;1. Pro JavaScript Techniques&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href="/books/javascript-the-good-parts"&gt;2. JavaScript the Good Parts&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href="/books/javascript-design-patterns"&gt;3. Pro JavaScript Design Patterns&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>Inside the custom function, <i>this</i> refers to the DOM-element.</p>
+
+	<h2>String functions</h2>
+
+	<p>Maskr supports a special notation to apply string functions. It looks like:</p>
+
+	<code>
+prop|function:arg1:arg2...
+	</code>
+
+	<p>You can use any String function you want: toUpperCase, replace, charAt etcetera. The functionality is limited
+	in that the arguments can only be literal strings.</p>
+
+	<p>We start with a very simple template:</p>
+	
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;{title}&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>The data is the same list of book titles as in the previous example:</p>
+
+	<code>
+{
+  "books": [
+	{
+	  "title": "Pro JavaScript Techniques"
+	}, {
+	  "title": "JavaScript the Good Parts"
+	}, {
+	  "title": "Pro JavaScript Design Patterns"
+	}
+  ]
+}
+	</code>
+
+	<p>Now we use the toUpperCase string function:</p>
+
+	<code>
+{
+  "li": [
+	"books",
+	{
+	  "{title}": "title|toUpperCase"
+	}
+  ]
+}
+	</code>
+
+	<p>The result after running maskr:</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;PRO JAVASCRIPT TECHNIQUES&lt;/li&gt;
+	&lt;li&gt;JAVASCRIPT THE GOOD PARTS&lt;/li&gt;
+	&lt;li&gt;PRO JAVASCRIPT DESIGN PATTERNS&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>You can also chain string functions. Let's take the uppercase function and add a substr function:</p>
+
+	<code>
+{
+  "li": [
+	"books",
+	{
+	  "{title}": "title|toUpperCase|substr:11:5"
+	}
+  ]
+}
+	</code>
+
+	<p>This will convert the title to uppercase and returns the substring from character 11 with a length of 5 characters.</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;IPT T&lt;/li&gt;
+	&lt;li&gt;THE G&lt;/li&gt;
+	&lt;li&gt;IPT D&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>String functions that are useful to use:</p>
+
+	<table>
+		<tr><th>charAt</th><td>Returns the character at the specified location.</td><td></td></tr>
+		<tr><th>concat</th><td>Concats a string to the string.</td><td></td></tr>
+		<tr><th>indexOf</th><td>Returns the index of a substring or -1 when not found.</td><td></td></tr>
+		<tr><th>lastIndexOf</th><td>Returns the last index of a substring or -1 when not found.</td><td></td></tr>
+		<tr><th>localeCompare</th><td>Compares the string with another string.</td><td></td></tr>
+		<tr><th>replace</th><td>Replace a substring with another.</td><td></td></tr>
+		<tr><th>slice</th><td>Gets a part of the string.</td><td></td></tr>
+		<tr><th>substr</th><td>Gets a part of the string.</td><td></td></tr>
+		<tr><th>substring</th><td>Gets a part of the string.</td><td></td></tr>
+		<tr><th>toLowerCase</th><td>Converts de string to lowercase.</td><td></td></tr>
+		<tr><th>toUpperCase</th><td>Converts de string to uppercase.</td><td></td></tr>
+		<tr><th>trim</th><td>(JavaScript 1.8.1+) Removes white space on both sides of the string.</td><td></td></tr>
+		<tr><th>trimLeft</th><td>(JavaScript 1.8.1+) Removes white space on the left side of the string.</td><td></td></tr>
+		<tr><th>trimRight</th><td>(JavaScript 1.8.1+) Removes white space on the right side of the string.</td><td></td></tr>
+	</table>
+
+	<p>Maskr has three build-in functions: html, urlEncode and if.</p>
+
+	<h3>html</h3>
+
+	<p>Normally, if the data contains HTML-markup, the markup is shown as is. Sometimes, your data has HTML-markup and you
+	want to have the markup applied. When you want to apply the markup, just at the "html" string function:</p>
+
+	<code>
+{
+  "li": [
+	"books",
+	{
+	  "{title}": "title|toUpperCase|substr:11:5|html"
+	}
+  ]
+}
+	</code>
+
+	<p>Now, if the title has a subtitle between &lt;i&gt;-tags, it will be displayed in italics.</p>
+
+	<h3>urlEncode</h3>
+
+	<p>Apply the urlencode-function. Usefull for generating URL's.</p>
+
+	<p>Let's take the map from the functions chapter:</p>
+
+	<code>
+{
+  "li": [
+	"books",
+	{
+	  "a": function(data, i) {return (i + 1) + ". " + data.title},
+ 	  "a@href{shortname}": function(data, i) {return encodeURI(data.title.replace(/ /g, '-').toLowerCase())}
+	}
+  ]
+}
+	</code>
+
+	<p>This might also be written in the equivalent but better readable:</p>
+
+	<code>
+{
+  "li": [
+	"books",
+	{
+	  "a": function(data, i) {return (i + 1) + ". " + data.title},
+ 	  "a@href{shortname}": "title|replace: :-:g|toLowerCase|urlEncode"
+	}
+  ]
+}
+	</code>
+
+	<h3>if</h3>
+
+	*** TODO: more simple example ***
+
+	<p>The if-function gives you the tertiary operator <tt>val == a ? b : c</tt>.
+		Dependent of the value, you can output one or another value.</p>
+
+	<p>For example, you can combine it with the indexOf function. Let's take the example template again:</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li&gt;{title}&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<p>The data is the same list of book titles:</p>
+
+	<code>
+{
+  "books": [
+	{
+	  "title": "Pro JavaScript Techniques"
+	}, {
+	  "title": "JavaScript the Good Parts"
+	}, {
+	  "title": "Pro JavaScript Design Patterns"
+	}
+  ]
+}
+	</code>
+
+	<p>Now we search the title for "Design Patterns". If the string is not found, indexOf returns -1 and we
+	give it the non-design-patterns class. If the string is found, we give it the design-patterns class.</p>
+
+	<code>
+{ "li": [
+	"books", {
+		"{title}": "title",
+		"@class": "title|indexOf:Design Patterns|if:-1:non-design-patterns:design-patterns" }
+	]
+}
+	</code>
+
+	<p>The result after running maskr:</p>
+
+	<code>
+&lt;ul id="names"&gt;
+	&lt;li class="non-design-patterns"&gt;Pro JavaScript Techniques&lt;/li&gt;
+	&lt;li class="non-design-patterns"&gt;JavaScript the Good Parts&lt;/li&gt;
+	&lt;li class="design-patterns"&gt;Pro JavaScript Design Patterns&lt;/li&gt;
+&lt;/ul&gt;
+	</code>
+
+	<h3>else</h3>
+
+	*** TODO: example ***
+
+	<h2>Custom string functions</h2>
+
+	*** TODO: example ***
+
+
+
+
+</div>
+<address><a href="/web">Edwin Martin</a> &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;</address>
+
+</body>
+</html>

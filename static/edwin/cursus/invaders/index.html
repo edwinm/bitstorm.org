@@ -1,0 +1,247 @@
+<!-- Invader script: Copyright 2002 Edwin Martin edwin@bitstorm.org -->
+<html>
+<head>
+<title>DHTML - Invaders</title>
+<style type="text/css">
+BODY {
+	background-color: black;
+}
+A {
+	text-decoration: none;
+	color: aqua;
+}
+P.score {
+	font-family: Arial, Helvetica;
+	font-size: 10px;
+	background-color: lightgrey;
+	border: 2px solid darkgray;
+	margin-top: 0;
+}
+#veld {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 400px;
+	height: 292px;
+	background-color: black;
+	background-image: url(sky.gif);
+	border: 7px inset darkgray;
+}
+#me {
+	position: absolute;
+	top: 270px;
+	left: 100px;
+}
+#alien {
+	position: absolute;
+	top: 70px;
+	left: 100px;
+	z-index: 1;
+	visibility: hidden;
+}
+#beam {
+	position: absolute;
+	top: 20px;
+	width: 3px;
+	visibility: hidden;
+}
+#score {
+	position: absolute;
+	top: 30px;
+	left: 355px;
+	width: 70px;
+}
+#startgame {
+	position: absolute;
+	top: 200px;
+	left: 180px;
+	font-family: Arial, Helvetica;
+	font-size: 20px;
+	font-weight: bold;
+	border: 3px inset darkgray;
+	background-color: darkgray;
+	padding: 0 4px;
+}
+#lost {
+	position: absolute;
+	top: 140px;
+	left: 90px;
+	color: red;
+	font-size: 40px;
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+	visibility: hidden;
+}
+#copyright {
+	position: absolute;
+	top: 330px;
+	left: 20px;
+	width: 400px;
+	color: white;
+	font-size: 11px;
+	font-family: Arial, Helvetica;
+	text-align: center;
+}
+</style>
+<script language="JavaScript">
+var alienYPos = 0;
+var alienXPos = 0;
+var alienDY = 5;
+var klokje = null;
+var fired = false;
+var score = 0;
+var playing = false;
+var skyYPos = 0;
+
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function writeText( layer,text ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).innerHTML = text;
+	} else if( document.all ) {
+		document.all[layer].innerHTML = text;
+	} else {
+		document[layer].document.open();
+		document[layer].document.write( text );
+		document[layer].document.close();
+	}
+}
+
+function move(event) {
+	if ( event.clientX )
+		mouseX = event.clientX;
+	else
+		mouseX = event.pageX;
+
+	if ( mouseX < 64 )
+		newXPos = 64;
+	else if ( mouseX > 390 )
+		newXPos = 390;
+	else
+		newXPos = mouseX;
+
+	getStyle('me').left = newXPos-35
+}
+function fire(event) {
+	if ( event.clientX )
+		mouseX = event.clientX;
+	else
+		mouseX = event.pageX;
+
+	if ( !fired && playing ) {
+		getStyle('beam').left = mouseX-1;
+		getStyle('beam').visibility = 'visible';
+		setTimeout( 'firegone()', 700 );
+		if ( mouseX > alienXPos && mouseX < alienXPos + 63 ) {
+			clearTimeout(klokje);
+			score += 100;
+			writeText( 'score', '<p class="score">Score: '+ score + '</p>');
+			setalienimg( "deadalien.gif" );
+			setTimeout( 'newalien()', 500 );
+		}
+		fired = true;
+	}
+}
+function firegone() {
+	getStyle('beam').visibility = 'hidden';
+	fired = false;
+}
+function aliendown() {
+	if ( alienYPos > 260 ) {
+		getStyle('lost').visibility = 'visible';
+		getStyle('startgame').visibility = 'visible';
+		playing = false;
+	 } else {
+		alienYPos += alienDY;
+		getStyle('alien').top = alienYPos;
+		klokje = setTimeout( 'aliendown()', 100 );
+	}
+}
+function newalien() {
+	alienDY += 1;
+	alienYPos=0;
+	alienXPos = 20 + Math.random()*335;
+	getStyle('alien').left = alienXPos;
+	getStyle('alien').top = 20;
+	setalienimg( "alien.gif" );
+	aliendown();
+}
+function start() {
+	getStyle('alien').visibility = 'visible';
+	getStyle('startgame').visibility = 'hidden';
+	getStyle('lost').visibility = 'hidden';
+	newalien();
+	playing = true;
+	alienDY = 5;
+	score = 0;
+	writeText( 'score', '<p class="score">Score: 0</p>');
+}
+function setalienimg( img ) {
+	if ( document.layers )
+		// Voor Netscape 4
+		document.alien.document.alienImg.src = img;
+	else
+		// Voor andere browsers
+		document.images.alienImg.src = img;
+}
+function init() {
+	// Netscape 4 ondersteunt niet de onmousemove event handler in de <a>-tag.
+	// Het volgende werkt wel.
+	if ( document.me ) {
+		document.me.captureEvents(Event.MOUSEMOVE);
+		document.me.onmousemove=move;
+	} else
+		moveSky();
+}
+function moveSky() {
+	skyYPos++;
+	getStyle('veld').backgroundPosition = '0 '+skyYPos;
+	setTimeout( 'moveSky()', 100 );
+}
+</script>
+
+</head>
+<body onLoad="init()">
+
+<div id="alien">
+<img id="alienImg" name="alienImg" src="alien.gif">
+</div>
+
+<div id="veld">
+<spacer type="vertical" size="290">
+</div>
+
+<div id="beam">
+<img src="beam.gif">
+</div>
+
+<div id="me">
+<a href="" onclick="fire(event);return false" onmousemove="move(event)"><img src="me.gif" border="0"></a>
+</div>
+
+<div id="score">
+<p class="score">Score: 0</p>
+</div>
+
+<div id="startgame">
+<a href="" onClick="start();return false">START</a>
+</div>
+
+<div id="lost">
+GAME OVER!
+</div>
+
+<div id="copyright">
+Dit spel is onderdeel van de <a href="http://www.bitstorm.org/edwin/cursus/dhtml.html">DHTML cursus</a>.<br>
+Copyright 2002 Edwin Martin &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;.
+</div>
+
+</body>
+</html>

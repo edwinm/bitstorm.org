@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Voorbeeld achtergrondplaatje veranderen</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	padding: 4px;
+}
+</style>
+<script language="JavaScript">
+function setBackgroundImage( layer, imageUrl ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style.backgroundImage = "url("+imageUrl+")";
+	} else if( document.all ) {
+		return document.all[layer].style.backgroundImage = "url("+imageUrl+")";
+	} else {
+		return document[layer].background.src = imageUrl;
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id="mijnlayer">
+<h3>Dit is een layer</h3>
+<p>Deze tekst staan in een layer.</p>
+</div>
+
+<h2 class=cursus>Voorbeeld achtergrondplaatje veranderen</h2>
+
+<form>
+<h3>Dit werkt in alle recente browsers vanaf Netscape 4:</h4>
+<input type=button onClick="setBackgroundImage('mijnlayer', 'backgrounds/bricks.gif')" value="setBackgroundImage('mijnlayer', 'backgrounds/bricks.gif')">
+<input type=button onClick="setBackgroundImage('mijnlayer', 'backgrounds/marmer.jpg')" value="setBackgroundImage('mijnlayer', 'backgrounds/marmer.jpg')">
+<input type=button onClick="setBackgroundImage('mijnlayer', 'backgrounds/paper.jpg')" value="setBackgroundImage('mijnlayer', 'backgrounds/paper.jpg')">
+</form>
+
+</body>
+</html>

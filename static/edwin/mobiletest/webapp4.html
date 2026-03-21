@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test 4 | Mobile test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="image.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body class="webapp">
+
+<p>
+<a href="./">Scrolling</a>
+<a href="webapp1.html">Test 1</a>
+<a href="webapp2.html">Test 2</a>
+<a href="webapp3.html">Test 3</a>
+Test 4
+</p>
+
+<h1>Test 4 | Mobile test</h1>
+
+<p>apple-mobile-web-app-capable: yes</p>
+
+<p>apple-touch-icon: yes</p>
+
+<p>apple-mobile-web-app-status-bar-style: black</p>
+
+<p>width=device-width, initial-scale=2.0</p>
+
+<p>UI-features disabled</p>
+
+<script>
+    /* disable pulling page off screen */
+    document.ontouchmove = function(e) {
+        e.preventDefault();
+    };
+</script>
+</body>
+</html>

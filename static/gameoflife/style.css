@@ -1,0 +1,106 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: MavenPro, Trebuchet MS, Arial, Helvetica, sans-serif;
+	background: white repeat-x top url(header-bg.png);
+	width: 846px;
+	margin: 0 auto;
+    hyphens: auto;
+}
+td, th {
+	vertical-align: top;
+}
+td.middle {
+	vertical-align: middle;
+}
+tr.spacer {
+	height: 0.8em;
+}
+div.body {
+	padding: 0 10px;
+}
+li {
+	list-style-image: url(bullet.png);
+}
+dt {
+	font-weight: bold;
+}
+
+.body {
+	max-width: 1000px;
+}
+
+#canvas-container {
+	background-color: #999;
+	padding: 8px;
+	border: 3px solid lightgrey;
+	width: 825px;
+}
+
+label {
+	position: absolute;
+	right: 0;
+	font-family: helvetica, arial, sans-serif;
+	font-size: smaller;
+}
+
+form {
+	position: relative;
+	margin-top: 6px;
+}
+
+	form img {
+		vertical-align: bottom;
+		margin-left: 30px;
+	}
+
+#canvas-div {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 803px;
+	height: 506px;
+	background-color: #7e7e7e;
+}
+input[type="range"] {
+	width: 80px;
+	vertical-align: bottom;
+}
+.selection section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.selection b {
+    font-size: 26px;
+}
+
+.selection .image a {
+    display: flex;
+    width: 100%;
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #ccc;
+}
+
+.selection img {
+    display: block;
+    max-width: 100%;
+}
+
+.cc-icon {
+    float: right;
+    margin-left: 10px;
+}

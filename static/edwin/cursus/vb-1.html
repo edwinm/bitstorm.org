@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	background-color: orange;
+}
+</style>
+</head>
+<body>
+
+<div id="mijnlayer">
+Deze tekst staan in een layer.
+</div>
+
+<h2 class=cursus>DHTML in Netscape 4 en IE 4</h2>
+
+<form>
+<h3>Dit werkt in Netscape 4:</h4>
+<input type=button onClick="document.mijnlayer.left=30" value="document.mijnlayer.left=30">
+<input type=button onClick="document.mijnlayer.left=120" value="document.mijnlayer.left=120">
+<h3>Dit werkt in Internet Explorer 4:</h4>
+<input type=button onClick="document.all.mijnlayer.style.left=30" value="document.all.mijnlayer.style.left=30">
+<input type=button onClick="document.all.mijnlayer.style.left=120" value="document.all.mijnlayer.style.left=120">
+</form>
+
+</body>
+</html>

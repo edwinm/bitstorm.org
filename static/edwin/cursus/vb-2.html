@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	background-color: orange;
+}
+</style>
+<script language="JavaScript">
+function setPosition( layer, x, y ) {
+	if( document.all ) {
+		document.all[layer].style.left = x;
+		document.all[layer].style.top = y;
+	} else {
+		document[layer].left = x;
+		document[layer].top = y;
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id="mijnlayer">
+Deze tekst staan in een layer.
+</div>
+
+<h2 class=cursus>DHTML in Netscape 4 en IE 4</h2>
+
+<form>
+<h3>Dit werkt in Netscape 4 en Internet Explorer 4:</h4>
+<input type=button onClick="setPosition('mijnlayer', 120, 300)" value="setPosition('mijnlayer', 120, 300)">
+<input type=button onClick="setPosition('mijnlayer', 30, 300)" value="setPosition('mijnlayer', 30, 300)">
+</form>
+
+</body>
+</html>

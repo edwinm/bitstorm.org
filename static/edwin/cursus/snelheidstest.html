@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 80px;
+	left: 8px;
+	background-color: lightgrey;
+	border: 2px solid darkgray;
+	padding: 0px 2px;
+}
+#form {
+	position: absolute;
+	top: 120px;
+	left: 8px;
+}
+#fps {
+	position: absolute;
+	top: 120px;
+	left: 200px;
+}
+</style>
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function writeText( layer,text ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).innerHTML = text;
+	} else if( document.all ) {
+		document.all[layer].innerHTML = text;
+	} else {
+		document[layer].document.open();
+		document[layer].document.write( text );
+		document[layer].document.close();
+	}
+}
+var xPositie = 8;
+var timer1 = null;
+var timer2 = null;
+var dx = -1;
+var bewegingen;
+var startMsecs;
+
+function begin() {
+	date = new Date();
+	startMsecs = date.getTime();
+	bewegingen = 0;
+	beweeg();
+	showSpeed();
+}
+function beweeg() {
+	if ( xPositie > 300 || xPositie < 8 )
+		dx = -dx;
+	xPositie = xPositie + dx;
+	getStyle('mijnlayer').left = xPositie;
+	timer1 = setTimeout( 'beweeg()', 0 );
+	bewegingen++;
+}
+function stop() {
+	clearTimeout( timer1 );
+	clearTimeout( timer2 );
+}
+function showSpeed() {
+	var date = new Date();
+	var currentMsecs = date.getTime();
+	writeText( 'fps', 'Speed: '+Math.round(bewegingen*100000/(currentMsecs-startMsecs))/100+' frames per second.' );
+	timer2 = setTimeout( 'showSpeed()', 1000 );
+}
+</script>
+
+</head>
+<body>
+
+<h2 class=cursus>DHTML snelheidstest</h2>
+
+<div id="mijnlayer">
+Deze tekst staat in een layer.
+</div>
+
+<div id="form">
+<form>
+<input type="button" onClick="begin()" value="Start">
+<input type="button" onClick="stop()" value="Stop">
+</form>
+</div>
+
+<div id="fps">
+</div>
+
+
+</body>
+</html>

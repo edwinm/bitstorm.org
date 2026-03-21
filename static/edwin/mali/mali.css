@@ -1,0 +1,67 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: black;
+	margin: 0;
+	overflow: hidden;
+	height: 100%;
+}
+#b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #b10, #b11, #b12, #b13, #b14 {
+	border: 4px solid gray;
+}
+#foto0, #foto1 {
+	position: absolute;
+	top: 20px;
+	left: -450px;
+	z-index: 0;
+}
+#fotoimg0, #fotoimg1 {
+	border: none;
+}
+#selectie {
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 100px;
+	height: 100%;
+	z-index: 2;
+}
+#mali {
+	position: absolute;
+	top: 200px;
+	left: 250px;
+	color: black;
+	font-size: 40px;
+}
+#edwin {
+	position: absolute;
+	top: 260px;
+	left: 200px;
+	color: black;
+	font-size: 20px;
+}
+#f1, #f2, #f3, #f4, #f5, #f6, #f7, #f8, #f9, #f10, #f11, #f12, #f13, #f14 {
+	left: -48px;
+	position: absolute;
+	z-index: 3;
+}
+#bg {
+	position: absolute;
+	width: 140px;
+	height: 1200px;
+	z-index: 2;
+	border: none;
+	background-image: url(bgb.png);	
+}
+#scroll {
+	position: absolute;
+	left: 150px;
+}
+#up, #down {
+	position: absolute;
+	z-index: 3;
+	left: 80px;
+}
+#up {
+	top: 35px;
+	display: none;
+}

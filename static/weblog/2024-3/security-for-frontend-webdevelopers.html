@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security for frontend webdevelopers - bitstorm.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="Should frontend web developers worry about security?
+A backend developer once told me that as a frontend developer I didn’t have to worry
+about security. All security would be handled on the backend.
+He did have a point. Topics such as injection, pa…">
+    
+    
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2024-03-11T15:00"/>
+    <meta property="article:author" content="Edwin Martin"/>
+    
+    <meta property="og:title" content="Security for frontend webdevelopers">
+    <meta property="og:site_name" content="bitstorm.org">
+    
+    
+    <meta property="og:image" content="https://bitstorm.org/weblog/2024-3/girl_working_on_laptop_in_home_one_giant_monster~800.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="533">
+    <meta property="og:image:alt" content="Drawing of a girl working on laptop with a monster outside looking at her">
+    
+    <link rel="alternate" type="application/rss+xml" title="bitstorm.org" href="https://bitstorm.org/weblog/rss.xml" />
+
+    <link rel="preload" fetchpriority="high" as="image" href="/assets/pix/cityscape.webp" type="image/webp">
+
+    <link rel="stylesheet" href="/assets/style.css" title="Main style">
+    <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
+    <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
+
+    <link rel="icon" href="/assets/pix/favicon.ico">
+    
+    <script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
+    <script src="/assets/baguetteBox/baguetteBox.js" async></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            baguetteBox.run('[rel=lightbox]');
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <div class="header-side"></div>
+    <div class="header-content">
+        
+        <h1 class="title"><a href="/">bitstorm.org</a></h1>
+        
+        <h2 class="subtitle">Weblog by Edwin Martin about frontend webdevelopment and related topics</h2>
+    </div>
+    <div class="header-side"></div>
+</header>
+
+<main>
+    <h2>Security for frontend webdevelopers</h2>
+
+    
+    <time class="date" datetime="2024-03-11T15:00">11 Mar 2024</time>
+    
+
+    
+        <img src="/weblog/2024-3/girl_working_on_laptop_in_home_one_giant_monster~800.webp" class="single-image" width="800" height="533" alt="Drawing of a girl working on laptop with a monster outside looking at her" style="--height: 533">
+    
+
+    <p>Should frontend web developers worry about security?
+A backend developer once told me that as a frontend developer I didn’t have to worry
+about security. All security would be handled on the backend.</p>
+<p>He did have a point. Topics such as injection, path traversal and DDoS attacks take place on the backend.
+If you look at the <a href="https://owasp.org/www-project-top-ten/">OWASP Top 10 Web Application Security Risks</a>,
+you only see server side vulnerabilities.</p>
+<p>And also, a browser cannot be trusted. Someone’s computer may have been compromised or the user may have installed a rogue browser extension.
+Someone can also open the browser inspector themselves and manipulate the website or the traffic with the server.</p>
+<p>But a frontend developer can certainly do things to make a site more secure.</p>
+<h3>Cross-site scripting (XSS)</h3>
+<p>Cross-site scripting involves injecting JavaScript into pages.
+This can happen if you show texts on your site from other users, but also if you show texts from external sources.
+This may contain JavaScript that is executed when users open the page.
+The frontend developer is the most important link in preventing this vulnerability.</p>
+<p>It is important that the text is first converted to secure HTML.
+For example, the ‘<code>&lt;</code>’ is converted to the HTML entity ‘<code>&amp;lt;</code>’.
+All well-known JavaScript frameworks do this automatically. You often have to make extra efforts if you want to display the text in an unsafe manner.
+If you don’t use a framework and write plain JavaScript, be very careful about assigning text to the <code>innerHTML</code> property.
+Use the <code>textContent</code> property instead. The disadvantage of <code>textContent</code> is that you cannot use your own HTML tags.</p>
+<p>Would you like to build your HTML string including the insecure text? Then you can first run the text through an HTML sanitizer.
+For this you can use a JavaScript library like <a href="https://www.npmjs.com/package/sanitize-html">sanitize-html</a>.
+The advantage of a HTML sanitizer is that you can also declare which tags and attributes are allowed, like <code>&lt;strong&gt;</code> and <code>&lt;i&gt;</code>.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> allowed <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">allowedTags</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'strong'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;aside></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">sanitizeHtml</span><span class="token punctuation">(</span>userContent<span class="token punctuation">,</span> allowed<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/aside></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
+<p>Work is underway to make the <a href="https://wicg.github.io/sanitizer-api/">sanitizer part of the Browser API</a>.</p>
+<h3>Cross Site Request Forgery (CSRF)</h3>
+<p>This vulnerability takes advantage of the fact that a browser always sends all cookies when a site is visited,
+including the cookies used for authentication.
+For example, a script on a rogue website or even a link can cause unintended actions to be taken by the user that was still logged in.</p>
+<p>The solution is simple: never rely solely on cookies for authentication.
+Always send another secret key to confirm authenticity.
+Giving cookies the <code>HttpOnly</code> and <code>SameSite</code> (with values <code>Strict</code> or <code>Lax</code>) attributes also makes abuse much more difficult.
+These measures are now common practice and this attack is rare these days.</p>
+<p>As a frontend developer, you must ensure that with an Ajax request
+the secret key is sent along.</p>
+<h3>HTTPS and Strict-Transport-Security (HSTS)</h3>
+<p>Nowadays it goes without saying that a website only uses https and no longer http.
+To prevent a user from (accidentally) going to the http site, you can use a
+the <code>Strict-Transport-Security</code> (HSTS) HTTP header. If the browser sees this header, it will from that moment on
+prevent the http site from being visited and will lead the user directly to the https site.</p>
+<pre class="language-http"><code class="language-http"><span class="token header"><span class="token header-name keyword">Strict-Transport-Security</span><span class="token punctuation">:</span> <span class="token header-value hsts languages-hsts">max-age=63072000; includeSubDomains; preload</span></span></code></pre>
+<h3>Cross-Origin Resource Sharing (CORS)</h3>
+<p>CORS makes it possible to communicate with other websites using JavaScript in the browser.
+Normally communication is only possible with your own site (the site origin).
+To communicate with other sites, a number of security requirements must be met.
+CORS makes that possible, but it is not very easy.</p>
+<p>Fortunately, Jake Archibald has written a good article about CORS:</p>
+<p><a href="https://jakearchibald.com/2021/cors/">How to win at CORS</a></p>
+<h3>Content Security Policy (CSP)</h3>
+<p>CSP is an HTTP header that limits a browser from where images and scripts, among other things, can be loaded.</p>
+<p>This can be relevant for frontend developers if they want to include an external script, for example
+for ads or tracking and it doesn’t work. It is then good to know what CSP is and which rules are active.</p>
+<p>It is possible to start with a site that is only allowed to retrieve content from its own site and then, in
+consultation with DevOps/SecDevOps, expand the rules when necessary.</p>
+<pre class="language-http"><code class="language-http"><span class="token header"><span class="token header-name keyword">Content-Security-Policy</span><span class="token punctuation">:</span> <span class="token header-value csp languages-csp">default-src 'self'</span></span></code></pre>
+<h3>X-Content-Type-Options</h3>
+<p>With this HTTP header, you can tell the browser to only look at the <code>Content-Type</code> header to determine the type of document.
+Years ago, Internet Explorer was known to also look at the contents of the document to determine the type of document,
+causing many security flaws. While Internet Explorer is obsolete now, It won’t hurt to add this header.
+Make sure you set the <code>Content-Type</code> header with the correct value of all documents that are served.</p>
+<pre class="language-http"><code class="language-http"><span class="token header"><span class="token header-name keyword">X-Content-Type-Options</span><span class="token punctuation">:</span> <span class="token header-value">nosniff</span></span></code></pre>
+<h3>Subresource Integrity</h3>
+<p>If you load an external script, it is possible that the external site will be compromised and malicious code will be inserted into the script.
+This can be prevented with subresource integrity. An <code>integrity</code> attribute is added to the script tag that
+contains a hash of the script. If the script changes, the hash will no longer match and the script will be rejected.</p>
+<p>This is of course not useful if the script is legitimately modified, which is why it is important that each version of the script has its own url.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://code.jquery.com/jquery-3.7.1.slim.min.js<span class="token punctuation">"</span></span>
+        <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=<span class="token punctuation">"</span></span>
+        <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<h3>Terminology</h3>
+<p>Finally, a few terms that are important to know.</p>
+<p>Many times, authentication and authorization are mixed up.
+Authentication is determining who the user is and authorization is determining which roles the user has: what the user can and cannot do.</p>
+<p><a href="https://www.techtarget.com/whatis/definition/Confidentiality-integrity-and-availability-CIA">CIA</a>: confidentiality, integrity, and availability, the three main concepts of information security.</p>
+<p><a href="https://en.wikipedia.org/wiki/STRIDE_(security)">STRIDE</a>: six categories for identifying computer security threats, used for threat modeling.</p>
+
+
+    
+    <section class="comments">
+        <script defer src="https://comment.bitstorm.org/comentario.js"></script>
+        <comentario-comments no-fonts="true" live-update="false"></comentario-comments>
+    </section>
+    
+</main>
+
+<aside class="aside about">
+    <div class="footer-content">
+        <section>
+        
+            <p class="links links-bottom"><a rel="contents" href="/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-home">
+              <use xlink:href="/assets/svg-sprite.svg#svg-home" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-home)"
+      />
+  </svg> Home</a></p>
+        
+
+        
+            <p class="links"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> Blog archive</a></p>
+        
+
+        <h3>About</h3>
+
+        <p class="links-plain">Edwin Martin is a <a href="https://bitstorm.nl/">freelance webdeveloper</a> living in the Netherlands.</p>
+
+        </section>
+
+        <section>
+        <h3>Game of Life</h3>
+
+        <a href="https://playgameoflife.com/lexicon/Gosper_glider_gun"><img src="/assets/pix/Gosper_glider_gun.png" alt="Image of Gosper glider gun" style="aspect-ratio: 3.5"></a>
+
+        <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
+
+        <p class="links links-bottom"><a href="https://playgameoflife.com/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-gameoflife">
+              <use xlink:href="/assets/svg-sprite.svg#svg-gameoflife" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-gameoflife)"
+      />
+  </svg> playgameoflife.com</a></p>
+        </section>
+
+        <section>
+        <h3>Links</h3>
+            <ul class="links">
+                <li><a href="https://github.com/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-github">
+              <use xlink:href="/assets/svg-sprite.svg#svg-github" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-github)"
+      />
+  </svg> edwinm@Github</a></li>
+                <li><a href="https://mastodon.social/@edwin">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-mastodon">
+              <use xlink:href="/assets/svg-sprite.svg#svg-mastodon" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-mastodon)"
+      />
+  </svg> edwin@Mastodon</a></li>
+                <li><a href="https://www.linkedin.com/in/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-linkedin">
+              <use xlink:href="/assets/svg-sprite.svg#svg-linkedin" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-linkedin)"
+      />
+  </svg> edwinm@LinkedIn</a></li>
+                <li><a href="mailto:edwin@bitstorm.org">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-envelope">
+              <use xlink:href="/assets/svg-sprite.svg#svg-envelope" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-envelope)"
+      />
+  </svg> edwin@bitstorm.org</a></li>
+                <li><a href="https://bitstorm.org/weblog/rss.xml">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-rss">
+              <use xlink:href="/assets/svg-sprite.svg#svg-rss" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-rss)"
+      />
+  </svg> RSS feed</a></li>
+            </ul>
+        </section>
+    </div>
+</aside>
+
+<nav class="aside recent">
+    
+    <h3>Recent</h3>
+    
+    
+
+    <ol class="links">
+                <li><a href="/weblog/2024-4/Introducing-BlendBlastCSS.html">Introducing BlendBlastCSS</a></li>
+            
+                <li aria-current="page">Security for frontend webdevelopers</li>
+            
+                <li><a href="/weblog/2022-12/Intl.html">Introduction to Intl, the ECMAScript internationalization API</a></li>
+            
+                <li><a href="/weblog/2022-12/Machine-learning-for-frontend-developers.html">How can machine learning help a frontend developer?</a></li>
+            
+                <li><a href="/weblog/2020-12/introduction-to-web-components.html">Introduction to Web Components</a></li>
+            
+                <li><a href="/weblog/2020-8/Carbonium_a_lightweight_library_to_manipulate_the_DOM.html">Carbonium, a lightweight library to manipulate the DOM</a></li>
+            
+                <li><a href="/weblog/2020-4/Practical_CSS_variables.html">Practical CSS variables</a></li>
+            
+                <li><a href="/weblog/2019-8/The_JavaScript_engineer_and_the_front-end_UI_developer.html">The JavaScript engineer and the front-end UI developer</a></li>
+            
+                <li><a href="/weblog/2019-1/Prettier_the_Opinionated_Code_Formatter.html">Prettier, the Opinionated Code Formatter</a></li>
+            
+                <li><a href="/weblog/2017-7/testproxy_testing_sites_on_devices_without_configuration.html">testproxy: testing sites on devices without configuration</a></li>
+            </ol>
+    
+    <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> More in the archive</a></p>
+    
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How to use the jQuery queue function - bitstorm.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="Last week I was at a meeting of the JavaScript user group Amsterdam.js and Michiel Kalkman talked about the sequencer he wrote. The idea is very good: it let’s you write loosely coupled software when using callbacks. Then I remembered jQuery has thi…">
+    
+    
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2011-02-12T14:20"/>
+    <meta property="article:author" content="Edwin Martin"/>
+    
+    <meta property="og:title" content="How to use the jQuery queue function">
+    <meta property="og:site_name" content="bitstorm.org">
+    
+    <meta property="og:image" content="https://bitstorm.org/assets/pix/cityscape-og.webp">
+    <meta property="og:image:width" content="1370">
+    <meta property="og:image:height" content="721">
+    
+    <link rel="alternate" type="application/rss+xml" title="bitstorm.org" href="https://bitstorm.org/weblog/rss.xml" />
+
+    <link rel="preload" fetchpriority="high" as="image" href="/assets/pix/cityscape.webp" type="image/webp">
+
+    <link rel="stylesheet" href="/assets/style.css" title="Main style">
+    <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
+    <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
+
+    <link rel="icon" href="/assets/pix/favicon.ico">
+    
+    <script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
+    <script src="/assets/baguetteBox/baguetteBox.js" async></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            baguetteBox.run('[rel=lightbox]');
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <div class="header-side"></div>
+    <div class="header-content">
+        
+        <h1 class="title"><a href="/">bitstorm.org</a></h1>
+        
+        <h2 class="subtitle">Weblog by Edwin Martin about frontend webdevelopment and related topics</h2>
+    </div>
+    <div class="header-side"></div>
+</header>
+
+<main>
+    <h2>How to use the jQuery queue function</h2>
+
+    
+    <time class="date" datetime="2011-02-12T14:20">12 Feb 2011</time>
+    
+
+    
+    <ul class="images" rel="lightbox"></ul>
+    
+
+    <p>Last week I was at a meeting of the JavaScript user group <a href="http://groups.google.com/group/amsterdam-js">Amsterdam.js</a> and Michiel Kalkman talked about the <a href="https://github.com/michiel/sequencer-js">sequencer</a> he wrote. The idea is very good: it let’s you write loosely coupled software when using callbacks. Then I remembered jQuery has this same functionality build in.</p>
+<h2>The problem</h2>
+<p>If you’ve ever written code with a lot of callbacks, for example in a ajax-intensive website, it might have looked like this:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> dothis <span class="token punctuation">{</span>
+	<span class="token comment">// do something</span>
+	<span class="token function">someCallback</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// do more</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// etcetera</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Maybe your code had even more levels of callbacks. This style of code is hard to understand, hard to change, hard to debug and hard to maintain.</p>
+<p>Turning every callback into a seperate, named function is a step in the right direction, but the different pieces are still very dependent on each other.</p>
+<h2>The solution using queue</h2>
+<p>One of the ways to write high quality code is to make your code loosely coupled. In the ideal situation, all callback functions are decoupled and don’t know each others existance. With jQuery’s queue function we can do exactly that. The code will look like this.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span>someElement<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">queue</span><span class="token punctuation">(</span>dothis<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">queue</span><span class="token punctuation">(</span>dothat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">dothis</span><span class="token punctuation">(</span><span class="token parameter">next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// do something</span>
+    <span class="token function">omeCallback</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">dothat</span><span class="token punctuation">(</span><span class="token parameter">next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// do more</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Now the functions are decoupled, so it’s very easy to understand each function seperately, it’s easy to replace a function and it’s easy to refactor the code. In the first line, you can also easily see in which order which functions are called.</p>
+<p>This approach clearly had advantages, so what are the disadvantages? One (possibly the only one) is that you can’t easily pass parameters this way. You could store the parameters somewhere using jQuery’s data function or in a DOM data-* attribute.</p>
+<p>By default it uses the same queue that is used by the animate function, called ‘fx’. If you don’t want to interfere with animations, you can give your own, seperate queue name as the first parameter of the queue function.</p>
+<h2>Example code using queue</h2>
+<p>Of course I had to write an example to proof this really works. This example first fetches a feed url from the server, then it uses the Google Feed API to fetch and show the last feed item. Then, also with ajax, it lets the server calculate the MD5-hash of the article url, because this is needed in the last step, fetching and displaying tags assigned to this article using the Delicious API.</p>
+<p>See my <a href="/jquery/queue/">jQuery queue example</a>. Don’t forget to look at the JavaScript source to see the queue function in practice.</p>
+<h2>Update</h2>
+<p>Update: since jQuery 1.8, the then() function works similar to the queue() function. Since then() is part of the promises interface, which can handle asynchronous functions in a more powerful way, it is recommended to use the then() instead of the queue() function. Read my article about <a href="/weblog/2012-1/Deferred_and_promise_in_jQuery.html">Deferred and promise in jQuery</a> to learn about the promise interface.</p>
+
+
+    
+    <section class="comments">
+        <script defer src="https://comment.bitstorm.org/comentario.js"></script>
+        <comentario-comments no-fonts="true" live-update="false"></comentario-comments>
+    </section>
+    
+</main>
+
+<aside class="aside about">
+    <div class="footer-content">
+        <section>
+        
+            <p class="links links-bottom"><a rel="contents" href="/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-home">
+              <use xlink:href="/assets/svg-sprite.svg#svg-home" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-home)"
+      />
+  </svg> Home</a></p>
+        
+
+        
+            <p class="links"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> Blog archive</a></p>
+        
+
+        <h3>About</h3>
+
+        <p class="links-plain">Edwin Martin is a <a href="https://bitstorm.nl/">freelance webdeveloper</a> living in the Netherlands.</p>
+
+        </section>
+
+        <section>
+        <h3>Game of Life</h3>
+
+        <a href="https://playgameoflife.com/lexicon/Gosper_glider_gun"><img src="/assets/pix/Gosper_glider_gun.png" alt="Image of Gosper glider gun" style="aspect-ratio: 3.5"></a>
+
+        <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
+
+        <p class="links links-bottom"><a href="https://playgameoflife.com/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-gameoflife">
+              <use xlink:href="/assets/svg-sprite.svg#svg-gameoflife" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-gameoflife)"
+      />
+  </svg> playgameoflife.com</a></p>
+        </section>
+
+        <section>
+        <h3>Links</h3>
+            <ul class="links">
+                <li><a href="https://github.com/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-github">
+              <use xlink:href="/assets/svg-sprite.svg#svg-github" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-github)"
+      />
+  </svg> edwinm@Github</a></li>
+                <li><a href="https://mastodon.social/@edwin">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-mastodon">
+              <use xlink:href="/assets/svg-sprite.svg#svg-mastodon" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-mastodon)"
+      />
+  </svg> edwin@Mastodon</a></li>
+                <li><a href="https://www.linkedin.com/in/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-linkedin">
+              <use xlink:href="/assets/svg-sprite.svg#svg-linkedin" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-linkedin)"
+      />
+  </svg> edwinm@LinkedIn</a></li>
+                <li><a href="mailto:edwin@bitstorm.org">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-envelope">
+              <use xlink:href="/assets/svg-sprite.svg#svg-envelope" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-envelope)"
+      />
+  </svg> edwin@bitstorm.org</a></li>
+                <li><a href="https://bitstorm.org/weblog/rss.xml">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-rss">
+              <use xlink:href="/assets/svg-sprite.svg#svg-rss" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-rss)"
+      />
+  </svg> RSS feed</a></li>
+            </ul>
+        </section>
+    </div>
+</aside>
+
+<nav class="aside recent">
+    
+    <h3>Recent</h3>
+    
+    
+
+    <ol class="links">
+                <li><a href="/weblog/2024-4/Introducing-BlendBlastCSS.html">Introducing BlendBlastCSS</a></li>
+            
+                <li><a href="/weblog/2024-3/security-for-frontend-webdevelopers.html">Security for frontend webdevelopers</a></li>
+            
+                <li><a href="/weblog/2022-12/Intl.html">Introduction to Intl, the ECMAScript internationalization API</a></li>
+            
+                <li><a href="/weblog/2022-12/Machine-learning-for-frontend-developers.html">How can machine learning help a frontend developer?</a></li>
+            
+                <li><a href="/weblog/2020-12/introduction-to-web-components.html">Introduction to Web Components</a></li>
+            
+                <li><a href="/weblog/2020-8/Carbonium_a_lightweight_library_to_manipulate_the_DOM.html">Carbonium, a lightweight library to manipulate the DOM</a></li>
+            
+                <li><a href="/weblog/2020-4/Practical_CSS_variables.html">Practical CSS variables</a></li>
+            
+                <li><a href="/weblog/2019-8/The_JavaScript_engineer_and_the_front-end_UI_developer.html">The JavaScript engineer and the front-end UI developer</a></li>
+            
+                <li><a href="/weblog/2019-1/Prettier_the_Opinionated_Code_Formatter.html">Prettier, the Opinionated Code Formatter</a></li>
+            
+                <li><a href="/weblog/2017-7/testproxy_testing_sites_on_devices_without_configuration.html">testproxy: testing sites on devices without configuration</a></li>
+            </ol>
+    
+    <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> More in the archive</a></p>
+    
+</nav>
+
+</body>
+</html>

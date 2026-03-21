@@ -1,0 +1,679 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>jQuery presentatie</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<meta name="dc.creator.name" content="Edwin Martin"/>
+<meta name="dc.creator.e-mail" content="edwin@bitstorm.org"/>
+<link rel="stylesheet" type="text/css" href="jquery-presentatie.css" title="main"/>
+<script language="javascript" type="text/javascript" src="jquery.min.js"></script>
+<script>
+$(function() {
+	var scrollDoc = jQuery.scrollingDocument();
+	$('div.slide').each(function(i) {
+		var slide = $(this);
+		var title = slide.find('h2:first').text();
+		var div = $("<div class='sl'></div>").attr('title', title);
+		var offset = slide.offset().top;
+		div.click(function() {
+			scrollDoc.scrollTo(offset);
+		})
+		$('#nav').append(div);
+		slide.data('marker', div);
+		slide.data('number', i);
+	});
+
+	$().keypress(function(evt) {
+		if (evt.which == 32 || evt.charCode == 32) { // space
+			var nextSlide = $.getCurrentSlide();
+			scrollDoc.scrollTo(nextSlide.offset().top);
+			evt.preventDefault();
+		} else if (evt.which == 98 || evt.charCode == 98) { // b
+			var nextSlide = $.getPreviousSlide();
+			scrollDoc.scrollTo(nextSlide.offset().top);
+			evt.preventDefault();
+		}
+	});
+
+	$(window).scroll(function(evt) {
+		$.setMarker();
+	});
+
+	if (window.location.hash) {
+		var slide = parseInt(window.location.hash.substr(6));
+		$('#nav div').eq(slide-1).click();
+	}
+
+	$.setMarker();
+});
+
+jQuery.setMarker = function() {
+	$('div.sl.selected').removeClass('selected');
+	var currentSlide = $.getCurrentMarkerSlide();
+	currentSlide.data('marker').addClass('selected');
+	window.location = '#slide'+(1+currentSlide.data('number'));
+};
+jQuery.scrollingDocument = function() {
+	if (jQuery.scrollingDocument.element)
+		return jQuery.scrollingDocument.element;
+	var htmlElt = $('html').get(0);
+	var scrollTop = htmlElt.scrollTop;
+	$('html').get(0).scrollTop = scrollTop + 1;
+	if (htmlElt.scrollTop == scrollTop + 1) {
+		htmlElt.scrollTop = scrollTop;
+		jQuery.scrollingDocument.element = $('html');
+	} else {
+		jQuery.scrollingDocument.element = $('body');
+	}
+	return jQuery.scrollingDocument.element;
+
+};
+jQuery.getCurrentSlide = function() {
+	var htmlTop = jQuery.scrollingDocument().get(0).scrollTop;
+	var el = null;
+	$('div.slide').each(function() {
+		if ($(this).offset().top > htmlTop) {
+			el = $(this);
+			return false;
+		}
+	});
+	return el || $('div.slide:last');
+};
+
+jQuery.getCurrentMarkerSlide = function() {
+	var htmlTop = jQuery.scrollingDocument().get(0).scrollTop;
+	var el = null;
+	$('div.slide').each(function() {
+		if ($(this).offset().top >= htmlTop) {
+			el = $(this);
+			return false;
+		}
+	});
+	return el || $('div.slide:last');
+};
+
+jQuery.getPreviousSlide = function() {
+	var htmlTop = jQuery.scrollingDocument().get(0).scrollTop;
+	var el = null;
+	$('div.slide').each(function() {
+		if ($(this).offset().top >= htmlTop) {
+			el = $(this).prev();
+			return false;
+		}
+	});
+	return el || $('div.slide:last');
+};
+
+/**
+* Scroll in a component.
+* @alias jQuery.prototype.scrollTo
+* @param {int} OffsetPx
+* @param {function} callback
+* @return {jQuery}
+*/
+jQuery.fn.scrollTo = function(destPos, callback) {
+	return this.each(function() {
+		var container = $(this);
+
+		var curPos = container.get(0).scrollTop;
+		var delta = Math.ceil(Math.abs(destPos - curPos) / 10);
+		goScroll();
+
+
+		function goScroll() {
+			if (curPos == destPos) {
+				if (callback)
+					callback();
+				return;
+			}
+			if (curPos > destPos) {
+				curPos -= delta;
+				if (curPos < destPos)
+					curPos = destPos;
+			} else {
+				curPos += delta;
+				if (curPos > destPos)
+					curPos = destPos;
+			}
+			container.get(0).scrollTop = curPos;
+			if (container.get(0).scrollTop == curPos)
+				setTimeout(goScroll, 20);
+		}
+
+	});
+}
+
+
+</script>
+</head>
+
+<body>
+
+<div id="nav">
+</div>
+
+<div class="slide">
+<h1>jQuery presentatie</h1>
+<img src="pix/jquery_logo_color_onwhite.png" alt="jQuery. Write less, do more">
+<p class="author">Edwin Martin</p>
+<p class="author">maart 2009</p>
+</div>
+
+<div class="slide">
+<h2>John Resig</h2>
+<img src="pix/john-resig.jpg" alt="Foto van John Resig" width="650">
+
+</div>
+
+<div class="slide">
+<h2>Waarom een JavaScript bibliotheek?</h2>
+<ul>
+<li>Schermt browserverschillen af</li>
+<li>Voorkomt geheugenlekken</li>
+<li>Geoptimaliseerd</li>
+<li>Goed onderhouden door specialisten</li>
+</ul>
+</div>
+
+<div class="slide">
+<h2>Welke bibliotheek?</h2>
+<ul>
+<li>Functionaliteit</li>
+<li>Snelheid</li>
+<li>Omvang (bytes)</li>
+<li>Documentatie</li>
+<li>Community</li>
+<li>Gebruik van globals</li>
+<li>Licentie (Open Source)</li>
+</ul>
+
+</div>
+
+<div class="slide">
+<h2>Wat biedt jQuery?</h2>
+<ul>
+<li>Selectors</li>
+<li>Traversing: DOM doorlopen</li>
+<li>Manipulation: DOM veranderen</li>
+<li>Events</li>
+<li>Effecten</li>
+<li>Ajax</li>
+<li>Tools</li>
+</ul>
+
+<p>Voor UI-widgets is er jQuery UI.</p>
+
+</div>
+
+<div class="slide">
+<h2>Grafiekje</h2>
+<img src="pix/barchart.jpg" alt="Staafgrafiek" width="500">
+
+</div>
+
+<div class="slide">
+<h2>Eenvoudig voorbeeld</h2>
+
+<h3 class="label">javascript</h3>
+<code>
+	$('#summary').slideToggle();
+</code>
+
+<div class="out">
+<p id="summary">jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.</p>
+</div>
+
+<button onclick="$('#summary').slideToggle()">uitvoeren</button>
+
+<p>Eerste deel CSS-selector, daarna de bewerkingen die daarop uitgevoerd moeten worden.</p>
+
+</div>
+
+<div class="slide">
+<h2>Voorbeeld CSS-selector</h2>
+
+<h3 class="label">html</h3>
+<code>
+&lt;div id="bomen">
+	&lt;p class="nieuw">Bomen&lt;/p>
+	&lt;ol>
+		&lt;li>&lt;p>Berk&lt;/p>&lt;/li>
+		&lt;li>&lt;p <em>class="nieuw"</em>>Beuk&lt;/p>&lt;/li>
+		&lt;li>&lt;p <em>class="nieuw"</em>>Eik&lt;/p>&lt;/li>
+	&lt;/ol>
+&lt;/div&gt;
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+	$('<em>#bomen ol li p.nieuw</em>').css('color', 'orange');
+</code>
+
+<div class="out">
+<div id="bomen">
+	<p class="nieuw">Bomen</p>
+	<ol>
+		<li><p>Berk</p></li>
+		<li><p class="nieuw">Beuk</p></li>
+		<li><p class="nieuw">Eik</p></li>
+	</ol>
+</div>
+</div>
+
+<button onclick="$('#bomen ol li p.nieuw').css('color', 'orange')">uitvoeren</button>
+
+</div>
+
+<div class="slide">
+<h2>Voorbeeld chaining</h2>
+
+<style>
+	#fun span {
+		display: none;
+	}
+	.opvallen {
+		font-weight: bold;
+		color: purple;
+	}
+</style>
+
+<h3 class="label">html</h3>
+<code>
+	&lt;div id="fun">jQuery &lt;span>is heel erg leuk&lt;/span>&lt;/div&gt;
+</code>
+
+<h3 class="label">css</h3>
+<code>
+	#fun span {
+		display: none;
+	}
+	.opvallen {
+		font-weight: bold;
+		color: purple;
+	}
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+	$('#fun').<em>find('span').addClass('opvallen').fadeIn('slow')</em>;
+</code>
+
+<div class="out">
+<div id="fun">jQuery <span>is heel erg leuk</span></div>
+</div>
+
+<button onclick="$('#fun').find('span').addClass('opvallen').fadeIn('slow')">uitvoeren</button>
+
+</div>
+
+<div class="slide">
+<h2>onDomReady</h2>
+
+<h3 class="label">html</h3>
+<code>
+	&lt;div id="date"&gt;&lt;/div&gt;
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+	<em>$(document).ready( function() {</em>
+		$('#date').html(new Date().toLocaleTimeString());
+	<em>});</em>
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+	<em>$( function() {</em>
+		$('#date').html(new Date().toLocaleTimeString());
+	<em>});</em>
+</code>
+
+<script>
+$( function() {
+	$('#date').html(new Date().toLocaleTimeString());
+});
+</script>
+
+<div class="out">
+<div id="date"></div>
+</div>
+
+
+</div>
+
+<div class="slide">
+<h2>.end()</h2>
+
+<h3 class="label">html</h3>
+<code>
+&lt;div id="beuk"&gt;&lt;/div&gt;
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+$('#beuk')
+	.append('&lt;h3>De beuk&lt;/h3>')
+	.find('h3')
+		.css('color', 'blue')
+		<em>.end()</em>
+	.append('&lt;p>De beuk (Fagus sylvatica) is een plant uit de napjesdragersfamilie.&lt;/p>')
+	.find('p')
+		.css('color', 'green');
+</code>
+
+<div id='beuk'></div>
+
+<button onclick="$('#beuk').append('<h3>De beuk</h3>').find('h3').css('color', 'blue').end().append('<p>De beuk (Fagus sylvatica) is een plant uit de napjesdragersfamilie.</p>').find('p').css('color', 'green')">uitvoeren</button>
+
+</div>
+
+<div class="slide">
+<h2>Events</h2>
+
+<h3 class="label">html</h3>
+<code>
+&lt;div id="hoog">&lt;/div>
+</code>
+<h3 class="label">css</h3>
+<code>
+#hoog {
+	width: 400px;
+	height: 200px;
+	background-color: orange;
+}
+
+#hoog div {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+}
+</code>
+<h3 class="label">javascript</h3>
+<code>
+	$(function() {
+		$('#hoog').<em>click</em>(function(evt) {
+			var div = $('&lt;div>').css({
+				left: evt.pageX,
+				top: evt.pageY
+			});
+			$(this).append(div);
+		});
+	});
+</code>
+
+<script>
+	$(function() {
+		$('#hoog').click(function(evt) {
+			var div = $('<div>').css({
+				left: evt.pageX,
+				top: evt.pageY
+			});
+			$(this).append(div);
+		});
+	});
+</script>
+
+<div id="hoog"></div>
+
+</div>
+
+<div class="slide">
+<h2>Plugins</h2>
+
+<h3 class="label">javascript</h3>
+<code>
+<em>jQuery.fn.pluginNaam = function() {
+	return this.each(function() {</em>
+		// Doe iets met $(this)
+<em>	}
+}</em>
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+$('p').pluginNaam();
+</code>
+</div>
+
+<div class="slide">
+<h2>Plugin voorbeeld</h2>
+
+<h3 class="label">html</h3>
+<code>
+&lt;ul id="naaldbomen">
+	&lt;li>Ceder&lt;/li>
+	&lt;li>Larix&lt;/li>
+	&lt;li>Spar&lt;/li>
+&lt;/ul>
+</code>
+
+<h3 class="label">css</h3>
+<code>
+#naaldbomen li {
+	width: 100px;
+	background-color: pink;
+	padding: 3px;
+	list-style-type: none;
+	margin-bottom: 2px;
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+jQuery.fn.<em>animatedSelector</em> = function() {
+	return this.each(function() {
+		$(this).toggle(
+			function() {
+				$(this).animate({width: 130});
+			},
+			function() {
+				$(this).animate({width: 100});
+			}
+		);
+	});
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+$(function() {
+	$('#naaldbomen li').animatedSelector();
+})
+</code>
+
+<script>
+jQuery.fn.animatedSelector = function() {
+	return this.each(function() {
+		$(this).toggle(
+			function() {
+				$(this).animate({width: 130});
+			},
+			function() {
+				$(this).animate({width: 100});
+			}
+		);
+	});
+}
+$(function() {
+	$('#naaldbomen li').animatedSelector();
+})
+</script>
+
+<ul id="naaldbomen">
+	<li>Ceder</li>
+	<li>Larix</li>
+	<li>Spar</li>
+</ul>
+
+</div>
+
+<div class="slide">
+<h2>Aptana code assist</h2>
+<img src="pix/aptana-code-assist.png">
+</div>
+
+<div class="slide">
+<h2>Filters</h2>
+
+<p>Diverse pseudo-selectors: :first, :last, :not(selector), :even, :odd, :eq(index)...</p>
+
+<h3 class="label">css</h3>
+<code>
+#eik td.highlight {
+	color: white;
+	background-color: #999;
+}
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+$('#eik <em>tr:even</em> td').addClass('highlight');
+</code>
+
+
+<table id="eik">
+<tr><td>Amerikaanse witte eik</td><td>Quercus alba</td></tr>
+<tr><td>Amerikaanse eik</td><td>Quercus rubra</td></tr>
+<tr><td>Californische struikeik</td><td>Quercus berberidifolia</td></tr>
+<tr><td>Donzige eik</td><td>Quercus pubescens</td></tr>
+<tr><td>Hulsteik</td><td>Quercus coccifera</td></tr>
+<tr><td>Japanse eik</td><td>Quercus aliena</td></tr>
+<tr><td>Gezaagdbladige eik</td><td>Quercus acutissima</td></tr>
+<tr><td>Gouden eik</td><td>Quercus alnifolia</td></tr>
+<tr><td>Kurkeik</td><td>Quercus suber</td></tr>
+</table>
+
+<button onclick="$('#eik tr:even td').addClass('highlight')">uitvoeren</button>
+
+</div>
+
+
+<div class="slide">
+<h2>Eigen filters</h2>
+
+<h3 class="label">javascript</h3>
+<code>
+	$.expr[':'].<em>everyFive</em> = function(elem) {
+		var index = $(elem).parent().children().index(elem);
+		return index % 5 == 0;
+	};
+</code>
+
+<h3 class="label">javascript</h3>
+<code>
+$('#eik2 <em>tr:everyFive</em> td').addClass('highlight')
+</code>
+
+
+<table id="eik2">
+<tbody>
+<tr><td>Amerikaanse witte eik</td><td>Quercus alba</td></tr>
+<tr><td>Amerikaanse eik</td><td>Quercus rubra</td></tr>
+<tr><td>Californische struikeik</td><td>Quercus berberidifolia</td></tr>
+<tr><td>Donzige eik</td><td>Quercus pubescens</td></tr>
+<tr><td>Hulsteik</td><td>Quercus coccifera</td></tr>
+<tr><td>Japanse eik</td><td>Quercus aliena</td></tr>
+<tr><td>Gezaagdbladige eik</td><td>Quercus acutissima</td></tr>
+<tr><td>Gouden eik</td><td>Quercus alnifolia</td></tr>
+<tr><td>Kurkeik</td><td>Quercus suber</td></tr>
+</tbody>
+</table>
+
+<script>
+$(function() {
+	$.expr[':'].everyFive = function(elem) {
+		var index = $(elem).parent().children().index(elem);
+		return index % 5 == 0;
+	};
+});
+
+</script>
+
+<button onclick="$('#eik2 tr:everyFive td').addClass('highlight')">uitvoeren</button>
+
+</div>
+
+
+<div class="slide">
+<h2>Live events</h2>
+
+<p>Niet live:</p>
+
+<h3 class="label">javascript</h3>
+<code>
+$(function() {
+	$('#live1 li').<em>bind</em>('click', function() {
+		$(this).text($(this).text()*1+1);
+	});
+	$('#more1').click(function() {
+		$('#live').append('&lt;li>1&lt;/li>');
+	});
+});
+</code>
+
+<ul id="live1">
+	<li>1</li>
+</ul>
+
+<button id="more1">Meer</button>
+
+<script>
+$(function() {
+	$('#live1 li').bind('click', function() {
+		$(this).text($(this).text()*1+1);
+	});
+	$('#more1').click(function() {
+		$('#live1').append('<li>1</li>');
+	});
+});
+</script>
+</div>
+
+<div class="slide">
+<h2>Live events (live)</h2>
+
+<p>Wel live:</p>
+
+<h3 class="label">javascript</h3>
+<code>
+$(function() {
+	$('#live2 li').<em>live</em>('click', function() {
+		$(this).text($(this).text()*1+1);
+	});
+	$('#more2').click(function() {
+		$('#live2').append('&lt;li>1&lt;/li>');
+	});
+});
+</code>
+
+<ul id="live2">
+	<li>1</li>
+</ul>
+
+<button id="more2">Meer</button>
+
+<script>
+$(function() {
+	$('#more2').click(function() {
+		$('#live2').append('<li>1</li>');
+	});
+	$('#live2 li').live('click', function() {
+		$(this).text($(this).text()*1+1);
+	});
+});
+</script>
+</div>
+
+<div class="slide">
+<h2>Vragen</h2>
+
+<p>http://jquery.com/</p>
+
+<p>Edwin Martin &lt;edwin@bitstorm.org&gt;</p>
+
+</div>
+
+
+</body>
+</html>

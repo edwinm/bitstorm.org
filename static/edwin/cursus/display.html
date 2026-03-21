@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>display</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#factadres {
+	display: none;
+}
+</style>
+<script language="JavaScript">
+function showFactuur( show ) {
+	if ( show ) {
+		document.getElementById('factadres').style.display='block';
+	} else {
+		document.getElementById('factadres').style.display='none';
+	}
+}
+</script>
+
+</head>
+<body>
+
+
+<h2 class=cursus>DHTML in W3C-browsers</h2>
+
+<p>Deze pagina werkt alleen in browsers die zich aan de W3C-standaarden houden.</p>
+
+<h3>Afleveradres</h3>
+<table>
+<tr><td>Naam</td><td><input type="text"></td></tr>
+<tr><td>Adres</td><td><input type="text"></td></tr>
+<tr><td>Plaats</td><td><input type="text"></td></tr>
+</table>
+
+<form>
+<input type="checkbox" id="fact" onClick="showFactuur( this.checked )">
+<label for="fact">Het factuuradres is anders dan het afleveradres</label>
+</form>
+
+<div id="factadres">
+<h3>Factuuradres</h3>
+<table>
+<tr><td>Naam</td><td><input type="text"></td></tr>
+<tr><td>Adres</td><td><input type="text"></td></tr>
+<tr><td>Plaats</td><td><input type="text"></td></tr>
+</table>
+</div>
+
+<h3>E-mail adres</h3>
+<table>
+<tr><td>E-mail</td><td><input type="text"></td></tr>
+</table>
+
+
+</body>
+</html>

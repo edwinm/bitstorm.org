@@ -1,0 +1,380 @@
+Path: hacktic!sun4nl!vpro!vpro!news
+~From: daniel@2hoog.vpro.nl (Daniel Ockeloen)
+~Newsgroups: hacktic.general,nlnet.misc
+~Subject: VPRO met ingang van 1 Sept. bereikbaar onder http://www.vpro.nl
+~Date: 1 Sep 1994 00:31:15 +0100
+Organization: VPRO Radio&Televisie
+~Lines: 288
+Message-ID: <3433s3$1t8@2hoog.vpro.nl>
+NNTP-Posting-Host: 2hoog.vpro.nl
+~Xref: hacktic hacktic.general:3230 nlnet.misc:35763
+
+Vanaf donderdag 1 september 16.00 uur is de VPRO WWW server vanaf het
+internet bereikbaar.
+Hierbij dus de uitnodiging die te bezoeken. (http://www.vpro.nl)
+Met het opzetten van deze WWW-server laat de VPRO zien dat zij belang hecht
+aan de ontwikkelingen die rondom het internet spelen. Wij zien het internet
+als belangrijk communicatie medium, maar tegelijkertijd als begin van een
+omwenteling in de media, die de wereld zou kunnen veranderen. Om deze
+ontwikkelingen nauwlettend en kritisch te kunnen volgen wil de VPRO een
+actieve rol te spelen op het internet. Hiermee wil de VPRO haar positie ten
+aanzien van de toekomst in de media bepalen, en het onderzoek hiernaar haar
+weerslag laten vinden in TV- en radioprogramma's.
+
+Voor de internetgebruikers onder u die niet over een slip of ppp verbinding
+beschikken hebben wij een aantal inbellijnen waarmee je direct op de
+WWW-server kan inbellen, en met Mosaic de WWW- server kan bekijken.
+(hieronder vindt u de nodige tips om dat te kunnen doen)
+De inbellijnen zijn alleen ter kennismaking van de VPRO WWW- server. Deze
+lijnen geven u dus geen echt internet access, je kan een half uur
+rondkijken daarna wordt de verbinding verbroken.
+Voor een slip of  ppp-verbinding verwijzen wij naar de nederlandse internet
+providers (info hierover is te vinden op de server)
+Alle bezoekers van onze server kunnen hun reakties op de server achterlaten
+in het gastenboek, dit is te vinden achter het VPRO logo op de homepage.
+
+Bruno Felix
+(projectleider VPRO-digitaal)
+
+
+
+ Hoe kom ik op de VPRO server
+------------------------------
+
+U kunt voor windows & mac complete installeer software vinden op de VPRO-cdrom
+of voor windows op onze server (welke u met een terminal programma welke
+zmodem ondersteund kunt ophalen).
+
+Indien u het zelf wilt doen gaan we er vanuit dat u bekend bent met de TCP/IP
+software op het platform wat u wilt gebruiken (bijvoorbeeld winsock voor
+Windows of
+MacTCP voor de Macintosh). U kunt de benodigde gecomprimeerde bestanden vinden
+op onze server (tel 035-712880) of in het geval van MacTCP zit deze in 7.5 van
+de finder (indien u deze niet heeft kunt u ook de vpro-cdrom kopen waar hij
+ook opstaat).
+
+Instellen van de software voor Windows :
+Voor windows nemen wij als voorbeeld winsock (tcpman.exe), indien u andere
+software gebruikt is het mogelijk zijn dat u dingen moet veranderen/aanpassen
+aan uw software.
+
+In setup : IP address=0.0.0.0  ; dit moet op 0.0.0.0 staan omdat we werken
+                                 met niet vaste IP nummers, 0.0.0.0 geeft
+                                 aan dat deze van de server komt.
+
+           Netmask=255.255.255.0 ; bij winsock niet aan te passen.
+
+           Nameserver (DNS)= 193.67.96.1 ; IP van vpro server
+
+           Domain suffix= vpro.nl ; algemeen gedeelte van uw machine adres
+
+           Slip aan ; Indien u de interne slip driver wilt gebruiken
+
+           Port X ; X=1-9, poort nummer waar het modem aanzit.
+
+           Baudrate xxxx, Snelheid tussen uw modem en computer bv 38400 voor
+                          een 14k4 modem
+
+           Hardware handshaking aan : zeker bij snelle modems verplicht.
+
+           CSlip aan ; dit is niet echt verplicht maar gezien het sneller
+                       is dan gewoon slip is het wel aan te raden.
+
+
+Totale voorbeeld trumpwsk.ini
+---------------------------------------------------------------------------
+[Trumpet Winsock]
+ip      = 0.0.0.0
+netmask = 255.255.255.0
+gateway = 193.67.96.1
+dns     = 193.67.96.1
+time    =
+domain  = vpro.nl
+vector  = 00
+mtu     = 1500
+rwin    = 4096
+mss     = 1460
+slip-enabled    = 0
+slip-port       = 2
+slip-baudrate   = 38400
+slip-handshake  = 1
+slip-compressed = 1
+dial-option     = 2
+online-check    = 0
+inactivity-timeout = 5
+slip-timeout    = 5
+registration-name = ""
+registration-password = ""
+---------------------------------------------------------------------------
+
+Voorbeeld Login script, genaamd login.cmd in winsock :
+
+---------------------------------------------------------------------
+#
+# initialize modem
+#
+output atz\13
+input 10 OK\n
+#
+# set modem to indicate DCD
+#
+#
+# send phone number
+#
+output atdt035-712880\13
+#
+# now we are connected.
+#
+input 50 CONNECT
+#
+#  wait till it's safe to send because some modem's hang up
+#  if you transmit during the connection phase
+#
+wait 50 dcd
+#
+# now prod the terminal server
+#
+output \13
+#
+#  wait for the username prompt
+#
+input 50 ogin:
+#username Enter your username
+output gast\13
+#
+# and the password
+#
+input 50 assword:
+output gast\13
+#
+# jump into slip mode
+#
+input 50 (S)
+output s\13
+#
+# wait for the address string
+#
+input 50 address
+#
+# parse address
+#
+address 50
+input 50 \n
+#
+# we are now connected, logged in and in slip mode.
+#
+display \n
+display Connected.  Your IP address is \i.\n
+#
+----------------------------------------------------------------------------
+
+Dit script belt naar de vpro-server en logt in met de naam 'gast' en het
+password 'gast'. Daarna wacht het script tot de optie 's' (van slip) zich
+voordoet en kiest dan deze optie door een 'S' naar de server te sturen.
+De server zal dan in slip-mode gaan en een IP nummer toekennen dat vervolgens
+weer met 'address' wordt uitgegeven en aan winsock wordt doorgegeven (vandaar
+die ip = 0.0.0.0 eerder in dit verhaal).
+
+U kunt dit alles nu testen door in het programma tcpman.exe LOGIN te kiezen.
+Als alles goed gaat zal winsock de vpro-server opbellen en de verbinding
+opbouwen. Als dit gebeurd (er zal dan 'You are connected ...' in beeld
+verschijnen) kunt u bijvoorbeeld het programma Mosaic opstarten en de vpro
+www server raadplegen.
+
+Instellen van de software voor macintosh:
+-----------------------------------------
+
+Voor de Macintosh hebben we MacTCP/PPP gebruikt, Ook hier geld dat als u
+andere software gebruikt de instellingen iets anders kunnen zijn.
+
+De installatie bestaat uit twee delen. Het eerste deel bestaat uit het
+opzetten van de PPP driver. Dit gaat via het bestand "PPP config". Hierin
+wordt alle informatie gezet die nodig is om de verbinding tot stand te brengen
+en vervolgens de PPP-verbinding op te zetten. Om de vpro-server correct te
+gebruiken dienen o.a. de volgende instellingen in te voeren:
+
+          portname : xxxxx ; poortnaam waar het modem zich bevind
+
+En in 'config'
+
+          baudrate : xxxxx ; snelheid waarmee uw modem en computer met
+                             elkaar spreken. Voor een 14k4 modem bijvoorbeeld
+                             38400.
+
+          Tone dail/Pulse dail ; Moet het modem tone of pulse dialing gebruiken
+                                 in nederland kan je meestal tone dailing
+                                 gebruiken.
+
+Vervolgens zorgt u dat in 'connect script' de volgende instellingen staan:
+
+          Out    X Wait      login:        CR
+        X Out      Wait      gast          CR X
+          Out    X Wait      password:     CR
+        X Out      Wait      gast          CR X
+          Out    X Wait      (s)lip        CR
+        X Out      Wait      p             CR X
+
+Dit script belt naar de vpro-server en logt met de naam 'gast' en password
+'gast' daarna wacht hij tot het hij (s) (van slip) ziet maar kiest PPP door
+'P' te sturen. De server zal in PPP mode gaan en een IP nummer toekennen.
+
+Het tweede programma dat ingesteld dient te worden is MacTCP. Dit kan gedaan
+worden door MacTCP 2.0.4 op te starten. In het openingsscherm staan,
+afhankelijk van uw machine, een aantal interfaces aangegeven. Als alles correct
+is staat PPP daar ook bij. Selecteer PPP en ga vervolgens naar het tweede
+scherm (door op 'more' te klikken) en stel hier de volgende dingen in:
+
+  Kies bij het eerste scherm (obtain address) 'server'. Dit zorgt ervoor
+  dat het IP adres automatisch van de VPRO-server wordt overgenomen nadat
+  de verbinding is opgestart.
+
+  Gateway address : 193.67.96.1 ; dit is de VPRO-server
+
+  Domain/nameserver : vpro.nl  193.67.96.1 ; dit geeft het domain en aan welke
+                                           ; machine de nameserver is.
+
+Hiermee is ook MacTCP klaar en kunt u via PPP Config een verbinding starten
+(met 'open'). Daarna kunt u bijvoorbeeld Mosaic opstarten om de WWW-server
+van VPRO te raadplegen.
+
+het werkt niet wat nu ?
+-----------------------
+
+Het kan zijn dat er toch wat misgaat, in dat geval is het mogelijk om via een
+normaal terminalprogramma ons om hulp te vragen. Ook zullen wij naarmate we
+langer online zijn een vragen en antwoorden lijst gaan bijhouden met de meest
+voorkomende problemen. Bel met uw terminalprogramma onze server (tel. nummer
+035-712880). U krijgt dan het introductiescherm van de VPRO-server die vraagt
+om 'Login:'. Antwoord hier met 'gast'. Vervolgens verschijnt het verzoek om
+'password:' in te voeren. Ook hier geeft u 'gast' in. Vanaf nu heeft bent u
+op de server en zullen een aantal opties in beeld verschijnen:
+
+  <S>lip     <P>pp     <I>nformatie    <U>pload   <D>ownload
+
+Kies hier met 'I' gevolgt door een enter het Informatie-menu. Dit is een
+zogenaamde 'gopher' server (lees hier mee over op de CD-ROM). Eenmaal in
+deze gopher kunt u indien u niet bekend bent met dit systeem het best nog
+een enter geven (wat het eerste hoofdstuk activeerd: 'Lees dit eerst
+(Druk op Enter)'. U krijgt dan alle informatie die u nodig heeft om het
+systeem te kunnen gebruiken.
+
+Wat kunt u vinden op deze server.
+
+Via dit menu kunt u o.a. de volgende dingen doen (het zou kunnen voorkomen
+dat er functies bijkomen/veranderen naarmate we langer "online" zijn) :
+
+ Berichten naar beheerders    : Hier kunt u een bericht achterlaten voor de
+                                beheerders van de VPRO-server met vragen over
+                                het systeem en/of de problemen die u heeft
+                                met de software.
+
+ Antwoorden van de beheerders : Hier zullen de vragen publiekelijk
+                                beantwoorden zodat meer mensen voordeel kunnen
+                                hebben aan de vraag/het antwoord.
+
+ Inzien van de veel voorkomende vragen : De meest voorkomende vragen
+                                         zullen we samenvoegen in een vraag
+                                         en antwoorden lijst. Deze kunt u
+                                         inzien.
+
+ Downloaden van de veel voorkomende
+ vragen/antwoorden lijst            : Het downloaden (via zmodem) van de
+                                      hierboven beschreven lijst.
+
+ Mededelingen van het beheer : Hier zullen wij berichten achterlaten
+                               die bijvoorbeeld veranderingen aan het
+                               systeem bekend maken of nieuwere versies van
+                               de software inleiden.
+
+
+
+Bruno Felix
+VPRO Digitaal
+bfelix@vpro.nl
+vox: -31 35 712743
+fax: -31 35 712733
+
+
+
+
+
+Path: hacktic!sun4nl!news.nic.surfnet.nl!highway.LeidenUniv.nl!linneman
+~From: linneman@rulcde.LeidenUniv.nl (Stefan Linnemann)
+~Newsgroups: hacktic.general,nlnet.misc
+~Subject: Re: VPRO met ingang van 1 Sept. bereikbaar onder http://www.vpro.nl
+~Date: 1 Sep 1994 08:56:47 GMT
+Organization: CRI, Institute for telecommunication and computer services.
+~Lines: 30
+Message-ID: <34450f$et2@highway.LeidenUniv.nl>
+~References: <3433s3$1t8@2hoog.vpro.nl>
+NNTP-Posting-Host: rulcde.leidenuniv.nl
+~Xref: hacktic hacktic.general:3234 nlnet.misc:35785
+
+Daniel Ockeloen <daniel@2hoog.vpro.nl> wrote:
+}Vanaf donderdag 1 september 16.00 uur is de VPRO WWW server vanaf het
+}internet bereikbaar.
+
+} Hoe kom ik op de VPRO server
+
+}Totale voorbeeld trumpwsk.ini
+
+}Voorbeeld Login script, genaamd login.cmd in winsock :
+
+}Instellen van de software voor macintosh:
+
+}het werkt niet wat nu ?
+
+}Wat kunt u vinden op deze server.
+
+Goh, hier ben ik toch even ondersteboven van...
+
+}Bruno Felix
+}VPRO Digitaal
+
+Alleen de naam van de briefschrijver komt niet overeen met die in de
+header.  Al met al desondanks een zeer dikke voldoende, wat me weer
+een hart onder de riem steekt en weerbaar maakt tegen de jaarlijkse
+newbie vloed, die nu ongeveer moet beginnen.
+
+VPRO, ik wil je kinderen krijgen.
+
+Verliefde groetjes,
+Stefan.
+
+Path: hacktic!dds.hacktic.nl!rainder
+~From: rainder@dds.hacktic.nl (ReindeR Rustema)
+~Newsgroups: hacktic.general
+~Subject: Re: Uit de Vk: VPRO gaat Internet op
+~Date: 1 Sep 1994 19:48:00 +0200
+Organization: Stichting Hacktic Netwerk, Amsterdam
+~Lines: 24
+Message-ID: <34544gINN564@dds.hacktic.nl>
+~References: <33ff0k$kie@news.xs4all.nl> <33f5ig$acu@news.xs4all.nl>
+~Reply-To: rainder@dds.hacktic.nl (ReindeR Rustema)
+NNTP-Posting-Host: dds.hacktic.nl
+
+
+In a previous article, gbo@xs4all.nl (gbo) says:
+
+>fvjole@xs4all.nl (Francisco van Jole) writes:
+>
+>>PS: server is pas vanaf 1/2 sept. open.
+>
+>Is dat "1 of 2 september" of is dat "half semptember"?
+>
+
+In ieder geval niet 1 september (vandaag). NOG een nachtje slapen.. 
+Hoe kan ik erin komen? wat is het telnet nr. van de VPRO. Stond niets 
+over in de gids (vrpogids) die er vandaag 3 hele paginas aan besteed.
+
+In dezelfde gids staat dat je minstens een hele dure PC nodig hebt om te 
+kunnnen WWWen. NIET: ik heb een xt en een 2400b modem.en het kan.
+
+
+  
+-- 
+   ==     o                                             
+  ==   _/[._    ______________________________________________        
+===== (_)>(_)   a71599rr@horus.sara.nl /rainder@dds.hacktic.nl            
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

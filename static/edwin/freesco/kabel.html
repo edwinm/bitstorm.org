@@ -1,0 +1,235 @@
+<html>
+<head>
+<title>Freesco handson - kabelmodeminstallatie</title>
+<link rel="stylesheet" type="text/css" href="simpel.css">
+</head>
+<body>
+
+<h1>Freesco handson</h1>
+
+<a href="./">Terug naar de handson</a>
+
+<h2>Kabelmodeminstallatie</h2>
+
+<dl>
+<dt>
+Hostname of this computer [router]?</dt>
+
+<dd>
+Kies een naam voor de computer of kies voor de standaardnaam 'router'.
+Abonnees van @Home dienen hier de door @Home opgegeven naam in
+te vullen.
+</dd>
+
+<dt>
+Domain name [inet]?</dt>
+
+<dd>
+Kies de domeinnaam van uw netwerk. Bijvoorbeeld 'inet'.</dd>
+
+<dt>
+[<i>Er wordt nu gepoogt modems te detecteren. U kunt dit negeren.</i>]</dt>
+
+<dt>
+How many ethernet cards do you have [1-3]? <b>2</b></dt>
+
+<dd>
+Het aantal ge&iuml;nstalleerde ethernetkaarten (1).</dd>
+
+<dt>
+I/O port address of 1st ethernet card [0x300]? <b>0x300</b></dt>
+
+<dd>
+Het poort adres van de ethernetkaart die met de modem wordt verbonden.
+Deze hebben we eerder in de handson bepaald. Vergeet niet dat het getal
+met '0x' moet beginnen.</dd>
+
+<dt>
+IRQ line of 1st ethernet card [11]? <b>10</b></dt>
+
+<dd>
+De IRQ van de ethernetkaart die aan de modem wordt aangesloten.</dd>
+
+<dt>
+I/O port address of 2nd ethernet card [0x300]? <b>0x340</b></dt>
+
+<dd>
+Het poort adres van de ethernetkaart die met het lokale netwerk wordt verbonden.
+Deze hebben we eerder in de handson bepaald. Vergeet niet dat het getal
+met '0x' moet beginnen.</dd>
+
+<dt>
+IRQ line of 2nd ethernet card [11]? <b>11</b></dt>
+
+<dd>
+De IRQ van de ethernetkaart (lokaal netwerk).</dd>
+
+<dt>
+Use DHCP client for configuring 1st network interface y/n [y]? <b>y</b></dt>
+
+<dd>
+Kies 'y' om het IP-adres van de kabelmodem van de provider te krijgen.</dd>
+
+<dt>
+Interface name of 1st network interface [eth0]?</dt>
+
+<dd>
+Kies 'eth0' voor een NE2000 ethernetkaart.</dd>
+
+<dt>
+IP address of 1st network interface [10.0.0.1]? <b>192.168.0.1</b></dt>
+
+<dd>
+Gebruik alleen hiervoor gereserveerde IP-bereiken. Een IP-adres dat begint
+met 192.168.0 is ook goed. Bijvoorbeeld 192.168.0.1. Het laatste getal
+mag niet 0 of 255 zijn.</dd>
+
+<dt>
+Network mask [255.0.0.0]? <b>255.255.255.0</b></dt>
+
+<dd>
+Hiermee geeft u aan welk deel bij het netwerk hoort en niet verandert en
+welk deel per aangesloten computer verschilt. Voor een 10.x.x.x-netwerk
+is de netmask 255.0.0.0 en voor een 192.168.x.x-netwerk is de netmask 255.255.255.0.</dd>
+
+<dt>
+IP range [10.0.0.100 10.0.0.150]? <b>192.168.0.100 192.168.0.200</b></dt>
+
+<dd>
+Geef hier het IP adresbereik die andere computers in het netwerk mogen
+krijgen.</dd>
+
+<dt>
+Enable caching DNS server y/s/n [y]? <b>s</b></dt>
+
+<dd>
+Gebruik een (secure) DNS server om DNS-opvragen te versnellen.</dd>
+
+<dt>
+Enable DHCP server y/n [y]? <b>y</b></dt>
+
+<dd>
+Aanzetten als u wilt dat deze computer voortaan IP-nummers uitdeelt aan
+andere computers op het netwerk. Deze computer moet aan blijven en op alle
+aangesloten computers moet DHCP worden ingeschakeld.</dd>
+
+<dt>
+WINS address (if you have one, otherwise - n) [10.0.0.2]? <b>-</b></dt>
+
+<dd>
+Kies '-' voor geen WINS.</dd>
+
+<dt>
+Lease time voor DHCP-server?</dt>
+
+<dd>
+Druk op &lt;enter> voor de standaard 86400 seconden (1 dag).</dd>
+
+<dt>
+Enable public HTTP server y/n [y]? <b>y</b></dt>
+
+<dd>
+Kies 'y' als u op de machine een webservertje wilt draaien.</dd>
+
+<dt>
+Public HTTP server IP port [80]?</dt>
+
+<dd>
+Druk op &lt;enter> voor de standaard poort voor een webserver: 80.</dd>
+
+<dt>
+Enable time server and router control via HTTP y/s/n [y]? <b>s</b></dt>
+
+<dd>
+Erg handig: niet alleen voor de timeserver, maar vooral voor de webcontrol,
+waarmee Freesco met een webbrowser bestuurd kan worden.</dd>
+
+<dt>
+Control HTTP server IP port [82]?</dt>
+
+<dd>
+De Freesco-standaard is 82, maar het kan ook een andere (vrije) poort zijn.</dd>
+
+<dt>
+Time server host [www.clock.org]?</dt>
+
+<dd>
+Deze kunnen we gerust op de default laten staan.</dd>
+
+<dt>
+Time offset with GMT [+0400]? <b>+0100</b></dt>
+
+<dd>
+Het verschil met GMT (Engeland) is een uur, dus +0100.</dd>
+
+<dt>
+Enable Print Server y/n [y]? <b>n</b></dt>
+
+<dd>
+De print server laten we even voor wat het is.</dd>
+
+<dt>
+Print server IP port [515]?</dt>
+
+<dd>
+Op de default houden (515).</dd>
+
+<dt>
+Enable telnet server? y/s/n [n]? <b>y</b></dt>
+
+<dd>
+Met telnet is het mogelijk om in te loggen en commando's te geven.</dd>
+
+<dt>
+Screen saver, in minutes. 0 - disable [0]? <b>0</b></dt>
+
+<dd>
+Kies 0 voor geen screen saver.</dd>
+
+<dt>
+Swap file size in kbytes (on boot device). 0 - disable [0]?</dt>
+
+<dd>
+Kies 0 om geen swap file te gebruiken.</dd>
+
+<dt>
+Extra modules/programs y/n [n] <b>y</b></dt>
+
+<dd>
+Kies extra modules als de machine minimaal 16 MB geheugen bevat.</dd>
+
+<dt>
+Logfile size [30000,3000]</dt>
+
+<dd>
+Kies hier de standaard waarde (druk op &lt;enter>).</dd>
+
+<dt>
+Host gateway (if exist, otherwise - n) []?</dt>
+
+<dd>
+We maken niet gebruik van een gateway, dus druk op &lt;enter>.</dd>
+
+<dt>
+Host DNS address ? <b>62.108.1.65</b></dt>
+
+<dd>
+Het IP-nummer van de DNS-server van de provider, in dit geval van Chello.</dd>
+
+<dt>
+ISP proxy server y/n [n]? <b>n</b></dt>
+
+<dd>
+Deze kunt u (voorlopig) laten voor wat het is.</dd>
+
+<dt>
+Export services y/n [n]?</dt>
+
+<dd>
+Alleen nodig als u bijvoorbeeld een webserver binnen het netwerk bereikbaar
+wilt maken vanaf het internet. Kies voorlopig 'n'.</dd>
+
+</dl>
+
+</body>
+</html>

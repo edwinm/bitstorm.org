@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+
+<script language="JavaScript">
+function pop() {
+	alert('klik2')
+}
+function init() {
+	document.getElementById('kopje2').onclick = pop
+}
+</script>
+</head>
+<body onLoad="init()">
+
+<h2 class=cursus>Verschillende events</h2>
+
+<p>Werkt alleen in recente browsers.</p>
+
+<p>Klik op de kopjes hieronder.</p>
+
+<h3 class=cursus id=kopje1 onClick="alert('klik1')">onClick="alert('klik1')"</h3>
+
+<h3 class=cursus id=kopje2>document.getElementById('kopje2').onclick = pop</h3>
+
+</body>
+</html>

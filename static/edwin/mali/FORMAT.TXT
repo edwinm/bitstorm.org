@@ -1,0 +1,6 @@
+breedtes:
+
+b?.jpg	450	compressie 30
+s?.jpg	150	compressie 30
+t?.gif	 40	16colors
+

@@ -1,0 +1,6 @@
+body {font-family: Verdana, Helvetica, Arial, sans-serif}
+table { border: 1px solid lightgrey; padding: 2px}
+td {padding: 0px 3px}
+dt {font-weight: bold}
+p.smallright {margin: 4px 0 0 0; font-size: 0.8em; padding-top: 32px; float: right}
+hr {color: #008BF2}

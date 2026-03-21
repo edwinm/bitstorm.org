@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Eurocalculator</title>
+<style>
+FORM {
+	margin: 0px;
+}
+</style>
+<script>
+function toBedrag( bedrag ) {
+	reComma = /,[0-9][0-9]$/
+	if ( reComma.exec(bedrag) ) {
+		bedrag = bedrag.replace( /[.]/, "" )
+		bedrag = bedrag.replace( /,/, "." )
+	} else {
+		bedrag = bedrag.replace( /,/, "" )
+	}
+	return parseFloat(bedrag)
+}
+function g2e() {
+	document.eform.euro.value=Math.round(toBedrag(document.gform.gulden.value)/0.0220371)/100
+}
+function e2g() {
+	document.gform.gulden.value=Math.round(toBedrag(document.eform.euro.value)*220.371)/100
+}
+</script>
+</head>
+<body bgcolor="#202880" onLoad="document.gform.gulden.focus()">
+
+<center>
+<form name=gform onSubmit="g2e();return false">
+<table cellspacing=0 cellpadding=4 border=0 bgcolor="#F8D860">
+<tr>
+<td><img src="gulden.gif" width=50 height=60></td>
+<td>Gulden:<br><input type=text name=gulden size=10></td>
+</tr>
+</table>
+</form>
+
+<table>
+<tr>
+<td><a href="#" onClick="e2g();return false"><img src="up.gif" width=90 height=45 border=0 alt="Converteer euro naar gulden"></a></td>
+<td><a href="#" onClick="g2e();return false"><img src="down.gif" width=90 height=45 border=0 alt="Converteer gulden naar euro"></a></td>
+</tr>
+</table>
+
+<form name=eform onSubmit="e2g();return false">
+<table cellspacing=0 cellpadding=4 border=0 bgcolor="#F8D860">
+<tr>
+<td><img src="euro.gif" width=50 height=60></td>
+<td>Euro:<br><input type=text name=euro size=10></td>
+</tr>
+</table>
+
+</form>
+</center>
+
+</body>
+</html>

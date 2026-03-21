@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head><body>
+
+
+<code>/* This page is part of <a href="http://www.bitstorm.org/gameoflife/code/">the Game of Life source code</a> */<br><br></code><div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;The&nbsp;control&nbsp;bar&nbsp;at&nbsp;the&nbsp;bottom.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Is&nbsp;put&nbsp;in&nbsp;a&nbsp;seperate&nbsp;object,&nbsp;so&nbsp;it&nbsp;can&nbsp;be&nbsp;replaced&nbsp;by&nbsp;another&nbsp;UI,&nbsp;e.g.&nbsp;on&nbsp;a&nbsp;J2ME&nbsp;phone.&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Copyright&nbsp;1996-2004&nbsp;Edwin&nbsp;Martin&nbsp;</font><font color="#7f7f9f">&lt;edwin@bitstorm.nl&gt;</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;</font><br/>
+
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">org.bitstorm.gameoflife;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Button;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Choice;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Label;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Panel;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.event.ActionEvent;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.event.ActionListener;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.event.ItemEvent;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.event.ItemListener;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Enumeration;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Vector;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;GUI-controls&nbsp;of&nbsp;the&nbsp;Game&nbsp;of&nbsp;Life.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;It&nbsp;contains&nbsp;controls&nbsp;like&nbsp;Shape,&nbsp;zoom&nbsp;and&nbsp;speed&nbsp;selector,&nbsp;next&nbsp;and&nbsp;start/stop-button.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;It&nbsp;is&nbsp;a&nbsp;seperate&nbsp;class,&nbsp;so&nbsp;it&nbsp;can&nbsp;be&nbsp;replaced&nbsp;by&nbsp;another&nbsp;implementation&nbsp;for&nbsp;e.g.&nbsp;mobile&nbsp;phones&nbsp;or&nbsp;PDA's.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Communicates&nbsp;via&nbsp;the&nbsp;GameOfLifeControlsListener.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">GameOfLifeControls&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">Panel&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Label&nbsp;genLabel;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;genLabelText&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Generations:&nbsp;&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;nextLabelText&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Next&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;startLabelText&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Start&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;stopLabelText&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Stop&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;SLOW&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Slow&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;FAST&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Fast&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;HYPER&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Hyper&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;BIG&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Big&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;MEDIUM&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Medium&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#000000">String&nbsp;SMALL&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Small&#34;</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">SIZE_BIG&nbsp;=&nbsp;</font><font color="#990000">11</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">SIZE_MEDIUM&nbsp;=&nbsp;</font><font color="#990000">7</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;final&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">SIZE_SMALL&nbsp;=&nbsp;</font><font color="#990000">3</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Button&nbsp;startstopButton;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Button&nbsp;nextButton;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Vector&nbsp;listeners;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Choice&nbsp;shapesChoice;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Choice&nbsp;zoomChoice;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Contructs&nbsp;the&nbsp;controls.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">GameOfLifeControls</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">listeners&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Vector</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;pulldown&nbsp;menu&nbsp;with&nbsp;shapes</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">shapesChoice&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Choice</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Put&nbsp;names&nbsp;of&nbsp;shapes&nbsp;in&nbsp;menu</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Shape</font><font color="#000000">[]&nbsp;</font><font color="#000000">shapes&nbsp;=&nbsp;ShapeCollection.getShapes</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;shapes.length;&nbsp;i++&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">shapesChoice.addItem</font><font color="#000000">(&nbsp;</font><font color="#000000">shapes</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getName</font><font color="#000000">()&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;when&nbsp;shape&nbsp;is&nbsp;selected</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">shapesChoice.addItemListener</font><font color="#000000">(</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ItemListener</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">itemStateChanged</font><font color="#000000">(</font><font color="#000000">ItemEvent&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">shapeSelected</font><font color="#000000">(&nbsp;(</font><font color="#000000">String</font><font color="#000000">)&nbsp;</font><font color="#000000">e.getItem</font><font color="#000000">()&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;pulldown&nbsp;menu&nbsp;with&nbsp;speeds</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Choice&nbsp;speedChoice&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Choice</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;add&nbsp;speeds</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChoice.addItem</font><font color="#000000">(</font><font color="#000000">SLOW</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChoice.addItem</font><font color="#000000">(</font><font color="#000000">FAST</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChoice.addItem</font><font color="#000000">(</font><font color="#000000">HYPER</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;when&nbsp;item&nbsp;is&nbsp;selected</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChoice.addItemListener</font><font color="#000000">(</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ItemListener</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">itemStateChanged</font><font color="#000000">(</font><font color="#000000">ItemEvent&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;arg&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">)&nbsp;</font><font color="#000000">e.getItem</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">SLOW.equals</font><font color="#000000">(</font><font color="#000000">arg</font><font color="#000000">))&nbsp;</font><font color="#3f7f5f">//&nbsp;slow</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChanged</font><font color="#000000">(</font><font color="#990000">1000</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">FAST.equals</font><font color="#000000">(</font><font color="#000000">arg</font><font color="#000000">))&nbsp;</font><font color="#3f7f5f">//&nbsp;fast</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChanged</font><font color="#000000">(</font><font color="#990000">100</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">HYPER.equals</font><font color="#000000">(</font><font color="#000000">arg</font><font color="#000000">))&nbsp;</font><font color="#3f7f5f">//&nbsp;hyperspeed</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">speedChanged</font><font color="#000000">(</font><font color="#990000">10</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;pulldown&nbsp;menu&nbsp;with&nbsp;speeds</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChoice&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Choice</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;add&nbsp;speeds</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChoice.addItem</font><font color="#000000">(</font><font color="#000000">BIG</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChoice.addItem</font><font color="#000000">(</font><font color="#000000">MEDIUM</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChoice.addItem</font><font color="#000000">(</font><font color="#000000">SMALL</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;when&nbsp;item&nbsp;is&nbsp;selected</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChoice.addItemListener</font><font color="#000000">(</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ItemListener</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">itemStateChanged</font><font color="#000000">(</font><font color="#000000">ItemEvent&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;arg&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">)&nbsp;</font><font color="#000000">e.getItem</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">BIG.equals</font><font color="#000000">(</font><font color="#000000">arg</font><font color="#000000">))</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChanged</font><font color="#000000">(</font><font color="#000000">SIZE_BIG</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">MEDIUM.equals</font><font color="#000000">(</font><font color="#000000">arg</font><font color="#000000">))</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChanged</font><font color="#000000">(</font><font color="#000000">SIZE_MEDIUM</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else&nbsp;if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">SMALL.equals</font><font color="#000000">(</font><font color="#000000">arg</font><font color="#000000">))</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChanged</font><font color="#000000">(</font><font color="#000000">SIZE_SMALL</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;number&nbsp;of&nbsp;generations</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">genLabel&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Label</font><font color="#000000">(</font><font color="#000000">genLabelText+</font><font color="#2a00ff">&#34;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;start&nbsp;and&nbsp;stop&nbsp;buttom</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">startstopButton&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Button</font><font color="#000000">(</font><font color="#000000">startLabelText</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;when&nbsp;start/stop&nbsp;button&nbsp;is&nbsp;clicked</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">startstopButton.addActionListener</font><font color="#000000">(</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ActionListener</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">actionPerformed</font><font color="#000000">(</font><font color="#000000">ActionEvent&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">startStopButtonClicked</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;next&nbsp;generation&nbsp;button</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextButton&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Button</font><font color="#000000">(</font><font color="#000000">nextLabelText</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;when&nbsp;next&nbsp;button&nbsp;is&nbsp;clicked</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextButton.addActionListener</font><font color="#000000">(</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ActionListener</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">actionPerformed</font><font color="#000000">(</font><font color="#000000">ActionEvent&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextButtonClicked</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;create&nbsp;panel&nbsp;with&nbsp;controls</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">shapesChoice</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">nextButton</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">startstopButton</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">speedChoice</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">zoomChoice</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">genLabel</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.validate</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Add&nbsp;listener&nbsp;for&nbsp;this&nbsp;control</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">listener&nbsp;Listener&nbsp;object</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addGameOfLifeControlsListener</font><font color="#000000">(&nbsp;</font><font color="#000000">GameOfLifeControlsListener&nbsp;listener&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">listeners.addElement</font><font color="#000000">(&nbsp;</font><font color="#000000">listener&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Remove&nbsp;listener&nbsp;from&nbsp;this&nbsp;control</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">listener&nbsp;Listener&nbsp;object</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">removeGameOfLifeControlsListener</font><font color="#000000">(&nbsp;</font><font color="#000000">GameOfLifeControlsListener&nbsp;listener&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">listeners.removeElement</font><font color="#000000">(&nbsp;</font><font color="#000000">listener&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Set&nbsp;the&nbsp;number&nbsp;of&nbsp;generations&nbsp;in&nbsp;the&nbsp;control&nbsp;bar.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">generations&nbsp;number&nbsp;of&nbsp;generations</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setGeneration</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">generations&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">genLabel.setText</font><font color="#000000">(</font><font color="#000000">genLabelText&nbsp;+&nbsp;generations&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Start-button&nbsp;is&nbsp;activated.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">start</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">startstopButton.setLabel</font><font color="#000000">(</font><font color="#000000">stopLabelText</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextButton.disable</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">shapesChoice.disable</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Stop-button&nbsp;is&nbsp;activated.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">stop</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">startstopButton.setLabel</font><font color="#000000">(</font><font color="#000000">startLabelText</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextButton.enable</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">shapesChoice.enable</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Called&nbsp;when&nbsp;the&nbsp;start/stop-button&nbsp;is&nbsp;clicked.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Notify&nbsp;event-listeners.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">startStopButtonClicked</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GameOfLifeControlsEvent&nbsp;event&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">GameOfLifeControlsEvent</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>this&nbsp;</b></font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">Enumeration&nbsp;e&nbsp;=&nbsp;listeners.elements</font><font color="#000000">()</font><font color="#000000">;&nbsp;e.hasMoreElements</font><font color="#000000">()</font><font color="#000000">;&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">((</font><font color="#000000">GameOfLifeControlsListener</font><font color="#000000">)&nbsp;</font><font color="#000000">e.nextElement</font><font color="#000000">())</font><font color="#000000">.startStopButtonClicked</font><font color="#000000">(&nbsp;</font><font color="#000000">event&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Called&nbsp;when&nbsp;the&nbsp;next-button&nbsp;is&nbsp;clicked.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Notify&nbsp;event-listeners.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">nextButtonClicked</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GameOfLifeControlsEvent&nbsp;event&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">GameOfLifeControlsEvent</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>this&nbsp;</b></font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">Enumeration&nbsp;e&nbsp;=&nbsp;listeners.elements</font><font color="#000000">()</font><font color="#000000">;&nbsp;e.hasMoreElements</font><font color="#000000">()</font><font color="#000000">;&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">((</font><font color="#000000">GameOfLifeControlsListener</font><font color="#000000">)&nbsp;</font><font color="#000000">e.nextElement</font><font color="#000000">())</font><font color="#000000">.nextButtonClicked</font><font color="#000000">(&nbsp;</font><font color="#000000">event&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Called&nbsp;when&nbsp;a&nbsp;new&nbsp;speed&nbsp;from&nbsp;the&nbsp;speed&nbsp;pull&nbsp;down&nbsp;is&nbsp;selected.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Notify&nbsp;event-listeners.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">speedChanged</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">speed&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GameOfLifeControlsEvent&nbsp;event&nbsp;=&nbsp;GameOfLifeControlsEvent.getSpeedChangedEvent</font><font color="#000000">(&nbsp;</font><font color="#000000">this,&nbsp;speed&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">Enumeration&nbsp;e&nbsp;=&nbsp;listeners.elements</font><font color="#000000">()</font><font color="#000000">;&nbsp;e.hasMoreElements</font><font color="#000000">()</font><font color="#000000">;&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">((</font><font color="#000000">GameOfLifeControlsListener</font><font color="#000000">)&nbsp;</font><font color="#000000">e.nextElement</font><font color="#000000">())</font><font color="#000000">.speedChanged</font><font color="#000000">(&nbsp;</font><font color="#000000">event&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Called&nbsp;when&nbsp;a&nbsp;new&nbsp;zoom&nbsp;from&nbsp;the&nbsp;zoom&nbsp;pull&nbsp;down&nbsp;is&nbsp;selected.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Notify&nbsp;event-listeners.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">zoomChanged</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">zoom&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GameOfLifeControlsEvent&nbsp;event&nbsp;=&nbsp;GameOfLifeControlsEvent.getZoomChangedEvent</font><font color="#000000">(&nbsp;</font><font color="#000000">this,&nbsp;zoom&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">Enumeration&nbsp;e&nbsp;=&nbsp;listeners.elements</font><font color="#000000">()</font><font color="#000000">;&nbsp;e.hasMoreElements</font><font color="#000000">()</font><font color="#000000">;&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">((</font><font color="#000000">GameOfLifeControlsListener</font><font color="#000000">)&nbsp;</font><font color="#000000">e.nextElement</font><font color="#000000">())</font><font color="#000000">.zoomChanged</font><font color="#000000">(&nbsp;</font><font color="#000000">event&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Called&nbsp;when&nbsp;a&nbsp;new&nbsp;shape&nbsp;from&nbsp;the&nbsp;shape&nbsp;pull&nbsp;down&nbsp;is&nbsp;selected.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Notify&nbsp;event-listeners.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">shapeSelected</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;shapeName&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GameOfLifeControlsEvent&nbsp;event&nbsp;=&nbsp;GameOfLifeControlsEvent.getShapeSelectedEvent</font><font color="#000000">(&nbsp;</font><font color="#000000">this,&nbsp;shapeName&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">Enumeration&nbsp;e&nbsp;=&nbsp;listeners.elements</font><font color="#000000">()</font><font color="#000000">;&nbsp;e.hasMoreElements</font><font color="#000000">()</font><font color="#000000">;&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">((</font><font color="#000000">GameOfLifeControlsListener</font><font color="#000000">)&nbsp;</font><font color="#000000">e.nextElement</font><font color="#000000">())</font><font color="#000000">.shapeSelected</font><font color="#000000">(&nbsp;</font><font color="#000000">event&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Called&nbsp;when&nbsp;a&nbsp;new&nbsp;cell&nbsp;size&nbsp;from&nbsp;the&nbsp;zoom&nbsp;pull&nbsp;down&nbsp;is&nbsp;selected.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Notify&nbsp;event-listeners.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setZoom</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;n&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">zoomChoice.select</font><font color="#000000">(</font><font color="#000000">n</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#000000">}</font></code>
+
+   </td>
+  <!-- end source code -->
+   </tr>
+
+  <!-- start Java2Html link -->
+   <tr>
+    <td align="right">
+<small>
+<a href="http://www.java2html.de" target="_blank">Java2html</a>
+</small>
+    </td>
+   </tr>
+  <!-- end Java2Html link -->
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+
+</body></html>

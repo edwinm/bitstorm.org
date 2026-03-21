@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Animated Selector</title>
+	<style>
+		#naaldbomen li {
+			width: 100px;
+			background-color: pink;
+			padding: 3px;
+			list-style-type: none;
+			margin-bottom: 2px;
+		}
+	</style>
+	<script language="javascript" type="text/javascript" src="jquery.min.js"></script>
+	<script>
+		$(function() {
+			$('#naaldbomen li').animatedSelector(100, 130);
+		});
+	
+		/** 
+		* Select items by changing the width
+		* @alias jQuery.prototype.animatedSelector
+		* @param {number} minWidth
+		* @param {number} maxWidth
+		* @return {jQuery}
+		*/
+		jQuery.fn.animatedSelector = function(minWidth, maxWidth) {
+			return this.each(function() {
+				$(this).toggle(
+					function() {
+						$(this).animate({width: maxWidth});
+					},
+					function() {
+						$(this).animate({width: minWidth});
+					}
+				);
+			});
+		};
+	</script>
+	</head>
+	<body>
+		<h1>Animated Selector</h1>
+
+		<ul id="naaldbomen">
+			<li>Ceder</li>
+			<li>Larix</li>
+			<li>Spar</li>
+		</ul>
+
+	</body>
+</html>

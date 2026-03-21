@@ -1,0 +1,113 @@
+#slideshow {
+	position: fixed;
+	top: 3%;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	z-index: 200;
+	color: #eee;
+}
+#slideshow ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#slideshow li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#slideshow li div {
+	margin: 0 auto;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid #999;
+}
+
+#slideshow li img {
+	margin: 0 auto;
+	display: block;
+	border: 10px solid #292929;
+}
+
+#slideshow li p {
+	margin: 0 auto;
+	padding: 0 10px 10px 10px;
+	font-size: 0.8em;
+	width: 500px;
+	background-color: #292929;
+}
+
+#slideshow > p {
+	position: fixed;
+	left: 50%;
+	margin-left: -100px;
+	bottom: 0;
+	text-align: center;
+}
+
+#slideshow p span {
+	position: fixed;
+	left: 50%;
+	margin-left: -35px;
+	bottom: 35px;
+	width: 70px;
+	font-size: larger;
+}
+
+#slideshow p a {
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   user-select: none;
+}
+#slideshow p a:hover {
+	color: yellow;
+}
+#slideshow p a.disabled:hover {
+	color: #eee;
+}
+
+#slideshow a.prev, #slideshow a.next, #slideshow a.stop {
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	width: 70px;
+	background: center top no-repeat;
+	padding-top: 39px;
+	cursor: default;
+	font-size: smaller;
+}
+
+#slideshow a.prev, #slideshow a.prev.disabled:hover {
+	margin-left: -110px;
+	background-image: url(/journaal/show/prev.png);
+}
+
+#slideshow a.prev:hover {
+	background-image: url(/journaal/show/prev-hl.png);
+}
+
+#slideshow a.next, #slideshow a.next.disabled:hover {
+	margin-left: 40px;
+	background-image: url(/journaal/show/next.png);
+}
+
+#slideshow a.next:hover {
+	background-image: url(/journaal/show/next-hl.png);
+}
+
+#slideshow a.stop {
+	margin-left: 180px;
+	background-image: url(/journaal/show/stop.png);
+}
+
+#slideshow a.stop:hover {
+	background-image: url(/journaal/show/stop-hl.png);
+}
+
+#slideshow a.prev:active, #slideshow a.next:active, #slideshow a.stop:active {
+	background-position-y: 1px;
+}

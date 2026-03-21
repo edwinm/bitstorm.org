@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>High performance webservers - Edwins journaal</title>
+<meta charset="UTF-8">
+<meta name="dc.creator.name" content="Edwin Martin">
+<meta name="dc.creator.e-mail" content="edwin@bitstorm.org">
+<link rel="stylesheet" type="text/css" href="/journaal/journaal.css" title="main">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/journaal/show/show.css">
+</head>
+
+<body>
+
+<img src="/journaal/journaal.jpg" class="titel" alt="Edwin's Journaal" width="700" height="127">
+
+<p class="email">&lt;<a href="mailto:edwin&#64;bitstorm.org">edwin&#64;bitstorm.org</a>&gt;</p>
+
+<p class="in">Gedachten en belevenissen van Edwin Martin.</p>
+
+<div class='content'>
+
+<div class="left">
+<ol>
+<a rel="up" href="/journaal/">Edwins journaal</a>
+<li><a rel="archives" href="/journaal/2009-11/">Archief</a></li>
+
+<li><a rel="author" href="/edwin/">Edwins brainwaves</a></li>
+<li><a href="http://www.jolie.nl/weblog/">Jolies weblog</a></li>
+<li><a href="/leora/">Leora</a></li>
+</ol>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-2050318500162917";
+/* Edwins Journaal */
+google_ad_slot = "1374355788";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</div>
+<div class="right">
+<h3><a href="/journaal/2009-11/High_performance_webservers.html" name="High_performance_webservers" class="nolink">High performance webservers</a></h3>
+<p class="datum">zo 29 nov 2009 23:46</p>
+<div class="slideshow">
+                            
+                                                    
+                        <img src="/journaal/2009-11/node_js~large.png"  alt="Logo van node.js" title="">
+                        
+
+</div>
+
+<p>
+	De huidige wijsheid is dat je performanceproblemen met je site oplost door het plaatsen van wat extra servers in plaats van naar de code of ontwikkelaars te kijken, begint steeds meer achterhaald te worden.</p>
+<p>
+	De huidige webservers, databasesystemen en programmeertalen/omgevingen zijn op papier wel schaalbaar, maar in de praktijk doemen er, als de site groter wordt, steeds meer problemen op. Facebook schermt wel met indrukwekkende getallen van 2,3 miljard bezoekers per maand en 30 duizend servers, maar als je dat op elkaar deelt, kom je op een schamele 104 bezoekers per server per uur.</p>
+<p>
+	De laatste jaren hebben besturingssystemen steeds meer <a href="http://bulk.fefe.de/scalable-networking.pdf">truukjes </a>gekregen om de overhead te minimaliseren en zijn er <a href="http://ftp.sunet.se/pub/lang/erlang/">talen</a> ontwikkeld die erg geschikt zijn om gedistribueerd (over meerdere computers) te draaien.</p>
+<p>
+	Het afgelopen jaar zijn er allerlei projectjes van de grond gekomen die hier optimaal gebruik van maken en op het gebied van performance alle klassieke systemen van de kaart vegen. Zoals bijvoorbeeld de database <a href="http://couchdb.apache.org/">Couch DB</a>, dat volgens een heel ander systeem werkt dan de huidige databases en in een taal is geschreven dat erg geschikt is om op meerdere systemen tegelijk te draaien. Nog sneller zijn wat eenvoudigere databasesystemen als <a href="http://code.google.com/p/redis/">Redis</a> en <a href="http://1978th.net/tokyotyrant/">Tokyo Tyrant</a>. Een voorbeeld van een webserver die de huidige webservers ver achter zich laat is <a href="http://wiki.nginx.org/Main">NGINX</a>.</p>
+<p>
+	Ook voor het draaien van eigen software op de server ontstaan interessante projecten. Een daarvan is <a href="http://nodejs.org/">Node.js</a>, dat is gebaseerd op de snelle JavaScript-motor uit Chrome, de webbrowser van Google. Doordat dit geheel event-driven is, kan een groot performancevoordeel behaald worden.</p>
+<p>
+	Zolang de huidige manier van schalen allerlei problemen oplevert en het internetgebruik toeneemt, zal er steeds meer behoefte ontstaan naar high performance systemen. Het zou me niets verbazen als over tien jaar een groot deel van de webservers op bovenstaande of op vergelijkbare systemen draait.</p>
+
+
+
+
+
+<div class='comments' id='comments'>
+<a href="//comment.bitstorm.org/comments.php?key=2&page=journaal_310&lang=nl">Reacties</a>
+
+
+<p class='status'></p>
+
+  <ol class="template">
+      <li id="comment_{id}">
+          <p class="name"></p>
+          <a class="date" href="#comment_{id}"></a>
+          <p class="comment"></p>
+      </li>
+  </ol>
+
+  <ol class="comments">
+  </ol>
+
+  <form method="post">
+      <p>Voeg je reactie toe:</p>
+      <label class="userid">Je naam</label>
+      <input disabled required type="text" class="userid" name="userid">
+      <label class="url">Je url [optioneel]</label>
+      <input disabled type="url" class="url" name="url">
+      <textarea disabled required name="comment"></textarea>
+        <input disabled type="submit" value="send" id="send">
+        <input type="hidden" name="referrer">
+        <input type="hidden" name="key">
+        <input type="hidden" name="page">
+        <input type="hidden" name="lastId">
+        <input type="hidden" name="lang">
+        <input type="hidden" name="recaptcha" id="recaptcha">
+  </form>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+<script src="//cdn.jsdelivr.net/jquery/2/mainfile"></script>
+<script src="/journaal/show/show-min.js"></script>
+<script src="/journaal/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LeMg-QUAAAAABWBTzjMhmWGehg9VDv8Jf4Pn5AT"></script>
+<script src="//comment.bitstorm.org/jtemplate-1.0-min.js"></script>
+<script src="//comment.bitstorm.org/init-2.js"></script>
+<script src="/journaal/analytics.js"></script>
+
+</body>
+</html>

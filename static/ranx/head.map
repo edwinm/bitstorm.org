@@ -1,0 +1,14 @@
+#$MTIMFH
+#$-:Image Map file created by Map THIS!
+#$-:Map THIS! free image map editor by Todd C. Wilson
+#$-:Please do not edit lines starting with "#$"
+#$VERSION:1.20
+#$DATE:Mon May 27 15:11:52 1996
+#$PATH:C:\Work\graphics\
+#$GIF:Ranx.gif
+#$FORMAT:ncsa
+#$EOH
+rect http://huizen.dds.nl/~edwinjm/ 91,31 106,38
+rect /~ranx/mswin/ 166,14 176,30
+rect /~ranx/thinkware/ 128,19 155,28
+rect /~ranx/zspees/ 127,33 142,43

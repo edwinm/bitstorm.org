@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0024)http://www.bitstorm.org/ -->
+<html>
+<head>
+<title>FontList</title>
+<meta name="Generator" content="FontList 1.5"/>
+<style type="text/css">
+body {font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #F7F7F7}
+h3 {margin: 0; font-size: 32px; color: #8080FF}
+p.right, P.name, H2 {margin: 0}
+p.smallright {margin: 4px 0 0 0; font-size: 0.8em; padding-top: 14px; float: right}
+p.small {font-size: 0.8em; margin: 0 0 1em 0}
+hr {color: #A8A8FF}
+a {text-decoration: none}
+div.name {background-color: #A8A8FF; margin-bottom: 0; page-break-after: avoid}
+p.example {font-size: 2em; background-color: white; white-space: nowrap; border: 2px solid #A8A8FF; margin: 0 0 0.7em 0; padding: 2px; page-break-inside: avoid}
+span.button {background-color: #DADADA; cursor: default; font-size: 0.7em; border: 1px outset darkgray; padding: 0 4px}
+p.right {float: right; margin-right: 4px; display: none}
+div.focus p.right {display: block}
+p.name {padding: 1px 4px 0px 4px}
+p.warning {display: block; border: 1px solid #A8A8FF; padding: 4px}
+</style>
+<script language="JavaScript" type="text/javascript">
+window.onload = function() {
+	var fonts = document.getElementsByTagName('div');
+	for (var i=0; i < fonts.length; i++) {
+		(function(i) {
+			fonts[i].onmouseover = function() {
+				fonts[i].className = "name focus";
+			}
+			fonts[i].onmouseout = function() {
+				fonts[i].className = "name";
+			}
+		})(i);
+	}
+}
+function toggle( layer, property, on, off ) {
+	var fontStyle = document.getElementById("f"+layer).style;
+	var isOn=fontStyle[property]==on;
+	fontStyle[property]=isOn?off:on;
+	document.getElementById(property+layer).style.borderStyle=isOn?'outset':'inset';
+}
+function info( font ) {
+	win = window.open( "", "_blank", "resizable=yes,scrollbars=yes,width=550,height=400" );
+	fontEsc = font;
+	win.document.writeln("<title>"+font+"</title>");
+	win.document.writeln("<style>BODY {margin:0} TD {font-family:"+fontEsc+";font-size:1.5em;text-align:center} SMALL {font-family:Verdana,Arial,Helvetica,sans-serif;font-size:8px}</style>");
+	win.document.writeln("<table width='100%'><tr>");
+	for ( var c = 32; c < 256; c++ ) {
+		if ( c != 0 && c % 16 == 0 )
+			win.document.writeln("</tr><tr>");
+		win.document.writeln("<td>&#"+c+";<br><small>"+c+"</small></td>");
+	}
+	win.document.writeln("</tr></table>");
+	win.document.close();
+}
+function klik(evt) {
+	var reArr, t;
+	evt = evt||window.event;
+	t = evt.target||evt.srcElement;
+	while ( (typeof t.id == "undefined" || t.id == "") && t.parentNode )
+		t = t.parentNode;
+	if ( reArr = /([a-zA-z]+)([0-9]+)/.exec( t.id ) )
+		switch( reArr[1] ) {
+			case "fontWeight":
+				toggle( reArr[2], "fontWeight", "bold", "normal" );
+				break;
+			case "fontStyle":
+				toggle( reArr[2], "fontStyle", "italic", "normal" );
+				break;
+			case "fontSize":
+				toggle( reArr[2], "fontSize", "6em", "2em" );
+				break;
+			case "charMap":
+				info( document.getElementById( "f"+reArr[2] ).style.fontFamily );
+				break;
+		}
+}
+function toets(evt) {
+	evt = evt||window.event;
+	var keyCode = evt.charCode||evt.keyCode;
+	var c = String.fromCharCode(keyCode).toUpperCase();
+	f = document.getElementById("char"+c);
+	if ( f && !evt.ctrlKey && !evt.altKey) {
+		window.scrollTo( 0, f.offsetTop );
+		return false;
+	}
+}
+document.onclick = klik;
+document.onkeypress = toets;
+</script>
+</head>
+<body>
+<p class="smallright">version 1.5 | <a href="http://www.bitstorm.org/fontlist/">FontList homepage</a></p>
+<h3>FontList</h3>
+<hr>
+<p class="small">63 fonts installed</p>
+<noscript><p class="warning">Turn on JavaScript for extra functionality.</p></noscript>
+
+<div class="name" id="charA">
+<p class="right">
+<span class="button" id='fontWeight0'><b>B</b></span>
+<span class="button" id='fontStyle0'><i>I</i></span>
+<span class="button" id='fontSize0'>+</span>
+<span class="button" id='charMap0'>CharMap</span>
+</p>
+<p class="name"><b>Arial</b>  ANSI</p>
+<p class="example" id="f0" style="font-family: Arial">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight1'><b>B</b></span>
+<span class="button" id='fontStyle1'><i>I</i></span>
+<span class="button" id='fontSize1'>+</span>
+<span class="button" id='charMap1'>CharMap</span>
+</p>
+<p class="name"><b>Arial Black</b>  ANSI</p>
+<p class="example" id="f1" style="font-family: Arial Black">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charC">
+<p class="right">
+<span class="button" id='fontWeight2'><b>B</b></span>
+<span class="button" id='fontStyle2'><i>I</i></span>
+<span class="button" id='fontSize2'>+</span>
+<span class="button" id='charMap2'>CharMap</span>
+</p>
+<p class="name"><b>Comic Sans MS</b>  ANSI</p>
+<p class="example" id="f2" style="font-family: Comic Sans MS">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight3'><b>B</b></span>
+<span class="button" id='fontStyle3'><i>I</i></span>
+<span class="button" id='fontSize3'>+</span>
+<span class="button" id='charMap3'>CharMap</span>
+</p>
+<p class="name"><b>Courier New</b>  ANSI</p>
+<p class="example" id="f3" style="font-family: Courier New">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charF">
+<p class="right">
+<span class="button" id='fontWeight4'><b>B</b></span>
+<span class="button" id='fontStyle4'><i>I</i></span>
+<span class="button" id='fontSize4'>+</span>
+<span class="button" id='charMap4'>CharMap</span>
+</p>
+<p class="name"><b>Franklin Gothic Medium</b>  ANSI</p>
+<p class="example" id="f4" style="font-family: Franklin Gothic Medium">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charG">
+<p class="right">
+<span class="button" id='fontWeight5'><b>B</b></span>
+<span class="button" id='fontStyle5'><i>I</i></span>
+<span class="button" id='fontSize5'>+</span>
+<span class="button" id='charMap5'>CharMap</span>
+</p>
+<p class="name"><b>Georgia</b>  ANSI</p>
+<p class="example" id="f5" style="font-family: Georgia">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charI">
+<p class="right">
+<span class="button" id='fontWeight6'><b>B</b></span>
+<span class="button" id='fontStyle6'><i>I</i></span>
+<span class="button" id='fontSize6'>+</span>
+<span class="button" id='charMap6'>CharMap</span>
+</p>
+<p class="name"><b>Impact</b>  ANSI</p>
+<p class="example" id="f6" style="font-family: Impact">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charK">
+<p class="right">
+<span class="button" id='fontWeight7'><b>B</b></span>
+<span class="button" id='fontStyle7'><i>I</i></span>
+<span class="button" id='fontSize7'>+</span>
+<span class="button" id='charMap7'>CharMap</span>
+</p>
+<p class="name"><b>Kartika</b>  ANSI</p>
+<p class="example" id="f7" style="font-family: Kartika">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charL">
+<p class="right">
+<span class="button" id='fontWeight8'><b>B</b></span>
+<span class="button" id='fontStyle8'><i>I</i></span>
+<span class="button" id='fontSize8'>+</span>
+<span class="button" id='charMap8'>CharMap</span>
+</p>
+<p class="name"><b>Lucida Console</b>  ANSI</p>
+<p class="example" id="f8" style="font-family: Lucida Console">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight9'><b>B</b></span>
+<span class="button" id='fontStyle9'><i>I</i></span>
+<span class="button" id='fontSize9'>+</span>
+<span class="button" id='charMap9'>CharMap</span>
+</p>
+<p class="name"><b>Lucida Sans</b>  ANSI</p>
+<p class="example" id="f9" style="font-family: Lucida Sans">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight10'><b>B</b></span>
+<span class="button" id='fontStyle10'><i>I</i></span>
+<span class="button" id='fontSize10'>+</span>
+<span class="button" id='charMap10'>CharMap</span>
+</p>
+<p class="name"><b>Lucida Sans Unicode</b>  ANSI</p>
+<p class="example" id="f10" style="font-family: Lucida Sans Unicode">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charM">
+<p class="right">
+<span class="button" id='fontWeight11'><b>B</b></span>
+<span class="button" id='fontStyle11'><i>I</i></span>
+<span class="button" id='fontSize11'>+</span>
+<span class="button" id='charMap11'>CharMap</span>
+</p>
+<p class="name"><b>Marlett</b>  Medium Symbol</p>
+<p class="example" id="f11" style="font-family: Marlett">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight12'><b>B</b></span>
+<span class="button" id='fontStyle12'><i>I</i></span>
+<span class="button" id='fontSize12'>+</span>
+<span class="button" id='charMap12'>CharMap</span>
+</p>
+<p class="name"><b>Microsoft Sans Serif</b>  ANSI</p>
+<p class="example" id="f12" style="font-family: Microsoft Sans Serif">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight13'><b>B</b></span>
+<span class="button" id='fontStyle13'><i>I</i></span>
+<span class="button" id='fontSize13'>+</span>
+<span class="button" id='charMap13'>CharMap</span>
+</p>
+<p class="name"><b>Modern</b>  OEM</p>
+<p class="example" id="f13" style="font-family: Modern">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charP">
+<p class="right">
+<span class="button" id='fontWeight14'><b>B</b></span>
+<span class="button" id='fontStyle14'><i>I</i></span>
+<span class="button" id='fontSize14'>+</span>
+<span class="button" id='charMap14'>CharMap</span>
+</p>
+<p class="name"><b>Palatino Linotype</b>  ANSI</p>
+<p class="example" id="f14" style="font-family: Palatino Linotype">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charR">
+<p class="right">
+<span class="button" id='fontWeight15'><b>B</b></span>
+<span class="button" id='fontStyle15'><i>I</i></span>
+<span class="button" id='fontSize15'>+</span>
+<span class="button" id='charMap15'>CharMap</span>
+</p>
+<p class="name"><b>Roman</b>  OEM</p>
+<p class="example" id="f15" style="font-family: Roman">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charS">
+<p class="right">
+<span class="button" id='fontWeight16'><b>B</b></span>
+<span class="button" id='fontStyle16'><i>I</i></span>
+<span class="button" id='fontSize16'>+</span>
+<span class="button" id='charMap16'>CharMap</span>
+</p>
+<p class="name"><b>Script</b>  OEM</p>
+<p class="example" id="f16" style="font-family: Script">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight17'><b>B</b></span>
+<span class="button" id='fontStyle17'><i>I</i></span>
+<span class="button" id='fontSize17'>+</span>
+<span class="button" id='charMap17'>CharMap</span>
+</p>
+<p class="name"><b>Sylfaen</b>  ANSI</p>
+<p class="example" id="f17" style="font-family: Sylfaen">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight18'><b>B</b></span>
+<span class="button" id='fontStyle18'><i>I</i></span>
+<span class="button" id='fontSize18'>+</span>
+<span class="button" id='charMap18'>CharMap</span>
+</p>
+<p class="name"><b>Symbol</b>  Symbol</p>
+<p class="example" id="f18" style="font-family: Symbol">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charT">
+<p class="right">
+<span class="button" id='fontWeight19'><b>B</b></span>
+<span class="button" id='fontStyle19'><i>I</i></span>
+<span class="button" id='fontSize19'>+</span>
+<span class="button" id='charMap19'>CharMap</span>
+</p>
+<p class="name"><b>Tahoma Vet</b>  Bold ANSI</p>
+<p class="example" id="f19" style="font-family: Tahoma Vet">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight20'><b>B</b></span>
+<span class="button" id='fontStyle20'><i>I</i></span>
+<span class="button" id='fontSize20'>+</span>
+<span class="button" id='charMap20'>CharMap</span>
+</p>
+<p class="name"><b>Times New Roman</b>  ANSI</p>
+<p class="example" id="f20" style="font-family: Times New Roman">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight21'><b>B</b></span>
+<span class="button" id='fontStyle21'><i>I</i></span>
+<span class="button" id='fontSize21'>+</span>
+<span class="button" id='charMap21'>CharMap</span>
+</p>
+<p class="name"><b>Trebuchet MS</b>  ANSI</p>
+<p class="example" id="f21" style="font-family: Trebuchet MS">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charV">
+<p class="right">
+<span class="button" id='fontWeight22'><b>B</b></span>
+<span class="button" id='fontStyle22'><i>I</i></span>
+<span class="button" id='fontSize22'>+</span>
+<span class="button" id='charMap22'>CharMap</span>
+</p>
+<p class="name"><b>Verdana</b>  ANSI</p>
+<p class="example" id="f22" style="font-family: Verdana">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight23'><b>B</b></span>
+<span class="button" id='fontStyle23'><i>I</i></span>
+<span class="button" id='fontSize23'>+</span>
+<span class="button" id='charMap23'>CharMap</span>
+</p>
+<p class="name"><b>Vrinda</b>  ANSI</p>
+<p class="example" id="f23" style="font-family: Vrinda">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name" id="charW">
+<p class="right">
+<span class="button" id='fontWeight24'><b>B</b></span>
+<span class="button" id='fontStyle24'><i>I</i></span>
+<span class="button" id='fontSize24'>+</span>
+<span class="button" id='charMap24'>CharMap</span>
+</p>
+<p class="name"><b>Webdings</b>  Symbol</p>
+<p class="example" id="f24" style="font-family: Webdings">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+<div class="name">
+<p class="right">
+<span class="button" id='fontWeight25'><b>B</b></span>
+<span class="button" id='fontStyle25'><i>I</i></span>
+<span class="button" id='fontSize25'>+</span>
+<span class="button" id='charMap25'>CharMap</span>
+</p>
+<p class="name"><b>Wingdings</b>  Symbol</p>
+<p class="example" id="f25" style="font-family: Wingdings">The Five Boxing Wizards Jump Quickly<br>
+<small>0123456789 !?@#$%&*\"€ éèë</small></p>
+</div>
+
+</body>
+</html>

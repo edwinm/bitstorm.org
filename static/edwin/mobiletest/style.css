@@ -1,0 +1,33 @@
+.outer {
+    width: 250px;
+    height: 120px;
+    border: 1px solid #999;
+    overflow: auto;
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+.touch-scroll {
+    -webkit-overflow-scrolling: touch;
+}
+
+.inner {
+    width: 1000px;
+    height: 100px;
+}
+
+.block {
+    width: 90px;
+    height: 90px;
+    margin: 5px 0 0 5px;
+    float: left;
+    background-color: red;
+}
+
+.webapp * {
+    -webkit-touch-callout: none;        /* disable link popup */
+    -webkit-tap-highlight-color: black; /* disable link highlighting */
+    -webkit-user-select: none;          /* disable selecting text */
+}

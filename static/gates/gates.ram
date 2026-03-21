@@ -1,0 +1,3 @@
+rtsp://62.250.7.69:554/gates.rm?cloakport=8080,554,7070&mode="compact"
+--stop--
+pnm://62.250.7.69:7070/gates.rm?cloakport=8080,554,7070

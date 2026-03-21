@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Compress maskr" default="build">
+
+    <target name="build">
+        <echo msg="Compress maskr..." />
+
+		<exec output="../jquery.maskr.min.js" error="compiler-err.txt" command="java -jar /Users/edwinm/Documents/Develop/Tools/ClosureCompiler/compiler.jar --js ../jquery.maskr.js --compilation_level ADVANCED_OPTIMIZATIONS --warning_level QUIET --externs extern.js --externs ../jquery-1.7.min.js"/>
+	    <echo msg="Gzip maskr..." />
+		<exec output="../jquery.maskr.min.js.gz" command="gzip -nc ../jquery.maskr.min.js"/>
+		<filesize file="../jquery.maskr.min.js.gz"/>
+		<echo msg="Compressed and gzipped filesize is ${filesize} bytes."/>
+    </target>
+</project>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faster websites with gzip compression - bitstorm.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="One of the best ways to improve the user experience of a website is to make sure it loads fast. In a test done by Mozilla, it also improves conversion. Research by Google also shows advantages.
+One of the easiest ways to improve download speed is us…">
+    
+    
+    <meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2010-05-10T16:33"/>
+    <meta property="article:author" content="Edwin Martin"/>
+    
+    <meta property="og:title" content="Faster websites with gzip compression">
+    <meta property="og:site_name" content="bitstorm.org">
+    
+    <meta property="og:image" content="https://bitstorm.org/assets/pix/cityscape-og.webp">
+    <meta property="og:image:width" content="1370">
+    <meta property="og:image:height" content="721">
+    
+    <link rel="alternate" type="application/rss+xml" title="bitstorm.org" href="https://bitstorm.org/weblog/rss.xml" />
+
+    <link rel="preload" fetchpriority="high" as="image" href="/assets/pix/cityscape.webp" type="image/webp">
+
+    <link rel="stylesheet" href="/assets/style.css" title="Main style">
+    <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
+    <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
+
+    <link rel="icon" href="/assets/pix/favicon.ico">
+    
+    <script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
+    <script src="/assets/baguetteBox/baguetteBox.js" async></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            baguetteBox.run('[rel=lightbox]');
+        });
+    </script>
+
+</head>
+<body>
+
+<header>
+    <div class="header-side"></div>
+    <div class="header-content">
+        
+        <h1 class="title"><a href="/">bitstorm.org</a></h1>
+        
+        <h2 class="subtitle">Weblog by Edwin Martin about frontend webdevelopment and related topics</h2>
+    </div>
+    <div class="header-side"></div>
+</header>
+
+<main>
+    <h2>Faster websites with gzip compression</h2>
+
+    
+    <time class="date" datetime="2010-05-10T16:33">10 May 2010</time>
+    
+
+    
+    <ul class="images" rel="lightbox"></ul>
+    
+
+    <p>One of the best ways to improve the user experience of a website is to make sure it loads fast. In a <a href="http://blog.mozilla.com/metrics/2010/03/31/firefox-page-load-speed-part-i/">test done by Mozilla</a>, it also improves conversion. <a href="http://googleresearch.blogspot.com/2009/06/speed-matters.html">Research by Google</a> also shows advantages.</p>
+<p>One of the easiest ways to improve download speed is using gzip. Since many webbased files like html, css and javascript are text based, compressing them with gzip will result in more than 50% size reduction.</p>
+<p><a href="http://schroepl.net/projekte/mod_gzip/browser.htm">Older browsers</a> had some problems with gzip, so site owners where a bit reluctant to use gzip. Currently, all modern browers (even IE with the right service pack applied) have no problem with using gzip.</p>
+<p>Apache has a module called <a href="http://httpd.apache.org/docs/2.0/mod/mod_deflate.html">mod_deflate</a>, which is easy to enable. For example:</p>
+<pre class="language-text"><code class="language-text">AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css</code></pre>
+<p>Mod_deflate will compress the content on the fly for every request. On a high-performance site, that’s not really what you want. There are better ways.</p>
+<h3>Compressing static content</h3>
+<p>First you have to compress all text files. Typically, there are files ending with .html, .css, .js and .xml. When using Linux, make sure you have gzip installed. Don’t just gzip the files you want to compress, because the original file will be gone. Better is to do this:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">gzip</span> <span class="token parameter variable">-nc</span> myfile.css <span class="token operator">></span>  myfile.css.gz</code></pre>
+<p>Disadvantage is, you can’t do this with a bunch of files. I wrote a little script to fix this:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token variable">$@</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token parameter variable">-d</span> <span class="token string">' '</span> <span class="token parameter variable">-I</span> <span class="token string">'{}'</span> <span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">"gzip -n -c {} > {}.gz"</span></code></pre>
+<p>Put it in a file, for example /usr/local/bin/zipit, make it executable: chmod +x /usr/local/bin/zipit and now you can use it to compress single files, but also files with wildcards. For example:</p>
+<pre class="language-bash"><code class="language-bash">zipit *.js *.css</code></pre>
+<p>If you had lib.js and style.css, now you will also have the compressed versions: lib.js.gz and style.css.gz.</p>
+<p class="warning">
+Warning: you have to be careful here: uploading a new .js- or .css-file won't work! You have to run zipit again, otherwise the .gz-file with the old content might be picked up.
+<p>In Windows, you can gzip your files in a batchfile. You can use the free <a href="http://www.7-zip.org/">7-Zip</a> to to that. For example:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token string">"C:\Program Files<span class="token entity" title="\7">\7</span>-Zip<span class="token entity" title="\7">\7</span>z.exe"</span> a <span class="token parameter variable">-tgzip</span> style.css.gz style.css</code></pre>
+<h3>Zopfli</h3>
+<p>Update March 12th, 2013: the compression algorithm has been improved. It’s called zopfli. The nice thing is that the resulting file is still a valid gzip file and can be decompressed by the existing software. Decrompression doesn’t take any longer, too. The resulting file will be around 5% smaller than the best gzip algorithm. The time to compress can be hundred times slower, but since this article is about one time compression, it’s still worth the effort.</p>
+<p>Download the <a href="http://code.google.com/p/zopfli/">Zopfli sources</a>, run make and copy the resulting file to /usr/local/bin.</p>
+<p>To run zopfli on multiple files, you don’t need a batch file, just run it like this:</p>
+<pre class="language-bash"><code class="language-bash">zopfli <span class="token parameter variable">-i1000</span> *.js *.css</code></pre>
+<h3>Let Apache serve compressed content</h3>
+<p>There are several ways to let Apache serve the .gz-files. I prefer using mod_rewrite. I wrote the following configuration file to serve the gzipped files:</p>
+<pre class="language-apache"><code class="language-apache">&ltFilesMatch "\.html\.gz$">
+  ForceType text/html
+  Header set Content-Encoding: gzip
+&lt/FilesMatch>
+
+&ltFilesMatch "\.js\.gz$">
+  ForceType text/javascript
+  Header set Content-Encoding: gzip
+&lt/FilesMatch>
+
+&ltFilesMatch "\.css\.gz$">
+  ForceType text/css
+  Header set Content-Encoding: gzip
+&lt/FilesMatch>
+
+RewriteEngine On
+ReWriteCond %{HTTP:accept-encoding} gzip
+ReWriteCond %{REQUEST_FILENAME} !\.gz$
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}.gz -f
+RewriteRule ^(.+\.js|.+\.css|.+\.html)$ $1.gz [L]</code></pre>
+<p>It’s quite low-level and therefore very clear. The rewrite rules checks the browser supports gzip, then it makes sure it’s not already getting the .gz-file. As a last check it checks for the existance of the .gz-file. If that’s the case, the url is rewritten to have .gz at the end. The FilesMatch-directive makes sure the content-type is correct and adds “Content-Encoding: gzip” to the http-header, so the browser knows it’s gzipped content.</p>
+<h3>Gzip and PHP</h3>
+<p>Most server-side languages also support gzipped output. PHP has several ways to do that.</p>
+<p>If you’re using ob_start to buffer the output, you can easily enable gzip-compression by using <a href="http://www.php.net/manual/en/function.ob-gzhandler.php">ob_gzhandler</a>:</p>
+<pre class="language-php"><code class="language-php"><span class="token function">ob_start</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"ob_gzhandler"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>A better way might be to enable gzip on all PHP-scripts. Just enable <a href="http://www.php.net/manual/en/zlib.configuration.php#ini.zlib.output-compression">zlib.output_compression</a> in your php.ini-file:</p>
+<pre class="language-text"><code class="language-text">zlib.output_compression On</code></pre>
+<p>PHP has quite a lot of <a href="http://php.net/manual/en/book.zlib.php">gzip-related functions</a>. You can easily zip or unzip strings and work with gzipped files as they where normal files.</p>
+<h3>Check gzip is working</h3>
+<p>How can you be sure your content is compressed? Just open the Net-tab within Firebug and reload the page. Open the headers of the file you want to inspect. It will look similar to this:</p>
+<pre class="language-text"><code class="language-text">Date                Mon, 10 May 2010 14:19:06 GMT
+Server              Apache/2.2.4
+Vary                accept-encoding
+Last-Modified       Thu, 29 Apr 2010 09:23:59 GMT
+Etag                "9043e7-856-afc129c0"
+Accept-Ranges       bytes
+Content-Length      2134
+Cache-Control       max-age=172800 proxy-revalidate
+Content-Encoding    gzip
+Content-Type        text/html</code></pre>
+<p>When you see “Content-Encoding gzip” as in the example above, you’ll know it is compressed. Or use <a href="http://developer.yahoo.com/yslow/">YSlow </a>or <a href="http://code.google.com/intl/nl/speed/page-speed/">Page Speed</a> and look at the A’s you’ll get!</p>
+
+
+    
+    <section class="comments">
+        <script defer src="https://comment.bitstorm.org/comentario.js"></script>
+        <comentario-comments no-fonts="true" live-update="false"></comentario-comments>
+    </section>
+    
+</main>
+
+<aside class="aside about">
+    <div class="footer-content">
+        <section>
+        
+            <p class="links links-bottom"><a rel="contents" href="/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-home">
+              <use xlink:href="/assets/svg-sprite.svg#svg-home" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-home)"
+      />
+  </svg> Home</a></p>
+        
+
+        
+            <p class="links"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> Blog archive</a></p>
+        
+
+        <h3>About</h3>
+
+        <p class="links-plain">Edwin Martin is a <a href="https://bitstorm.nl/">freelance webdeveloper</a> living in the Netherlands.</p>
+
+        </section>
+
+        <section>
+        <h3>Game of Life</h3>
+
+        <a href="https://playgameoflife.com/lexicon/Gosper_glider_gun"><img src="/assets/pix/Gosper_glider_gun.png" alt="Image of Gosper glider gun" style="aspect-ratio: 3.5"></a>
+
+        <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
+
+        <p class="links links-bottom"><a href="https://playgameoflife.com/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-gameoflife">
+              <use xlink:href="/assets/svg-sprite.svg#svg-gameoflife" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-gameoflife)"
+      />
+  </svg> playgameoflife.com</a></p>
+        </section>
+
+        <section>
+        <h3>Links</h3>
+            <ul class="links">
+                <li><a href="https://github.com/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-github">
+              <use xlink:href="/assets/svg-sprite.svg#svg-github" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-github)"
+      />
+  </svg> edwinm@Github</a></li>
+                <li><a href="https://mastodon.social/@edwin">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-mastodon">
+              <use xlink:href="/assets/svg-sprite.svg#svg-mastodon" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-mastodon)"
+      />
+  </svg> edwin@Mastodon</a></li>
+                <li><a href="https://www.linkedin.com/in/edwinm/">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-linkedin">
+              <use xlink:href="/assets/svg-sprite.svg#svg-linkedin" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-linkedin)"
+      />
+  </svg> edwinm@LinkedIn</a></li>
+                <li><a href="mailto:edwin@bitstorm.org">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-envelope">
+              <use xlink:href="/assets/svg-sprite.svg#svg-envelope" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-envelope)"
+      />
+  </svg> edwin@bitstorm.org</a></li>
+                <li><a href="https://bitstorm.org/weblog/rss.xml">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-rss">
+              <use xlink:href="/assets/svg-sprite.svg#svg-rss" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-rss)"
+      />
+  </svg> RSS feed</a></li>
+            </ul>
+        </section>
+    </div>
+</aside>
+
+<nav class="aside recent">
+    
+    <h3>Recent</h3>
+    
+    
+
+    <ol class="links">
+                <li><a href="/weblog/2024-4/Introducing-BlendBlastCSS.html">Introducing BlendBlastCSS</a></li>
+            
+                <li><a href="/weblog/2024-3/security-for-frontend-webdevelopers.html">Security for frontend webdevelopers</a></li>
+            
+                <li><a href="/weblog/2022-12/Intl.html">Introduction to Intl, the ECMAScript internationalization API</a></li>
+            
+                <li><a href="/weblog/2022-12/Machine-learning-for-frontend-developers.html">How can machine learning help a frontend developer?</a></li>
+            
+                <li><a href="/weblog/2020-12/introduction-to-web-components.html">Introduction to Web Components</a></li>
+            
+                <li><a href="/weblog/2020-8/Carbonium_a_lightweight_library_to_manipulate_the_DOM.html">Carbonium, a lightweight library to manipulate the DOM</a></li>
+            
+                <li><a href="/weblog/2020-4/Practical_CSS_variables.html">Practical CSS variables</a></li>
+            
+                <li><a href="/weblog/2019-8/The_JavaScript_engineer_and_the_front-end_UI_developer.html">The JavaScript engineer and the front-end UI developer</a></li>
+            
+                <li><a href="/weblog/2019-1/Prettier_the_Opinionated_Code_Formatter.html">Prettier, the Opinionated Code Formatter</a></li>
+            
+                <li><a href="/weblog/2017-7/testproxy_testing_sites_on_devices_without_configuration.html">testproxy: testing sites on devices without configuration</a></li>
+            </ol>
+    
+    <p class="links links-bottom"><a rel="contents" href="/weblog/archive.html">
+  <svg
+      viewBox="0 0 100 100"
+  >
+      <filter id="invert">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="
+               -1  0  0  0  1
+                0 -1  0  0  1
+                0  0 -1  0  1
+                0  0  0  1  0"/>
+      </filter>
+      <defs>
+          <mask id="mask-id-folder">
+              <use xlink:href="/assets/svg-sprite.svg#svg-folder" filter="url(#invert)"></use>
+          </mask>
+      </defs>
+      <rect
+          width="100"
+          height="100"
+          style="fill: currentColor"
+          mask="url(#mask-id-folder)"
+      />
+  </svg> More in the archive</a></p>
+    
+</nav>
+
+</body>
+</html>

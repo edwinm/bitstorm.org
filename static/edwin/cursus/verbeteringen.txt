@@ -1,0 +1,25 @@
+extern bestand in layer laden?
+
+DHTML: achtergrondkleur en -plaatje
+
+Uitlklappen van tekst:
+
+display: block/none
+
+drag-and-drop
+
+image.src = ".."
+
+lijst van event-properties
+
+"Fun":
+
+>> Um...there's a way easier way to fix that if you don't like that nice
+>> thick shaded iMac-color-coordinated border on clickable areas in
+>> IE5/Mac. No need for all that JavaScript kludging..instead, do this
+>> CSS style...
+>> A,AREA {outline:none;}
+
+A {text-decoration: none;}
+
+

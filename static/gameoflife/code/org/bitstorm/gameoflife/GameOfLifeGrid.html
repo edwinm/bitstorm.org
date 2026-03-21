@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+</head><body>
+
+
+<code>/* This page is part of <a href="http://www.bitstorm.org/gameoflife/code/">the Game of Life source code</a> */<br><br></code><div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Copyright&nbsp;1996-2004&nbsp;Edwin&nbsp;Martin&nbsp;</font><font color="#7f7f9f">&lt;edwin@bitstorm.nl&gt;</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">org.bitstorm.gameoflife;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.awt.Dimension;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Enumeration;</font><br/>
+
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Hashtable;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Contains&nbsp;the&nbsp;cellgrid,&nbsp;the&nbsp;current&nbsp;shape&nbsp;and&nbsp;the&nbsp;Game&nbsp;Of&nbsp;Life&nbsp;algorithm&nbsp;that&nbsp;changes&nbsp;it.</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Edwin&nbsp;Martin</font><br/>
+
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">GameOfLifeGrid&nbsp;</font><font color="#7f0055"><b>implements&nbsp;</b></font><font color="#000000">CellGrid&nbsp;</font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cellRows;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cellCols;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">generations;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#000000">Shape</font><font color="#000000">[]&nbsp;</font><font color="#000000">shapes;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Contains&nbsp;the&nbsp;current,&nbsp;living&nbsp;shape.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;It's&nbsp;implemented&nbsp;as&nbsp;a&nbsp;hashtable.&nbsp;Tests&nbsp;showed&nbsp;this&nbsp;is&nbsp;70%&nbsp;faster&nbsp;than&nbsp;Vector.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Hashtable&nbsp;currentShape;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Hashtable&nbsp;nextShape;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Every&nbsp;cell&nbsp;on&nbsp;the&nbsp;grid&nbsp;is&nbsp;a&nbsp;Cell&nbsp;object.&nbsp;This&nbsp;object&nbsp;can&nbsp;become&nbsp;quite&nbsp;large.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">[][]&nbsp;</font><font color="#000000">grid;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Contructs&nbsp;a&nbsp;GameOfLifeGrid.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">cellCols&nbsp;number&nbsp;of&nbsp;columns</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">cellRows&nbsp;number&nbsp;of&nbsp;rows</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">GameOfLifeGrid</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cellCols,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cellRows</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.cellCols&nbsp;=&nbsp;cellCols;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.cellRows&nbsp;=&nbsp;cellRows;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Hashtable</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextShape&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Hashtable</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">grid&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">[</font><font color="#000000">cellCols</font><font color="#000000">][</font><font color="#000000">cellRows</font><font color="#000000">]</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">c=</font><font color="#990000">0</font><font color="#000000">;&nbsp;c&lt;cellCols;&nbsp;c++</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">r=</font><font color="#990000">0</font><font color="#000000">;&nbsp;r&lt;cellRows;&nbsp;r++&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">grid</font><font color="#000000">[</font><font color="#000000">c</font><font color="#000000">][</font><font color="#000000">r</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">(&nbsp;</font><font color="#000000">c,&nbsp;r&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Clears&nbsp;grid.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;synchronized&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">clear</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">generations&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape.clear</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextShape.clear</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Create&nbsp;next&nbsp;generation&nbsp;of&nbsp;shape.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;synchronized&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">next</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Cell&nbsp;cell;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col,&nbsp;row;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">neighbours;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Enumeration&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">generations++;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextShape.clear</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Reset&nbsp;cells</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>enum&nbsp;</b></font><font color="#000000">=&nbsp;currentShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.hasMoreElements</font><font color="#000000">()&nbsp;)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.nextElement</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell.neighbour&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Add&nbsp;neighbours</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;You&nbsp;can't&nbsp;walk&nbsp;through&nbsp;an&nbsp;hashtable&nbsp;and&nbsp;also&nbsp;add&nbsp;elements.&nbsp;Took&nbsp;me&nbsp;a&nbsp;couple&nbsp;of&nbsp;ours&nbsp;to&nbsp;figure&nbsp;out.&nbsp;Argh!</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;That's&nbsp;why&nbsp;we&nbsp;have&nbsp;a&nbsp;hashNew&nbsp;hashtable.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>enum&nbsp;</b></font><font color="#000000">=&nbsp;currentShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.hasMoreElements</font><font color="#000000">()&nbsp;)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.nextElement</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">col&nbsp;=&nbsp;cell.col;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">row&nbsp;=&nbsp;cell.row;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col-</font><font color="#990000">1</font><font color="#000000">,&nbsp;row-</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col,&nbsp;row-</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col+</font><font color="#990000">1</font><font color="#000000">,&nbsp;row-</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col-</font><font color="#990000">1</font><font color="#000000">,&nbsp;row&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col+</font><font color="#990000">1</font><font color="#000000">,&nbsp;row&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col-</font><font color="#990000">1</font><font color="#000000">,&nbsp;row+</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col,&nbsp;row+</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addNeighbour</font><font color="#000000">(&nbsp;</font><font color="#000000">col+</font><font color="#990000">1</font><font color="#000000">,&nbsp;row+</font><font color="#990000">1&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Bury&nbsp;the&nbsp;dead</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;We&nbsp;are&nbsp;walking&nbsp;through&nbsp;an&nbsp;enum&nbsp;from&nbsp;we&nbsp;are&nbsp;also&nbsp;removing&nbsp;elements.&nbsp;Can&nbsp;be&nbsp;tricky.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>enum&nbsp;</b></font><font color="#000000">=&nbsp;currentShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.hasMoreElements</font><font color="#000000">()&nbsp;)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.nextElement</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Here&nbsp;is&nbsp;the&nbsp;Game&nbsp;Of&nbsp;Life&nbsp;rule&nbsp;(1):</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">cell.neighbour&nbsp;!=&nbsp;</font><font color="#990000">3&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;cell.neighbour&nbsp;!=&nbsp;</font><font color="#990000">2&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape.remove</font><font color="#000000">(&nbsp;</font><font color="#000000">cell&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Bring&nbsp;out&nbsp;the&nbsp;new&nbsp;borns</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>enum&nbsp;</b></font><font color="#000000">=&nbsp;nextShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.hasMoreElements</font><font color="#000000">()&nbsp;)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.nextElement</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Here&nbsp;is&nbsp;the&nbsp;Game&nbsp;Of&nbsp;Life&nbsp;rule&nbsp;(2):</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">cell.neighbour&nbsp;==&nbsp;</font><font color="#990000">3&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setCell</font><font color="#000000">(&nbsp;</font><font color="#000000">cell.col,&nbsp;cell.row,&nbsp;</font><font color="#7f0055"><b>true&nbsp;</b></font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Adds&nbsp;a&nbsp;new&nbsp;neighbour&nbsp;to&nbsp;a&nbsp;cell.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">col&nbsp;Cell-column</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">row&nbsp;Cell-row</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;synchronized&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addNeighbour</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">row</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Cell&nbsp;cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)</font><font color="#000000">nextShape.get</font><font color="#000000">(&nbsp;</font><font color="#000000">grid</font><font color="#000000">[</font><font color="#000000">col</font><font color="#000000">][</font><font color="#000000">row</font><font color="#000000">]&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">cell&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Cell&nbsp;is&nbsp;not&nbsp;in&nbsp;hashtable,&nbsp;then&nbsp;add&nbsp;it</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Cell&nbsp;c&nbsp;=&nbsp;grid</font><font color="#000000">[</font><font color="#000000">col</font><font color="#000000">][</font><font color="#000000">row</font><font color="#000000">]</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">c.neighbour&nbsp;=&nbsp;</font><font color="#990000">1</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextShape.put</font><font color="#000000">(</font><font color="#000000">c,&nbsp;c</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Else,&nbsp;increments&nbsp;neighbour&nbsp;count</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell.neighbour++;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>catch&nbsp;</b></font><font color="#000000">(</font><font color="#000000">ArrayIndexOutOfBoundsException&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;ignore</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Get&nbsp;enumeration&nbsp;of&nbsp;Cell's</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">org.bitstorm.gameoflife.CellGrid#getEnum()</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Enumeration&nbsp;getEnum</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">currentShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Get&nbsp;value&nbsp;of&nbsp;cell.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">col&nbsp;x-coordinate&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">row&nbsp;y-coordinate&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">value&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;synchronized&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">getCell</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">row&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">currentShape.containsKey</font><font color="#000000">(</font><font color="#000000">grid</font><font color="#000000">[</font><font color="#000000">col</font><font color="#000000">][</font><font color="#000000">row</font><font color="#000000">])</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>catch&nbsp;</b></font><font color="#000000">(</font><font color="#000000">ArrayIndexOutOfBoundsException&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;ignore</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Set&nbsp;value&nbsp;of&nbsp;cell.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">col&nbsp;x-coordinate&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">row&nbsp;y-coordinate&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">c&nbsp;value&nbsp;of&nbsp;cell</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;synchronized&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setCell</font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">col,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">row,&nbsp;</font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">c&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Cell&nbsp;cell&nbsp;=&nbsp;grid</font><font color="#000000">[</font><font color="#000000">col</font><font color="#000000">][</font><font color="#000000">row</font><font color="#000000">]</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">c&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape.put</font><font color="#000000">(</font><font color="#000000">cell,&nbsp;cell</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape.remove</font><font color="#000000">(</font><font color="#000000">cell</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>catch&nbsp;</b></font><font color="#000000">(</font><font color="#000000">ArrayIndexOutOfBoundsException&nbsp;e</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;ignore</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Get&nbsp;number&nbsp;of&nbsp;generations.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">number&nbsp;of&nbsp;generations</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">getGenerations</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">generations;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Get&nbsp;dimension&nbsp;of&nbsp;grid.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">dimension&nbsp;of&nbsp;grid</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Dimension&nbsp;getDimension</font><font color="#000000">()&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;new&nbsp;</b></font><font color="#000000">Dimension</font><font color="#000000">(&nbsp;</font><font color="#000000">cellCols,&nbsp;cellRows&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Resize&nbsp;grid.&nbsp;Reuse&nbsp;existing&nbsp;cells.</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@see&nbsp;</font><font color="#3f5fbf">org.bitstorm.gameoflife.CellGrid#resize(int,&nbsp;int)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;synchronized&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">resize</font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cellColsNew,&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">cellRowsNew</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">cellCols==cellColsNew&nbsp;&amp;&amp;&nbsp;cellRows==cellRowsNew&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;&nbsp;</font><font color="#3f7f5f">//&nbsp;Not&nbsp;really&nbsp;a&nbsp;resize</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Create&nbsp;a&nbsp;new&nbsp;grid,&nbsp;reusing&nbsp;existing&nbsp;Cell's</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Cell</font><font color="#000000">[][]&nbsp;</font><font color="#000000">gridNew&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">[</font><font color="#000000">cellColsNew</font><font color="#000000">][</font><font color="#000000">cellRowsNew</font><font color="#000000">]</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">c=</font><font color="#990000">0</font><font color="#000000">;&nbsp;c&lt;cellColsNew;&nbsp;c++</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">r=</font><font color="#990000">0</font><font color="#000000">;&nbsp;r&lt;cellRowsNew;&nbsp;r++&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">c&nbsp;&lt;&nbsp;cellCols&nbsp;&amp;&amp;&nbsp;r&nbsp;&lt;&nbsp;cellRows&nbsp;</font><font color="#000000">)</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">gridNew</font><font color="#000000">[</font><font color="#000000">c</font><font color="#000000">][</font><font color="#000000">r</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;grid</font><font color="#000000">[</font><font color="#000000">c</font><font color="#000000">][</font><font color="#000000">r</font><font color="#000000">]</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>else</b></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">gridNew</font><font color="#000000">[</font><font color="#000000">c</font><font color="#000000">][</font><font color="#000000">r</font><font color="#000000">]&nbsp;</font><font color="#000000">=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Cell</font><font color="#000000">(&nbsp;</font><font color="#000000">c,&nbsp;r&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Copy&nbsp;existing&nbsp;shape&nbsp;to&nbsp;center&nbsp;of&nbsp;new&nbsp;shape</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">colOffset&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">cellColsNew-cellCols</font><font color="#000000">)</font><font color="#000000">/</font><font color="#990000">2</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">rowOffset&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">cellRowsNew-cellRows</font><font color="#000000">)</font><font color="#000000">/</font><font color="#990000">2</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Cell&nbsp;cell;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Enumeration&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextShape.clear</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>enum&nbsp;</b></font><font color="#000000">=&nbsp;currentShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.hasMoreElements</font><font color="#000000">()&nbsp;)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.nextElement</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">colNew&nbsp;=&nbsp;cell.col&nbsp;+&nbsp;colOffset;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">rowNew&nbsp;=&nbsp;cell.row&nbsp;+&nbsp;rowOffset;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>try&nbsp;</b></font><font color="#000000">{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">nextShape.put</font><font color="#000000">(&nbsp;</font><font color="#000000">gridNew</font><font color="#000000">[</font><font color="#000000">colNew</font><font color="#000000">][</font><font color="#000000">rowNew</font><font color="#000000">]</font><font color="#000000">,&nbsp;gridNew</font><font color="#000000">[</font><font color="#000000">colNew</font><font color="#000000">][</font><font color="#000000">rowNew</font><font color="#000000">]&nbsp;)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>catch&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#000000">ArrayIndexOutOfBoundsException&nbsp;e&nbsp;</font><font color="#000000">)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;ignore</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff"></font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;Copy&nbsp;new&nbsp;grid&nbsp;and&nbsp;hashtable&nbsp;to&nbsp;working&nbsp;grid/hashtable</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">grid&nbsp;=&nbsp;gridNew;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape.clear</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>enum&nbsp;</b></font><font color="#000000">=&nbsp;nextShape.keys</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>while&nbsp;</b></font><font color="#000000">(&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.hasMoreElements</font><font color="#000000">()&nbsp;)&nbsp;{</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cell&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Cell</font><font color="#000000">)&nbsp;</font><font color="#7f0055"><b>enum</b></font><font color="#000000">.nextElement</font><font color="#000000">()</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">currentShape.put</font><font color="#000000">(&nbsp;</font><font color="#000000">cell,&nbsp;cell&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cellCols&nbsp;=&nbsp;cellColsNew;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">cellRows&nbsp;=&nbsp;cellRowsNew;</font><br/>
+
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br/>
+
+<font color="#000000">}</font></code>
+
+   </td>
+  <!-- end source code -->
+   </tr>
+
+  <!-- start Java2Html link -->
+   <tr>
+    <td align="right">
+<small>
+<a href="http://www.java2html.de" target="_blank">Java2html</a>
+</small>
+    </td>
+   </tr>
+  <!-- end Java2Html link -->
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+
+</body></html>

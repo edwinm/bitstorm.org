@@ -1,0 +1,13 @@
+Importance seperation html - css - javascript -> no onclick's
+
+jQuery checkboxes
+
+use classnames to change css
+
+use plugins
+
+lots of plugins
+
+animatie beweging via formule
+
+xml-parser (feed)

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<r:RDF xmlns:r="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns="http://www.mozilla.org/2004/em-rdf#">
+
+<r:Description about="urn:mozilla:extension:{8F6A6FD9-0619-459f-B9D0-81DE065D4E21}">
+  <updates>
+    <r:Seq>
+      <r:li>
+        <r:Description>
+          <version>1.3</version>
+          <targetApplication>
+            <r:Description>
+              <id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</id>
+              <minVersion>0.9</minVersion>
+              <maxVersion>1.1</maxVersion>
+              <updateLink>http://www.bitstorm.org/extensions/view-cookies/viewcookies.xpi</updateLink>
+            </r:Description>
+          </targetApplication>
+        </r:Description>
+      </r:li>
+    </r:Seq>
+  </updates>
+  <version>1.3</version>
+  <updateLink>http://www.bitstorm.org/extensions/view-cookies/viewcookies.xpi</updateLink>
+</r:Description>
+
+<r:Description about="urn:mozilla:extension:{DAD0F81A-CF67-4eed-98D6-26F6E47274CA}">
+  <updates>
+    <r:Seq>
+      <r:li>
+        <r:Description>
+          <version>1.1</version>
+          <targetApplication>
+            <r:Description>
+              <id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</id>
+              <minVersion>0.9</minVersion>
+              <maxVersion>1.1</maxVersion>
+              <updateLink>http://www.bitstorm.org/extensions/tweak/tweak.xpi</updateLink>
+            </r:Description>
+          </targetApplication>
+        </r:Description>
+      </r:li>
+    </r:Seq>
+  </updates>
+  <version>1.1</version>
+  <updateLink>http://www.bitstorm.org/extensions/tweak/tweak.xpi</updateLink>
+</r:Description>
+
+</r:RDF>

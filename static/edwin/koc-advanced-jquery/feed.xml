@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+
+<channel>
+	<title>Ajaxian » Front Page</title>
+	
+	<link>http://ajaxian.com</link>
+	<description>Cleaning up the web with Ajax</description>
+	<pubDate>Wed, 24 Jun 2009 11:28:13 +0000</pubDate>
+	<generator>http://wordpress.org/?v=2.6</generator>
+
+	<language>en</language>
+			<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" href="http://ajaxian.com/index.xml" type="application/rss+xml" /><feedburner:browserFriendly>This is an XML content feed. It is intended to be viewed in a newsreader or syndicated to another site, subject to copyright and fair use.</feedburner:browserFriendly><item>
+		<title>MooTools: Saving the dollars, replacing document.write</title>
+		<link>http://feedproxy.google.com/~r/ajaxian/~3/kOpLaEZXjdk/mootools-saving-the-dollars-replacing-documentwrite</link>
+		<comments>http://ajaxian.com/archives/mootools-saving-the-dollars-replacing-documentwrite#comments</comments>
+		<pubDate>Wed, 24 Jun 2009 11:28:13 +0000</pubDate>
+
+		<dc:creator>Dion Almaer</dc:creator>
+		
+		<category><![CDATA[Front Page]]></category>
+
+		<category><![CDATA[JavaScript]]></category>
+
+		<guid isPermaLink="false">http://ajaxian.com/?p=7004</guid>
+		<description><![CDATA[The religion behind a simple $ has been fierce in the Web world. MooTools has decided to make the Dollar Safe Mode which is similar to cousins such as jQuery.noConflict (in MooTools case it just looks for the $ function). Now you can just use document.id if you want to play in the wild, or [...]]]></description>
+			<content:encoded><![CDATA[<p>The religion behind a simple <code>$</code> has been fierce in the Web world. MooTools has decided to make <a href="http://mootools.net/blog/2009/06/22/the-dollar-safe-mode/">the Dollar Safe Mode</a> which is similar to cousins such as <code>jQuery.noConflict</code> (in MooTools case it just looks for the $ function). Now you can just use <code>document.id</code> if you want to play in the wild, or wrap up in a closure to be nice:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-2');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-2">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #003366; font-weight: bold;">var</span> $ = document.<span style="color: #006600;">id</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #006600;">X</span> = <span style="color: #003366; font-weight: bold;">new</span> <span style="color: #003366; font-weight: bold;">Class</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; initialize: <span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span>element<span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #006600;">element</span> = $<span style="color:#006600; font-weight:bold;">&#40;</span>element<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color:#006600; font-weight:bold;">&#125;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<blockquote><p>
+Please note that MooTools will probably remain incompatible with other frameworks that modify native prototypes, as there will probably be more name clashes. This isn’t a cross-framework compatible MooTools version by any means, nor does it want to be. The whole point is not to “steal” the dollar function from other libraries.
+</p></blockquote>
+<p>In other MooTools news, MooTools Core Dev Thomas Aylott (subtleGradient) shows another example of <a href="http://subtlegradient.com/articles/2009/06/22/replace_document_write_using_mootools.html">overriding document.write()</a>:</p>
+<blockquote><p>
+I created a replacement for document.write that saves the arguments and then injects them into the page after the dom is ready.  This is useful for embedding gists on your page since you can use the additional filter option to reject stuff from being written to your page. This would also be really handy for sites that include JavaFX or certain ads or anything that requires the use of document.write on your page. By deferring the injection of that stuff until after the dom is ready your visitors see the page content before any of the extras like Java applets or ads begin to load.
+</p></blockquote>
+<div class="feedflare">
+<a href="http://feeds.feedburner.com/~ff/ajaxian?a=kOpLaEZXjdk:FM2GYQul6mU:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=kOpLaEZXjdk:FM2GYQul6mU:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=kOpLaEZXjdk:FM2GYQul6mU:D7DqB2pKExk"><img src="http://feeds.feedburner.com/~ff/ajaxian?i=kOpLaEZXjdk:FM2GYQul6mU:D7DqB2pKExk" border="0"></img></a>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://ajaxian.com/archives/mootools-saving-the-dollars-replacing-documentwrite/feed</wfw:commentRss>
+
+		<feedburner:origLink>http://ajaxian.com/archives/mootools-saving-the-dollars-replacing-documentwrite</feedburner:origLink></item>
+		<item>
+		<title>ProtoFish: advanced hover menu</title>
+		<link>http://feedproxy.google.com/~r/ajaxian/~3/qVuLG0P1Fvg/protofish-advanced-hover-menu</link>
+		<comments>http://ajaxian.com/archives/protofish-advanced-hover-menu#comments</comments>
+		<pubDate>Tue, 23 Jun 2009 10:05:01 +0000</pubDate>
+
+		<dc:creator>Dion Almaer</dc:creator>
+		
+		<category><![CDATA[Component]]></category>
+
+		<category><![CDATA[Front Page]]></category>
+
+		<category><![CDATA[Prototype]]></category>
+
+		<guid isPermaLink="false">http://ajaxian.com/?p=6990</guid>
+		<description><![CDATA[ProtoFish is an advanced hover menu based on Prototype, written by Peter Slagter. You can easily add a delay to your menu (on mouseout) and choose your own hover class. All ProtoFish menu's will respond to users who use the TAB-key to navigate through your page. 
+
+It is trivial to use. Once you load up [...]]]></description>
+
+			<content:encoded><![CDATA[<p><a href="http://techblog.procurios.nl/k/618/news/view/34556/14863/ProtoFish-advanced-hover-menu-based-on-Prototype.html">ProtoFish</a> is an advanced hover menu based on Prototype, written by Peter Slagter. You can easily add a delay to your menu (on mouseout) and choose your own hover class. All ProtoFish menu's will respond to users who use the TAB-key to navigate through your page. </p>
+<p><img src="http://ajaxian.com/wp-content/uploads/protofish.png" alt="" title="protofish" width="340" height="212" class="alignnone size-full wp-image-6991" /></p>
+<p>It is trivial to use. Once you load up the script (requires Prototype 1.6+) you can:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-4');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-4">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">document.<span style="color: #006600;">observe</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">'dom:loaded'</span>, <span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#006600; font-weight:bold;">&#123;</span>&nbsp; </div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; <span style="color: #003366; font-weight: bold;">new</span> ProtoFish<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">'my-menu'</span>, <span style="color: #3366CC;">'400'</span>, <span style="color: #3366CC;">'hover'</span>, <span style="color: #003366; font-weight: bold;">false</span><span style="color:#006600; font-weight:bold;">&#41;</span>;&nbsp; </div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>where the four parameters are:</p>
+<ul>
+<li>Menu id (In the example: my-menu)
+</li>
+<li>Delay before closing the menu (In the example: 400 ms)
+</li>
+<li>The classname to add when hovering over menuitems (In the example: hover)
+</li>
+<li>Whether or not the menu should remove .active classnames when your visitor hovers over the menu (In the example: false)
+</li>
+</ul>
+<div class="feedflare">
+<a href="http://feeds.feedburner.com/~ff/ajaxian?a=qVuLG0P1Fvg:ehNZNJkg6CY:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=qVuLG0P1Fvg:ehNZNJkg6CY:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=qVuLG0P1Fvg:ehNZNJkg6CY:D7DqB2pKExk"><img src="http://feeds.feedburner.com/~ff/ajaxian?i=qVuLG0P1Fvg:ehNZNJkg6CY:D7DqB2pKExk" border="0"></img></a>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://ajaxian.com/archives/protofish-advanced-hover-menu/feed</wfw:commentRss>
+		<feedburner:origLink>http://ajaxian.com/archives/protofish-advanced-hover-menu</feedburner:origLink></item>
+		<item>
+		<title>Sprite Me! Helping you sprite up, but maybe you shouldn’t?</title>
+		<link>http://feedproxy.google.com/~r/ajaxian/~3/uW1Yg_74M38/sprite-me-helping-you-sprite-up-but-maybe-you-shouldnt</link>
+		<comments>http://ajaxian.com/archives/sprite-me-helping-you-sprite-up-but-maybe-you-shouldnt#comments</comments>
+
+		<pubDate>Tue, 23 Jun 2009 05:01:00 +0000</pubDate>
+		<dc:creator>Dion Almaer</dc:creator>
+		
+		<category><![CDATA[CSS]]></category>
+
+		<category><![CDATA[Front Page]]></category>
+
+		<category><![CDATA[Performance]]></category>
+
+		<guid isPermaLink="false">http://ajaxian.com/?p=7001</guid>
+
+		<description><![CDATA[There have been many tools to help make image spriting easier, by packaging up your images into one large image and splitting it up again via CSS.
+Steve Souders just showed off a new little tool he created, Sprite Me at the Velocity conference that kicked off today. He has made it easier to work with [...]]]></description>
+			<content:encoded><![CDATA[<p>There have been many tools to help make image spriting easier, by packaging up your images into one large image and splitting it up again via CSS.</p>
+<p>Steve Souders just showed off a new little tool he created, <a href="http://www.stevesouders.com/spriteme/">Sprite Me</a> at the Velocity conference that kicked off today. He has made it easier to work with sprites by:</p>
+<ul>
+<li><b>finds background images</b>: <i>SpriteMe</i> generates a list of all background images in the page. Hovering over the its URL displays the image.<br />
+Each of the DOM elements that use that image are also listed. [DONE]
+    </li>
+<li><b>groups images</b>: It's hard to figure out which images can be sprited together, and how they should be laid out. For example, background images that repeat horizontally must fill the entire width of the sprite. Background images positioned <code>left bottom</code> must be at the right top of the sprite if their container might be bigger than the image. <i>SpriteMe</i> determines which images should be sprited together based on these constraints.[IN PROCESS]
+</li>
+<li><b>creates sprites</b>: <i>SpriteMe</i> generates the sprite for each grouping of images. This is done using open source tools, such as <a href="http://spritegen.website-performance.org/">CSS Sprite Generator</a>. [TBD]
+</li>
+<li><b>updates CSS</b>: The final tricky part of using sprites is changing the CSS. Sometimes the CSS is a rule in a stylesheet. Or it might be a rule in an inline style block. Or it might be specified in an element's style attribute. Because <i>SpriteMe</i> runs inside your web page, it can find the CSS that needs to be updated. It makes the changes in realtime, so you can visually check to confirm the sprites look right.You can export the modified CSS to integrate back into your code. [TBD]
+</li>
+</ul>
+<p>Great, a simple new bookmarklet to work with Sprites. It is always a good idea to sprite up right? Not exactly.</p>
+<p>Vlad Vuki?evi?, a leader in the Mozilla community (and brought us cool stuff like Canvas 3D!) <a href="http://blog.vlad1.com/2009/06/22/to-sprite-or-not-to-sprite/">has spoken up on the internals</a> of the browser, which shows you the trade-offs for the spriting approach:</p>
+<blockquote><p>
+The biggest problem with CSS sprites is memory usage.  Unless the sprite image is carefully constructed, you end up with incredible amounts of wasted space.  My favourite example is from WHIT TV's web site, where <a href="http://www.wthitv.com/images/bg_module.png">this image</a> is used as a sprite.  Note that this is a 1299x15,000 PNG.  It compresses quite well — the actual download size is around 26K — but browsers don't render compressed image data.  When this image is downloaded and decompressed, it will use almost 75MB in memory (1299 * 15000 * 4).  If the image didn't have any alpha transparency, this could be maybe optimized to 1299 * 15000 * 3, though often at the expense of rendering speed.  Even then, we'd be talking about 55MB.  The vast majority of this image is blank; there is nothing there, no useful content whatsoever.  Just loading the <a href="http://www.wthitv.com/">main WHIT page</a> will cause your browser's memory usage to go up by at least 75+MB, just due to that one image.</p>
+<p>That's not the right tradeoff to make for a website.
+</p></blockquote>
+<p>What alternatives are there? None right now.... but they are hopefully on the way. Some folks have been talking about the idea of packaging up images in zip files, and then the browser can manage more than just the download process, but also only load up what it needs:</p>
+<blockquote><p>
+Many browsers have support for offline manifests already; it might be possible to extend that to allow downloading one file (like a jar/zip file) that contains a manifest of resources and equivalent URLs that are contained inside it.
+</p></blockquote>
+<p>Rob Sayre, also of Mozilla, <a href="http://blog.mozilla.com/rob-sayre/2009/06/22/sprites/">broached the subject</a>:</p>
+<blockquote><p>
+Sprites have the advantage of working right now, but maybe there should be a way to serve up a multipart response with your sprite images as well. That would cut down on CSS rule count and maintenance, but still group the images in one HTTP request. Authors are already giving up the advantages of separate resources in return for speed, so maybe this is worth doing.</p>
+<p>You can (in theory… haha) get some of these advantages with HTTP pipelining, but a multipart response would allow the server optimize the response order as they do with sprites today.
+</p></blockquote>
+<div class="feedflare">
+<a href="http://feeds.feedburner.com/~ff/ajaxian?a=uW1Yg_74M38:ioLkFuMdDsk:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=uW1Yg_74M38:ioLkFuMdDsk:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=uW1Yg_74M38:ioLkFuMdDsk:D7DqB2pKExk"><img src="http://feeds.feedburner.com/~ff/ajaxian?i=uW1Yg_74M38:ioLkFuMdDsk:D7DqB2pKExk" border="0"></img></a>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://ajaxian.com/archives/sprite-me-helping-you-sprite-up-but-maybe-you-shouldnt/feed</wfw:commentRss>
+		<feedburner:origLink>http://ajaxian.com/archives/sprite-me-helping-you-sprite-up-but-maybe-you-shouldnt</feedburner:origLink></item>
+		<item>
+		<title>HTML 5 and the Wizard of Oz</title>
+		<link>http://feedproxy.google.com/~r/ajaxian/~3/9V38RTorjxo/html-5-and-the-wizard-of-oz</link>
+
+		<comments>http://ajaxian.com/archives/html-5-and-the-wizard-of-oz#comments</comments>
+		<pubDate>Mon, 22 Jun 2009 18:05:47 +0000</pubDate>
+		<dc:creator>Ben Galbraith</dc:creator>
+		
+		<category><![CDATA[Front Page]]></category>
+
+		<category><![CDATA[Fun]]></category>
+
+		<category><![CDATA[HTML]]></category>
+
+		<guid isPermaLink="false">http://ajaxian.com/?p=6996</guid>
+		<description><![CDATA[Kyle Weems, the CSS Squirrel and author of the occasional and bizarre comic of the same name, targets his latest rendering at Ian Hickson:
+
+Click-through to see the full comic. The related blog entry fleshes out the basic complaint some more:
+
+Why is it that the person who is the center of this process is allowed to [...]]]></description>
+			<content:encoded><![CDATA[<p>Kyle Weems, the CSS Squirrel and author of the occasional and bizarre comic of the same name, targets his latest rendering at Ian Hickson:</p>
+<p><a href="http://www.cssquirrel.com/comic/?comic=23"><img src="http://ajaxian.com/wp-content/uploads/hixieasoz.png" alt="" title="Who Really Is the Wizard of HTML5?" width="371" height="357" class="alignnone size-full wp-image-6997" /></a></p>
+<p>Click-through to see the <a href="http://www.cssquirrel.com/comic/?comic=23">full comic</a>. <a href="http://www.cssquirrel.com/2009/06/22/comic-update-who-really-is-the-wizard-of-html5/">The related blog entry</a> fleshes out the basic complaint some more:</p>
+<blockquote><p>
+Why is it that the person who is the center of this process is allowed to be a man who rejects consensus, actively denies issues (based on his own admitted policy) and substitutes expert advice in important areas like accessibility with analyzing data from the Google Index and parsing numbers? Numbers that we cannot have a third party confirm because every request to do just this is ignored?</p>
+<p>There is no doubt in my mind that Ian is brilliant. However no man, no matter how brilliant, should be allowed to be so influential on a spec when he is bringing all this baggage to the table with him.
+</p></blockquote>
+<p>The number of grievances folks have with any standards process are legion, but wouldn't life be more fun if they all came with comics?</p>
+<p>(As I wrote this, Dion leaned over and said, "I used to work with Ian, I find it funny to think of anyone trying to control him.")</p>
+<div class="feedflare">
+<a href="http://feeds.feedburner.com/~ff/ajaxian?a=9V38RTorjxo:tQXJlOYvsGM:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=9V38RTorjxo:tQXJlOYvsGM:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=9V38RTorjxo:tQXJlOYvsGM:D7DqB2pKExk"><img src="http://feeds.feedburner.com/~ff/ajaxian?i=9V38RTorjxo:tQXJlOYvsGM:D7DqB2pKExk" border="0"></img></a>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://ajaxian.com/archives/html-5-and-the-wizard-of-oz/feed</wfw:commentRss>
+		<feedburner:origLink>http://ajaxian.com/archives/html-5-and-the-wizard-of-oz</feedburner:origLink></item>
+		<item>
+		<title>Fun with 3D CSS and video</title>
+
+		<link>http://feedproxy.google.com/~r/ajaxian/~3/EDz_8dmEOyM/fun-with-3d-css-and-video</link>
+		<comments>http://ajaxian.com/archives/fun-with-3d-css-and-video#comments</comments>
+		<pubDate>Mon, 22 Jun 2009 12:14:21 +0000</pubDate>
+		<dc:creator>Dion Almaer</dc:creator>
+		
+		<category><![CDATA[CSS]]></category>
+
+		<category><![CDATA[Front Page]]></category>
+
+		<category><![CDATA[Video]]></category>
+
+		<guid isPermaLink="false">http://ajaxian.com/?p=6987</guid>
+		<description><![CDATA[
+How about starting the week with something fun. Zach Johnson has been having fun with 3D effects via CSS such as his isocube above, which is brought to you with simple HTML (including a video tag for a playing video on the surface!) and some CSS like this:
+PLAIN TEXT
+CSS:
+
+
+
+
+&#160;
+
+
+.face &#123;
+
+
+&#160; &#160; position: absolute;
+
+
+&#160; &#160; width: [...]]]></description>
+			<content:encoded><![CDATA[<p><img src="http://ajaxian.com/wp-content/uploads/3dcubes.png" alt="" title="3dcubes" width="500" height="285" class="alignnone size-full wp-image-6988" /></p>
+<p>How about starting the week with something fun. Zach Johnson has been having fun with 3D effects via CSS such as his <a href="http://www.zachstronaut.com/lab/isocube.html">isocube</a> above, which is brought to you with simple HTML (including a video tag for a playing video on the surface!) and some CSS like this:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('css-6');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">CSS:</span>
+<div id="css-6">
+<div class="css">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #6666ff;">.face </span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">position</span>: <span style="color: #993333;">absolute</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">width</span>: 200px;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">height</span>: 200px;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">overflow</span>: <span style="color: #993333;">hidden</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">font-family</span>: <span style="color: #993333;">monospace</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">font-size</span>: 24px;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #6666ff;">.top </span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">top</span>: <span style="color:#800000;">0</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">left</span>: 89px;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">background</span>: #fff;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">color</span>: #999;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -webkit-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>-45deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>15deg, 15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -moz-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>-45deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>15deg, 15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #6666ff;">.left </span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">top</span>: 155px;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">left</span>: <span style="color:#800000;">0</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">background</span>: #999;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">color</span>: #333;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -webkit-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>15deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>15deg, 15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -moz-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>15deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>15deg, 15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #6666ff;">.right </span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">top</span>: 155px;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">left</span>: 178px;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">background</span>: #ccc;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">color</span>: #666;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -webkit-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>-15deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>-15deg, -15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -moz-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>-15deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>-15deg, -15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #6666ff;">.shadow </span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">top</span>: 310px;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">left</span>: -89px;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">background</span>: <span style="color: #000000; font-weight: bold;">black</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; opacity: <span style="color:#800000;">0</span>.<span style="color:#800000;">5</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -webkit-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>-45deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>15deg, 15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; -moz-transform: rotate<span style="color:#006600; font-weight:bold;">&#40;</span>-45deg<span style="color:#006600; font-weight:bold;">&#41;</span> skew<span style="color:#006600; font-weight:bold;">&#40;</span>15deg, 15deg<span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Chris Blizzard posted his Open Video Conf talk <a href="http://hacks.mozilla.org/2009/06/connecting-html5-video/">on connecting HTML5 video</a> showcasing the great demos of Paul Rouget :)</p>
+<div class="feedflare">
+<a href="http://feeds.feedburner.com/~ff/ajaxian?a=EDz_8dmEOyM:DYK3X845Akc:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=EDz_8dmEOyM:DYK3X845Akc:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=EDz_8dmEOyM:DYK3X845Akc:D7DqB2pKExk"><img src="http://feeds.feedburner.com/~ff/ajaxian?i=EDz_8dmEOyM:DYK3X845Akc:D7DqB2pKExk" border="0"></img></a>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://ajaxian.com/archives/fun-with-3d-css-and-video/feed</wfw:commentRss>
+		<feedburner:origLink>http://ajaxian.com/archives/fun-with-3d-css-and-video</feedburner:origLink></item>
+
+		<item>
+		<title>NodeIterator.areYou(IMPRESSED | WHOCARES | WHA?)</title>
+		<link>http://feedproxy.google.com/~r/ajaxian/~3/gfEDTisJLLk/nodeiteratorareyouimpressed-whocares-wha</link>
+		<comments>http://ajaxian.com/archives/nodeiteratorareyouimpressed-whocares-wha#comments</comments>
+		<pubDate>Fri, 19 Jun 2009 19:09:10 +0000</pubDate>
+		<dc:creator>Dion Almaer</dc:creator>
+
+		
+		<category><![CDATA[Front Page]]></category>
+
+		<category><![CDATA[JavaScript]]></category>
+
+		<guid isPermaLink="false">http://ajaxian.com/?p=6984</guid>
+		<description><![CDATA[John Resig has posted on the DOM traversal methods now in Firefox 3.5 and then a spin out post on the merits of the NodeIterator API. He isn't impressed:
+
+This API is, at best, bloated, and at worst incredibly misguided and impractical for day-to-day use.
+Observe the method signature of createNodeIterator:
+PLAIN TEXT
+JAVASCRIPT:
+
+
+
+
+&#160;
+
+
+var nodeIterator = document.createNodeIterator&#40;
+
+
+&#160; root, // [...]]]></description>
+			<content:encoded><![CDATA[<p>John Resig has posted on the <a href="http://hacks.mozilla.org/2009/06/dom-traversal/">DOM traversal methods now in Firefox 3.5</a> and then a spin out post on the merits of the <a href="http://ejohn.org/blog/unimpressed-by-nodeiterator/">NodeIterator API</a>. He isn't impressed:</p>
+<blockquote><p>
+This API is, at best, bloated, and at worst incredibly misguided and impractical for day-to-day use.</p>
+<p>Observe the method signature of createNodeIterator:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-10');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-10">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #003366; font-weight: bold;">var</span> nodeIterator = document.<span style="color: #006600;">createNodeIterator</span><span style="color:#006600; font-weight:bold;">&#40;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; root, <span style="color: #009900; font-style: italic;">// root node for the traversal</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; whatToShow, <span style="color: #009900; font-style: italic;">// a set of constants to filter against</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; filter, <span style="color: #009900; font-style: italic;">// an object with a function for advanced filtering</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; entityReferenceExpansion <span style="color: #009900; font-style: italic;">// if entity reference children so be expanded</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>This is excessive for what should be, at most, a simple way to traverse DOM nodes.
+</p></blockquote>
+<p>One part of the critique involves the common pattern of bitwise operators that are common in C, C++, and a bit of Java (and elsewhere too). When space is at a premium, these are a good choice. There are also some nice side effects when you use them (building up the flags, munging them later, etc).</p>
+<p>However, as John points out, these are more for CSci students than for the average Web developer.</p>
+<pre>
+But then the crazy comes in: In order to select multiple, different, types of nodes you must OR together the properties to creating a resulting number that'll be passed in.
+
+For example if you wanted to find all elements, comments, and text nodes you would do:
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-11');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-11">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">NodeFilter.<span style="color: #006600;">SHOW_ELEMENT</span> | NodeFilter.<span style="color: #006600;">SHOW_COMMENT</span> | NodeFilter.<span style="color: #006600;">SHOW_TEXT</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+I'm not sure if you can get a much more counter-intuitive JavaScript API than that (you can certainly expect little, to no, common developer adoption, that's for sure).
+</pre>
+<p>He goes on to propose some more Webby APIs such as:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-12');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-12">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">document.<span style="color: #006600;">getNodes</span><span style="color:#006600; font-weight:bold;">&#40;</span> Element, Comment, Text <span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="feedflare">
+<a href="http://feeds.feedburner.com/~ff/ajaxian?a=gfEDTisJLLk:NRCcrc1FKeI:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=gfEDTisJLLk:NRCcrc1FKeI:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/ajaxian?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/ajaxian?a=gfEDTisJLLk:NRCcrc1FKeI:D7DqB2pKExk"><img src="http://feeds.feedburner.com/~ff/ajaxian?i=gfEDTisJLLk:NRCcrc1FKeI:D7DqB2pKExk" border="0"></img></a>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://ajaxian.com/archives/nodeiteratorareyouimpressed-whocares-wha/feed</wfw:commentRss>
+		<feedburner:origLink>http://ajaxian.com/archives/nodeiteratorareyouimpressed-whocares-wha</feedburner:origLink></item>
+	</channel>
+</rss>

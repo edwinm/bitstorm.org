@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#mijnlayer {
+	position: absolute;
+	top: 200px;
+	left: 30px;
+}
+</style>
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function clip( layer, top, right, bottom, left ) {
+	if( document.getElementById || document.all ) {
+		getStyle( layer ).clip='rect('+top+' '+right+' '+bottom+' '+left+')'
+	} else {
+		document[layer].clip.top = top
+		document[layer].clip.left = left
+		document[layer].clip.bottom = bottom
+		document[layer].clip.right = right
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id="mijnlayer">
+<img src="vb-6-mali.jpg" width=450 height=316>
+</div>
+
+<h2 class=cursus>DHTML in Netscape 4 en hoger en IE 4 en hoger</h2>
+
+<form>
+<h3>Dit werkt in alle recente browsers vanaf Netscape 4:</h4>
+<input type=button onClick="clip('mijnlayer', 80, 310, 300, 180)" value="clip('mijnlayer', 80, 310, 300, 180)">
+<input type=button onClick="clip('mijnlayer', 0, 450, 316, 0)" value="clip('mijnlayer', 0, 450, 316, 0)">
+</form>
+
+</body>
+</html>

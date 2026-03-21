@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Mali</title>
+<style type="text/css">
+BODY {
+	background-color: black;
+	margin: 0px;
+}
+IMG {
+	border-color: white;
+	margin: 0px 60px;
+}
+TABLE {
+	width: 100%;
+}
+TD {
+	text-align: center;
+}
+H3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: white;
+	letter-spacing: 4em;
+	margin-top: 20px;
+}
+#foto {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 0;
+	text-align: center;
+}
+#selectie {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: darkgray;
+	border: 1px solid darkgray;
+	border-bottom: 3px solid white;
+	padding-bottom: 20px;
+	z-index: 1;
+	text-align: center;
+}
+</style>
+
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function writeText( layer,text ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).innerHTML = text;
+	} else if( document.all ) {
+		document.all[layer].innerHTML = text;
+	} else {
+		document[layer].document.open();
+		document[layer].document.write( text );
+		document[layer].document.close();
+	}
+}
+
+klokje = null
+function heen() {
+	if ( ypos < 170 ) {
+		ypos = ypos + 5
+		getStyle('foto').top = ypos
+		klokje = setTimeout( 'heen()', 50 )
+	}
+}
+function stop() {
+	clearTimeout( klokje )
+}
+function laad( foto ) {
+	stop()
+	writeText( 'foto', "<img src='"+foto+"' width=450 height=675>" )
+	ypos = -675
+	getStyle('foto').top = ypos
+	heen()
+}
+</script>
+
+</head>
+<body>
+
+<div id="foto">
+</div>
+
+<div id="selectie">
+<h3>&nbsp;MALI</h3>
+<table><tr>
+<td><a href="b1.jpg" onClick="laad('b1.jpg');return false"><img src="t1.gif" width=40 height=60></a></td>
+<td><a href="b2.jpg" onClick="laad('b2.jpg');return false"><img src="t2.gif" width=40 height=60></a></td>
+<td><a href="b8.jpg" onClick="laad('b8.jpg');return false"><img src="t8.gif" width=40 height=60></a></td>
+</tr>
+</table>
+</div>
+
+</body>
+</html>

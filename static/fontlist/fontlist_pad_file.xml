@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<XML_DIZ_INFO>
+	<MASTER_PAD_VERSION_INFO>
+		<MASTER_PAD_VERSION>2.01</MASTER_PAD_VERSION>
+		<MASTER_PAD_EDITOR>PADGen 2.0.1.22 http://www.padgen.org</MASTER_PAD_EDITOR>
+		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+	</MASTER_PAD_VERSION_INFO>
+	<Company_Info>
+		<Company_Name>Edwin Martin</Company_Name>
+		<Address_1 />
+		<Address_2 />
+		<City_Town />
+		<State_Province />
+		<Zip_Postal_Code />
+		<Country />
+		<Company_WebSite_URL>http://www.bitstorm.org/edwin/</Company_WebSite_URL>
+		<Contact_Info>
+			<Author_First_Name>Edwin</Author_First_Name>
+			<Author_Last_Name>Martin</Author_Last_Name>
+			<Author_Email>edwin@bitstorm.org</Author_Email>
+			<Contact_First_Name>Edwin</Contact_First_Name>
+			<Contact_Last_Name>Martin</Contact_Last_Name>
+			<Contact_Email>edwin@bitstorm.org</Contact_Email>
+		</Contact_Info>
+		<Support_Info>
+			<Sales_Email />
+			<Support_Email>edwin@bitstorm.org</Support_Email>
+			<General_Email>edwin@bitstorm.org</General_Email>
+			<Sales_Phone />
+			<Support_Phone />
+			<General_Phone />
+			<Fax_Phone />
+		</Support_Info>
+	</Company_Info>
+	<Program_Info>
+		<Program_Name>FontList</Program_Name>
+		<Program_Version>1.6</Program_Version>
+		<Program_Release_Month>10</Program_Release_Month>
+		<Program_Release_Day>28</Program_Release_Day>
+		<Program_Release_Year>2012</Program_Release_Year>
+		<Program_Cost_Dollars>0</Program_Cost_Dollars>
+		<Program_Cost_Other_Code />
+		<Program_Cost_Other />
+		<Program_Type>Freeware</Program_Type>
+		<Program_Release_Status>Bug fix release</Program_Release_Status>
+		<Program_Install_Support>Install and Uninstall</Program_Install_Support>
+		<Program_OS_Support>Win95,Win98,WinME,WinNT 4.x,Windows2000,WinXP,Windows2003,Vista</Program_OS_Support>
+		<Program_Language>English</Program_Language>
+		<Program_Change_Info />
+		<Program_Specific_Category />
+		<Program_Category_Class>Graphic Apps::Font Tools</Program_Category_Class>
+		<Program_Categories />
+		<Program_System_Requirements />
+		<Includes_JAVA_VM>N</Includes_JAVA_VM>
+		<Includes_VB_Runtime>N</Includes_VB_Runtime>
+		<Includes_DirectX>N</Includes_DirectX>
+		<File_Info>
+			<Filename_Versioned />
+			<Filename_Previous />
+			<Filename_Generic />
+			<Filename_Long />
+			<File_Size_Bytes>70805</File_Size_Bytes>
+			<File_Size_K>71</File_Size_K>
+			<File_Size_MB>0.07</File_Size_MB>
+		</File_Info>
+		<Expire_Info>
+			<Has_Expire_Info>N</Has_Expire_Info>
+			<Expire_Count />
+			<Expire_Based_On>Days</Expire_Based_On>
+			<Expire_Other_Info />
+			<Expire_Month />
+			<Expire_Day />
+			<Expire_Year />
+		</Expire_Info>
+	</Program_Info>
+	<Program_Descriptions>
+		<English>
+			<Keywords>font, fonts, type, list, show, view, viewer, browse, browser, manage, manager</Keywords>
+			<Char_Desc_45>View all installed fonts in your web browser.</Char_Desc_45>
+			<Char_Desc_80>View all installed fonts in your web browser.</Char_Desc_80>
+			<Char_Desc_250>With FontList, you can create a HTML file that will show all the fonts installed on your computer. With your browser, you can pick the right font in no time.</Char_Desc_250>
+			<Char_Desc_450>It's usually very hard to get a nice overview of all your installed fonts. With FontList, you can easily create a HTML file showing all your fonts in your web browser. FontList lets you change the sample text, exclude seldom used fonts from the list and change the path for the HTML file. FontList then opens up your web browser to show you all your fonts.</Char_Desc_450>
+			<Char_Desc_2000>If you design something and you are looking for the right font, it can take a lot of time. In word processing, DTP and (web)design programs, you can often only select one font at a time. Finding the right font often means searching through all your fonts.
+
+With FontList, you can create a HTML file that will show all the fonts installed on your computer. With your browser, you can pick the right font in no time.
+
+Using FontList, you can change the predefined sample text, exclude seldom used fonts from the list and change the path for the HTML file.
+
+In your browser, you can change the style of a font and zoom in on a font. You can also view the character map of a font. And, for some, maybe the most important feature, you can create a print out of all your fonts.</Char_Desc_2000>
+		</English>
+	</Program_Descriptions>
+	<Web_Info>
+		<Application_URLs>
+			<Application_Info_URL>http://www.bitstorm.org/fontlist/</Application_Info_URL>
+			<Application_Order_URL />
+			<Application_Screenshot_URL>http://www.bitstorm.org/fontlist/screenshot.png</Application_Screenshot_URL>
+			<Application_Icon_URL>http://www.bitstorm.org/fontlist/fontlist_icon.png</Application_Icon_URL>
+			<Application_XML_File_URL>http://www.bitstorm.org/fontlist/fontlist_pad_file.xml</Application_XML_File_URL>
+		</Application_URLs>
+		<Download_URLs>
+			<Primary_Download_URL>http://www.bitstorm.org/fontlist/FontList1.6-installer.exe</Primary_Download_URL>
+			<Secondary_Download_URL />
+			<Additional_Download_URL_1 />
+			<Additional_Download_URL_2 />
+		</Download_URLs>
+	</Web_Info>
+	<Permissions>
+		<Distribution_Permissions>This software is freeware.
+
+You are allowed to freely distribute the original, unmodified FontList installer program.
+
+No warranty. There is no warranty for the program, to the extent permitted by applicable law. In no event unless required by applicable law or agreed to in writing will the copyright holder, or any other party who may redistribute the program as permitted above, be liable to you for damages arising out of the use or inability to use the program.</Distribution_Permissions>
+		<EULA>This software is freeware.
+
+You are allowed to freely distribute the original, unmodified FontList installer program.
+
+No warranty. There is no warranty for the program, to the extent permitted by applicable law. In no event unless required by applicable law or agreed to in writing will the copyright holder, or any other party who may redistribute the program as permitted above, be liable to you for damages arising out of the use or inability to use the program.</EULA>
+	</Permissions>
+</XML_DIZ_INFO>

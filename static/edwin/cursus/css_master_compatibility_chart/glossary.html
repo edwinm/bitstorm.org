@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Overview of the CSS Specification</title>
+	<link title="Main" rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+
+<h2>Overview of the CSS Specification</h2>
+
+<p>By <a href="http://www.meyerweb.com/eric/css/">Eric A. Meyer</a></p>
+
+<p>Published under a <a href="http://creativecommons.org/">Creative Commons</a> license.</p>
+
+<table border="1" cellpadding="6" cellspacing="0" id="chart">
+<tr>
+<td colspan="3" class="title">
+<h3>Basic Concepts</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="11"></a>1.1</td><td class="prop">Containment in HTML</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="12"></a>1.2</td><td class="prop">Grouping</td>
+<td class="desc">Grouping allows the author to assign a single style declaration to multple elements.
+<pre>H1, H2, H3, H5 {color: purple;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="13"></a>1.3</td><td class="prop">Inheritance</td>
+<td class="desc">Inherited values are passed from parent to child.</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="14"></a>1.4</td><td class="prop">Class as selector</td>
+<td class="desc">Class selectors may be used to define types of data.  A class selector is a string preceded by a period, and is called using the CLASS= attribute. The period does not appear in the value of CLASS.  Classes may not begin with a number under CSS1.
+<pre>.example {color: brown;}
+     &lt;P class="example"&gt;This is an example.&lt;/P&gt;</pre></td>
+</tr>
+
+<tr valign="top"><td class="secn"><a name="15"></a>1.5</td><td class="prop">ID as selector</td>
+<td class="desc">ID selectors may be used to define unique elements within the document.  An ID selector is a string preceded by a hash mark (#), and is called using the ID= attribute.  The hash mark does not appear in the value of ID.  IDs may not begin with a number under CSS1.
+<pre>#i5 {color: brown;}
+     &lt;P ID="i5"&gt;This is text with an ID of 'i5'.&lt;/P&gt;</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="16"></a>1.6</td><td class="prop">Contextual selectors</td>
+<td class="desc">These are used when styles should be applied to a given element under specific circumstances.  Given in the form parent child, where the style is applied to the child element when parent is its parent.
+<pre>H1 EM {color: red;}
+     &lt;H1&gt;This is &lt;EM&gt;red&lt;/EM&gt;.&lt;/H1&gt;
+
+     &lt;P&gt;This is &lt;EM&gt;not&lt;/EM&gt;.&lt;/P&gt;</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="17"></a>1.7</td><td class="prop">Comments</td>
+<td class="desc">Allows the author to leave comments in the style sheet.  The format is identical to that used in most variants of C/C++.
+<pre>/* This is a comment. */</pre></td>
+</tr>
+
+<tr>
+<td colspan="3" class="title">
+<h3>Pseudo-Classes and Pseudo-Elements</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="21"></a>2.1</td><td class="prop">anchor</td>
+<td class="desc">Applies to hyperlinks, but not named anchors.  Styles can be applied to named anchors using the selector <CODE>A</CODE> without any pseudo-classes.</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="23"></a>2.3</td><td class="prop">first-line</td>
+
+<td class="desc">Applied to the first displayed line of text in the given element.  This persists even if the window is resized and the text reformatted.  Should be applied to block-level elements only.
+<pre>P:first-line {color: red;}
+     &lt;P&gt;The first line of this paragraph is red.  
+        blah blah blah...&lt;/P&gt;</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="24"></a>2.4</td><td class="prop">first-letter</td>
+<td class="desc">Applied to the first letter in the given element.  Can be used to generate drop-cap effects, among others.  Should be applied to block-level elements only.
+<pre>P:first-letter {color: purple;}
+     &lt;P&gt;The capital 'T' at the beginning of this 
+        paragraph is purple.&lt;/P&gt;</pre></td>
+</tr>
+
+<tr>
+<td colspan="3" class="title">
+<h3>The Cascade</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="31"></a>3.1</td><td class="prop">important</td>
+<td class="desc">Style declaration is declared important.  Important declarations override all others.
+<pre>H1 {color: maroon ! important;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="32"></a>3.2</td><td class="prop">Cascading Order</td>
+<td class="desc">The way in which rules are combined and chosen; see the CSS1 specification for a detailed explanation.</td>
+
+</tr>
+<tr>
+<td colspan="3" class="title">
+<h3>Font Properties</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="522"></a>5.2.2</td><td class="prop">font-family</td>
+<td class="desc">Used to declare a specific font to be used, or a generic font family, or both.
+<pre>P {font-family: Helvetica,sans-serif;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="523"></a>5.2.3</td><td class="prop">font-style</td>
+
+<td class="desc">Selects between italics, oblique, and normal.
+<pre>EM {font-style: oblique;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="524"></a>5.2.4</td><td class="prop">font-variant</td>
+<td class="desc">Currently has two values: small-caps and normal.  Likely to acquire more values in the future.
+<pre>H3 {font-variant: small-caps;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="525"></a>5.2.5</td><td class="prop">font-weight</td>
+<td class="desc">Sets the weight of a font, making it heavier or lighter.
+<pre>B {font-weight: 700;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="526"></a>5.2.6</td><td class="prop">font-size</td>
+<td class="desc">Sets the size of the font.  This can be defined in absolute size, relative size, or percentage.
+<pre>H2 {font-size: 200%;}
+H3 {font-size: 36pt;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="527"></a>5.2.7</td><td class="prop">font</td>
+<td class="desc">Shorthand property for the other font properties.  The order of values is important, and is as follows:  font {font-style font-variant font-weight font-size/line-height font-family;}.  Any of these values may be omitted.
+<pre>P {font: bold 12pt/14pt Helvetica,sans-serif;}</pre></td>
+</tr>
+<tr>
+<td colspan="3" class="title">
+
+<h3>Color and Background Properties</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="531"></a>5.3.1</td><td class="prop">color</td>
+<td class="desc">Sets the color of a given element.  For text, this sets the text color; for other elements, suxh as HR, it sets the foreground color.
+<pre>STRONG {color: teal;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="532"></a>5.3.2</td><td class="prop">background-color</td>
+<td class="desc">Sets the background color of an element.  This background extends out to the edge of the element's border.
+<pre>H4 {background-color: white;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="533"></a>5.3.3</td><td class="prop">background-image</td>
+<td class="desc">Sets an image to be the background pattern.  In conjunction with the other background properties, may tile or repeat in one direction only.
+<pre>BODY {background-image: url(bg41.gif);}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="534"></a>5.3.4</td><td class="prop">background-repeat</td>
+<td class="desc">Sets the repeat style for a background image.
+<pre>BODY {background-repeat: no-repeat;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="535"></a>5.3.5</td><td class="prop">background-attachment</td>
+
+<td class="desc">Defines whether or not the background image scrolls with the element.  Generally applied to BODY only, as it makes little sense with most other elements.
+<pre>BODY {background-attachment: scroll;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="536"></a>5.3.6</td><td class="prop">background-position</td>
+<td class="desc">Sets the starting position of the background color or image.  If a color, the color fill continues from the set position.  If an image, the first image is placed at the set position, and repeating is determined by background-repeat.
+<pre>BODY {background-position: top center;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="537"></a>5.3.7</td><td class="prop">background</td>
+<td class="desc">Shorthand property for the other background properties.  The values can be written in any order.
+<pre>BODY {background: white url(bg41.gif) fixed center;}</pre></td>
+
+</tr>
+<tr>
+<td colspan="3" class="title">
+<h3>Text Properties</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="541"></a>5.4.1</td><td class="prop">word-spacing</td>
+<td class="desc">Sets the amount of white space between words, which are defined as strings of characters surrounded by white space.
+<pre>P {word-spacing: 0.5em;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="542"></a>5.4.2</td><td class="prop">letter-spacing</td>
+
+<td class="desc">Sets the amount of white space between letters, which are defined as any displayed character.
+<pre>P {letter-spacing: 0.5em;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="543"></a>5.4.3</td><td class="prop">text-decoration</td>
+<td class="desc">Sets certain effects to the text, such as underline and blink.  Combinations of the values are legal.
+<pre>U {text-decoration: underline;}
+.old {text-decoration: line-through;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="544"></a>5.4.4</td><td class="prop">vertical-align</td>
+<td class="desc">Sets the vertical alignment of an element's basline with respect to its parent element's line-height.  May only be applied to inline elements; negative values are permitted.
+<pre>SUP {vertical-align: super;}
+.fnote {vertical-align: 50%;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="545"></a>5.4.5</td><td class="prop">text-transform</td>
+<td class="desc">Changes the case of the letters in the element, regardless of the original text.
+<pre>H1 {text-transform: uppercase;}
+.title {text-transform: capitalize;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="546"></a>5.4.6</td><td class="prop">text-align</td>
+<td class="desc">Sets the horizontal alignment of the text in an element.  May only be applied to block-level elements.
+<pre>P {text-align: justify;}
+H4 {text-align: center;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="547"></a>5.4.7</td><td class="prop">text-indent</td>
+
+<td class="desc">Sets the indentation of the first line in an element.  Most often used to create a tab effect for paragraphs.  Only applies to block-level elements; negative values are permitted.
+<pre>P {text-indent: 5em;}
+H2 {text-indent: -25px;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="548"></a>5.4.8</td><td class="prop">line-height</td>
+<td class="desc">Sets the vertical distance between baselines in an element.  Negative values are not permitted.
+<pre>P {line-height: 18pt;}
+H2 {line-height: 200%;}</pre></td>
+</tr>
+<tr>
+<td colspan="3" class="title">
+<h3>Box Properties</h3>
+</td>
+</tr>
+
+<tr valign="top"><td class="secn"><a name="5501"></a>5.5.01</td><td class="prop">margin-top</td>
+<td class="desc">Sets the size of the top margin of an element.  Negative values are permitted, but exercise caution.
+<pre>UL {margin-top: 0.5in;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5502"></a>5.5.02</td><td class="prop">margin-right</td>
+<td class="desc">Sets the size of the right margin of an element.  Negative values are permitted, but exercise caution.
+<pre>IMG {margin-right: 30px;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5503"></a>5.5.03</td><td class="prop">margin-bottom</td>
+
+<td class="desc">Sets the size of the bottom margin of an element.  Negative values are permitted, but exercise caution.
+<pre>UL {margin-bottom: 0.5in;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5504"></a>5.5.04</td><td class="prop">margin-left</td>
+<td class="desc">Sets the size of the left margin of an element.  Negative values are permitted, but exercise caution.
+<pre>P {margin-left: 3em;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5505"></a>5.5.05</td><td class="prop">margin</td>
+<td class="desc">Sets the size of the overall margin of an element.  Negative values are permitted, but exercise caution.
+<pre>H1 {margin: 2ex;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="5506"></a>5.5.06</td><td class="prop">padding-top</td>
+<td class="desc">Sets the size of the top padding of an element, which will inherit the element's background.  Negative values are not permitted.
+<pre>UL {padding-top: 0.5in;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5507"></a>5.5.07</td><td class="prop">padding-right</td>
+<td class="desc">Sets the size of the right padding of an element, which will inherit the element's background.  Negative values are not permitted.
+<pre>IMG {padding-right: 30px;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5508"></a>5.5.08</td><td class="prop">padding-bottom</td>
+
+<td class="desc">Sets the size of the bottom padding of an element, which will inherit the element's background.  Negative values are not permitted.
+<pre>UL {padding-bottom: 0.5in;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5509"></a>5.5.09</td><td class="prop">padding-left</td>
+<td class="desc">Sets the size of the left padding of an element, which will inherit the element's background.  Negative values are not permitted.
+<pre>P {padding-left: 3em;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5510"></a>5.5.10</td><td class="prop">padding</td>
+<td class="desc">Sets the size of the overall padding of an element, which will inherit the element's background.  Negative values are not permitted.
+<pre>H1 {padding: 2ex;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="5511"></a>5.5.11</td><td class="prop">border-top-width</td>
+<td class="desc">Sets the width of the top border of an element, which will inherit the element's background, and may have a foreground of its own (see border-style).  Negative values are not permitted.
+<pre>UL {border-top-width: 0.5in;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5512"></a>5.5.12</td><td class="prop">border-right-width</td>
+<td class="desc">Sets the width of the right border of an element, which will inherit the element's background, and may have a foreground of its own (see border-style).  Negative values are not permitted.
+<pre>IMG {border-right-width: 30px;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5513"></a>5.5.13</td><td class="prop">border-bottom-width</td>
+
+<td class="desc">Sets the width of the bottom border of an element, which will inherit the element's background, and may have a foreground of its own (see border-style).  Negative values are not permitted.
+<pre>UL {border-bottom-width: 0.5in;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5514"></a>5.5.14</td><td class="prop">border-left-width</td>
+<td class="desc">Sets the width of the left border of an element, which will inherit the element's background, and may have a foreground of its own (see border-style).  Negative values are not permitted.
+<pre>P {border-left-width: 3em;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5515"></a>5.5.15</td><td class="prop">border-width</td>
+<td class="desc">Sets the width of the overall border of an element, which will inherit the element's background, and may have a foreground of its own (see border-style).  Negative values are not permitted.
+<pre>H1 {border-width: 2ex;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="5516"></a>5.5.16</td><td class="prop">border-color</td>
+<td class="desc">Sets the color of the foreground of the overall border of an element (see border-style), which will inherit the element's background.
+<pre>H1 {border-color: purple; border-style: solid;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5517"></a>5.5.17</td><td class="prop">border-style</td>
+<td class="desc">Sets the style of the overall border of an element, using the color set by border-color.
+<pre>H1 {border-style: solid; border-color: purple;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5518"></a>5.5.18</td><td class="prop">border-top</td>
+
+<td class="desc">Shorthand property which defines the width, color, and style of the top border of an element.
+<pre>UL {border-top: 0.5in solid black;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5519"></a>5.5.19</td><td class="prop">border-right</td>
+<td class="desc">Shorthand property which defines the width, color, and style of the right border of an element.
+<pre>IMG {border-right: 30px dotted blue;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5520"></a>5.5.20</td><td class="prop">border-bottom</td>
+<td class="desc">Shorthand property which defines the width, color, and style of the bottom border of an element.
+<pre>UL {border-bottom: 0.5in grooved green;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="5521"></a>5.5.21</td><td class="prop">border-left</td>
+<td class="desc">Shorthand property which defines the width, color, and style of the left border of an element.
+<pre>P {border-left: 3em solid gray;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5522"></a>5.5.22</td><td class="prop">border</td>
+<td class="desc">Shorthand property which defines the width, color, and style of the overall border of an element.
+<pre>H1 {border: 2px dashed tan;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5523"></a>5.5.23</td><td class="prop">width</td>
+
+<td class="desc">Used to set the width of an element.  Most oftern applied to images, but can be used on any block-level or replaced element.  Negative values are not permitted.
+<pre>TABLE {width: 80%;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5524"></a>5.5.24</td><td class="prop">height</td>
+<td class="desc">Used to set the height of an element.  Most oftern applied to images, but can be used on any block-level or replaced element, within limits.  Negative values are not permitted.
+<pre>IMG.icon {height: 50px;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="5525"></a>5.5.25</td><td class="prop">float</td>
+<td class="desc">Sets the float for an element.  Generally applied to images in order to allow text to flow around them, but any element may be floated.
+<pre>IMG {float: left;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="5526"></a>5.5.26</td><td class="prop">clear</td>
+<td class="desc">Defines which floating elements (if any) are allowed to exist to either side of the element.
+<pre>H1 {clear: both;}</pre></td>
+</tr>
+<tr>
+<td colspan="3" class="title">
+<h3>Classification Properties</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name="561"></a>5.6.1</td><td class="prop">display</td>
+
+<td class="desc">Used to classify elements into broad categories, although there may be limits.  The most popular value is probably none.
+<pre>.hide {display: none;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="562"></a>5.6.2</td><td class="prop">white-space</td>
+<td class="desc">Defines how whitespace within the element is treated.
+<pre>TD {white-space: nowrap;}
+TT {white-space: pre;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="563"></a>5.6.3</td><td class="prop">list-style-type</td>
+<td class="desc">Used to declare the type of 'bullet' or numbering system to be used in an unordered or ordered list.  Applies to elements with a display value of list-item.
+<pre>UL {list-style-type: square;}
+OL {list-style-type: lower-roman;}</pre></td>
+
+</tr>
+<tr valign="top"><td class="secn"><a name="564"></a>5.6.4</td><td class="prop">list-style-image</td>
+<td class="desc">Used to declare an image to be used as the 'bullet' in an unordered or ordered list.  Applies to elements with a display value of list-item.
+<pre>UL {list-style-image: url(bullet3.gif);}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="565"></a>5.6.5</td><td class="prop">list-style-position</td>
+<td class="desc">Used to declare the position of the 'bullet' or number in an unordered or ordered list with respect to the content of the list item.  Applies to elements with a display value of list-item.
+<pre>LI {list-style-position: outer;}</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name="566"></a>5.6.6</td><td class="prop">list-style</td>
+
+<td class="desc">Shorthand property condensing all other list-style properties.  Applies to all elements with a display value of list-item.
+<pre>UL {list-style: square url(bullet3.gif) outer;}</pre></td>
+</tr>
+<tr>
+<td colspan="3" class="title">
+<h3>Units</h3>
+</td>
+</tr>
+<tr valign="top"><td class="secn"><a name=61></a>6.1</td><td class="prop">Length Units</td>
+<td class="desc">Used by various properties to define size in absolute terms; i.e., distances which will be consistent regardless of their context.
+<pre>width: 50px;
+margin-left: 2em;
+</pre></td>
+</tr>
+
+<tr valign="top"><td class="secn"><a name=62></a>6.2</td><td class="prop">Percentage Units</td>
+<td class="desc">Used by various properties to define size in relative terms; i.e., distances which will be calculated with regard to their context.
+<pre>width: 80%;</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name=63></a>6.3</td><td class="prop">Color Units</td>
+<td class="desc">Used by various properties to define colors.
+<pre>color: #FF00FF;
+color: rgb(100%,0%,100%);</pre></td>
+</tr>
+<tr valign="top"><td class="secn"><a name=64></a>6.4</td><td class="prop">URLs</td>
+
+<td class="desc">Used by various properties to define the location of images.  Partial URLs are extraplolated relative to the style sheet, not the HTMl document.
+<pre>url(picture.gif)
+url(http://www.pix.org/lib1/pic278.gif)</pre></td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, Sans-serif;
+	color: black;
+	background-color: #666;
+	overflow-x: hidden;
+}
+
+a {
+	color: #ccc;
+}
+
+a.link {
+  color: darkblue;
+}
+
+a img {
+	border: 1px solid transparent;
+}
+
+#body {
+	position: relative;
+	left: 50%;
+	margin-left: -500px;
+}
+
+/*
+ * Header
+ */
+
+#header {
+	width: 1000px;
+	background: url(header.jpg) no-repeat;
+}
+
+#header h1 {
+	position: relative;
+	top: 5px;
+	left: 5px;
+	display: inline;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid rgba(128, 128, 128, 0.5);
+	color: #333;
+	font-size: 20px;
+	padding: 0 10px;
+}
+
+#header p {
+	font-style: italic;
+	padding: 10px;
+	margin: 162px 0 0 0;
+}
+
+/*
+ * Slider
+ */
+
+#slider {
+	width: 990px;
+	height: 166px;
+	overflow: auto;
+	border: 1px solid #999;
+	margin-top: 10px;
+	padding: 8px 0 0 8px;
+}
+
+#slider ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: 6442px;
+}
+
+#slider li {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	float: left;
+	margin-right: 10px;
+}
+
+#slider li div {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 0 4px;
+	font-weight: bold;
+}
+
+li.selected a img {
+	display: block;
+	border: 1px solid white;
+}
+
+/*
+ * Large photos
+ */
+
+
+
+#large {
+	position: relative;
+	margin-top: 10px;
+	min-height: 800px;
+}
+
+#old, #new {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#new img {
+	-x-display: none;
+}
+
+#desc {
+	width: 980px;
+	margin: 0;
+	padding: 10px;
+	background-color: #999;
+}
+
+
+/*
+ * Navigation
+ */
+
+#navigatie {
+	width: 1000px;
+	position: relative;
+	margin: 10px 0;
+}
+
+#back, #forward {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	background: url(sprite.png) 0 -50px no-repeat;
+	cursor: pointer;
+	margin: 10px 0;
+}
+
+#forward {
+	background-position: 0 -10px;
+}
+
+#back:hover {
+	background-position: 0 -130px;
+}
+#forward:hover {
+	background-position: 0 -90px;
+}
+
+#back.disabled, #back.disabled:hover {
+	background-position: 0 -210px;
+}
+#forward.disabled, #forward.disabled:hover {
+	background-position: 0 -170px;
+}
+#back.disabled, #forward.disabled {
+	cursor: default;
+}
+
+#switch {
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	color: black;
+	background-color: white;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	text-decoration: none;
+	padding: 3px 10px;
+	border: 2px solid orange;
+}
+
+#switch:hover {
+	background-color: #ff6;
+}
+#switch span {
+	padding: 0 3px;
+}
+#switch span.old {
+	border: 1px solid #ccc;
+}
+
+#switch.new span.new {
+	border: 1px solid #ccc;
+}
+#switch.new span.old {
+	border: none;
+}
+
+address {
+	color: #aaa;
+}

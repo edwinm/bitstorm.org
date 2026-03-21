@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Voorbeeld</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+<style type="text/css">
+#roodvierkant {
+	position: absolute;
+	top: 250px;
+	left: 100px;
+	width: 40px;
+	height: 40px;
+	border: 7px solid red;
+}
+</style>
+<script language="JavaScript">
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function toonPositie(event) {
+	alert('Muispositie is '+event.clientX+', '+event.clientY)
+}
+function setVierkant(event) {
+	getStyle('roodvierkant').left = event.clientX
+	getStyle('roodvierkant').top = event.clientY
+}
+</script>
+</head>
+<body>
+
+<h2 class=cursus>Verschillende eventseigenschappen</h2>
+
+<p>Werkt alleen in recente browsers.</p>
+
+<p>Klik op de kopjes hieronder.</p>
+
+<h3 class=cursus onClick="toonPositie(event)">Klik me voor de muisco&ouml;rdinaten</h3>
+
+<h3 class=cursus onClick="setVierkant(event)">Klik me voor het plaatsen van het rode vierkant</h3>
+
+<div id=roodvierkant>
+</div>
+
+</body>
+</html>

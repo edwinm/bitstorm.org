@@ -1,0 +1,1357 @@
+<html>
+<head>
+<title>DHTML</title>
+<link rel="stylesheet" type="text/css" href="cursus.css">
+</head>
+
+<body>
+
+<h1 class=cursus>Dynamic HTML (DHTML)</h1>
+
+<p>Copyright &copy; 2001 - 2006 <a href="http://www.bitstorm.org/edwin/">Edwin Martin</a> &lt;<a href="mailto:edwin@bitstorm.nl">edwin@bitstorm.nl</a>&gt;</p>
+
+<p>Laatst aangepast: 2 januari 2006.</p>
+
+<p>Voor het goed kunnen volgen van deze cursus is kennis nodig van
+HTML, JavaScript en Cascading Style Sheets.
+Een cursus Cascading Style Sheets is hier te volgen:</p>
+
+<ul>
+<li><a href="css.html">Cascading Style Sheets Cursus</a>
+</ul>
+
+<p>Onbekende woorden en kleuren kunnen worden opgezocht in deze lijst:</p>
+
+<ul>
+<li><a href="terminologie.html">Terminologie</a>
+<li><a href="kleuren.html">Kleuren</a>
+</ul>
+
+<p>Veel voorbeelden in deze cursus maken gebruik van DHTML.
+Een browser die DHTML ondersteunt is daarom vereist.
+Voor het eerste deel kan worden volstaan met Netscape 4 of hoger
+of Internet Explorer 4 of hoger.
+In het laatste deel van de cursus wordt op de W3C-standaarden ingegaan,
+waarvoor minstens Mozilla, Netscape 6 of Internet Explorer 5.5 nodig is.</p>
+
+<p><b>Update: Deze cursus is geschreven in de tijd dat Netscape 4 en Internet Explorer 4 heel gangbaar waren.
+Deze browsers worden amper nog gebruikt. Deze cursus is in dat opzicht verouderd.
+Als introductie tot DHTML blijft deze cursus toch interessant en ook voor het ontwikkelen van
+backwards-compatible DHTML biedt deze cursus veel informatie.
+Het W3C-DOM, dat in moderne DHTML wordt gebruikt, komt ook in deze cursus aan bod.</b></p>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-2050318500162917";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="8270165472";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "666666";
+google_color_url = "3399FF";
+google_color_text = "999999";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<h2 class=cursus>Inleiding</h2>
+
+<p>Ooit was het Internet bedacht om informatie uit te wisselen tussen universiteiten
+en onderzoeksinstellingen.
+Maar dat is allang niet meer waar het op het Internet om draait.
+Nu gaat het er bij velen om bezoekers te trekken.
+En die willen niet alleen informatie lezen, maar ook vermaakt worden.</p>
+
+<p>Helaas is HTML een vrij statische opmaaktaal.
+Je kunt een pagina wel met wat mooie plaatjes en goede vormgeving wat
+mooier maken, maak het haalt het nooit bij bijvoorbeeld een multimedia CD-ROM.</p>
+
+<p>Om webpagina's interactief te maken, is er DHTML.</p>
+
+<h3 class=cursus>Wat is DHTML?</h3>
+
+<p>DHTML staat voor Dynamic HTML en is op zich geen standaard, op de website van het
+<a href="http://www.w3.org/">World Wide Web Consortium</a> zullen we tevergeefs
+naar het begrip 'DHTML' zoeken.</p>
+
+<p>DHTML is eigenlijk een combinatie van standaarden, namelijk:</p>
+
+<ul>
+<li>HTML
+<li>CSS
+<li>JavaScript
+<li>DOM
+</ul>
+
+<p>Voor het kunnen volgen van deze cursus, dient u al bekend te zijn met de eerste drie standaarden.</p>
+
+<p>DOM staat voor Document Object Model en wordt hierna behandeld.</p>
+
+<p>Door bovenstaande technieken samen te gebruiken, is het mogelijk
+om pagina's interactief te maken waarbij onderdelen verschijnen, veranderen,
+bewegen en bijvoorbeeld reageren op muiskliks.</p>
+
+<h2 class=cursus>Document Object Model (DOM)</h2>
+
+<p>Het Document Object Model beschrijft de struktuur van een document en die gebruiken
+we om bepaalde waarden van HTML-elementen te lezen en te schrijven.</p>
+
+<h3 class=cursus>Een eenvoudige DOM</h3>
+
+<p>Een HTML-document heeft een zogenaamde 'boomstruktuur'.
+Het volgende voorbeeld illustreert dat.</p>
+
+<div class=boxje>
+<pre>
+
+&lt;h2&gt;Abonnement&lt;/h2&gt;
+
+&lt;form name="mijnform"&gt;
+&lt;p&gt;Uw e-mail adres:&lt;/p&gt;
+&lt;input type="text" name="emailadres" value="marlous@sisters.com" size="20"&gt;
+&lt;/form&gt;
+
+</pre>
+</div>
+
+<p>In een browser ziet dit er als volgt uit:</p>
+
+<div class=boxje>
+
+<h2>Abonnement</h2>
+
+<form name="mijnform">
+<p>Uw e-mail adres:</p>
+<input type="text" name="emailadres" value="marlous@sisters.com" size="20">
+</form>
+
+</div>
+
+<p>De struktuur van dit document is als volgt weer te geven:</p>
+
+<pre>
+document --- H2 --- "Abonnement"
+         \
+          \
+           \ FORM (mijnform) --- P --- "Uw e-mail adres:"
+                             \
+                              \
+                               \ INPUT (emailadres) --- value
+</pre>
+
+<p>Kort gezegd komt het er op neer dat het document bestaat uit een kop (H2) en
+een formulier mijnform (FORM) en dat het formulier bestaat uit een paragraaf (P) en een
+invoerveld emailadres (INPUT). Het invoerveld heeft een 'eigenschap' value, dat de inhoud
+van het veld bevat.</p>
+
+<p>Om de waarde van het veld uit te lezen, dienen we de volgende reeks te gebruiken:</p>
+
+<pre>
+document.mijnform.emailadres.value
+</pre>
+
+<p>Door op de volgende knop te klikken zal de inhoud worden getoond:</p>
+
+<button onClick="alert('e-mail: '+document.mijnform.emailadres.value)">alert( "e-mail: "+document.mijnform.emailadres.value )</button>
+
+<p>De boomstruktuur van een document, waarmee de bovenstaande reeks is te maken,
+is vastgelegd en heet het Document Object Model (DOM).</p>
+
+<h2 class=cursus>DOM en Layers</h2>
+
+<p>Zolang het formulieren betreft, is de DOM voor alle browsers (met JavaScript) gelijk.
+Dit 'formulier-DOM' wordt ook wel 'DOM 0' (DOM nul) genoemd).
+Helaas is het zo, dat als we DHTML willen gebruiken, we te maken hebben
+met wel vier verschillende DOM's.</p>
+
+<h3 class=cursus>Een stukje geschiedenis</h3>
+
+<p>Netscape 4.0 was de eerste browser die dynamische HTML ondersteunde.
+Daarvoor had Netscape de &lt;layer&gt;-tag bedacht.
+Het was mogelijk om een stuk HTML-code tussen &lt;layer&gt; en &lt;/layer&gt;
+te zetten, waarna het onder andere mogelijk was om deze layer over het
+scherm te bewegen.</p>
+
+<p>Toen Netscape 4.0 uitkwam, was men bij het World Wide Web Consortium
+bezig een standaard te bedenken waarmee style sheets als layers worden
+gebruikt: CSS-Positioning (CSS-P). Gelukkig ondersteunt Netscape deze standaard ook.
+Omdat CSS-P uiteindelijk de standaard is geworden, zullen we alleen
+nog CSS-P gebruiken en kunnen we gerust de &lt;layer&gt;-tag weer vergeten.
+Het is zelfs zo dat Netscape 6 de &lt;layer&gt;-tag helemaal niet meer
+ondersteunt.</p>
+
+<p>Even na Netscape 4.0 kwam Internet Explorer 4.0 uit.
+Deze ondersteunde ook CSS-P en de CSS-ondersteuning was veel uitgebreider dan Netscape.
+Een reden daarvoor is dat World Wide Web Consortium op dat moment ook al
+veel verder was met het vastleggen van de standaard.</p>
+
+<p>Dit lijkt helaas wat mooier dan het is.
+Ze ondersteunen beide CSS-P, maar het Document Object Model
+is verschillend!
+Hier lag dus een taak voor het World Wide Web Consortium om het
+Document Object Model vast te leggen.
+Dit is gelukt en het resultaat, <a href="http://www.w3.org/TR/REC-DOM-Level-1/">Document Object Model (DOM)</a>,
+wordt door Internet Explorer 5 en Netscape 6 ondersteund.</p>
+
+<p>Helaas is deze DOM weer een beetje anders dan de DOM's van Netscape 4 en Internet Explorer 4.
+Bij elkaar hebben we dus te maken met vier verschillende DOM's!</p>
+
+<ol>
+<li>DOM 0 - Voor formulieren; werkt in alle browsers met JavaScript-ondersteuning
+<li>NS4 DOM - Voor Netscape 4
+<li>IE4 DOM - Voor Internet Explorer 4
+<li>W3C DOM - De offici&euml;le DOM, ondersteund door onder andere Netscape 6, Mozilla en Internet Explorer 5.
+</ol>
+
+<p>Gelukkig kunnen we met wat JavaScript ervoor zorgen dat onze dynamische pagina's er in
+alle browsers goed uitzien.</p>
+
+<h2 class=cursus>CSS-P (Style Sheet-Positioning)</h2>
+
+<p>In Netscape 4 en Internet Explorer 4 kunnen we met behulp van style sheets layers
+defini&euml;ren.
+Een layer is een 'laag', vergelijkbaar met de layer in Photoshop.
+In een layer kunnen we HTML opnemen.
+Het maken van een layer is vrij eenvoudig: we nemen de HTML-code op
+tussen &lt;div&gt;-tags. Door de div ook een id-attribuut te geven,
+geven we de layer een naam, zodat we die later met JavaScript kunnen veranderen.</p>
+
+<p>Een voorbeeld van een layer:</p>
+
+<div class=boxje>
+<pre>
+&lt;div id="mijnlayer"&gt;
+Deze tekst staan in een layer.
+&lt;/div&gt;
+</pre>
+</div>
+
+<p>Zoals we in CSS-cursus hebben gezien, kunnen we aan
+deze div allerlei stijlkenmerken toekennen, in dit geval een oranje achtergrond:</p>
+
+<div class=boxje>
+<pre>
+&lt;style type="text/css"&gt
+#mijnlayer {background-color: orange}
+&lt;/style&gt
+
+&lt;div id="mijnlayer"&gt;
+Deze tekst staan in een layer.
+&lt;/div&gt;
+</pre>
+</div>
+
+<h3 class=cursus>Absolute positionering</h3>
+
+<p>Een van de belangrijke kenmerken die DHTML dynamisch maakt, is dat layers
+over de pagina kunnen bewegen.
+Dit werkt echter niet zomaar.
+Om een layer te kunnen verplaatsen, moet deze eerst 'uit de pagina' worden gehaald.
+We geven de layer dan een vaste plek op de pagina, bijvoorbeeld 300 pixels vanaf de bovenkant
+en 30 pixels vanaf de linkerkant van de pagina.
+Dit is alleen mogelijk als we ook de 'position' op 'absolute' zetten.
+In HTML ziet dit er als volgt uit:</p>
+
+<div class=boxje>
+<pre>
+&lt;style type="text/css"&gt
+#mijnlayer {
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	background-color: orange;
+}
+&lt;/style&gt
+
+&lt;div id="mijnlayer"&gt;
+Deze tekst staan in een layer.
+&lt;/div&gt;
+</pre>
+</div>
+
+<p>Nu is het mogelijk om met JavaScript de positie van deze layer te veranderen.
+Zoals eerder is beschreven, is de DOM van Netscape 4 en Internet Explorer 4 verschillend.
+Het veranderen van de positie is daardoor ook verschillend.</p>
+
+<p>Stel, we willen de x-positie veranderen van 30 pixels in 120 pixels.
+In Netscape 4 roepen we dan de volgende JavaScript aan:</p>
+
+<pre>
+document.mijnlayer.left=120
+</pre>
+
+<p>In Internet Explorer 4 doen we dat op deze manier:</p>
+
+<pre>
+document.all.mijnlayer.style.left=120
+</pre>
+
+<p>Zo te zien zijn er nogal wat verschillen.
+Op de volgende pagina zijn voor Netscape 4 en Internet Explorer 4 knoppen geplaatst die
+bovenstaande JavaScriptjes uitvoeren. Dit voorbeeld werkt alleen in Netscape 4 en
+Internet Explorer 4 en hoger.</p>
+
+<ul>
+<li><a href="vb-1.html">Voorbeeld positie veranderen (1)</a>
+</ul>
+
+<p>Gelukkig is het mogelijk om in JavaScript een functie te schrijven die dit probleem oplost.
+Als we dan de positie van een layer willen veranderen, dan roepen we gewoon deze
+functie aan, en de functie zorgt ervoor dat de juiste JavaScript wordt uitgevoerd.
+Dit is de functie:</p>
+
+<pre>
+function setPosition( layer, x, y ) {
+	if( document.all ) {
+		document.all[layer].style.left = x;
+		document.all[layer].style.top = y;
+	} else {
+		document[layer].left = x;
+		document[layer].top = y;
+	}
+}
+</pre>
+
+<p>Vanaf nu kunnen we in Netscape 4 en Internet Explorer 4 de positie veranderen
+met &eacute;&eacute;n JavaScript-aanroep:</p>
+
+<pre>
+setPosition('mijnlayer', 120, 300)
+</pre>
+
+<p>Het volgende voorbeeld werkt nu in beide browsers:</p>
+
+<ul>
+<li><a href="vb-2.html">Voorbeeld positie veranderen (2)</a>
+</ul>
+
+<h2 class=cursus>World Wide Web Consortium Document Object Model</h2>
+
+<p>Bovenstaande voorbeelden gingen uit van de DOM's van Netscape 4 en Internet Explorer 4.
+Inmiddels heeft het World Wide Web Consortium (W3C) een DOM ontworpen die nu als
+standaard geldt.</p>
+
+<p>Het grote verschil met de oudere DOM's is dat in de W3C DOM de layers worden
+opgevraagd met de JavaScript functie getElementById( layer ).
+Het verplaatsen van 'mijnlayer' uit het voorbeeld hierboven gebeurt met het W3C DOM als volgt:</p>
+
+<pre>
+obj = document.getElementById( 'mijnlayer' )
+obj.style.left = 120;
+</pre>
+
+<p>Weer totaal anders dan de eerdere manieren.
+Maar ook hier is een zogenaamde 'wrapper' functie voor te schrijven:</p>
+
+<pre>
+function setPosition( layer, x, y ) {
+	if( document.getElementById ) {
+		obj = document.getElementById( layer )
+		obj.style.left = x;
+		obj.style.top = y;
+	} else if( document.all ) {
+		document.all[layer].style.left = x;
+		document.all[layer].style.top = y;
+	} else {
+		document[layer].left = x;
+		document[layer].top = y;
+	}
+}
+</pre>
+
+<p>Deze functie werkt in alle browsers: Netscape 4 en hoger, Mozilla, Internet Explorer 4 en hoger
+en zelfs in Opera. Het volgende voorbeeld maakt gebruik van bovenstaande functie en werkt
+nu ook in Mozilla en Netscape 6.</p>
+
+<ul>
+<li><a href="vb-3.html">Voorbeeld positie veranderen (3)</a>
+</ul>
+
+<p>Er zijn nog veel meer eigenschappen die gewijzigd kunnen worden. Als we willen, kunnen we voor
+elke eigenschap een eigen functie schrijven. Het is natuurlijk veel handiger om een meer generiek functie
+te schrijven. We nemen bovenstaande functie en halen daar 'left = x' en 'top = y' uit.
+Aan het resultaat van de functie kunnen we weer de left en top 'toevoegen':</p>
+
+<pre>
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+</pre>
+
+<p>De x-positie veranderen gaat nu op de volgende manier:</p>
+
+<pre>
+getStyle('mijnlayer').left = 120
+</pre>
+
+<ul>
+<li><a href="vb-4.html">Voorbeeld positie veranderen met getStyle( layer )</a>
+</ul>
+
+<h2 class=cursus>Onzichtbaar en zichtbaar maken</h2>
+
+<p>Soms willen we layers onzichtbaar maken.
+Hiervoor gebruiken we <tt>visibility='visible'</tt> en <tt>visibility='hidden'</tt>.
+Met behulp van de functie getStyle() kunnen we een layer onzichtbaar maken met:</p>
+
+<pre>
+getStyle('mijnlayer').visibility='hidden'
+</pre>
+
+<p>Zichtbaar maken kan met:</p>
+
+<pre>
+getStyle('mijnlayer').visibility='visible'
+</pre>
+
+<p>Een veelgebruikte toepassing is een layer te maken die in eerste instantie
+niet te zien is, maar bijvoorbeeld met een muisklik tevoorschijn komt.
+Dat een layer tijdens en na het laden van de pagina niet mag worden getoond,
+geven we aan in de style sheet.</p>
+
+<p>De style sheet van ons eerste voorbeeld wordt dan:</p>
+
+<pre>
+&lt;style type="text/css"&gt
+#mijnlayer {
+	position: absolute;
+	top: 300px;
+	left: 30px;
+	background-color: orange;
+	visibility: hidden;
+}
+&lt;/style&gt
+</pre>
+</div>
+
+<p>In het volgende voorbeeld wordt dit toegepast.</p>
+
+<ul>
+<li><a href="vb-5.html">Voorbeeld onzichtbaar en zichtbaar maken</a>
+</ul>
+
+<h2 class=cursus>Clipping</h2>
+
+<p>Als uitbreiding op het zichtbaar en onzichbaar maken, kan ook een gedeelte van
+een layer zichtbaar worden gemaakt. Dit heet clipping.</p>
+
+<p>Bij een afbeelding kunnen we bijvoorbeeld alleen de linkerbovenhoek laten
+zien. Of een uitsnede in het midden van de afbeelding.</p>
+
+<p>We hebben hier helaas weer te maken met een compatibiliteits-probleem.
+Met de getStyle()-functie hebben we het DOM-probleem opgelost, maar bij
+clipping is ook de waarde anders. Netscape 4 gebruikt namelijk een andere manier van clippen.</p>
+
+<p>In Netscape kunnen we de bovenste 50 pixels van een afbeelding 'afknippen' met:</p>
+
+<pre>
+getStyle('mijnlayer').clip.top=50
+</pre>
+
+<p>In alle andere browsers doen we dit met:</p>
+
+<pre>
+getStyle('mijnlayer').clip='rect(50px auto auto auto)'
+</pre>
+
+<p>In dit laatste voorbeeld geven we weer vier waarden op (boven, rechts, onder, links).
+Bij de zijden die we niet willen afknippen schrijven we auto.</p>
+
+<p>Om dit compatible te maken, schrijven we hiervoor een aparte clip()-functie:</p>
+
+<pre>
+function clip( layer, top, right, bottom, left ) {
+	if( document.getElementById || document.all ) {
+		getStyle( layer ).clip='rect('+top+' '+right+' '+bottom+' '+left+')'
+	} else {
+		document[layer].clip.top = top
+		document[layer].clip.left = left
+		document[layer].clip.bottom = bottom
+		document[layer].clip.right = right
+	}
+}
+</pre>
+
+<p>Ongeacht browser, kunnen we nu de volgende functie aanroepen:</p>
+
+<pre>
+clip('mijnlayer', 80, 310, 300, 180)
+</pre>
+
+<p>Omdat Netscape 4 geen 'auto' kent, zal dat niet in deze browser werken.
+Zie onderstaand voorbeeld om clipping in werking te zien:</p>
+
+<ul>
+<li><a href="vb-6.html">Voorbeeld clipping</a>
+</ul>
+
+<p>Hoe komen we bij de pixel-afstanden die in de clip-functie worden gebruikt?
+De volgorde is zoals gebruikelijk in CSS: boven, rechts, onder en links.
+Belangrijk is ook dat alle vier de afstanden gerekend worden vanaf de
+linkerbovenhoek. Zie de volgende pagina waarin dat grafisch is weergegeven.</p>
+
+<ul>
+<li><a href="vb-6-uitleg.html">Weergave clipping-afstanden</a>
+</ul>
+
+
+
+<p>Net als de visibility, kunnen we ook de clipping in een style sheet vastleggen.
+We voegen dan bijvoorbeeld de volgende regel toe:</p>
+
+<pre>
+clip: rect(80px 310px 300px 180px)
+</pre>
+
+<h2 class=cursus>Z-index</h2>
+
+<p>Met z-index kunnen we aangeven welke laag boven welke andere moet komen.
+Voor velen is dit bekend uit grafische programma's als Photoshop.
+Hoe hoger de z-index hoe hoger het op de 'stapel' met layers ligt.
+Een layer met een z-index van 10 komt bovenop de layer te liggen met een z-index van 5.</p>
+
+<p>Omdat in JavaScript het minteken (-) aftrekken betekent, kunnen we natuurlijk niet
+de naam 'z-index' gebruiken. De JavaScript-notatie wordt 'zIndex'.
+Met gebruik van de getStyle()-functie, wordt de notatie om een z-index van 2 toe te kennen:</p>
+
+<pre>
+getStyle('mijnlayer').zIndex = 2
+</pre>
+
+<p>Bekijk de z-index in actie:</p>
+
+<ul>
+<li><a href="vb-7.html">Voorbeeld z-index</a>
+</ul>
+
+<p>Net als bij de andere voorbeelden is het vaak verhelderend om ook de source van het voorbeeld
+op te roepen in de browser.</p>
+
+<p>Ook de z-index is in een style sheet op te nemen. De notatie is dan:</p>
+
+<pre>
+z-index: 2;
+</pre>
+
+<h2 class=cursus>Achtergrondkleur veranderen</h2>
+
+<p>Het veranderen van de achtergrondkleur is ook geen probleem.
+Behalve dat het kleur-attribuut bij Netscape 4 afwijkt: deze is namelijk
+<tt>bgColor</tt>, terwijl <tt>backgroundColor</tt> gebruikelijk is, want deze
+is afgeleid van de CSS-eigenschap <tt>background-color</tt>.</p>
+
+<p>Door de getStyle-functie te nemen en deze aan te passen, lossen we dit eenvoudig op:</p>
+
+<pre>
+function setBackgroundColor( layer, color ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).style.backgroundColor = color;
+	} else if( document.all ) {
+		document.all[layer].style.backgroundColor = color;
+	} else {
+		document[layer].bgColor = color;
+	}
+}
+</pre>
+
+<ul>
+<li><a href="achtergrondkleur.html">Voorbeeld achtergrondkleur</a>
+</ul>
+
+<p>Helaas is het in Netscape 4 niet mogelijk om de voorgrondkleur (de tekstkleur)
+te wijzigen.</p>
+
+<h2 class=cursus>Achtergrondplaatje veranderen</h2>
+
+<p>Net als bij de achtergrondkleur, heeft ook bij het veranderen van het achtergrondplaatje
+Netscape 4 een afwijkend attribuut. Het normale attribuut is <tt>backgroundImage</tt>, wat
+is afgeleid van de CSS-eigenschap <tt>background-image</tt>.
+Netscape 4 gebruikt het attribuut <tt>background.src</tt></p>
+
+<p>Net als bij de achtergrondkleur is dit op te lossen door er een aparte functie voor te maken:</p>
+
+<pre>
+function setBackgroundImage( layer, imageUrl ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).style.backgroundImage = "url("+imageUrl+")";
+	} else if( document.all ) {
+		document.all[layer].style.backgroundImage = "url("+imageUrl+")";
+	} else {
+		document[layer].background.src = imageUrl;
+	}
+}
+</pre>
+
+<ul>
+<li><a href="achtergrondafbeelding.html">Voorbeeld achtergrondplaatje</a>
+</ul>
+
+<h2 class=cursus>Inhoud wijzigen</h2>
+
+<p>Een erg interessante mogelijkheid van DHTML is dat de inhoud van een layer veranderd kan worden.
+Maar, net als bij een aantal eerdere mogelijkheden, werkt dat in Netscape 4 weer net even anders.
+Ook hier zullen we dus een wrapper-functie voor moeten schrijven.</p>
+
+<pre>
+function writeText( layer,text ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).innerHTML = text;
+	} else if( document.all ) {
+		document.all[layer].innerHTML = text;
+	} else {
+		document[layer].document.open();
+		document[layer].document.write( text );
+		document[layer].document.close();
+	}
+}
+</pre>
+
+<p>Het veranderen van een layer is dan het eenvoudigweg aanroepen van deze functie:</p>
+
+<pre>
+writeText('mijnlayer', 'Dit is een andere tekst')
+</pre>
+
+<p>De tekst die vervangen wordt kan ook HTML-code bevatten, dus het opnemen van kopjes en bijvoorbeeld
+afbeeldingen is geen probleem. Wel is het zo dat in Netscape 4 de oorspronkelijke style sheet van de layer
+verloren gaat.</p>
+
+<p>De beste illustratie is als altijd een werkend voorbeeld:</p>
+
+<ul>
+<li><a href="vb-8.html">Voorbeeld inhoud wijzigen</a>
+</ul>
+
+<p>Helaas is bovenstaande functie writeText niet helemaal in overeenstemming met de W3C-standaarden.
+De W3C DOM kent helaas niet de eigenschap innerHTML.
+Gelukkig ondersteunen Internet Explorer en Netscape 6 wel innerHTML.</p>
+
+<p>Volgens de W3C DOM moeten we elk takje of blaadje van de DOM-boom apart verwijderen, toevoegen of
+vervangen. Om de tekst in een layer te vervangen door de HTML-tekst "&lt;h2&gt;InnerHTML is toch makkelijker&lt;/h2&gt;",
+moeten we eerst alle bestaande 'takken' uit de layer verwijderen, daarna een tak "H2" toevoegen en daaraan
+een tak met de tekst "InnerHTML is toch makkelijker" toevoegen.</p>
+
+<pre>
+<em class="comment">// Vind het layer object</em>
+mijnLayerObj = document.getElementById('mijnlayer')
+<em class="comment">// Wis alles uit de layer</em>
+for ( elt=mijnLayerObj.childNodes.length-1; elt>=0; elt-- )
+	mijnLayerObj.removeChild(mijnLayerObj.childNodes.item(elt))
+<em class="comment">// Maak een element "H2"</em>
+headingNode = document.createElement("h2")
+<em class="comment">// Maak een knooppunt met tekst</em>
+textNode = document.createTextNode("InnerHTML is toch makkelijker")
+<em class="comment">// Koppel de tekst aan het H2-kopje</em>
+headingNode.appendChild(textNode)
+<em class="comment">// Voeg het kopje toe aan de layer</em>
+mijnLayerObj.appendChild(headingNode)
+</pre>
+
+<p>Wil je weten welke DOM-functies nog meer zijn gedefini&euml;erd in JavaScript (ECMA Script)?
+Kijk dan in <a href="http://www.w3.org/TR/REC-DOM-Level-1/ecma-script-language-binding.html">Appendix E: ECMA Script Language Binding</a>
+van de W3C DOM specificatie.</p>
+
+<h2 class=cursus>Image source</h2>
+
+<p>Het volgende hoort eigenlijk niet in deze cursus thuis want
+het is eigenlijk geen DHTML.
+Omdat het wel enigszins 'dynamisch' is, is het toch goed om te kennen.</p>
+
+<p>Sinds Netscape 3 is het mogelijk om een plaatje op een pagina te
+vervangen door een ander plaatje. Je wijzigt als het ware de
+SRC-attribuut van de IMG-tag.</p>
+
+<p>We hebben bijvoorbeeld de volgende &lt;img&gt;-tag:</p>
+
+<pre>
+&lt;img name="grafiek" src="plaatje.gif"&gt;
+</pre>
+
+<p>In JavaScript kunnen we het plaatje als volgt vervangen:</p>
+
+<pre>
+document.grafiek.src = "anderplaatje.gif";
+</pre>
+
+<p><tt>grafiek</tt> is hier de waarde van de <tt>name</tt>-attribuut van de
+image en "anderplaatje.gif" is de naam van het te tonen plaatje.</p>
+
+<p>Het volgende voorbeeld toont dit op een voorbeeldpagina:</p>
+
+<ul>
+<li><a href="imgsrc/imgsrc.html">Voorbeeld image source</a>
+</ul>
+
+<p>Doordat dit eindelijk enige dynamiek aan de pagina toevoegde,
+werd (en wordt) deze mogelijkheid erg veel gebruikt om zogenaamde
+roll-overs te maken. Veel HTML-editors en zelfs grafische programma's
+zoals FireWorks kennen de mogelijkheid om deze roll-overs eenvoudig
+te maken.</p>
+
+<p>Het volgende voorbeeld laat de roll-over in werking zien.</p>
+
+<ul>
+<li><a href="imgsrc/roll-over.html">Voorbeeld roll over</a>
+</ul>
+
+<p>Bekijk ook de source-code van dit voorbeeld.</p>
+
+<h2 class=cursus>Actie</h2>
+
+<p>Alle hierboven genoemde DHTML-mogelijkheden werken in alle recente browsers die DHTML ondersteunen,
+dus Netscape 4 en hoger, Mozilla, Internet Explorer 4 en hoger en in veel gevallen ook Opera.</p>
+
+<p>Nu gaan we de mogelijkheden bekijken van hoe we deze cross-browser DHTML interactief kunnen maken.</p>
+
+<p>Netscape ondersteunt niet het klikken op een layer en ook geen mouse-overs over een layer.
+Men moet erg creatief zijn om iets interactiefs te maken dat met alle gangbare browsers werkt.</p>
+
+<h2 class=cursus>Beweging</h2>
+
+<p>Gelukkig ondersteunt Netscape 4 wel het verplaatsen van een layer en samen met de JavaScript-functie
+setTimeout() kunnen we een layer bewegen. Het is eigenlijk niet echt bewegen, in werkelijkheid
+zullen we bijvoorbeeld elke tiende seconde de layer een klein stukje opschuiven.</p>
+
+<p>We maken een layer bewegend door een functie te schrijven.
+Dit is (helaas) geen generieke functie; voor elke beweging schrijven we een aparte functie.
+Stel, onze layer staat aan de linkerkant van het venster en we willen hem een stuk naar
+rechts bewegen. Dus we moeten een aantal keer de volgende code aanroepen:</p>
+
+<pre>
+xpositie = xpositie + 5
+getStyle('mijnlayer').left = xpositie
+</pre>
+
+<p>Xpositie is hier een variabele die x-positie aangeeft. We verhogen deze met 5, wat
+betekent dat de layer 5 pixels naar rechts moet bewegen.
+Het bewegen doen we door xpositie aan het .left-kenmerk toe te kennen.</p>
+
+<p>Als we deze code maar vaak genoeg aanroepen, zal de layer oneindig lang naar
+rechts bewegen. Hier moeten we een rem opzetten:</p>
+
+<pre>
+if ( xpositie < 300 ) {
+	xpositie = xpositie + 5
+	getStyle('mijnlayer').left = xpositie
+}
+</pre>
+
+<p>De layer wordt nu alleen verschoven zolang xpositie kleiner is dan 300.</p>
+
+<p>Om deze code elke tiende van een seconde aan te laten roepen, maken we een function heen()
+met deze code en zorgen we ook dat met setTimeout() de function heen() zichzelf steeds na 100 milliseconden aanroept:</p>
+
+<pre>
+function heen() {
+	if ( xpositie < 300 ) {
+		xpositie = xpositie + 5
+		getStyle('mijnlayer').left = xpositie
+		setTimeout( 'heen()', 100 )
+	}
+}
+</pre>
+
+<p>Bekijk het volgende voorbeeld en bekijk vooral ook de broncode van dit voorbeeld.</p>
+
+<ul>
+<li><a href="vb-9.html">Voorbeeld beweging (1)</a>
+</ul>
+
+<p>Dit voorbeeld bevat een fout: als we op de terug()-knop klikken voordat de layer
+helemaal rechts is, zal zowel de heen() als de terug()-functie tegelijk gaan werken,
+wat tot een layer leidt die niet precies weet welke kant hij op wilt.</p>
+
+<p>Een oplossing hiervoor is het klokje van de setTimeout()-functie te wissen
+zodra op een klok geklikt wordt.
+Het klokje wordt teruggeven door de setTimeout()-functie:</p>
+
+<pre>
+klokje = setTimeout( 'heen()', 100 )
+</pre>
+
+<p>Met de functie clearTimeout( klokje ) stoppen we de klok.
+Voor het gemak maken we hier een aparte functie stop() van:</p>
+
+<pre>
+function stop() {
+	clearTimeout( klokje )
+}
+</pre>
+
+<p>Bekijk nu het volgende voorbeeld, waarin de klok steeds wordt gestopt als we op de
+heen() of terug()-knop klikken. Er is ook een stop()-knop toegevoegd.
+Nu kunnen we zonder problemen achter elkaar op de heen(), terug() en stop()-knop klikken.</p>
+
+<ul>
+<li><a href="vb-10.html">Voorbeeld beweging (2)</a>
+</ul>
+
+<p>Bestudeer ook de broncode.</p>
+
+<h2 class=cursus>Framerate</h2>
+
+<p>Waarom kiezen we in de voorbeelden voor 10 beeldjes per seconde?
+We weten dat dat een film pas bij 25 beeldjes per seconde voor het oog soepel verloopt.
+Het probleem is dat de wat langzamere computers deze snelheid niet halen. Het
+gevolg is dan dat de animatie op een snelle computer sneller afspeelt dan op een
+langzame computer. Door 10 beeldjes per seconde te gebruiken, kunnen ook de
+oudere computers de animatie bijhouden en speelt de animatie zich op alle computers
+met de zelfde snelheid af. Het hangt natuurlijk ook af van de complexiteit van de
+pagina: een computer heeft meer moeite met een pagina met honderd bewegende elementen
+dan met &eacute;&eacute;n bewegend element. Het beste is om een animatie te testen op zowel een
+supersnelle computer als op een computer van een paar jaar oud.</p>
+
+<p>Op de volgende pagina kan de framerate worden getest.
+Bedenk wel dat de framerate afhankelijk is van zowel de snelheid van de computer
+als de gebruikte browser. Ook is in deze test maar &eacute;&eacute;n bewegende laag.
+Een DHTML-pagina met meerdere bewegende lagen zal een lagere maximum framerate hebben.</p>
+
+<ul>
+<li><a href="snelheidstest.html">DHTML snelheidstest</a>
+</ul>
+
+<p>Deze test geeft op de volgende systemen en browsers de volgende resultaten:</p>
+
+<table>
+<tr><th>Systeem</th><th>Netscape 4.7</th><th>Mozilla 0.9.8</th><th>IE 6.0</th></tr>
+<tr><td>AMD Athlon 1400MHz, Windows&nbsp;2000</td><td>500</td><td>451</td><td>99,9</td></tr>
+<tr><td>Pentium 133MHz, Windows&nbsp;98</td><td>182</td><td>47</td><td>14</td></tr>
+</table>
+
+<p>Het lijkt er op dat IE het aantal frames per seconde beperkt tot 100fps, waarschijnlijk
+om het systeem niet te zwaar te belasten.</p>
+
+<p>Het oude 133MHz systeem kan tenminste nog 14 frames per seconde (fps) aan.
+Voor eenvoudige animaties is dit dus een veilige ondergrens.</p>
+
+<h2 class=cursus>Uitgebreid voorbeeld "Mali"</h2>
+
+<p>Na zoveel theorie is het tijd voor een echt praktijkvoorbeeld waarin
+we de verschillende DHTML-technieken toepassen.</p>
+
+<ul>
+<li><a href="mali/index.html">Voorbeeld Mali</a>
+</ul>
+
+<p>Dit voorbeeld werkt dus in alle gangbare browsers, ongeacht het DOM
+dat wordt gebruikt.</p>
+
+<p>In het voorbeeld verschijnen bovenin de pagina een aantal kleine foto'tjes.
+Als daarop wordt geklikt, dan schuift een grote variant van deze foto het venster in.
+We gaan nu steeds een stukje van de broncode bekijken en de werking analyseren.
+Het is handig om in de browser ook de broncode van de pagina te openen.</p>
+
+<p>Na de bekende html, head en title-tags begint een style sheet.
+In de eerste helft vinden we stijlen die enkel de vormgeving dienen.</p>
+
+<pre>
+BODY {
+	background-color: black;
+	margin: 0px;
+}
+IMG {
+	border-color: white;
+	margin: 0px 40px;
+}
+TABLE {
+	width: 100%;
+}
+TD {
+	text-align: center;
+}
+H3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: white;
+	letter-spacing: 4em;
+	margin-top: 20px;
+}
+</pre>
+
+<p>In de tweede helft van de style sheet worden de stijlen bepaald voor twee layers:
+foto en selectie. De layer foto bevat de foto in groot formaat en de layer selectie
+bevat de kleine foto'tjes waarop geklikt kan worden.</p>
+
+<pre>
+#foto {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 0;
+	text-align: center;
+}
+#selectie {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: darkgray;
+	border: 1px solid darkgray;
+	border-bottom: 3px solid white;
+	padding-bottom: 20px;
+	z-index: 1;
+	text-align: center;
+}
+</pre>
+
+<p>De <tt>position: absolute</tt> geeft duidelijk aan dat het om een layer gaat die
+verplaatst kan worden. Verder is aan de z-index te zien dat de selectie-layer hoger
+ligt dan de foto-layer. De rest dient de formattering en vormgeving.</p>
+
+<p>Netscape 4 toont een achtergrondkleur niet als een vlak, maar alleen achter
+de tekst. Om toch te zorgen dat de achtergrondkleur een heel vlak beslaat, moet een
+rand worden toegevoegd: <tt>border: 1px solid darkgray;</tt>.</p>
+
+<p>Na de style sheet worden de JavaScript-functies gedefini&euml;erd.
+De eerste twee hebben we eerder in deze cursus gezien: getStyle() en writeText():</p>
+
+<pre>
+function getStyle( layer ) {
+	if( document.getElementById ) {
+		return document.getElementById( layer ).style
+	} else if( document.all ) {
+		return document.all[layer].style
+	} else {
+		return document[layer]
+	}
+}
+function writeText( layer,text ) {
+	if( document.getElementById ) {
+		document.getElementById( layer ).innerHTML = text;
+	} else if( document.all ) {
+		document.all[layer].innerHTML = text;
+	} else {
+		document[layer].document.open();
+		document[layer].document.write( text );
+		document[layer].document.close();
+	}
+}
+</pre>
+
+<p>Daarna volgen twee functies die erg veel lijken op de functies uit voorbeeld 10.</p>
+
+<pre>
+klokje = null
+function heen() {
+	if ( ypos < 170 ) {
+		ypos = ypos + 5
+		getStyle('foto').top = ypos
+		klokje = setTimeout( 'heen()', 100 )
+	}
+}
+function stop() {
+	clearTimeout( klokje )
+}
+</pre>
+
+<p>Het enige verschil is dat het hier gaat om een beweging omlaag en dat deze
+pas stopt als de bovenkant van de foto-layer zich 170 pixels onder de bovenkant
+van het venster bevindt.</p>
+
+<p>De laatste functie omvat de 'werking' van de pagina:</p>
+
+<pre>
+function laad( foto ) {
+	stop()
+	writeText( 'foto', "&lt;img src='"+foto+"' width=450 height=675&gt;" )
+	ypos = -675
+	getStyle('foto').top = ypos
+	heen()
+}
+</pre>
+
+<p>Steeds als op een van de kleine foto'tje wordt geklikt, wordt deze
+functie aangeroepen. Als parameter wordt de bestandsnaam meegegeven van
+de grote foto.</p>
+
+<p>In deze functie wordt als eerste stop() aangeroepen. Die zorgt ervoor
+dat de beweging wordt gestopt, zoals we in voorbeeld 10 hebben gezien.</p>
+
+<p>Vervolgens wordt met de writeText()-functie een img-tag in de
+layer geschreven. Hiermee wordt de nieuwe foto in de layer geladen.</p>
+
+<p>Als dat is gedaan wordt in twee regels de vertikale positie op -675 gezet.
+Omdat de foto 675 pixels hoog is, zal de foto buiten het beeld verdwijnen.</p>
+
+<p>Als laatste in deze functie wordt de eerder gedefini&euml;rde functie heen() aangeroepen.</p>
+
+<p>Als we eindelijk in de head van de pagina terechtkomen, zien we de
+definitie van de foto-layer:</p>
+
+<pre>
+&lt;div id="foto"&gt;
+&lt;/div&gt;
+</pre>
+
+<p>Dat er niets instaat lijkt een beetje vreemd, maar als we bedenken
+dat deze layer steeds met writeText() wordt gevuld, wordt alles duidelijk.</p>
+
+<p>Als laatste in de pagina wordt de selectie-layer gemaakt.
+Dit is het gedeelte dat altijd op de pagina zichtbaar is.</p>
+
+<pre>
+&lt;div id="selectie"&gt;
+&lt;h3&gt;MALI&lt;/h3&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td&gt;&lt;a href="b1.jpg" onClick="laad('b1.jpg');return false"&gt;
+			&lt;img src="t1.gif" width=40 height=60&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="b2.jpg" onClick="laad('b2.jpg');return false"&gt;
+			&lt;img src="t2.gif" width=40 height=60&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="b8.jpg" onClick="laad('b8.jpg');return false"&gt;
+			&lt;img src="t8.gif" width=40 height=60&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</pre>
+
+<p>De layer begint met een kopje met de tekst 'MALI'. Daarna volgt een table met de drie kleine
+foto'tjes. De foto's staan in een table omdat anders, om onduidelijke redenen, Netscape 4
+de foto'tjes onder elkaar plaatst.</p>
+
+<p>Het enige bijzondere dat nog kan worden opgemerkt is de onClick-attribuut.
+Hierin wordt de functie laad() aangeroepen met de naam van de te tonen foto.
+Achter onClick() staat <tt>return false</tt>, zodat de browser niet zal proberen ook nog
+de href-link te volgen. In de href staat een gewone hyperlink naar de foto, zodat ook
+bezoekers die het zonder JavaScript moeten doen, toch de foto's kunnen bekijken.</p>
+
+<h2 class=cursus>Uitgebreide voorbeelden "Scroll" en "Invaders"</h2>
+
+<p>Hieronder volgen nog twee voorbeelden van DHTML. Net als het "Mali"-voorbeeld
+werken ook deze voorbeelden in zowel Netscape 4 als de nieuwere browsers.
+Door de beperkingen van Netscape 4 zijn in deze browser niet alle eigenschappen te zien.</p>
+
+<p>Het eerste voorbeeld laat een tekst in een layer scollen.
+In dit voorbeeld wordt gebruik gemaakt van de eigenschappen <i>top</i> en <i>clip</i>
+en van animatie.</p>
+
+<ul>
+<li><a href="scroll.html">Scroll</a>
+</ul>
+
+<p>Het tweede voorbeeld is een spel, afgeleid van het klassieke Space Invaders.
+In dit spel worden verschillende DHTML-technieken gebruikt.</p>
+
+<ul>
+<li><a href="invaders/">Invaders</a>
+</ul>
+
+<p>Open de broncode van deze voorbeelden en bestudeer de broncode.</p>
+
+<h2 class=cursus>W3C DOM</h2>
+
+<p>Zoals al eerder geschreven, is de enige, offici&euml;le DOM de W3C DOM.
+Groot nadeel is dat deze alleen nog wordt ondersteund door Internet Explorer 5,
+Netscape 6 en Mozilla.
+Dit betekent dat een enigszins groot deel van de internetgebruikers (ongeveer 10%)
+browsers gebruikt die niet met deze DOM overweg kunnen.
+Dit is echter een kwestie van jaren. Naarmate de tijd verstrijkt, zullen steeds
+minder mensen Netscape 4 gebruiken en overstappen op browsers die wel de
+W3C DOM ondersteunen. Daarnaast ondersteunt de al oude Internet Explorer 4 al een groot
+deel van de W3C DOM.</p>
+
+<p>Wat biedt de W3C DOM die de oudere DOM's niet bieden? Erg veel!
+Practisch elk style sheet-kenmerk dat in de <a href="css.html">Cascading Style Sheets Cursus</a> is behandeld, kan
+dynamisch worden gewijzigd.</p>
+
+<p>Ook hoeven nu niet meer overal layers voor te worden gemaakt.
+Elk HTML-element kan een <tt>id</tt> krijgen en zo is van elk HTML-element de stijl
+te wijzigen. Een voorbeeld:</p>
+
+<pre>
+&lt;h2 id="kopje"&gt;W3C DOM voor Netscape 6+ en Internet Explorer 4+&lt;/h2&gt;
+</pre>
+
+<p>De tekstkleur van deze kop kan nu oranje worden gemaakt met:</p>
+
+<pre>
+getStyle('kopje').color='orange'
+</pre>
+
+<p>In plaats van alle mogelijkheden af te gaan, is in het volgende voorbeeld
+een kopje te vinden, waarvan een aantal stijlen met knoppen zijn te veranderen.<p>
+
+<ul>
+<li><a href="vb-12.html">Voorbeeld W3C DOM</a>
+</ul>
+
+<p>Als we de knoppen goed lezen, dan zien we attributen als borderColor en fontSize
+in plaats van de bekende border-color en font-size.
+In JavaScript is het natuurlijk niet mogelijk om een min-teken in de naam
+van een variabele te hebben. De vertaling van style sheet-kenmerk naar
+JavaScript-attribuut is heel eenvoudig:
+de min-tekens worden verwijderd en alle letters die op een minteken volgden
+worden in hoofdletters geschreven.</p>
+
+<h2 class=cursus>Display</h2>
+
+<p>Als we een DHTML-pagina maken voor W3C-compatible browsers, kunnen
+we alle style sheet eigenschappen veranderen.
+Een interessante is de display-eigenschap.
+Met <tt>display: none</tt> kunnen we een deel HTML-code laten verdwijnen en
+met <tt>display: block</tt> weer laten verschijnen.</p>
+
+<p>Maar dat kan ook met de visibility-eigenschap. Wat is dan het verschil?
+Door een tekst met de display-eigenschap te laten verdwijnen, schuift
+de latere HTML naar boven, alsof een deel van de pagina wordt in- en
+uitgeklapt.</p>
+
+<p>Dit werkt natuurlijk niet met layers met <tt>position: absolute</tt>,
+omdat deze los van de rest van de pagina staan.</p>
+
+<p>Op de volgende pagina staat een voorbeeldformulier, dat door een checkbox
+aan of uit te vinken, meer of minder velden laat zien.</p>
+
+<ul>
+<li><a href="display.html">Voorbeeld display-eigenschap</a>
+</ul>
+
+<p>Omdat deze pagina alleen is bedoelt voor W3C-compatible browsers,
+is in dit voorbeeld ook de W3C-functie <tt>getElementById()</tt> gebruikt
+en niet de cross-browser functie <tt>getStyle()</tt>.</p>
+
+<h2 class=cursus>Pixels</h2>
+
+<p>In de <a href="css.html">CSS Cursus</a> konden we lezen dat Netscape en
+Internet Explorer in de W3C standards-mode gaat als boven in de pagina een
+DOCTYPE SGML-declaratie declaratie staat.</p>
+
+<p>Als we dat doen bij de DHTML-voorbeelden op deze pagina, is er een
+grote kans dat ze niet meer werken.</p>
+
+<p>Volgens de W3C-specificaties hoort bij een grootte ook een maat. Dus niet:</p>
+
+<pre>
+getStyle('laag').left = 120;
+</pre>
+
+<p>Maar:</p>
+
+<pre>
+getStyle('laag').left = '120px';
+</pre>
+
+<p>Achter '120' moet dus 'px', 'pt' of een andere maateenheid komen.
+Dit betekent ook dat het geheel een string (tekenreeks) wordt en we het tussen
+aanhalingstekens moeten plaatsen.</p>
+
+<p>We zouden de setPosition()-functie van het begin van de cursus weer
+kunnen nemen en nu bij het W3C gedeelte de string 'px' aan het getal kunnen plakken:</p>
+
+<pre>
+function setPosition( layer, x, y ) {
+	if( document.getElementById ) {
+		obj = document.getElementById( layer )
+		obj.style.left = <em>x+'px'</em>;
+		obj.style.top = <em>y+'px'</em>;
+	} else if( document.all ) {
+		document.all[layer].style.left = x;
+		document.all[layer].style.top = y;
+	} else {
+		document[layer].left = x;
+		document[layer].top = y;
+	}
+}
+</pre>
+
+<p>Door deze functie te gebruiken, zal een DHTML pagina ook werken in een pagina
+met een DOCTYPE SGML-declaratie.</p>
+
+<p>Hieronder staat een voorbeeld van een dergelijk pagina.</p>
+
+<ul>
+<li><a href="pixels.html">Voorbeeld pixels in W3C-compatible pagina.</a>
+</ul>
+
+
+<h2 class=cursus>Events</h2>
+
+<p>Events zijn gebeurtenissen. Er zijn heel veel gebeurtenissen, bijvoorbeeld:
+muiskliks, mouse-overs, on-loads (als de pagina is geladen), keypress enzovoorts.
+De belangrijkste werden al in Netscape 2 ondersteund. In Netscape 2 tot en met
+4 kunnen we helaas niet met elk HTML-element deze events afvangen.
+In Netscape 4 ziet de browser niet dat de muis over een layer beweegt.
+De layer kan dus niet reageren op de mouse-over.</p>
+
+<p>In Netscape 6 en Internet Explorer 4 en hoger kunnen wel alle HTML-elementen
+events afvangen. Er zijn een paar manieren om events af te vangen. Hieronder volgen
+de twee meest gebruikte.</p>
+
+<pre>
+&lt;h3 onclick="alert('Hallo')"&gt;Klik me&lt;/h3&gt;
+</pre>
+
+<p>Dit is een H3-kopje met daaraan een onclick-attribuut toegevoegd.
+Dit kopje reageert dus op muisklikken.
+Als op het kopje wordt geklikt, dan wordt "alert('Hallo')" uitgevoerd,
+ofwel een verschijnt een waarschuwingsbox met als tekst 'Hallo'.</p>
+
+<p>De tweede manier is wat omslachtiger, maar uiteindelijk ook wat netter.
+De JavaScript-code en de HTML-code worden van elkaar gescheiden, wat
+over het algemeen het beheer van de pagina verbeterd.</p>
+
+<p>In het kort ziet het er zo uit:</p>
+
+<pre>
+document.getElementById('mijnlayer').onclick = mijnfunction
+</pre>
+
+<p>We kunnen dus van elk HTML-element een functie toekennen aan de onclick-eigenschap.
+Dit kan elke functie zijn, dus ook zelfgeschreven functies.
+Belangrijk is wel dat achter mijnfunction geen haakjes worden geschreven,
+anders wordt deze functie eerst uitgevoerd.</p>
+
+<p>Naast onclick kan natuurlijk ook onmouseover worden gebruikt. Het is wel
+belangrijk om dit met onderkast-letters te schrijven (dus zonder hoofdletters).</p>
+
+<p>Deze functie (mijnfunction) moet vanzelfsprekend wel bestaan.
+Daarnaast kan de voorbeeldregel hierboven pas worden aangeroepen als
+mijnlayer al op het scherm staat.
+Een oplossing is om deze regels pas aan te roepen als de pagina helemaal
+geladen is. We kunnen daar de body-attribuut onload voor gebruiken.</p>
+
+<p>Overigens zal dit voorbeeld niet werken in Internet Explorer 4 omdat
+deze browser getElementById() niet kent.</p>
+
+<p>Een pagina met deze vorm van event-afvangen is bijvoorbeeld:</p>
+
+<div class=boxje>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Event-afhandeling&lt;/title&gt;
+&lt;script language="JavaScript"&gt;
+<em>function pop() {
+	alert('u hebt geklikt')
+}
+function init() {
+	document.getElementById('kopje').onclick = pop
+}</em>
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body <em>onload="init()"</em>&gt;
+<em>&lt;h3 id=kopje&gt;Dit kopje reageert op muisklikken&lt;/h3&gt;</em>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<p>In het volgende voorbeeld zien we beide event-afvangers in actie:</p>
+
+<ul>
+<li><a href="vb-13.html">Voorbeeld events (1)</a>
+</ul>
+
+<p>Bekijk de broncode voor de werking.</p>
+
+<p>In HTML 4.0 zijn de volgende event-afvangers gedefini&euml;erd:</p>
+
+<table>
+<tr>
+<th>onload</th>
+<td>Treedt op als een pagina wordt geladen. Te gebruiken in &lt;body&gt; en &lt;frameset&gt;</td>
+</tr>
+<tr>
+<th>onunload</th>
+<td>Treedt op als een pagina wordt verlaten. Te gebruiken in &lt;body&gt; en &lt;frameset&gt;</td>
+</tr>
+<tr>
+<th>onclick</th>
+<td>Er wordt op een element geklikt</td>
+</tr>
+<tr>
+<th>ondblclick</th>
+<td>Er wordt op een element gedubbelklikt</td>
+</tr>
+<tr>
+<th>onmousedown</th>
+<td>De muisknop wordt ingedrukt</td>
+</tr>
+<tr>
+<th>onmouseup</th>
+<td>De muisknop wordt losgelaten</td>
+</tr>
+<tr>
+<th>onmouseover</th>
+<td>De muis gaat een element binnen</td>
+</tr>
+<tr>
+<th>onmousemove</th>
+<td>De muis beweegt over een element</td>
+</tr>
+<tr>
+<th>onmouseout</th>
+<td>De muis verlaat een element</td>
+</tr>
+<tr>
+<th>onfocus</th>
+<td>Het element wordt geselecteerd om bijvoorbeeld in te typen.
+Geldt voor &lt;label&gt;, &lt;input&gt;, &lt;textarea&gt; en &lt;button&gt;
+</td>
+</tr>
+<tr>
+<th>onblur</th>
+<td>Omgekeerde van onfocus</td>
+</tr>
+<tr>
+<th>onkeypress</th>
+<td>Een toets wordt ingedrukt en losgelaten</td>
+</tr>
+<tr>
+<th>onkeydown</th>
+<td>Een toets wordt ingedrukt</td>
+</tr>
+<tr>
+<th>onkeyup</th>
+<td>en toets wordt ingedrukt en losgelaten</td>
+</tr>
+<tr>
+<th>onsubmit</th>
+<td>Een &lt;form&gt; wordt verstuurd</td>
+</tr>
+<tr>
+<th>onreset</th>
+<td>Een &lt;form&gt; wordt gewist</td>
+</tr>
+<tr>
+<th>onselect</th>
+<td>Tekst wordt geselecteerd. Geldt voor &lt;input&gt; en &lt;textarea&gt;</td>
+</tr>
+<tr>
+<th>onchange</th>
+<td>Een element is gewijzigd.
+Geldt voor &lt;input&gt;, &lt;select&gt; en &lt;textarea&gt;</td>
+</tr>
+</table>
+
+<h2 class=cursus>Event eigenschappen</h2>
+
+<p>Soms willen we een DHTML-pagina maken waarbij we precies willen weten waar
+de muiscursor staat. Wanneer een event optreedt, kunnen we uit een event object
+de x en y-positie van de muiscursor lezen.</p>
+
+<p>Het is belangrijk dat we in het HTML-element <tt>onClick="toonPositie(event)"</tt>
+het event meegeven. In de aangeroepen functie kunnen we met event.clientX en event.clientY
+de muispositie uitlezen. Deze positie kunnen we bijvoorbeeld weer gebruiken om
+een layer te positioneren.</p>
+
+<ul>
+<li><a href="vb-14.html">Voorbeeld events (2)</a>
+</ul>
+
+<p>Bestuur ook hier weer de broncode van het voorbeeld.</p>
+
+<p>Er bestaan nog meer event-eigenschappen, bijvoorbeeld om de ingedrukte toetsen
+uit te kunnen lezen. Omdat deze zelden worden gebruikt wordt hier niet op ingegaan.</p>
+
+</body>
+</html>

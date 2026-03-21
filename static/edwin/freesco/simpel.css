@@ -1,0 +1,30 @@
+body {
+	font-family: Trebuchet MS, Arial, Helvetica, Sans-serif;
+	background: white;
+}
+a:link {
+	color: #334673;
+}
+a:active {
+	color: orange;
+}
+a:hover {
+	background: #F0F0F0;
+}
+li.pijltje {
+	list-style-image: url(pijltje.gif);
+	padding-left: 8px;
+}
+h1 {
+	border-width: 3px 0px;
+	border-style: solid;
+	border-color: darkgray;
+	background-color: lightgrey;
+	padding: 0px 6px;
+}
+img {
+	border-width: 4px;
+}
+blockquote {
+	font-family: monospace;
+}

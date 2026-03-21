@@ -1,0 +1,38 @@
+<!doctype html>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="javascript/functions.js" type="text/javascript"></script>
+
+<title>A label, a checkbox and an iOS device walk into a bar</title>
+<h1>On iOS, <code>label</code>s aren't clickable. Very annoying.</h1>
+<p>When you position the checkbox or radio offscreen for example. Apparently related to text selection. Works fine on Android (but there you have other shit to worry about ;o).</p>
+
+<h2>Doesn't work:</h2>
+<label style=padding:5px;cursor:pointer><input type=checkbox onchange="this.parentNode.style.backgroundColor=this.checked?'#afa':'#faa'"> Hey, hit me please, cause I'm big</label>
+
+<h2>Are you having IEtis iOS?</h2>
+
+<span style=padding:5px><input id=f type=checkbox onchange="this.parentNode.style.backgroundColor=this.checked?'#afa':'#faa'"><label style=cursor:pointer for=f>Hit me now, cause I'm a bit special</label></span>
+
+<h2>Works (adding <code>onclick</code> (or <code>mouseover</code> or whatever) to the <code>label</code>):</h2>
+<label style=padding:5px;cursor:pointer onclick><input type=checkbox onchange="this.parentNode.style.backgroundColor=this.checked?'#afa':'#faa'"> Nah, just hit me, cause I'm really the awesome.</label>
+
+<h2>Put a iOS-class on the checkbox</h2>
+
+<span class="graytitle">Favorite Foods</span>
+<ul class="pageitem">
+  <li class="checkbox">
+    <span class="name">Steak</span>
+    <input name="steak" type="checkbox" />
+  </li>
+  <li class="checkbox">
+    <span class="name">Pizza</span>
+    <input name="pizza" type="checkbox" />
+  </li>
+  <li class="checkbox">
+    <span class="name">Chicken</span>
+    <input name="chicken" type="checkbox" />
+  </li>
+</ul>
+

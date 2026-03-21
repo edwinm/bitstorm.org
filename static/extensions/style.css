@@ -1,0 +1,80 @@
+html, body {
+	font-family: "Trebuchet MS", Arial, Helvetica, Sans-serif;
+	background-color: White;
+	color: Gray;
+	margin: 6px 15px;
+}
+
+h1 {
+	padding: 0.7em;
+	border: 6px solid lightgrey;
+	-moz-border-radius: 20px;
+	margin: 0.5em 0;
+}
+
+table {
+	margin-top: 0.5em;
+}
+
+td {
+	vertical-align: top;
+}
+
+td.text {
+	padding: 0 10px 10px 30px;
+	width: 80%;
+}
+
+a {
+	color: #3399FF;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.download {
+	border: 2px solid lightgrey;
+	-moz-border-radius: 10px;
+	font-size: larger;
+	padding: 0.2em 3em;
+	color: grey;
+	background-color: #ECECEC;
+	text-decoration: none;
+}
+
+a.download:hover {
+	border-color: #404040;
+	color: #404040;
+	background-color: #FFD700;
+}
+
+div.right {
+	float: right;
+	margin-right: 10px; 
+}
+
+td.text h2 {
+	margin-top: 0;
+}
+
+#nogecko {
+	border: 2px solid lightgrey;
+	padding: 4px;
+	margin-bottom: 2em;
+	color: grey;
+	background-color: #ECECEC;
+	font-weight: bold;
+	display: none;
+}
+
+p.youtube {
+	background: url(tweak/youtube.gif) no-repeat;
+	padding-left: 110px;
+	height: 39px;	
+}
+
+.note {
+    font-style: italic;
+}

@@ -1,0 +1,57 @@
+@font-face {
+	font-family: 'Minimal-Symbol';
+	src: url('fonts/Minimal-Symbol.eot');
+	src: url('fonts/Minimal-Symbol.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Minimal-Symbol.svg#Minimal-Symbol') format('svg'),
+		url('fonts/Minimal-Symbol.woff') format('woff'),
+		url('fonts/Minimal-Symbol.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'Minimal-Symbol';
+	content: attr(data-icon);
+	speak: none;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'Minimal-Symbol';
+	font-style: normal;
+	speak: none;
+}
+.icon-home:before {
+	content: "\23";
+}
+.icon-tag:before {
+	content: "\7e";
+}
+.icon-location:before {
+	content: "\2d";
+}
+.icon-arrow-right:before {
+	content: "\3e";
+}
+.icon-box-add:before {
+	content: "\76";
+}
+.icon-checkmark:before {
+	content: "\56";
+}
+.icon-info-circle:before {
+	content: "\69";
+}
+.icon-mobile:before {
+	content: "\54";
+}
+.icon-email:before {
+	content: "\4d";
+}
+.icon-phone:before {
+	content: "\50";
+}
+.icon-search:before {
+	content: "\2a";
+}

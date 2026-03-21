@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>jQuery queue example</title>
+	<link title="Main" rel="stylesheet" type="text/css" href="../home.css">
+</head>
+<body>
+<h1>jQuery queue example</h1>
+
+<div id="body">
+
+	<p class="crumbtrail"><a href="/">Bitstorm.org</a> &gt; jQuery queue example</p>
+
+
+	<h2>jQuery queue example</h2>
+
+	<p>This page demonstrated the use of the jQuery queue function. It first fetches the feed url to show, then it uses
+		the Google Feed API
+		to fetch the RSS contents, then it does a call to the server to calculate the MD5 hash, which in turn is used to
+		fetch the tags belonging the the article url from Delicious.</p>
+
+	<p>Take a look at the <a href="queue.js">JavaScript source code</a> to see how these functions are put together
+		using the queue.</p>
+
+	<p>To learn more about the queue function, read my <a href="/weblog/2011-2/How_to_use_the_jQuery_queue_function.html">How to use the jQuery queue function</a> weblog article.</p>
+
+	<form>
+		<input id="button" type="button" value="Fetch and show feed">
+	</form>
+
+
+	<div id="feeds">
+
+	</div>
+
+</div>
+
+<address><a href="/">Edwin Martin</a> &lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;</address>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+<script src="queue.js"></script>
+
+</body>
+</html>

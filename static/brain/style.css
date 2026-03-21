@@ -1,0 +1,31 @@
+body, html {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color: #D4D0C8;
+	border: none;
+	scroll: no;
+}
+a.button {
+	color : Silver;
+	font-size : 10px;
+	text-decoration : none;
+}
+a.button:hover {
+	color: skyblue;
+}
+div.content {
+	position:absolute;
+	font-size : 13px;
+	left:175px;
+	top:308px;
+	width:385px;
+	height:63px;
+	z-index:2;
+	visibility: hidden;
+}
+div.content {
+	/*filter: progid:DXImageTransform.Microsoft.Slide(slideStyle='PUSH',bands=1);*/
+	filter: progid:DXImageTransform.Microsoft.RandomBars();
+}
+div.plaatje {
+	filter: progid:DXImageTransform.Microsoft.Fade(duration=1.5);
+}
