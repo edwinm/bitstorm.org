@@ -6,22 +6,22 @@ eleventyExcludeFromCollections: true
 description: Side Projects made by Edwin Martin
 ---
 
-### Game of Life
-
-Back in 1996, I built a Java applet just to teach myself the language and add some interactivity to the web.
-It's been rewritten a couple of times since, but I had no idea it would turn into my most visited website
-and still running all these years later.
-
-- [playgameoflife.com](https://playgameoflife.com/)
-- [GitHub source](https://github.com/edwinm/game-of-life)
-
-### Webontwikkelaar
+### 2023 - Webontwikkelaar
 
 A daily digest of conferences, articles, videos and podcasts for web developers.
 Originally built for the Dutch-speaking community, but fully available in English too.
 
 - [webontwikkelaar.nl](https://webontwikkelaar.nl/en)
 - [GitHub source](https://github.com/edwinm/webontwikkelaar.nl)
+
+### 2020 - Game of Life
+
+Back in 1996, I built a Java applet just to teach myself the language and add some interactivity to the web.
+Totally rewritten in 2020, I had no idea it would turn into my most visited website
+and still running all these years later.
+
+- [playgameoflife.com](https://playgameoflife.com/)
+- [GitHub source](https://github.com/edwinm/game-of-life)
 
 ### 2011 - KNSM-eiland
 
