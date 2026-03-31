@@ -33,6 +33,13 @@ For many photos, you can switch between the two timestamps.
 
 - [KNSM-eiland](https://bitstorm.org/KNSM-eiland/)
 
+## 2003 - 2014 - Edwin's journaal
+
+Between 2003 and 2014, I kept a weblog with a static site generator (SSR) written in PHP myself,
+because they didn't exist yet.
+
+- [Edwin's journaal](https://bitstorm.org/journaal/)
+
 ## 2004 - Firefox extensions
 
 I really liked the concept of browser extensions and wrote two extensions.
