@@ -33,6 +33,20 @@ For many photos, you can switch between the two timestamps.
 
 - [KNSM-eiland](https://bitstorm.org/KNSM-eiland/)
 
+## 2010 - jQuery plugins
+
+I worked a lot with the jQuery JavaScript library and wrote two animation plugins.
+
+**Color Animation** to fade one color into another.
+
+- [Color Animation](https://bitstorm.org/jquery/color-animation/)
+- [GitHub source](https://github.com/edwinm/Color-animation-jQuery-plugin)
+
+**Shadow animation** to animate shadows and glow effects.
+
+- [Shadow animation](https://bitstorm.org/jquery/shadow-animation/)
+- [GitHub source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
+
 ## 2003 - 2014 - Edwin's journaal
 
 Between 2003 and 2014, I kept a weblog with a static site generator (SSR) written in PHP myself,
@@ -44,12 +58,12 @@ because they didn't exist yet.
 
 I really liked the concept of browser extensions and wrote two extensions.
 
-View Cookies to view and remove cookies
+**View Cookies** to view and remove cookies
 
 - [View Cookies](http://www.bitstorm.org/extensions/view-cookies/)
 - [GitHub source](https://github.com/edwinm/View-Cookies-Firefox-Extension)
 
-Tweak Network Settings to remove some obsolete network connection limitations
+**Tweak Network Settings** to remove some obsolete network connection limitations
 
 - [Tweak Network Settings](http://www.bitstorm.org/extensions/tweak/)
 - [GitHub source](https://github.com/edwinm/Tweak-Network-Firefox-Extension)
