@@ -2,6 +2,7 @@
 <head>
 <title>Tea Tricks online game (in Java)</title>
 <meta name="keywords" content="play free online Tea tricks game"/>
+<script  src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
 </head>
 <body bgcolor="#ffffeb">
 
@@ -11,7 +12,21 @@
 <td bgcolor="#ffefce">
 <noscript><p>To run the applet, JavaScript has to be turned on.</p></noscript>
 
-<script src="applet.js"></script>
+<applet code="TeaTricks.class" archive="teatricks.zip" width="161" height="370">
+    <param name="cabbase" value="teatricks.cab">
+    <p>To see Tea Tricks in action, you need to have Java installed.<br>
+        And of course Java-support has to be turned on.</p>
+    <ul>
+        <li><a href="http://www.java.com/en/download/">Download Java now</a>
+        </li></ul>
+</applet>
+
+<script type="module">
+    await cheerpjInit();
+    cheerpjCreateDisplay(800, 600, document.body);
+    await cheerpjRunJar("teatricks.jar");
+</script>
+
 </td>
 <td bgcolor="#ffefce" valign="top" width="250">
 <img src="teatricks.png" width="220" height="117" border="0" hspace="5"><br>
@@ -55,26 +70,11 @@ Tetris&trade; is a registered trademark of Tetris Company LLC.<br>
 Tea Tricks is not associated with Tetris Company LLC.
 </font></p>
 
-<script type="text/javascript"><!--
-google_ad_client = "pub-2050318500162917";
-google_ad_width = 728;
-google_ad_height = 90;
-google_ad_format = "728x90_as";
-google_ad_channel ="5955974395";
-google_ad_type = "text_image";
-google_color_border = "CCCCCC";
-google_color_bg = "FFEFCE";
-google_color_link = "B84040";
-google_color_url = "B84040";
-google_color_text = "000000";
-//--></script>
-<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+
 
 
 </td></tr></table>
 
-<script>var _gaq=[['_setAccount','UA-93616-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
 
 
 </body>
