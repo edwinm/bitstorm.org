@@ -98,7 +98,7 @@ I got interested in programming applications for Windows and wrote Fontlist, to 
 
 To connect multiple computers to your internet connection at home, you need a router, which were unaffordable for consumers at the time. However, with Freesco, you could turn an old computer into a router. I wrote a tutorial for the Dutch-language magazine PC-Active.
 
-- [Freesco hands-on](https://bitstorm.org/edwin/freesco/) (Dutch)
+- [Freesco hands-on](https://bitstorm.org/edwin/freesco/)
 
 ## 1998 - Bill Gates hit with cream pie
 
@@ -116,7 +116,14 @@ I named it Teatricks to not get sued.
 
 - [TeaTricks](https://bitstorm.org/teatricks/)
 
-## 1995
+## 1995 - Hoedt u voor schipbreuk op de digitale zee
+
+Together with Marcel Bullinga, I wrote a vision of the future that appeared on the Forum page of de Volkskrant.
+
+- [De digitale toekomst: Hoedt u voor schipbreuk op de de digitale zee](http://localhost:8080/edwin/dox/toekomst.html)
+- [Artikel op volkskrant.nl](https://www.volkskrant.nl/voorpagina/hoedt-u-voor-schipbreuk-op-de-digitale-zee~ba8d6af7/)
+
+## 1995 - Various webpages
 
 I created some webpages to actually add some content to my website.
 
