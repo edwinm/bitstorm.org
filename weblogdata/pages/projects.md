@@ -134,9 +134,12 @@ I created some webpages to actually add some content to my website.
 
 ## 1994 - DB\.NL
 
-When I heard that the government wanted to ban encryption,
-I became active and joined the Digitale Burgerbeweging Nederland (Digital Citizens’ Movement Netherlands),
-and worked on creating a website for it during the summer of 1994.
+When I heard that the government wanted to ban encryption, I understood that this was at odds with the newly emerging Internet.
+
+I wrote a [PGP manual](/edwin/pgp/) and posted it on the Technopolis forum of De Digitale Stad,
+and I became active and joined the Digital Citizen Movement Netherlands.
+
+In the summer of 1994, I worked on creating the website for the movement.
 
 - [Digitale Burgerbeweging Nederland](https://dbnl.bitstorm.org/)
 
