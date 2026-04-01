@@ -1,5 +1,5 @@
 ---
-title: Edwin Martins Side Projects
+title: Edwin Martin’s Side Projects
 layout: page
 permalink: /edwin/projects.html
 eleventyExcludeFromCollections: true
@@ -31,7 +31,7 @@ and I retook a number of photos from approximately the same position.
 
 For many photos, you can switch between the two timestamps.
 
-- [KNSM-eiland](https://bitstorm.org/KNSM-eiland/)
+- [KNSM-eiland](/KNSM-eiland/)
 
 ## 2010 - jQuery plugins
 
@@ -39,20 +39,20 @@ I worked a lot with the jQuery JavaScript library and wrote two animation plugin
 
 **Color Animation** to fade one color into another.
 
-- [Color Animation](https://bitstorm.org/jquery/color-animation/)
+- [Color Animation](/jquery/color-animation/)
 - [GitHub source](https://github.com/edwinm/Color-animation-jQuery-plugin)
 
 **Shadow animation** to animate shadows and glow effects.
 
-- [Shadow animation](https://bitstorm.org/jquery/shadow-animation/)
+- [Shadow animation](/jquery/shadow-animation/)
 - [GitHub source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
 
-## 2003 - 2014 - Edwin's journaal
+## 2003 - 2014 - Edwin’s journaal
 
 Between 2003 and 2014, I kept a weblog with a static site generator (SSR) written in PHP myself,
-because they didn't exist yet.
+because they didn’t exist yet.
 
-- [Edwin's journaal](https://bitstorm.org/journaal/)
+- [Edwin’s journaal](/journaal/)
 
 ## 2004 - Firefox extensions
 
@@ -79,7 +79,7 @@ To run a Java program, you had to enter a command (`java --jar program.jar`). Wi
 
 After having programmed in PHP for years, I became disappointed by all the limitations of PHP and wrote this article.
 
-- [PHP sucks](https://bitstorm.org/edwin/en/php/)
+- [PHP sucks](/edwin/en/php/)
 
 ## 2001 - Mali
 
@@ -98,51 +98,51 @@ I got interested in programming applications for Windows and wrote Fontlist, to 
 
 To connect multiple computers to your internet connection at home, you need a router, which were unaffordable for consumers at the time. However, with Freesco, you could turn an old computer into a router. I wrote a tutorial for the Dutch-language magazine PC-Active.
 
-- [Freesco hands-on](https://bitstorm.org/edwin/freesco/)
+- [Freesco hands-on](/edwin/freesco/)
 
 ## 1998 - Bill Gates hit with cream pie
 
 I already had video capture hardware and had just picked up a new 500MB hard disk,
-so capturing the Belgian news broadcast wasn't a problem.
+so capturing the Belgian news broadcast wasn’t a problem.
 The people at XS4ALL, where the page was hosted, were pretty surprised to see a personal homepage
 show up among their highest-traffic sites.
 
-- [Bill Gates hit with cream pie](https://bitstorm.org/gates/)
+- [Bill Gates hit with cream pie](/gates/)
 
 ## 1996 - Teatricks
 
 To gain experience developing in Java, I wrote a Java applet with a Tetris clone.
 I named it Teatricks to not get sued.
 
-- [TeaTricks](https://bitstorm.org/teatricks/)
+- [TeaTricks](/teatricks/)
 
 ## 1995 - Hoedt u voor schipbreuk op de digitale zee
 
 Together with Marcel Bullinga, I wrote a vision of the future that appeared on the Forum page of de Volkskrant.
 
-- [De digitale toekomst: Hoedt u voor schipbreuk op de de digitale zee](http://localhost:8080/edwin/dox/toekomst.html)
+- [De digitale toekomst: Hoedt u voor schipbreuk op de de digitale zee](/edwin/toekomst/)
 - [Artikel op volkskrant.nl](https://www.volkskrant.nl/voorpagina/hoedt-u-voor-schipbreuk-op-de-digitale-zee~ba8d6af7/)
 
 ## 1995 - Various webpages
 
 I created some webpages to actually add some content to my website.
 
-- [Microsoft Windows 95/98 Shareware, Freeware en Public Domain Software](https://bitstorm.org/windows/)
-- [Ren & Stimpy's "Happy Happy Joy Joy" Song](https://bitstorm.org/happyjoy/)
-- [Think Ware](https://bitstorm.org/thinkware/)
-- [Inline skate route Westerpark](https://bitstorm.org/edwin/skate/)
+- [Microsoft Windows 95/98 Shareware, Freeware en Public Domain Software](/windows/)
+- [Ren & Stimpy’s "Happy Happy Joy Joy" Song](/happyjoy/)
+- [Think Ware](/thinkware/)
+- [Inline skate route Westerpark](/edwin/skate/)
 
 ## 1994 - DB\.NL
 
 When I heard that the government wanted to ban encryption,
-I became active and joined the Digitale Burgerbeweging Nederland (Digital Citizens' Movement Netherlands),
+I became active and joined the Digitale Burgerbeweging Nederland (Digital Citizens’ Movement Netherlands),
 and worked on creating a website for it during the summer of 1994.
 
 - [Digitale Burgerbeweging Nederland](https://dbnl.bitstorm.org/)
 
-## 1994 - Ranx' Homepage
+## 1994 - Ranx’ Homepage
 
 As soon as I found out that XS4ALL would give users the opportunity to create a homepage, I got to work on it in June 1994, even before it was official.
-My Ranx' homepage thus became the first homepage. It is included in the [XS4ALL Homepages Web Collection](https://www.kb.nl/over-ons/projecten/xs4all-homepages-archivering) of the KB, the national library.
+My Ranx’ homepage thus became the first homepage. It is included in the [XS4ALL Homepages Web Collection](https://www.kb.nl/over-ons/projecten/xs4all-homepages-archivering) of the KB, the national library.
 
-- [Ranx' homepage](https://bitstorm.org/ranx/)
+- [Ranx’ homepage](/ranx/)
