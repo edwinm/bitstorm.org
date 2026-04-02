@@ -236,9 +236,11 @@ main h2 {
 
 .aside {
     opacity: 0.7;
+    filter: saturate(0%);
     transition: all 250ms ease;
 
     &:hover {
+        filter: saturate(100%);
         opacity: 1;
     }
 }
@@ -305,7 +307,7 @@ img.single-image {
 }
 
 .links a, .links-plain a {
-    color: black;
+    color: #0c5097; /* 0e21b6 */
     text-decoration: none;
 }
 
