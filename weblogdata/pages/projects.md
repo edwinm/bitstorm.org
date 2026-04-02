@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 description: Side Projects made by Edwin Martin
 ---
 
-### 2023 - Webontwikkelaar
+### 2026 - Webontwikkelaar
 
 A daily digest of conferences, articles, videos and podcasts for web developers.
 Originally built for the Dutch-speaking community, but fully available in English too.
@@ -22,6 +22,18 @@ and still running all these years later.
 
 - [playgameoflife.com](https://playgameoflife.com/)
 - [GitHub source](https://github.com/edwinm/game-of-life)
+
+### 2020 - Carbonium
+
+I wanted to keep the Game of Life as light as possible, so as little bloat as possible.
+That is why I wrote my own minimal versions of well-known JavaScript libraries
+(also as a challenge and to learn).
+Such as an RxJS clone ([cuprum](https://github.com/edwinm/cuprum)) and this jQuery clone Carbonium.
+
+By using modern JavaScript, I made it smaller (1.4kB instead of 35kB)
+and yet much more powerful than jQuery.
+
+- [GitHub source](https://github.com/edwinm/carbonium)
 
 ### 2011 - KNSM-eiland
 
@@ -47,7 +59,7 @@ I worked a lot with the jQuery JavaScript library and wrote two animation plugin
 - [Shadow animation](/jquery/shadow-animation/)
 - [GitHub source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
 
-## 2003 - 2014 - Edwin’s journaal
+## 2003–2014 - Edwin’s journaal
 
 Between 2003 and 2014, I kept a weblog with a static site generator (SSR) written in PHP myself,
 because they didn’t exist yet.
