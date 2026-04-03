@@ -12,7 +12,7 @@ A daily digest of conferences, articles, videos and podcasts for web developers.
 Originally built for the Dutch-speaking community, but fully available in English too.
 
 - [webontwikkelaar.nl](https://webontwikkelaar.nl/en)
-- [GitHub source](https://github.com/edwinm/webontwikkelaar.nl)
+- [webontwikkelaar.nl source](https://github.com/edwinm/webontwikkelaar.nl)
 
 ### 2020 - Game of Life
 
@@ -21,19 +21,17 @@ Totally rewritten in 2020, I had no idea it would turn into my most visited webs
 and still running all these years later.
 
 - [playgameoflife.com](https://playgameoflife.com/)
-- [GitHub source](https://github.com/edwinm/game-of-life)
+- [Play Game of Life source](https://github.com/edwinm/game-of-life)
 
 ### 2020 - Carbonium
 
-I wanted to keep the Game of Life as light as possible, so as little bloat as possible.
-That is why I wrote my own minimal versions of well-known JavaScript libraries
-(also as a challenge and to learn).
-Such as an RxJS clone ([cuprum](https://github.com/edwinm/cuprum)) and this jQuery clone Carbonium.
+To keep the Game of Life as lightweight as possible, I wrote minimal clones of well-known JavaScript libraries,
+both as a challenge and a learning exercise.
+These include an RxJS clone ([cuprum](https://github.com/edwinm/cuprum)) and Carbonium, a jQuery variant.
+By leveraging modern JavaScript, Carbonium weighs just 1.4 kB versus jQuery's 35 kB,
+while making the core feature more powerful.
 
-By using modern JavaScript, I made it smaller (1.4kB instead of 35kB)
-and yet much more powerful than jQuery.
-
-- [GitHub source](https://github.com/edwinm/carbonium)
+- [Carbonium source](https://github.com/edwinm/carbonium)
 
 ### 2011 - KNSM-eiland
 
@@ -52,17 +50,17 @@ I worked a lot with the jQuery JavaScript library and wrote two animation plugin
 **Color Animation** to fade one color into another.
 
 - [Color Animation](/jquery/color-animation/)
-- [GitHub source](https://github.com/edwinm/Color-animation-jQuery-plugin)
+- [Color Animation source](https://github.com/edwinm/Color-animation-jQuery-plugin)
 
 **Shadow animation** to animate shadows and glow effects.
 
 - [Shadow animation](/jquery/shadow-animation/)
-- [GitHub source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
+- [Shadow animation source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
 
 ## 2003–2014 - Edwin’s journaal
 
-Between 2003 and 2014, I kept a weblog with a static site generator (SSR) written in PHP myself,
-because they didn’t exist yet.
+From 2003 to 2014 I ran a weblog on a homegrown PHP static site generator (SSG),
+back when rolling your own was just what you did.
 
 - [Edwin’s journaal](/journaal/)
 
@@ -73,19 +71,20 @@ I really liked the concept of browser extensions and wrote two extensions.
 **View Cookies** to view and remove cookies
 
 - [View Cookies](http://www.bitstorm.org/extensions/view-cookies/)
-- [GitHub source](https://github.com/edwinm/View-Cookies-Firefox-Extension)
+- [View Cookies source](https://github.com/edwinm/View-Cookies-Firefox-Extension)
 
 **Tweak Network Settings** to remove some obsolete network connection limitations
 
 - [Tweak Network Settings](http://www.bitstorm.org/extensions/tweak/)
-- [GitHub source](https://github.com/edwinm/Tweak-Network-Firefox-Extension)
+- [Tweak Network Settings source](https://github.com/edwinm/Tweak-Network-Firefox-Extension)
 
 ## 2004 - Jarx
 
-To run a Java program, you had to enter a command (`java --jar program.jar`). With Jarx, you can start the program by double-clicking on it.
+To run a Java program, you had to enter a command (`java --jar program.jar`) in a terminal.
+With Jarx, you can start the program by just double-clicking on it.
 
 - [Jarx](http://www.bitstorm.org/jarx/)
-- [GitHub source](https://github.com/edwinm/Jarx)
+- [Jarx source](https://github.com/edwinm/Jarx)
 
 ## 2004 - PHP sucks
 
@@ -95,8 +94,9 @@ After having programmed in PHP for years, I became disappointed by all the limit
 
 ## 2001 - Mali
 
-In 1999, I went to Mali, where I took beautiful photos. To display the photos, I created a page using JavaScript.
-There were no libraries for it yet, and every browser worked differently.
+In 1999 I spent time in Mali, and the photos I brought back felt worth sharing.
+I hand-rolled a little JavaScript gallery to display them. No frameworks existed yet,
+and getting animations to work across browsers was half the project.
 
 - [Mali](http://www.bitstorm.org/edwin/mali/)
 
@@ -108,7 +108,8 @@ I got interested in programming applications for Windows and wrote Fontlist, to 
 
 ## 2000 - Freesco hands-on
 
-To connect multiple computers to your internet connection at home, you need a router, which were unaffordable for consumers at the time. However, with Freesco, you could turn an old computer into a router. I wrote a tutorial for the Dutch-language magazine PC-Active.
+Sharing a single internet connection across multiple machines meant buying a router, a luxury most home users couldn't justify.
+Freesco changed that by turning a dusty old PC into one. I covered it in a tutorial for Dutch magazine PC-Active.
 
 - [Freesco hands-on](/edwin/freesco/)
 
@@ -148,16 +149,16 @@ I created some webpages to actually add some content to my website.
 
 When I heard that the government wanted to ban encryption, I understood that this was at odds with the newly emerging Internet.
 
-I wrote a [PGP manual](/edwin/pgp/) and posted it on the Technopolis forum of De Digitale Stad,
-and I became active and joined the Digital Citizen Movement Netherlands.
+I wrote a [PGP manual](/edwin/pgp/) and posted it on the Technopolis forum of De Digitale Stad
+and I became active within the Digital Citizen Movement Netherlands (the precursor of Bits of Freedom).
 
-In the summer of 1994, I worked on creating the website for the movement.
+In the summer of 1994, I worked on creating the website for this organization.
 
 - [Digitale Burgerbeweging Nederland](https://dbnl.bitstorm.org/)
 
-## 1994 - Ranx’ Homepage
+## 1994 - Ranx’ Hotlist
 
 As soon as I found out that XS4ALL would give users the opportunity to create a homepage, I got to work on it in June 1994, even before it was official.
-My Ranx’ homepage thus became the first homepage. It is included in the [XS4ALL Homepages Web Collection](https://www.kb.nl/over-ons/projecten/xs4all-homepages-archivering) of the KB, the national library.
+My Ranx’ Hotlist thus became the first homepage. It is included in the [XS4ALL Homepages Web Collection](https://www.kb.nl/over-ons/projecten/xs4all-homepages-archivering) of the KB, the national library.
 
-- [Ranx’ homepage](/ranx/)
+- [Ranx’ Hotlist](/ranx/)

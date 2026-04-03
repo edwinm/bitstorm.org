@@ -22,7 +22,7 @@ It's been rewritten a couple of times since, but I had no idea it would turn int
 and still running all these years later.
 
 - [playgameoflife.com](https://playgameoflife.com/)
-- [GitHub source](https://github.com/edwinm/game-of-life)
+- [Game of Life source](https://github.com/edwinm/game-of-life)
 
 ### Webontwikkelaar
 
@@ -30,7 +30,7 @@ A daily digest of conferences, articles, videos and podcasts for web developers.
 Originally built for the Dutch-speaking community, but fully available in English too.
 
 - [webontwikkelaar.nl](https://webontwikkelaar.nl/en)
-- [GitHub source](https://github.com/edwinm/webontwikkelaar.nl)
+- [webontwikkelaar.nl source](https://github.com/edwinm/webontwikkelaar.nl)
 
 ## More
 
