@@ -27,7 +27,7 @@ and still running all these years later.
 
 To keep the Game of Life as lightweight as possible, I wrote minimal clones of well-known JavaScript libraries,
 both as a challenge and a learning exercise.
-These include an RxJS clone ([cuprum](https://github.com/edwinm/cuprum)) and Carbonium, a jQuery variant.
+These include an RxJS clone ([cuprum](https://github.com/edwinm/cuprum)), a stripped-down Lit ([web-component-decorator](https://github.com/edwinm/web-component-decorator)) and Carbonium, a jQuery variant.
 By leveraging modern JavaScript, Carbonium weighs just 1.4 kB versus jQuery's 35 kB,
 while making the core feature more powerful.
 
