@@ -15,16 +15,16 @@
   "author": "Edwin Martin",
   "license": "None",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-img": "^4.0.2",
-    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@11ty/eleventy-plugin-rss": "^3.0.0",
     "@jamshop/eleventy-plugin-typography": "^1.0.0",
-    "@kevingimbel/eleventy-plugin-mermaid": "^2.2.1",
+    "@kevingimbel/eleventy-plugin-mermaid": "^3.0.1",
     "typogr": "^0.6.8"
   },
   "devDependencies": {
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "eleventy-plugin-svg-sprite": "^2.4.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "eleventy-plugin-svg-sprite": "^2.4.6",
     "svg-sprite": "^2.0.4"
   }
 }

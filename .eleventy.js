@@ -2,7 +2,6 @@ const util = require('util');
 
 const markdownIt = require("markdown-it");
 const Image = require('@11ty/eleventy-img');
-const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 
@@ -100,7 +99,9 @@ function spriteShortcode (
   return `<span class="icon" style="--icon: url(/assets/sprite.svg#${arg})"></span>`;
 }
 
-module.exports = function(eleventyConfig) {
+module.exports = async function(eleventyConfig) {
+  const { default: pluginRss } = await import("@11ty/eleventy-plugin-rss");
+
   eleventyConfig.addGlobalData("permalink", () => {
     return (data) => `${data.page.filePathStem}.${data.page.outputFileExtension}`;
   });
