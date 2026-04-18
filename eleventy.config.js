@@ -13,7 +13,7 @@ async function imageShortcode(src, caption, alt, size = 200) {
     formats: ["webp"],
     outputDir: `web/weblog/${path}`,
     urlPath: `/weblog/${path}`,
-    filenameFormat: function (id, src, width, format, options) {
+    filenameFormat: function (id, src, width, format, _options) {
       const base = src.split("/").at(-1).split(".")[0];
       return `${base}~${width}.${format}`;
     },
@@ -39,7 +39,7 @@ async function ogImageShortcode(src, alt) {
     formats: ["webp", "jpeg"],
     outputDir: `web/weblog/${path}`,
     urlPath: `/weblog/${path}`,
-    filenameFormat: function (id, src, width, format, options) {
+    filenameFormat: function (id, src, width, format, _options) {
       const base = src.split("/").at(-1).split(".")[0];
       return `${base}~${width}.${format}`;
     },
