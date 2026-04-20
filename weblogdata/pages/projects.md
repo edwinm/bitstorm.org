@@ -49,7 +49,7 @@ For many photos, you can switch between the two timestamps.
 
 - [KNSM-eiland](/KNSM-eiland/)
 
-## 2010 - jQuery plugins
+### 2010 - jQuery plugins
 
 I worked a lot with the jQuery JavaScript library and wrote two animation plugins.
 
@@ -63,14 +63,21 @@ I worked a lot with the jQuery JavaScript library and wrote two animation plugin
 - [Shadow animation](/jquery/shadow-animation/)
 - [Shadow animation source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
 
-## 2003–2014 - Edwin’s journaal
+### 2007 - Code Assist for jQuery in Aptana
+
+Back then, Aptana was *the* editor for anything HTML, CSS, or JavaScript, and if you were writing JavaScript, you were using jQuery.
+So I built a little tool that converted the jQuery library's XML docs into an Aptana plugin, giving you autocomplete for jQuery right in the IDE.
+
+- [Code Assist for jQuery in Aptana](/edwin/jquery/)
+
+### 2003–2014 - Edwin’s journaal
 
 From 2003 to 2014 I ran a weblog on a homegrown PHP static site generator (SSG),
 back when rolling your own was just what you did.
 
 - [Edwin’s journaal](/journaal/)
 
-## 2004 - Firefox extensions
+### 2004 - Firefox extensions
 
 I really liked the concept of browser extensions and wrote two extensions.
 
@@ -84,7 +91,7 @@ I really liked the concept of browser extensions and wrote two extensions.
 - [Tweak Network Settings](http://www.bitstorm.org/extensions/tweak/)
 - [Tweak Network Settings source](https://github.com/edwinm/Tweak-Network-Firefox-Extension)
 
-## 2004 - Jarx
+### 2004 - Jarx
 
 To run a Java program, you had to enter a command (`java --jar program.jar`) in a terminal.
 With Jarx, you can start the program by just double-clicking on it.
@@ -92,13 +99,13 @@ With Jarx, you can start the program by just double-clicking on it.
 - [Jarx](http://www.bitstorm.org/jarx/)
 - [Jarx source](https://github.com/edwinm/Jarx)
 
-## 2004 - PHP sucks
+### 2004 - PHP sucks
 
 After having programmed in PHP for years, I became disappointed by all the limitations of PHP and wrote this article.
 
 - [PHP sucks](/edwin/en/php/)
 
-## 2001 - Mali
+### 2001 - Mali
 
 In 1999 I spent time in Mali, and the photos I brought back felt worth sharing.
 I hand-rolled a little JavaScript gallery to display them. No frameworks existed yet,
@@ -106,20 +113,20 @@ and getting animations to work across browsers was half the project.
 
 - [Mali](http://www.bitstorm.org/edwin/mali/)
 
-## 2001 - Fontlist
+### 2001 - Fontlist
 
 I got interested in programming applications for Windows and wrote Fontlist, to display all installed fonts.
 
 - [Fontlist](http://www.bitstorm.org/fontlist/)
 
-## 2000 - Freesco hands-on
+### 2000 - Freesco hands-on
 
 Sharing a single internet connection across multiple machines meant buying a router, a luxury most home users couldn't justify.
 Freesco changed that by turning a dusty old PC into one. I covered it in a tutorial for Dutch magazine PC-Active.
 
 - [Freesco hands-on](/edwin/freesco/)
 
-## 1998 - Bill Gates hit with cream pie
+### 1998 - Bill Gates hit with cream pie
 
 I already had video capture hardware and had just picked up a new 500MB hard disk,
 so capturing the Belgian news broadcast wasn’t a problem.
@@ -128,21 +135,21 @@ show up among their highest-traffic sites.
 
 - [Bill Gates hit with cream pie](/gates/)
 
-## 1996 - Teatricks
+### 1996 - Teatricks
 
 To gain experience developing in Java, I wrote a Java applet with a Tetris clone.
 I named it Teatricks to not get sued.
 
 - [TeaTricks](/teatricks/)
 
-## 1995 - Hoedt u voor schipbreuk op de digitale zee
+### 1995 - Hoedt u voor schipbreuk op de digitale zee
 
 Together with Marcel Bullinga, I wrote a vision of the future that appeared on the Forum page of de Volkskrant.
 
 - [De digitale toekomst: Hoedt u voor schipbreuk op de de digitale zee](/edwin/toekomst/)
 - [Artikel op volkskrant.nl](https://www.volkskrant.nl/voorpagina/hoedt-u-voor-schipbreuk-op-de-digitale-zee~ba8d6af7/)
 
-## 1995 - Various webpages
+### 1995 - Various webpages
 
 I created some webpages to actually add some content to my website.
 
@@ -151,7 +158,7 @@ I created some webpages to actually add some content to my website.
 - [Think Ware](/thinkware/)
 - [Inline skate route Westerpark](/edwin/skate/)
 
-## 1994 - DB\.NL
+### 1994 - DB\.NL
 
 When I heard that the government wanted to ban encryption, I understood that this was at odds with the newly emerging Internet.
 
@@ -162,7 +169,7 @@ In the summer of 1994, I worked on creating the website for this organization.
 
 - [Digitale Burgerbeweging Nederland](https://dbnl.bitstorm.org/)
 
-## 1994 - Ranx’ Hotlist
+### 1994 - Ranx’ Hotlist
 
 As soon as I found out that XS4ALL would give users the opportunity to create a homepage, I got to work on it in June 1994, even before it was official.
 My Ranx’ Hotlist thus became the first homepage. It is included in the [XS4ALL Homepages Web Collection](https://www.kb.nl/over-ons/projecten/xs4all-homepages-archivering) of the KB, the national library.
