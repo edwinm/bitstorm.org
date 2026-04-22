@@ -63,6 +63,16 @@ I worked a lot with the jQuery JavaScript library and wrote two animation plugin
 - [Shadow animation](/jquery/shadow-animation/)
 - [Shadow animation source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
 
+### 2009 - Presentation at Kings of Code
+
+In collaboration with Fronteers, I gave a presentation on jQuery at the [Kings of Code conference](https://www.fronteers.nl/nl/blog/2009/06/seminar-kings-of-code)
+in the beautiful Tuschinski Theatre in Amsterdam.
+Daniel Nordstrom took some [photos](https://www.flickr.com/photos/mrnordstrom/3675279871/in/photostream/).
+
+- [Slides: Advanced jQuery](/edwin/koc-advanced-jquery/)
+
+See some of my other presentations at [Slideshare](https://www.slideshare.net/edwinjm).
+
 ### 2007 - Code Assist for jQuery in Aptana
 
 Back then, Aptana was *the* editor for anything HTML, CSS, or JavaScript, and if you were writing JavaScript, you were using jQuery.
