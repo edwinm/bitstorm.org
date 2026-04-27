@@ -147,10 +147,12 @@ show up among their highest-traffic sites.
 
 ### 1996 - Teatricks
 
-To gain experience developing in Java, I wrote a Java applet with a Tetris clone.
-I named it Teatricks to not get sued.
+To gain experience developing in Java, I wrote a Tetris clone as a Java applet.
+Since applets are not supported anymore, I converted it to JavaScript so it can
+still be played.
 
 - [TeaTricks](/teatricks/)
+- [TeaTricks Java source](https://github.com/edwinm/teatricks)
 
 ### 1995 - Hoedt u voor schipbreuk op de digitale zee
 
