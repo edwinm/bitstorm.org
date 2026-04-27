@@ -1,82 +1,78 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Tea Tricks online game (in Java)</title>
-<meta name="keywords" content="play free online Tea tricks game"/>
-<script  src="https://cjrtnc.leaningtech.com/3.0/cj3loader.js"></script>
-    <script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
+<meta charset="utf-8">
+<title>Tea Tricks</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffeb; font-family: helvetica, arial, sans-serif; }
+  .outer { width: 100%; height: 100vh; display: table; }
+  .outer-cell { display: table-cell; vertical-align: middle; text-align: center; }
+  .frame { display: inline-block; border: 2px solid #000; background: #ffefce; }
+  .frame-inner { display: flex; padding: 10px; gap: 10px; align-items: stretch; }
+  .game { background: #ffefce; display: flex; flex-direction: column; align-items: center; }
+  canvas { display: block; background: #ffffdf; outline: none; }
+  .score { color: #000; font: 14px helvetica, arial, sans-serif; padding: 6px 0 4px; min-height: 18px; text-align: left; width: 100%; }
+  .controls { display: flex; gap: 4px; justify-content: center; margin-top: 6px; flex-wrap: wrap; }
+  .controls button { font: 12px helvetica, arial, sans-serif; }
+  .new-game { margin-top: 6px; }
+  .info { width: 250px; background: #ffefce; vertical-align: top; }
+  .info img { display: block; margin: 5px; }
+  .keys { display: flex; gap: 11px; padding: 11px; color: #b84040; }
+  .keys b { display: block; }
+  .keys .col { white-space: nowrap; font-size: 1.17em; }
+  .blurb { color: #b84040; padding: 0 11px 11px; }
+  .blurb a { color: #b84040; }
+</style>
 </head>
-<body bgcolor="#ffffeb">
+<body>
 
-<table width="100%" height="100%"><tr><td align="center" cellpadding="0" cellspacing="0">
-<table border="2" cellpadding="10" cellspacing="0">
-<tr>
-<td bgcolor="#ffefce">
-<noscript><p>To run the applet, JavaScript has to be turned on.</p></noscript>
+<div class="outer"><div class="outer-cell">
+  <div class="frame">
+    <div class="frame-inner">
+      <div class="game">
+        <canvas id="board" width="161" height="289" tabindex="0"></canvas>
+        <div class="score" id="score">Score: 0</div>
+        <div class="controls">
+          <button id="btn-left">Left</button>
+          <button id="btn-right">Right</button>
+          <button id="btn-turn">Turn</button>
+        </div>
+        <div class="new-game">
+          <button id="btn-new">New game</button>
+        </div>
+      </div>
+      <div class="info">
+        <img src="tetris.gif" width="220" height="117" alt="">
+        <div class="keys">
+          <div class="col">
+            <b>(arrow) key:</b>
+            right, j<br>
+            left, l<br>
+            up, k<br>
+            down, n<br>
+            p
+          </div>
+          <div class="col">
+            <b>action:</b>
+            move to right<br>
+            move to left<br>
+            turn<br>
+            drop<br>
+            pause
+          </div>
+        </div>
+        <div class="blurb">
+          The more rows you delete at once, the more your score will be increased.
+          <p>
+          Written in Java by Edwin Martin in 1996,
+          ported to JavaScript in 2026.
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
 
-<applet code="TeaTricks.class" archive="teatricks.zip" width="161" height="370">
-    <param name="cabbase" value="teatricks.cab">
-    <p>To see Tea Tricks in action, you need to have Java installed.<br>
-        And of course Java-support has to be turned on.</p>
-    <ul>
-        <li><a href="http://www.java.com/en/download/">Download Java now</a>
-        </li></ul>
-</applet>
-
-<script type="module">
-    await cheerpjInit();
-    cheerpjCreateDisplay(800, 600, document.body);
-    await cheerpjRunJar("teatricks.jar");
-</script>
-
-</td>
-<td bgcolor="#ffefce" valign="top" width="250">
-<img src="teatricks.png" width="220" height="117" border="0" hspace="5"><br>
-<table cellspacing=11>
-<tr><td>
-<font color="#b84040" face="helvetica, arial" size="+1">
-<b><nobr>(arrow) key:</nobr></b><br>
-right, j<br>
-left, l<br>
-up, k<br>
-down, n<br>
-p
-</font>
-</td>
-<td>
-<font color="#b84040" face="helvetica, arial" size=+1>
-<b>action:</b><br>
-<nobr>move to right</nobr><br>
-<nobr>move to left</nobr><br>
-turn<br>
-drop<br>
-pause
-</font>
-</td></tr>
-<tr>
-<td colspan=2>
-<font color="#b84040" face="helvetica, arial">
-The more rows you delete at once, the more your score will be increased.
-<p>
-This game is written in Java by <nobr><a href="/edwin/en/">Edwin Martin</a>
-&lt;<a href="mailto:edwin@bitstorm.org">edwin@bitstorm.org</a>&gt;</nobr>
-</font>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-<p><font color="#b84040" face="helvetica, arial" size=-1>
-Tetris&trade; is a registered trademark of Tetris Company LLC.<br>
-Tea Tricks is not associated with Tetris Company LLC.
-</font></p>
-
-
-
-
-</td></tr></table>
-
-
-
+<script src="teatricks.js" defer></script>
 </body>
 </html>
