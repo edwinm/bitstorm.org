@@ -12,7 +12,7 @@ A daily digest of conferences, articles, videos and podcasts for web developers.
 Originally built for the Dutch-speaking community, but fully available in English too.
 
 - [webontwikkelaar.nl](https://webontwikkelaar.nl/en)
-- [webontwikkelaar.nl source](https://github.com/edwinm/webontwikkelaar.nl)
+- [webontwikkelaar.nl source code](https://github.com/edwinm/webontwikkelaar.nl)
 
 ### 2020 - Game of Life
 
@@ -21,7 +21,7 @@ Totally rewritten in 2020, I had no idea it would turn into my most visited webs
 and still running all these years later.
 
 - [playgameoflife.com](https://playgameoflife.com/)
-- [Play Game of Life source](https://github.com/edwinm/game-of-life)
+- [Play Game of Life source code](https://github.com/edwinm/game-of-life)
 
 ### 2020 - Carbonium
 
@@ -33,7 +33,7 @@ By using modern JavaScript, Carbonium weighs just 1.4 kB versus jQuery's 35 kB,
 while making the core feature more powerful.
 
 - [Carbonium, a lightweight library to manipulate the DOM](/weblog/2020-8/Carbonium_a_lightweight_library_to_manipulate_the_DOM.html)
-- [Carbonium source](https://github.com/edwinm/carbonium)
+- [Carbonium source code](https://github.com/edwinm/carbonium)
 
 I maintain more open source repositories.
 
@@ -56,12 +56,12 @@ I worked a lot with the jQuery JavaScript library and wrote two animation plugin
 **Color Animation** to fade one color into another.
 
 - [Color Animation](/jquery/color-animation/)
-- [Color Animation source](https://github.com/edwinm/Color-animation-jQuery-plugin)
+- [Color Animation source code](https://github.com/edwinm/Color-animation-jQuery-plugin)
 
 **Shadow animation** to animate shadows and glow effects.
 
 - [Shadow animation](/jquery/shadow-animation/)
-- [Shadow animation source](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
+- [Shadow animation source code](https://github.com/edwinm/Shadow-animation-jQuery-plugin)
 
 ### 2009 - Presentation at Kings of Code
 
@@ -94,12 +94,12 @@ I really liked the concept of browser extensions and wrote two extensions.
 **View Cookies** to view and remove cookies
 
 - [View Cookies](http://www.bitstorm.org/extensions/view-cookies/)
-- [View Cookies source](https://github.com/edwinm/View-Cookies-Firefox-Extension)
+- [View Cookies source code](https://github.com/edwinm/View-Cookies-Firefox-Extension)
 
 **Tweak Network Settings** to remove some obsolete network connection limitations
 
 - [Tweak Network Settings](http://www.bitstorm.org/extensions/tweak/)
-- [Tweak Network Settings source](https://github.com/edwinm/Tweak-Network-Firefox-Extension)
+- [Tweak Network Settings source code](https://github.com/edwinm/Tweak-Network-Firefox-Extension)
 
 ### 2004 - Jarx
 
@@ -107,7 +107,7 @@ To run a Java program, you had to enter a command (`java --jar program.jar`) in 
 With Jarx, you can start the program by just double-clicking on it.
 
 - [Jarx](http://www.bitstorm.org/jarx/)
-- [Jarx source](https://github.com/edwinm/Jarx)
+- [Jarx C source code](https://github.com/edwinm/Jarx)
 
 ### 2004 - PHP sucks
 
@@ -123,11 +123,12 @@ and getting animations to work across browsers was half the project.
 
 - [Mali](http://www.bitstorm.org/edwin/mali/)
 
-### 2001 - Fontlist
+### 2001 - FontList
 
-I got interested in programming applications for Windows and wrote Fontlist, to display all installed fonts.
+I got interested in programming applications for Windows and wrote FontList, to display all installed fonts.
 
-- [Fontlist](http://www.bitstorm.org/fontlist/)
+- [FontList](http://www.bitstorm.org/fontlist/)
+- [FontList C++ source code](https://github.com/edwinm/FontList)
 
 ### 2000 - Freesco hands-on
 
@@ -152,7 +153,7 @@ Since applets are not supported anymore, I converted it to JavaScript so it can
 still be played.
 
 - [TeaTricks](/teatricks/)
-- [TeaTricks Java source](https://github.com/edwinm/teatricks)
+- [TeaTricks Java source code](https://github.com/edwinm/teatricks)
 
 ### 1995 - Hoedt u voor schipbreuk op de digitale zee
 
