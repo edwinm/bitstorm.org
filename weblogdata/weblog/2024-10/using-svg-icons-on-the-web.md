@@ -253,19 +253,11 @@ In older browsers, the icon won't have a color, but at least the icon is visible
     background: url(/assets/files/mask-svg-icons/archive.svg) 50%/cover;
 }
 
-@supports (-webkit-mask-image: url(/)) {
+@supports (-webkit-mask-image: url(/)) or (mask-image: url(/)) {
     .archive-icon-compat {
         background: steelblue;
         -webkit-mask-image: url(/assets/files/mask-svg-icons/archive.svg);
         -webkit-mask-size: 100px 100px;
-    }
-}
-
-@supports (mask-image: url(/)) {
-    .archive-icon-compat {
-        background: steelblue;
-        mask-image: url(/assets/files/mask-svg-icons/archive.svg);
-        mask-size: 100px 100px;
     }
 }
 ```
@@ -280,19 +272,11 @@ This is the icon with the above CSS applied, in case you want to test it in an o
     background: url(/assets/files/mask-svg-icons/archive.svg) 0/cover;
 }
 
-@supports (-webkit-mask-image: url(/)) {
+@supports (-webkit-mask-image: url(/)) or (mask-image: url(/)) {
     .archive-icon-compat {
         background: steelblue;
         -webkit-mask-image: url(/assets/files/mask-svg-icons/archive.svg);
         -webkit-mask-size: 100px 100px;
-    }
-}
-
-@supports (mask-image: url(/)) {
-    .archive-icon-compat {
-        background: steelblue;
-        mask-image: url(/assets/files/mask-svg-icons/archive.svg);
-        mask-size: 100px 100px;
     }
 }
 </style>
