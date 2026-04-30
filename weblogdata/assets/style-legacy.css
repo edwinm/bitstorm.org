@@ -1,0 +1,102 @@
+/*
+ * Legacy stylesheet — only loaded when the browser does NOT support
+ * `grid-template-columns: subgrid`. Targets iOS 10 / Safari 10 era browsers,
+ * which also lack `@layer`, `min()`/`max()`, and unprefixed `position: sticky`.
+ *
+ * Loaded conditionally by the inline detection script in page.liquid, so
+ * modern browsers never fetch this file.
+ */
+
+/* ----- Resets (iOS 10 ignores @layer in the main stylesheet) ----- */
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    -webkit-hyphens: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ----- Header sticky-positioning prefix for iOS 10 ----- */
+
+header {
+    position: -webkit-sticky;
+}
+
+/* ----- Fallback layout (replaces the broken grid) ----- */
+
+body {
+    display: block;
+    background: white;
+}
+
+header {
+    display: block;
+    height: 8rem;
+    animation: none;
+}
+
+.header-side {
+    display: none;
+}
+
+.header-content {
+    max-width: 48rem;
+    height: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.title {
+    font-size: 4rem;
+    animation: none;
+}
+
+main {
+    max-width: 48rem;
+    margin: 2rem auto 0;
+    padding: 0 20px;
+}
+
+.about {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    padding: 2rem 20px;
+    opacity: 1;
+    filter: none;
+}
+
+.about a {
+    color: lightgrey;
+}
+
+.footer-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.footer-content > section {
+    flex: 1 1 12rem;
+    margin-right: 2rem;
+}
+
+.recent {
+    display: none;
+}
+
+img.single-image {
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}

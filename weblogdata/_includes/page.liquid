@@ -30,6 +30,17 @@
     <link rel="preload" fetchpriority="high" as="image" href="/assets/pix/cityscape.webp" type="image/webp">
 
     <link rel="stylesheet" href="/assets/style.css" title="Main style">
+    <script>
+        // Older browsers (e.g. iOS 10 / Safari 10) can't render the grid
+        // layout. Detect via subgrid support and inject a fallback
+        // stylesheet for them. Modern browsers skip the fetch entirely.
+        if (!window.CSS || !CSS.supports || !CSS.supports('grid-template-columns', 'subgrid')) {
+            var legacyLink = document.createElement('link');
+            legacyLink.rel = 'stylesheet';
+            legacyLink.href = '/assets/style-legacy.css';
+            document.head.appendChild(legacyLink);
+        }
+    </script>
     <link rel="stylesheet" href="/assets/prism-coldark-cold.css">
     <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
 
