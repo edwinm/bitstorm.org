@@ -45,6 +45,29 @@
     <link rel="stylesheet" href="/assets/baguetteBox/baguetteBox.css">
 
     <link rel="icon" href="/assets/pix/favicon.ico">
+    <script>
+        function directionFor(activation) {
+            if (!activation) return "forward";
+            const { navigationType, from, entry } = activation;
+            // Back/forward button + history.back()/forward() all report "traverse"
+            if (navigationType === "traverse" && from && entry) {
+                return entry.index < from.index ? "back" : "forward";
+            }
+            return "forward"; // push / replace
+        }
+
+        // Outgoing page: governs the OLD snapshot
+        window.addEventListener("pageswap", (event) => {
+            if (!event.viewTransition) return;
+            event.viewTransition.types.add(directionFor(event.activation));
+        });
+
+        // Incoming page: governs the NEW snapshot
+        window.addEventListener("pagereveal", (event) => {
+            if (!event.viewTransition) return;
+            event.viewTransition.types.add(directionFor(navigation.activation));
+        });
+    </script>
     {% if page.url == "/" %}
     <script type="application/ld+json">
     {

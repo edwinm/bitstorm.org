@@ -31,6 +31,10 @@
     p {
         text-wrap: pretty;
     }
+
+    @view-transition {
+        navigation: auto;
+    }
 }
 
 @layer fonts {
@@ -130,7 +134,67 @@ blockquote {
     color: black;
 }
 
+main {
+    view-transition-name: main;
+}
 
+::view-transition-old(main),
+::view-transition-new(main) {
+    animation-duration: 320ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
+}
+
+@keyframes vt-out-left {
+    to {
+        opacity: 0;
+        transform: translateX(-2rem);
+    }
+}
+
+@keyframes vt-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(2rem);
+    }
+}
+
+html:active-view-transition-type(forward)::view-transition-old(main) {
+    animation-name: vt-out-left;
+}
+
+html:active-view-transition-type(forward)::view-transition-new(main) {
+    animation-name: vt-in-right;
+}
+
+@keyframes vt-out-right {
+    to {
+        opacity: 0;
+        transform: translateX(2rem);
+    }
+}
+
+@keyframes vt-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-2rem);
+    }
+}
+
+html:active-view-transition-type(back)::view-transition-old(main) {
+    animation-name: vt-out-right;
+}
+
+html:active-view-transition-type(back)::view-transition-new(main) {
+    animation-name: vt-in-left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(main),
+    ::view-transition-new(main) {
+        animation: none !important;
+    }
+}
 
 header {
     position: sticky;
