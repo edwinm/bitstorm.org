@@ -47,24 +47,27 @@
     <link rel="icon" href="/assets/pix/favicon.ico">
     <script>
         function directionFor(activation) {
-            if (!activation) return "forward";
-            const { navigationType, from, entry } = activation;
-            // Back/forward button + history.back()/forward() all report "traverse"
+            if (!activation) {
+                return "forward"
+            }
+            const {navigationType, from, entry} = activation;
             if (navigationType === "traverse" && from && entry) {
                 return entry.index < from.index ? "back" : "forward";
             }
-            return "forward"; // push / replace
+            return "forward";
         }
 
-        // Outgoing page: governs the OLD snapshot
         window.addEventListener("pageswap", (event) => {
-            if (!event.viewTransition) return;
+            if (!event.viewTransition) {
+                return
+            }
             event.viewTransition.types.add(directionFor(event.activation));
         });
 
-        // Incoming page: governs the NEW snapshot
         window.addEventListener("pagereveal", (event) => {
-            if (!event.viewTransition) return;
+            if (!event.viewTransition) {
+                return
+            }
             event.viewTransition.types.add(directionFor(navigation.activation));
         });
     </script>
@@ -149,46 +152,47 @@
 
 <aside class="aside about">
     <div class="footer-content">
-        <section>
         {% if page.url != '/' %}
             <p class="links links-bottom"><a rel="contents" href="/">{% sprite 'home' %} Home</a></p>
         {% endif %}
 
-        <h3>About</h3>
+        <div class="side-menu">
+            <section>
+            <h3>About</h3>
 
             <p class="links-plain"><a href="/edwin">Edwin Martin</a> is a <a href="https://bitstorm.nl/">frontend webdeveloper</a> living in the Netherlands.</p>
+            </section>
 
-        </section>
+            <section>
+            <h3>Game of Life</h3>
 
-        <section>
-        <h3>Game of Life</h3>
+            <a href="https://playgameoflife.com/lexicon/Gosper_glider_gun"><img src="/assets/pix/Gosper_glider_gun.png" alt="Image of Gosper glider gun" style="aspect-ratio: 3.5"></a>
 
-        <a href="https://playgameoflife.com/lexicon/Gosper_glider_gun"><img src="/assets/pix/Gosper_glider_gun.png" alt="Image of Gosper glider gun" style="aspect-ratio: 3.5"></a>
+            <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
 
-        <p>The Game of Life is a cellular automaton invented by Cambridge mathematician John Conway.</p>
+            <p class="links links-bottom"><a href="https://playgameoflife.com/">{% sprite 'gameoflife' %} playgameoflife.com</a></p>
 
-        <p class="links links-bottom"><a href="https://playgameoflife.com/">{% sprite 'gameoflife' %} playgameoflife.com</a></p>
+            <h3>Webontwikkelaar</h3>
 
-        <h3>Webontwikkelaar</h3>
+            <p>Stay sharp every day as a web developer</p>
 
-        <p>Stay sharp every day as a web developer</p>
+            <p class="links links-bottom"><a href="https://webontwikkelaar.nl/en">{% sprite 'webontwikkelaar' %} webontwikkelaar.nl</a></p>
+            </section>
 
-        <p class="links links-bottom"><a href="https://webontwikkelaar.nl/en">{% sprite 'webontwikkelaar' %} webontwikkelaar.nl</a></p>
-        </section>
-
-        <section>
-        <h3>Links</h3>
-            <ul class="links">
-                <li><a href="https://github.com/edwinm/" rel="me">{% sprite 'github' 32 32 %} Github</a></li>
-                <li><a href="https://mastodon.social/@edwin" rel="me">{% sprite 'mastodon' 32 32 %} Mastodon</a></li>
-                <li><a href="https://www.linkedin.com/in/edwinm/" rel="me">{% sprite 'linkedin' %} LinkedIn</a></li>
-                <li><a href="https://edwinm.picflow.com/" rel="me">{% sprite 'picflow' 22 32 %} Picflow – photography</a></li>
-                <li><a href="https://www.printables.com/@edwinm" rel="me">{% sprite 'printables' 22 32 %} Printables – 3D prints</a></li>
-                <li><a href="https://www.hackster.io/edwinm" rel="me">{% sprite 'hackster' 36 30 %} Hackster.io – electronics</a></li>
-                <li><a href="mailto:edwin@bitstorm.org">{% sprite 'envelope' %} edwin@bitstorm.org</a></li>
-                <li><a href="https://bitstorm.org/weblog/rss.xml">{% sprite 'rss' %} RSS feed</a></li>
-            </ul>
-        </section>
+            <section>
+            <h3>Links</h3>
+                <ul class="links">
+                    <li><a href="https://github.com/edwinm/" rel="me">{% sprite 'github' 32 32 %} Github</a></li>
+                    <li><a href="https://mastodon.social/@edwin" rel="me">{% sprite 'mastodon' 32 32 %} Mastodon</a></li>
+                    <li><a href="https://www.linkedin.com/in/edwinm/" rel="me">{% sprite 'linkedin' %} LinkedIn</a></li>
+                    <li><a href="https://edwinm.picflow.com/" rel="me">{% sprite 'picflow' 22 32 %} Picflow – photography</a></li>
+                    <li><a href="https://www.printables.com/@edwinm" rel="me">{% sprite 'printables' 22 32 %} Printables – 3D prints</a></li>
+                    <li><a href="https://www.hackster.io/edwinm" rel="me">{% sprite 'hackster' 36 30 %} Hackster.io – electronics</a></li>
+                    <li><a href="mailto:edwin@bitstorm.org">{% sprite 'envelope' %} edwin@bitstorm.org</a></li>
+                    <li><a href="https://bitstorm.org/weblog/rss.xml">{% sprite 'rss' %} RSS feed</a></li>
+                </ul>
+            </section>
+        </div>
     </div>
 </aside>
 

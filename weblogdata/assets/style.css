@@ -134,6 +134,10 @@ blockquote {
     color: black;
 }
 
+.side-menu {
+    view-transition-name: side-menu;
+}
+
 main {
     view-transition-name: main;
 }
