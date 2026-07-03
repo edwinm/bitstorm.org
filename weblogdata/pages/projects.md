@@ -1,5 +1,5 @@
 ---
-title: Edwin Martin’s Side Projects
+title: Edwin Martin’s Side Projects and other work
 layout: page
 permalink: /edwin/projects.html
 eleventyExcludeFromCollections: true
@@ -13,6 +13,12 @@ Originally built for the Dutch-speaking community, but fully available in Englis
 
 - [webontwikkelaar.nl](https://webontwikkelaar.nl/en)
 - [webontwikkelaar.nl source code](https://github.com/edwinm/webontwikkelaar.nl)
+
+### 2023 – Interview about Google Lighthouse
+
+DIP interviewed me about website performance and Google Lighthouse in particular.
+
+- [Frontend specialist Edwin Martin over Google Lighthouse](https://www.linkedin.com/pulse/frontend-specialist-edwin-martin-over-google-17hye/)
 
 ### 2020 – Game of Life
 
