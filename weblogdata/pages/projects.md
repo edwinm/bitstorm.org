@@ -194,4 +194,4 @@ My Ranx’ Hotlist thus became the first homepage. It is included in the [XS4ALL
 I wanted to write a game for my Atari ST, for which I needed sprites (small images), so I built a sprite editor,
 which became a project on its own.
 
-- [SPR_EDIT Java source code](https://github.com/edwinm/SPR_EDIT)
+- [SPR_EDIT GFA-Basic source code](https://github.com/edwinm/SPR_EDIT)
