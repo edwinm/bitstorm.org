@@ -1,10 +1,12 @@
 ---
-title: Edwin Martin’s Side Projects and other work
+title: Edwin Martin’s Side Projects (and some other work)
 layout: page
 permalink: /edwin/projects.html
 eleventyExcludeFromCollections: true
 description: Side Projects made by Edwin Martin
 ---
+
+*"The long tail: the many niches that each draw little traffic, but are collectively worth keeping."*
 
 ### 2026 – Webontwikkelaar
 
