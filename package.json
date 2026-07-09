@@ -10,7 +10,6 @@
     "build": "npx @11ty/eleventy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "cd extractor; node extract.js",
-    "brotli": "npx brotli-cli compress -v --glob \"web/**/*.{js,css,svg,ico,html}\"",
     "sprite": "svg-sprite --config weblogdata/svg-sprite.config.json  weblogdata/assets/icons/*.svg"
   },
   "author": "Edwin Martin",

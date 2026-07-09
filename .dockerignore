@@ -1,0 +1,12 @@
+node_modules
+web
+web_test_build
+extractor
+.git
+.idea
+.claude
+.DS_Store
+Dockerfile
+.dockerignore
+deploy.sh
+todo
