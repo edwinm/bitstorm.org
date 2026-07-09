@@ -10,7 +10,8 @@
     "build": "npx @11ty/eleventy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "cd extractor; node extract.js",
-    "sprite": "svg-sprite --config weblogdata/svg-sprite.config.json  weblogdata/assets/icons/*.svg"
+    "sprite": "svg-sprite --config weblogdata/svg-sprite.config.json  weblogdata/assets/icons/*.svg",
+    "docker": "docker build -t bitstorm . && docker run --rm -p 8087:80 bitstorm"
   },
   "author": "Edwin Martin",
   "license": "None",
