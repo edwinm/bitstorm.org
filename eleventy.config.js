@@ -5,6 +5,8 @@ import Image from "@11ty/eleventy-img";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
+import brotliPlugin from "./eleventy-plugins/brotli.js";
+
 async function imageShortcode(src, caption, alt, size = 200) {
   const path = this.page.filePathStem.split("/")[2];
 
@@ -127,6 +129,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(brotliPlugin);
 
   eleventyConfig.addPassthroughCopy("weblogdata/assets");
 
