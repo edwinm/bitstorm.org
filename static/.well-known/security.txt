@@ -1,0 +1,6 @@
+# Spec: RFC 9116
+
+Expires: 2028-07-01T00:00:00+00:00
+Contact: mailto:edwin@bitstorm.org
+Preferred-Languages: nl,en
+Canonical: https://bitstorm.org/.well-known/security.txt
