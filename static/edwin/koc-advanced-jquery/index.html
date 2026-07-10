@@ -398,21 +398,39 @@ $(function() {
 $(function() {
 	var startPosition = true;
 	var func;
+
+	// Predefined easing formulas as real functions (no eval, so this works under
+	// the CSP). Keys must match the <li> formula text below exactly.
+	var easings = {
+		'c*t/d+b': function (x, t, b, c, d) { return c*t/d+b; },
+		'c*((t=t/d-1)*t*t + 1) + b': function (x, t, b, c, d) { return c*((t=t/d-1)*t*t + 1) + b; },
+		'-c * Math.cos(t/d * (Math.PI/2)) + c + b': function (x, t, b, c, d) { return -c * Math.cos(t/d * (Math.PI/2)) + c + b; },
+		'c * Math.sqrt(1 - (t=t/d-1)*t) + b': function (x, t, b, c, d) { return c * Math.sqrt(1 - (t=t/d-1)*t) + b; },
+		'c*(t/=d)*t*t*t*t + b': function (x, t, b, c, d) { return c*(t/=d)*t*t*t*t + b; },
+		'c*t/d*((Math.cos(t/d * (Math.PI/2))+1))*1.1-0.1+b': function (x, t, b, c, d) { return c*t/d*((Math.cos(t/d * (Math.PI/2))+1))*1.1-0.1+b; }
+	};
+
+	function setEasing(formula) {
+		var fn = easings[$.trim(formula)];
+		if (fn) {
+			jQuery.easing.myEasingFunction = fn;
+			func = true;
+		}
+	}
+
 	$('#easing-go').click(function() {
 		$('#easing-block').animate({'left': startPosition ? 496 : 4}, 'slow', func ? 'myEasingFunction' : null);
 		startPosition = !startPosition;
 	});
 	$('#easing').bind('blur', function() {
-		func = $('#easing').val();
-		if (func) {
-			var evalStr = 'jQuery.easing.myEasingFunction = function (x, t, b, c, d) {return '+func+';};';
-			eval(evalStr);
-		}
+		setEasing($('#easing').val());
 	});
 	
 	$('#easing-functions li').each(function() {
 		$(this).click(function() {
-			$('#easing').val($(this).text()).blur();
+			var formula = $(this).text();
+			$('#easing').val(formula);
+			setEasing(formula);
 		})
 	})
 });
