@@ -35,11 +35,6 @@ $(function() {
 	}
 
 	$.setMarker();
-
-	// syntax highlighter
-	SyntaxHighlighter.config.clipboardSwf = 'syntaxhighlighter/scripts/clipboard.swf';
-	SyntaxHighlighter.config.tagName = 'code';
-	SyntaxHighlighter.all();
 });
 
 /**

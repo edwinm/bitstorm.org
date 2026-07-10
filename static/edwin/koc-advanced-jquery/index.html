@@ -11,13 +11,6 @@
 <link rel="stylesheet" type="text/css" href="presentor.css" title="main">
 <script language="javascript" type="text/javascript" src="presentor.js"></script>
 
-<script type="text/javascript" src="syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushPlain.js"></script>
-<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shThemeEdwin.css"/>
 	<script defer data-domain="bitstorm.org" src="https://data.bitstorm.org/js/script.js"></script>
 </head>
 
@@ -122,21 +115,21 @@
 </style>
 
 <h3 class="label">html</h3>
-<code class="brush: html;">&lt;p>Time is &lt;span class='date'>&lt;/span>&lt;/p&gt;
+<code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Time is <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>date<span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 </code>
 
 <h3 class="label">css</h3>
-<code class="brush: css;">.highlight {
-	font-weight: bold;
-	color: orange;
-}
+<code class="language-css"><span class="token selector">.highlight</span> <span class="token punctuation">{</span>
+	<span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+	<span class="token property">color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">$(function() {
-	$('p span.date').addClass('highlight')
-		.html(new Date().toLocaleTimeString());
-});
+<code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'p span.date'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'highlight'</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 
 <div class="out">
@@ -155,22 +148,22 @@ $(function() {
 <h2>.end()</h2>
 
 <h3 class="label">html</h3>
-<code class="brush: html;">
-&lt;div id="larch"&gt;&lt;/div&gt;
+<code class="language-markup">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>larch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$(function() {
-	$('#larch')
-		.append('&lt;h3>The Larch&lt;/h3>')
-		.find('h3')
-			.css('color', 'blue')
-			.end()
-		.append('&lt;p>How to Recognise Different Types of Trees From Quite a Long Way Away.&lt;/p>')
-		.find('p')
-			.css('color', 'green');
-});
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#larch'</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;h3>The Larch&lt;/h3>'</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'h3'</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'color'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;p>How to Recognise Different Types of Trees From Quite a Long Way Away.&lt;/p>'</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'color'</span><span class="token punctuation">,</span> <span class="token string">'green'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 
 <div class="out">
@@ -191,17 +184,17 @@ $('#larch').append('<h3>The Larch</h3>').find('h3').css('color', 'blue').end().a
 <h2>Plugins</h2>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-jQuery.fn.pluginName = function() {
-	return this.each(function() {
-		// Do something with $(this)
-	}
-};
+<code class="language-javascript">
+jQuery<span class="token punctuation">.</span>fn<span class="token punctuation">.</span><span class="token function-variable function">pluginName</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// Do something with $(this)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$('p').pluginName();
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pluginName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 </div>
 
@@ -209,46 +202,46 @@ $('p').pluginName();
 <h2>Plugin example</h2>
 
 <h3 class="label">html</h3>
-<code class="brush: html;">
-&lt;ul id="larch-trees">
-	&lt;li>Himalayan Larch&lt;/li>
-	&lt;li>Japanese Larch&lt;/li>
-	&lt;li>Yunnan Larch&lt;/li>
-&lt;/ul>
+<code class="language-markup">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>larch-trees<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Himalayan Larch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Japanese Larch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Yunnan Larch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
 </code>
 
 <h3 class="label">css</h3>
-<code class="brush: css;">
-#larch-trees li {
-	width: 170px;
-	background-color: pink;
-	padding: 3px;
-	list-style-type: none;
-	margin-bottom: 2px;
-}
+<code class="language-css">
+<span class="token selector">#larch-trees li</span> <span class="token punctuation">{</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 170px<span class="token punctuation">;</span>
+	<span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+	<span class="token property">padding</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+	<span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+	<span class="token property">margin-bottom</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-jQuery.fn.animatedSelector = function() {
-	return this.each(function() {
-		$(this).toggle(
-			function() {
-				$(this).animate({width: 250}, 'fast');
-			},
-			function() {
-				$(this).animate({width: 170}, 'fast');
-			}
-		);
-	});
-}
+<code class="language-javascript">
+jQuery<span class="token punctuation">.</span>fn<span class="token punctuation">.</span><span class="token function-variable function">animatedSelector</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span>
+			<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">250</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'fast'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span><span class="token punctuation">,</span>
+			<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">170</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'fast'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$(function() {
-	$('#larch-trees li').animatedSelector();
-})
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#larch-trees li'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">animatedSelector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code>
 
 <script>
@@ -288,16 +281,16 @@ $(function() {
 <p>Miscelaneous (CSS3) pseudo-selectors: :first, :last, :not(selector), :even, :odd, :eq(index)...</p>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">$(function() {
-	$.expr[':'].findStar = function(elem) {
-		return $(elem).html().indexOf('(*)') != -1;
-	};
-});
+<code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	$<span class="token punctuation">.</span>expr<span class="token punctuation">[</span><span class="token string">':'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">findStar</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">elem</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token function">$</span><span class="token punctuation">(</span>elem<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'(*)'</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$('#larix tr:findStar td').addClass('highlight')
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#larix tr:findStar td'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'highlight'</span><span class="token punctuation">)</span>
 </code>
 
 
@@ -336,15 +329,15 @@ $(function() {
 <p>Not live:</p>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$(function() {
-	$('#live1 li').bind('click', function() {
-		$(this).text(parseInt($(this).text())+1);
-	});
-	$('#more1').click(function() {
-		$('#live').append('&lt;li>1&lt;/li>');
-	});
-});
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#live1 li'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#more1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#live'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;li>1&lt;/li>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 
 <ul id="live1">
@@ -371,15 +364,15 @@ $(function() {
 <p>Live:</p>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$(function() {
-	$('#live2 li').live('click', function() {
-		$(this).text($(this).text()*1+1);
-	});
-	$('#more2').click(function() {
-		$('#live2').append('&lt;li>1&lt;/li>');
-	});
-});
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#live2 li'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#more2'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#live2'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;li>1&lt;/li>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 
 <ul id="live2">
@@ -484,33 +477,33 @@ $(function() {
 
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-var title = $('rss channel title', xmlDocument).text();
+<code class="language-javascript">
+<span class="token keyword">var</span> title <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'rss channel title'</span><span class="token punctuation">,</span> xmlDocument<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code>
 </div>
 
 <div class="slide">
 <h2>Feed fetcher-parser-renderer jQuery-plugin</h2>
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$(function() {
-	$('#feed').renderFeed('feed.xml');
-});
-jQuery.fn.renderFeed = function(location) {
-	return this.each(function() {
-		var el = $(this);
-		$.get(location, function(xml) {
-			var ul = $('&lt;ul>');
-			$('rss channel item', xml).each(function() {
-				var a = $('&lt;a>')
-					.attr('href', $('link', this).text())
-					.text($('title', this).text());
-				ul.append($('&lt;li>').append(a));
-			});
-			el.append(ul);
-		});
-	});
-};
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#feed'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">renderFeed</span><span class="token punctuation">(</span><span class="token string">'feed.xml'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span>fn<span class="token punctuation">.</span><span class="token function-variable function">renderFeed</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">location</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">var</span> el <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>location<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">xml</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">var</span> ul <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;ul>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'rss channel item'</span><span class="token punctuation">,</span> xml<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;a>'</span><span class="token punctuation">)</span>
+					<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'href'</span><span class="token punctuation">,</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'link'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+					<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				ul<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;li>'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			el<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>ul<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code>
 
 <div id="feed" class="out">
@@ -560,50 +553,50 @@ jQuery.fn.renderFeed = function(location) {
 <h2>Animated addClass</h2>
 
 <h3 class="label">html</h3>
-<code class="brush: html;">
-&lt;ul id="larch-trees2">
-	&lt;li>Himalayan Larch&lt;/li>
-	&lt;li>Japanese Larch&lt;/li>
-	&lt;li>Yunnan Larch&lt;/li>
-&lt;/ul>
+<code class="language-markup">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>larch-trees2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Himalayan Larch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Japanese Larch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Yunnan Larch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
 </code>
 
 <h3 class="label">css</h3>
-<code class="brush: css;">
-#larch-trees2 li {
-	width: 170px;
-	background-color: pink;
-	padding: 3px;
-	list-style-type: none;
-	margin-bottom: 2px;
-}
-#larch-trees2 li.selected {
-	width: 250px;
-	background-color: red;
-}
+<code class="language-css">
+<span class="token selector">#larch-trees2 li</span> <span class="token punctuation">{</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 170px<span class="token punctuation">;</span>
+	<span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+	<span class="token property">padding</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+	<span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+	<span class="token property">margin-bottom</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#larch-trees2 li.selected</span> <span class="token punctuation">{</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+	<span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-jQuery.fn.animatedSelector2 = function() {
-	return this.each(function() {
-		$(this).toggle(
-			function() {
-				$(this).addClass('selected', 'fast');
-			},
-			function() {
-				$(this).removeClass('selected', 'fast');
-			}
-		);
-	});
-}
+<code class="language-javascript">
+jQuery<span class="token punctuation">.</span>fn<span class="token punctuation">.</span><span class="token function-variable function">animatedSelector2</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span>
+			<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'selected'</span><span class="token punctuation">,</span> <span class="token string">'fast'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span><span class="token punctuation">,</span>
+			<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">'selected'</span><span class="token punctuation">,</span> <span class="token string">'fast'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code>
 
 <h3 class="label">javascript</h3>
-<code class="brush: javascript;">
-$(function() {
-	$('#larch-trees2 li').animatedSelector2();
-})
+<code class="language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#larch-trees2 li'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">animatedSelector2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code>
 
 <script>

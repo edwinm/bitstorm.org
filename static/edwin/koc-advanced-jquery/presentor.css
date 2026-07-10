@@ -43,6 +43,35 @@ code {
 	margin-bottom: 1em;
 	line-height: 130%;
 }
+/* Prism token colours (highlighting baked into the HTML at build time,
+   replacing the eval-based SyntaxHighlighter which the CSP blocks). */
+code .token.comment,
+code .token.prolog,
+code .token.doctype,
+code .token.cdata { color: #708090; }
+code .token.punctuation { color: #555; }
+code .token.tag,
+code .token.boolean,
+code .token.number,
+code .token.constant,
+code .token.symbol,
+code .token.property { color: #905; }
+code .token.selector,
+code .token.attr-name,
+code .token.string,
+code .token.char,
+code .token.builtin { color: #397300; }
+code .token.operator,
+code .token.entity,
+code .token.url,
+code .token.atrule,
+code .token.attr-value,
+code .token.keyword { color: #07a; }
+code .token.function,
+code .token.class-name { color: #dd4a68; }
+code .token.regex,
+code .token.important,
+code .token.variable { color: #e90; }
 em {
 	font-style: normal;
 	background-color: yellow;
