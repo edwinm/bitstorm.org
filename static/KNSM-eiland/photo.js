@@ -1,7 +1,4 @@
 $(function() {
-	if ($.browser.msie && $.browser.version < 8) {
-		alert("Helaas, u gebruikt een verouderde browser. Gebruik a.u.b een moderne browser zoals Internet Explorer 8, Firefox, Chrome of Safari");
-	}
 	$('#slider li').click(function() {
 		var li = $(this);
 		var a = li.find('a');
@@ -42,7 +39,7 @@ $(function() {
 	});
 
 	function move(d) {
-		var len = $('#slider li').size();
+		var len = $('#slider li').length;
 		var curIndex = $('#slider li.selected').index();
 		curIndex += d;
 		if (curIndex >= 0 && curIndex < len) {
@@ -54,7 +51,7 @@ $(function() {
 	function adjustSlider() {
 		var curLi = $('#slider li.selected');
 		var curLiX = curLi.position().left;
-		var slideX = $('#slider').attr('scrollLeft');
+		var slideX = $('#slider').scrollLeft();
 		if (curLiX < 0) {
 			$('#slider').stop().animate({'scrollLeft': slideX + curLiX - 10}, 300);
 		} else if(curLiX + curLi.width() > 1000) {
@@ -63,7 +60,7 @@ $(function() {
 	}
 
 	function setNavButtons() {
-		var len = $('#slider li').size();
+		var len = $('#slider li').length;
 		var curIndex = $('#slider li.selected').index();
 
 		if (curIndex <= 0) {
