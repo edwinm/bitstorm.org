@@ -30,8 +30,9 @@ jQuery(function($) {
 	function getRss(next) {
 		var feed = $('#feeds').attr('data-feed-url');
 		var apikey = "ABQIAAAA-1ApaLEvR6NDNIyWFGKEYRQO7ssAPC1kOSPo312uC5iafqUFvBSkQ3Qt2re4PPUEKNR3PVt5d-6HkQ";
-		var url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q="+encodeURIComponent(feed)+"&num=1&key="+apikey+"&callback=?";
-		$.getJSON(url, function(data) {
+		var url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q="+encodeURIComponent(feed)+"&num=1&key="+apikey;
+		// jQuery 4.0 removed callback=? JSONP auto-promotion; request JSONP explicitly
+		$.ajax({url: url, dataType: "jsonp"}).done(function(data) {
 			var entry = data.responseData.feed.entries[0];
 			console.log('entry', entry)
 			$('#feeds').append($('<h4>').text("Last article of "+data.responseData.feed.title))
@@ -59,9 +60,10 @@ jQuery(function($) {
 	 */
 	function getTags(next) {
 		var hash = $('#feeds a').attr('data-md5hash');
-		var url = "http://feeds.delicious.com/v2/json/urlinfo/"+hash+"?callback=?";
+		var url = "http://feeds.delicious.com/v2/json/urlinfo/"+hash;
 		var tags = "";
-		$.getJSON(url, function(data) {
+		// jQuery 4.0 removed callback=? JSONP auto-promotion; request JSONP explicitly
+		$.ajax({url: url, dataType: "jsonp"}).done(function(data) {
 			for(tag in data[0].top_tags) {
 				tags += " &bull; "+tag;
 			}

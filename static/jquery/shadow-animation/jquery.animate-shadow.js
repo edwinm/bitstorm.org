@@ -65,7 +65,7 @@ jQuery(function($, undefined) {
 				for(i = 0; i < maxShadowCount; i++) {
 					p_end[i] = $.extend({}, p_begin[i], p_end[i]);
 					if (p_begin[i]) {
-						if (!('color' in p_begin[i]) || $.isArray(p_begin[i].color) === false) {
+						if (!('color' in p_begin[i]) || Array.isArray(p_begin[i].color) === false) {
 							p_begin[i].color = p_end[i].color || [0, 0, 0, 0];
 						}
 					} else {
@@ -188,7 +188,7 @@ jQuery(function($, undefined) {
 		function normalizeShadow(shadow) {
 			if ($.isPlainObject(shadow)) {
 				var i, sColor, cLength = 0, color = [];
-				if ($.isArray(shadow.color)) {
+				if (Array.isArray(shadow.color)) {
 					sColor = shadow.color;
 					cLength = sColor.length;
 				}
