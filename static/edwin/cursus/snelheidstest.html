@@ -62,7 +62,7 @@ function beweeg() {
 		dx = -dx;
 	xPositie = xPositie + dx;
 	getStyle('mijnlayer').left = xPositie;
-	timer1 = setTimeout( 'beweeg()', 0 );
+	timer1 = setTimeout( beweeg, 0 );
 	bewegingen++;
 }
 function stop() {
@@ -73,7 +73,7 @@ function showSpeed() {
 	var date = new Date();
 	var currentMsecs = date.getTime();
 	writeText( 'fps', 'Speed: '+Math.round(bewegingen*100000/(currentMsecs-startMsecs))/100+' frames per second.' );
-	timer2 = setTimeout( 'showSpeed()', 1000 );
+	timer2 = setTimeout( showSpeed, 1000 );
 }
 </script>
 

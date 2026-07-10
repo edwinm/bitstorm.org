@@ -156,7 +156,8 @@ Layer.prototype.zwerf = function() {
 	newY = this.getTop() + dY;
 	if ( newX <= this.boundsRight && newX >= this.boundsLeft && newY <= this.boundsBottom && newY >= this.boundsTop )
 		this.setPosition( newX, newY );
-	this.timer = setTimeout( "obj."+this.name+".zwerf()", 40 );
+	var self = this;
+	this.timer = setTimeout( function() { self.zwerf(); }, 40 );
 }
 
 Layer.prototype.move = function() {
@@ -169,7 +170,8 @@ Layer.prototype.move = function() {
 	newY = this.orgY + (this.destY-this.orgY)*this.step*40/this.moveTime;
 	this.setPosition( newX, newY );
 	this.step++;
-	this.timer = setTimeout( "obj['"+this.name+"'].move()", 40 );
+	var self = this;
+	this.timer = setTimeout( function() { self.move(); }, 40 );
 }
 
 Layer.prototype.stop = function() {

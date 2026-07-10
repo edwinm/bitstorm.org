@@ -93,7 +93,7 @@ function mon() {
 	clearTimeout( klokje )
 }
 function moff() {
-	klokje = setTimeout( 'sluitMenu();menuopen=null', 1000 )
+	klokje = setTimeout( function() { sluitMenu(); menuopen = null; }, 1000 )
 }
 function go( lokatie ) {
 	document.location = lokatie

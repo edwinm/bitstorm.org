@@ -144,13 +144,13 @@ function fire(evt) {
 	if ( !fired && playing ) {
 		getStyle('beam').left = mouseX-1;
 		getStyle('beam').visibility = 'visible';
-		setTimeout( 'firegone()', 700 );
+		setTimeout( firegone, 700 );
 		if ( mouseX > alienXPos && mouseX < alienXPos + 63 ) {
 			clearTimeout(klokje);
 			score += 100;
 			writeText( 'score', '<p class="score">Score: '+ score + '</p>');
 			setalienimg( "deadalien.gif" );
-			setTimeout( 'newalien()', 500 );
+			setTimeout( newalien, 500 );
 		}
 		fired = true;
 	}
@@ -167,7 +167,7 @@ function aliendown() {
 	 } else {
 		alienYPos += alienDY;
 		getStyle('alien').top = alienYPos;
-		klokje = setTimeout( 'aliendown()', 100 );
+		klokje = setTimeout( aliendown, 100 );
 	}
 }
 function newalien() {
@@ -217,7 +217,7 @@ function init() {
 function moveSky() {
 	skyYPos++;
 	getStyle('veld').backgroundPosition = '0 '+skyYPos;
-	setTimeout( 'moveSky()', 100 );
+	setTimeout( moveSky, 100 );
 }
 </script>
 

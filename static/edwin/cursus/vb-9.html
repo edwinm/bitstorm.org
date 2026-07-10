@@ -25,14 +25,14 @@ function heen() {
 	if ( xpositie < 300 ) {
 		xpositie = xpositie + 5
 		getStyle('mijnlayer').left = xpositie
-		setTimeout( 'heen()', 100 )
+		setTimeout( heen, 100 )
 	}
 }
 function terug() {
 	if ( xpositie > 0 ) {
 		xpositie = xpositie - 5
 		getStyle('mijnlayer').left = xpositie
-		setTimeout( 'terug()', 100 )
+		setTimeout( terug, 100 )
 	}
 }
 </script>

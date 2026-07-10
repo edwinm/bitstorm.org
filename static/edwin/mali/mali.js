@@ -13,14 +13,14 @@ function heen() {
 	if ( xpos[voor] < xCenter ) {
 		xpos[voor] += 3;
 		getStyle("foto"+voor).left = px(xpos[voor]);
-		klokje1 = setTimeout( "heen()", 10 );
+		klokje1 = setTimeout( heen, 10 );
 	}
 }
 function terug() {
 	if ( xpos[1-voor] > -450 ) {
 		xpos[1-voor] -= 3;
 		getStyle("foto"+(1-voor)).left = px(xpos[1-voor]);
-		klokje2 = setTimeout( "terug()", 10 );
+		klokje2 = setTimeout( terug, 10 );
 	}
 }
 function stop() {
@@ -48,7 +48,7 @@ function textEffect() {
 			showThumbnails();
 			return;
 		}
-		klokjeText = setTimeout( "textEffect()", 10 );
+		klokjeText = setTimeout( textEffect, 10 );
 		nText++;
 }
 var nThumb = 0;
@@ -57,7 +57,7 @@ function showThumbnails() {
 		if ( nThumb > (n-1)*30 && nThumb <= (n-1)*30+68 )
 			getStyle("f"+n).left = px(nThumb-(n-1)*30-45);
 	}
-	klokjeThumb = setTimeout( "showThumbnails()", 10 );
+	klokjeThumb = setTimeout( showThumbnails, 10 );
 	nThumb++;
 }
 function thumbMouseover(e) {
@@ -102,7 +102,7 @@ function doLum() {
 	if ( done )
 		klokjeLum = null;
 	else
-		klokjeLum = setTimeout( "doLum()", 10 );
+		klokjeLum = setTimeout( doLum, 10 );
 }
 function laad( nFoto ) {
 	stop();
@@ -147,7 +147,7 @@ function scroll() {
 	pos += dy;
 	getStyle("selectie").top = px(pos);
 	getStyle( "selectie" ).clip='rect('+(20-pos)+'px auto '+(selHeight-pos)+'px auto)';
-	klokjeScroll = setTimeout( "scroll()", 40 );
+	klokjeScroll = setTimeout( scroll, 40 );
 }
 function upMouseover() {
 	dy = 2;
