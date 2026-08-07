@@ -1,7 +1,7 @@
 ---
 title: "Carbonium, a lightweight library to manipulate the DOM"
 date: 2020-08-27T15:24
-tags: featured
+tags: [featured]
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdk73om2k"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "The JavaScript engineer and the front-end UI developer"
 date: 2019-08-18T14:14
-tags: featured
+tags: [featured]
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkg6bh2m"
 ---
 

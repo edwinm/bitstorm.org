@@ -5,7 +5,7 @@ media:
   - image: "neon-icons.png"
     caption: ""
     alt: "Wall with web icon shaped neon lamps"
-tags: featured
+tags: [featured]
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdj3wjq2b"
 ---
 

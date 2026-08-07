@@ -5,7 +5,7 @@ media:
   - image: "svg-sprite.png"
     caption: ""
     alt: "Wall of wooden blocks with web related images"
-tags: featured
+tags: [featured]
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdj7dt42q"
 ---
 

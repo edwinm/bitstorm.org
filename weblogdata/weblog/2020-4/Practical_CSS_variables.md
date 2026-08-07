@@ -1,7 +1,7 @@
 ---
 title: "Practical CSS variables"
 date: 2020-04-25T17:31
-tags: featured
+tags: [featured]
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkclry26"
 ---
 

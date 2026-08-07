@@ -1,7 +1,6 @@
 ---
 title: "Prettier, the Opinionated Code Formatter"
 date: 2019-01-19T15:41
-tags: 
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkkb4x2m"
 ---
 

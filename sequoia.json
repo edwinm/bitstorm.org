@@ -1,7 +1,7 @@
 {
   "identity": "edwinm1.bsky.social",
   "$schema": "https://tangled.org/stevedylan.dev/sequoia/raw/main/sequoia.schema.json",
-  "siteUrl": "https://bitstorm.org/",
+  "siteUrl": "https://bitstorm.org",
   "contentDir": "weblogdata/weblog",
   "publicDir": "static",
   "outputDir": "web/weblog",
