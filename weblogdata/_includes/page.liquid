@@ -25,6 +25,12 @@
     {% endif %}
     <link rel="me" href="https://mastodon.social/@edwin">
     <meta name="fediverse:creator" content="@edwin@mastodon.social">
+
+    {% if atUri %}
+        <link rel="site.standard.document" href="{{ atUri }}">
+    {% endif %}
+
+
     <meta name="text-scale" content="scale" />
     <link rel="alternate" type="application/rss+xml" title="{{ global.site_name }}" href="https://bitstorm.org/weblog/rss.xml" />
 

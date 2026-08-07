@@ -2,6 +2,7 @@
 title: "How to use the jQuery queue function"
 date: 2011-02-12T14:20
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdm4gna2f"
 ---
 
 Last week I was at a meeting of the JavaScript user group <a href="http://groups.google.com/group/amsterdam-js">Amsterdam.js</a> and Michiel Kalkman talked about the <a href="https://github.com/michiel/sequencer-js">sequencer</a> he wrote. The idea is very good: it let's you write loosely coupled software when using callbacks. Then I remembered jQuery has this same functionality build in.

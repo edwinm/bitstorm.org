@@ -2,6 +2,7 @@
 title: "ECMAScript2015, WebAssembly and the future of JavaScript"
 date: 2015-06-22T22:58
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlbvwu2k"
 ---
 
 Last week, just after the 20th birthday of JavaScript, two important announcements have been made.

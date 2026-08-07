@@ -6,6 +6,7 @@ media:
     caption: ""
     alt: "Wall of wooden blocks with web related images"
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdj7dt42q"
 ---
 
 If you use a lot of SVG icons on your website, it is better for the performance of the site to merge them into one file:

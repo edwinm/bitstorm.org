@@ -5,6 +5,7 @@ media:
   - image: "girl_working_on_laptop_in_home_one_giant_monster.webp"
     caption: "Protect computer users against threats"
     alt: "Drawing of a girl working on laptop with a monster outside looking at her" 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjriuu2q"
 ---
 
 Should frontend web developers worry about security?

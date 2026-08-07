@@ -2,6 +2,7 @@
 title: "Practical CSS variables"
 date: 2020-04-25T17:31
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkclry26"
 ---
 
 In HTML and JavaScript, you can easily apply some styling with the `style` attribute or property. But if you just want to pass a value, like a color, `style` falls short.

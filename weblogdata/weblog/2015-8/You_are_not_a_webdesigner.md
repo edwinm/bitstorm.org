@@ -2,6 +2,7 @@
 title: "You are not a webdesigner"
 date: 2015-08-30T01:27
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdl3dta2b"
 ---
 
 <i>"The saddest thing of being a frontend developer is getting designs that could've been for print. Every time."</i>

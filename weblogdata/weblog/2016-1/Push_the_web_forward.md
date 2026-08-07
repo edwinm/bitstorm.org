@@ -2,6 +2,7 @@
 title: "Push the web forward"
 date: 2016-01-17T21:59
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkxucb2i"
 ---
 
 On January 12th, 2016, [Microsoft stopped supporting Internet Explorer 9 and 10](https://www.microsoft.com/en-us/WindowsForBusiness/End-of-IE-support). As a webdeveloper, it might be time to stop supporting IE9 and IE10 too. At the time of writing, in January 2016, the [worldwide market share of IE9 and IE10 is less than 1.3% for each browser](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201501-201601). Check the statistics from your own site, because the IE usage on your site might even be less.

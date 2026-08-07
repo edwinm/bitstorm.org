@@ -6,6 +6,7 @@ media:
        caption: "Love is in the air"
        alt: "Screenshot of the js1k demo"
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlskwy26"
 ---
 
 Currently the fourth [js1k competition](http://js1k.com/2012-love/) is open. It's organized by Peter van der Zee and it's besides a competition, also a showcase of what can be done with 1 kilobyte of JavaScript. Almost all entries use canvas to show off some graphics. This year the theme is love.

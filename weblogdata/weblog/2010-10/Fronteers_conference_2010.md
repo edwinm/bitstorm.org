@@ -6,6 +6,7 @@ media:
        caption: "Overview of the big room in Tuschinski"
        alt: ""
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmgnjf2u"
 ---
 
 

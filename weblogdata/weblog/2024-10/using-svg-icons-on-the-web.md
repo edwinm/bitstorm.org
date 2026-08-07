@@ -6,6 +6,7 @@ media:
     caption: ""
     alt: "Wall with web icon shaped neon lamps"
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdj3wjq2b"
 ---
 
 This article describes how to give monochrome SVG icons different colors with CSS and how to apply some effects.

@@ -2,6 +2,7 @@
 title: "Vibe coding with Firebase Studio"
 date: 2025-06-14T22:02
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdiutxs25"
 ---
 
 Last April (2025), Google [introduced](https://firebase.blog/posts/2025/04/introducing-firebase-studio/) Firebase Studio.

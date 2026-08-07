@@ -2,6 +2,7 @@
 title: "Miq, the micro jQuery like library"
 date: 2016-03-30T12:59
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkuj7t2o"
 ---
 
 Today I released miq, a tiny jQuery like library. Since the first release of jQuery a lot has changed: lots of array functions, promises, querySelectorAll, CSS transformations... and jQuery can only partially use them because the makers want to keep it backwards compatible.

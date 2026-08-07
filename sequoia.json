@@ -1,0 +1,15 @@
+{
+  "identity": "edwinm1.bsky.social",
+  "$schema": "https://tangled.org/stevedylan.dev/sequoia/raw/main/sequoia.schema.json",
+  "siteUrl": "https://bitstorm.org/",
+  "contentDir": "weblogdata/weblog",
+  "publicDir": "static",
+  "outputDir": "web/weblog",
+  "pathPrefix": "/weblog",
+  "publicationUri": "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.publication/3mshz5eputb2o",
+  "pdsUrl": "https://shimeji.us-east.host.bsky.network",
+  "frontmatter": {
+    "publishDate": "date"
+  },
+  "publishContent": true
+}

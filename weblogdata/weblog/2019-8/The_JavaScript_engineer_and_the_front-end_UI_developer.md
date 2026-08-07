@@ -2,6 +2,7 @@
 title: "The JavaScript engineer and the front-end UI developer"
 date: 2019-08-18T14:14
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkg6bh2m"
 ---
 
 Before the year 2000, people who made websites did it all: designing, programming, deployment, SEO et cetera. It didn't take long to figure out that programmers weren't great designers and designers weren't great programmers. Some people where great at both, but they where rare and a statistical coincidence. So the design and programming of websites where assigned to different roles.

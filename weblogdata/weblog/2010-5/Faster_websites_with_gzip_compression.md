@@ -2,6 +2,7 @@
 title: "Faster websites with gzip compression"
 date: 2010-05-10T16:33
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmu23z22"
 ---
 
 One of the best ways to improve the user experience of a website is to make sure it loads fast. In a <a href="http://blog.mozilla.com/metrics/2010/03/31/firefox-page-load-speed-part-i/">test done by Mozilla</a>, it also improves conversion. <a href="http://googleresearch.blogspot.com/2009/06/speed-matters.html">Research by Google</a> also shows advantages.

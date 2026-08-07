@@ -2,6 +2,7 @@
 title: "newClass - a class like wrapper around prototypal OOP"
 date: 2013-03-24T11:11
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlinta2f"
 ---
 
 I've done some JavaScript programming with both prototypal inheritance and the module pattern, both powerful concepts. What I didn't like about prototypal inheritance is the loosely coupled structure: the methods are defined seperate from the constructor. In that respect, class based languages like C++, Java and C# are more clear in my opinion.

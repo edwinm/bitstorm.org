@@ -5,6 +5,7 @@ media:
    - image: "home_office.png"
      caption: "Can AI help the frontend developer?"
      alt: "Drawing of a woman working on computer being assisted by a robot" 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjydt62d"
 ---
 
 Machine learning is a subfield of artificial intelligence that focuses on developing algorithms that are able to automatically learn and improve based on data. This technology can help front-end web developers by providing them with powerful tools and techniques to solve complex problems and improve and accelerate their work.

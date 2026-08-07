@@ -2,6 +2,7 @@
 title: "Deferred and promise in jQuery"
 date: 2012-01-25T21:19
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlvvld2o"
 ---
 
 Deferred and promise? What is this article about? Deferred and promise are part of jQuery since version 1.5 and they help in handling asynchronous functions like Ajax.

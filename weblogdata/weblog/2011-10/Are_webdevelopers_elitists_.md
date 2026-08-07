@@ -6,6 +6,7 @@ media:
        caption: "code = poetry"
        alt: "Christian Heilmann speaks at the Fronteers conference"
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlz5qo2y"
 ---
 
 The last couple of days I was at the <a href="http://fronteers.nl/congres/2011">Fronteers conference</a> in Amsterdam. These were amazing days.<br />

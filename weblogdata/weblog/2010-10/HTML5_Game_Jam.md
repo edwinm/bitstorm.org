@@ -6,6 +6,7 @@ media:
        caption: "Peter, Pornel and me working on the HTML5 Syndicate clone. Paul Irish was there, too."
        alt: ""
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmd6zb2i"
 ---
 
 

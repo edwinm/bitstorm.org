@@ -2,6 +2,7 @@
 title: "Drop support for Internet Explorer 8 and use these features"
 date: 2013-12-19T09:41
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlfbe32o"
 ---
 
 Webdevelopers had to wait more than ten years before IE6 became a marginal browser. Fortunately, with IE8, we don't have to wait that long. IE7 is already marginalized and IE8 almost, with [7% marketshare](http://gs.statcounter.com/#browser_version_partially_combined-ww-monthly-201212-201312), a number that will certainly drop the coming months. Microsoft [stopping support for XP in April 2014](http://www.microsoft.com/en-us/windows/enterprise/endofsupport.aspx) will certainly help.

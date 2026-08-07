@@ -2,6 +2,7 @@
 title: "Carbonium, a lightweight library to manipulate the DOM"
 date: 2020-08-27T15:24
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdk73om2k"
 ---
 
 This summer, I've been working on updating my [Game of Life](https://playgameoflife.com/) site. I looked at several JavaScript frameworks, but was not satisfied with the performance of any of them. I could've used my own [miq](https://github.com/edwinm/miq#readme) lilbrary, but that mimicks the jQuery API too much.

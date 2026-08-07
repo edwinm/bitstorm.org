@@ -2,6 +2,7 @@
 title: "testproxy: testing sites on devices without configuration"
 date: 2017-07-01T16:22
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdknoxh2i"
 ---
 
 A while ago I was working on several websites in a Vagrant container. The problem was that we couldn't test the sites on mobile devices. The IP address of the Vagrant box was known inside my computer, but not outside, on other devices. I could use a proxy like Squid, but it was too big, had to be configured and couldn't be installed with npm, like the other tools. I wrote a simple tool in Node to provide the necessary functionality.

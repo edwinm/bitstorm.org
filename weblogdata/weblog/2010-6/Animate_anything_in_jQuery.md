@@ -2,6 +2,7 @@
 title: "Animate anything in jQuery"
 date: 2010-06-09T14:27
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmqqmb2i"
 ---
 
 

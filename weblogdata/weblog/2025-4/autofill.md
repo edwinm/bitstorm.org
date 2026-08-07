@@ -2,6 +2,7 @@
 title: "Autofill with the autocomplete attribute"
 date: 2025-04-12T09:06
 tags: featured
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdiydwh2i"
 ---
 
 You probably know this: some registration forms are completed in no time, while others are a tedious process in which you have to manually enter your phone number, address, etc.

@@ -2,6 +2,7 @@
 title: "CSS Secrets book review"
 date: 2015-08-04T14:23
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdl6n3r2i"
 ---
 
 Lea Verou's new book CSS Secrets is for frontend webdevelopers who use CSS in their daily work. The book assumes you already know, for example, CSS2 selectors, transforms and ::before/::after pseudo elements. But the book is still useful if you don't. You do need to have a basic understanding of CSS, so if you're still struggling with position: relative and position: absolute, you'll better start with a beginner level book.

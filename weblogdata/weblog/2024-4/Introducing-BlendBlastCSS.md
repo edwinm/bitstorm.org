@@ -5,6 +5,7 @@ media:
   - image: "colored-rectangles.webp"
     caption: "Make amazing colors with BlendBlastCSS"
     alt: "Drawing for random colored rectangles" 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjnrxl2o"
 ---
 
 ### Released today... BlendBlastCSS, the revolutionary new visual CSS color framework.

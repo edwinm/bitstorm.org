@@ -2,6 +2,7 @@
 title: "Report of the Dutch PHP Conference 2010"
 date: 2010-06-13T13:40
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmng5z2i"
 ---
 
 For the third time, I visited the [Dutch PHP Conference](http://phpconference.nl/). Just as before, it was held in the RAI Convention Centre in Amsterdam. And as before, this two-day conference took place on Friday and Saturday. I always wonder why it's Friday and Saturday. Is it that if your employer or school doesn't let you go on Friday, you can at least go on Saturday? Or if your employer does let you go, you can trade in your work day, but you don't have to trade in your free Saturday? Being a free lancer, it's not really an issue for me, so I went both days.

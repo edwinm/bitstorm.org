@@ -6,6 +6,7 @@ media:
        caption: "Our team presenting the multi-video chat"
        alt: ""
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlpanw2d"
 ---
 
 Yesterday I participated in the Fronteers Hackaton in The Hague. To warm us up Vasilis van Gemert gave a presentation about CSS3-effects featuring some [creatures with laser-eyes](http://vimeo.com/42451941) and Peter Nederlof made them interactive with Node.js.

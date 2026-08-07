@@ -8,6 +8,7 @@
     "start": "npm serve",
     "serve": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
+    "atproto": "npx sequoia publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "cd extractor; node extract.js",
     "sprite": "svg-sprite --config weblogdata/svg-sprite.config.json  weblogdata/assets/icons/*.svg",
@@ -21,6 +22,7 @@
     "@11ty/eleventy-plugin-rss": "^3.0.0",
     "@jamshop/eleventy-plugin-typography": "^1.0.0",
     "@kevingimbel/eleventy-plugin-mermaid": "^3.0.1",
+    "sequoia-cli": "^0.5.7",
     "typogr": "^0.6.8"
   },
   "devDependencies": {

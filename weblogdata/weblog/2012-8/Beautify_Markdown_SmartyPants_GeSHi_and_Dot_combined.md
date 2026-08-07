@@ -2,6 +2,7 @@
 title: "Beautify: Markdown, SmartyPants, GeSHi and Dot combined"
 date: 2012-08-26T17:37
 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdllxnq2s"
 ---
 
 Years ago, I wrote my own CMS, because nothing available would fit my needs. For text input, I initially used FCKeditor, a WYSIWYG-editor. It turned out to be very cumbersome to show source code in the articles I wrote. So last year I switched to Markdown, a very readable, plain text format that converts to HTML. I also added GeSHi, for highlighting source code. Loving typography, I also added SmartyPants for converting ugly quotes in curly quotes and three dots in ellipsis. Recently I added Dot from Graphviz to turn the Dot graph description language into a SVG-graphic.

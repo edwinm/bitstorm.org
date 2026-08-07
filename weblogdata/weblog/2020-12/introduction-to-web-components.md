@@ -2,6 +2,7 @@
 title: 'Introduction to Web Components'
 date: 2020-12-29T00:00
 description: 'Web components is a W3C web standard that allows you, simply put, to create your own HTML tags.' 
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdk3ppi2s"
 ---
 
 Web components is a W3C web standard that allows you, simply put, to create your own HTML tags.
