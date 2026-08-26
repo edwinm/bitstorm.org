@@ -2,6 +2,7 @@
 title: "Don't use a dark-light toggle at all"
 date: 2026-08-25T22:50
 tags: [featured]
+atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mtwnvnbhd52p"
 ---
 
 I am old enough to remember that when background images on websites became possible, suddenly a lot of
@@ -24,22 +25,19 @@ in which @bram.us asks whether you should show the user two or three options.
 
 The correct answer was not among them; that is to offer no dark-light toggle at all.
 
-The dark-light toggle is _gratuitous use of bleeding-edge technology_ and that is number two on
-the [Original Top 10 Mistakes in Web Design](https://www.nngroup.com/articles/original-top-ten-mistakes-in-web-design/)
-by UI expert Jakob Nielsens.
-
 I suspect the web developer thinks this:
 "I worked hard to support both modes, so the user should be able to see both easily."
 But you create a website for users, not to stroke your own ego.
 
-Besides, you see it on other sites, so we might as well do it too, also known as the [Bandwagon effect](https://en.wikipedia.org/wiki/Bandwagon_effect).
+Besides, some might think, you see it on other sites, so we might as well do it too, also known as the [bandwagon effect](https://en.wikipedia.org/wiki/Bandwagon_effect).
 
 There is, in fact, absolutely no reason to put a dark-light toggle on your website.
+To support light mode and dark mode is perfectly fine, but adding a toggle is not.
 
 The operating system determines whether you are in dark or light mode. The background, your file explorer, your email program, they all
-switch along with the OS and do not need a dark-light toggle.
+switch along with the OS and none of them need a dark-light toggle.
 
-Why would your website need a toggle?
+So why would your website need a toggle?
 
 Do you really think that people with a dark desktop want to see the light version of your site?
 Or vice versa, your dark version when the entire desktop with all programs is light?
