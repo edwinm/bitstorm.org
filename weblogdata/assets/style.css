@@ -2,6 +2,9 @@
     html {
         box-sizing: border-box;
         margin: 0;
+        color-scheme: light dark;
+        color: light-dark(black, #b9c2b3);
+        background-color: light-dark(white, #161319);
     }
 
     *,
@@ -99,7 +102,7 @@ body {
     grid-template-columns: [left-start] 1fr [left-end content-start] min(100%, var(--content-width)) [content-end right-start] 1fr [right-end];
     font-family: Exo2, sans-serif;
     font-weight: 400;
-    background: rgb(40, 40, 40) linear-gradient(white, white);
+    background: rgb(40, 40, 40) linear-gradient(inherit, inherit);
     min-height: 100vh;
 }
 
@@ -391,7 +394,6 @@ a:not(:has(article)) {
 }
 
 a:has(article) {
-    color: black;
     text-decoration: none;
 
     & h3 {
@@ -406,7 +408,7 @@ a:has(article) {
     }
 
     & p {
-        color: black;
+        color: light-dark(black, #b9c2b3);;
         text-decoration: none;
     }
 }
