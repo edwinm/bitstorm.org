@@ -6,6 +6,7 @@
   "publicDir": "static",
   "outputDir": "web/weblog",
   "pathPrefix": "/weblog",
+  "pathTemplate": "/weblog/{slug}.html",
   "publicationUri": "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.publication/3mshz5eputb2o",
   "pdsUrl": "https://shimeji.us-east.host.bsky.network",
   "frontmatter": {
