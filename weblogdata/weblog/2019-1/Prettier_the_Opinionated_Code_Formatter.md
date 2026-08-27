@@ -1,6 +1,7 @@
 ---
 title: "Prettier, the Opinionated Code Formatter"
 date: 2019-01-19T15:41
+canonicalPath: "/weblog/2019-1/Prettier_the_Opinionated_Code_Formatter.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkkb4x2m"
 ---
 

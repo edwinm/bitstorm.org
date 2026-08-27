@@ -2,6 +2,7 @@
 title: "Introduction to the Google Closure Compiler"
 date: 2010-08-08T18:35
 
+canonicalPath: "/weblog/2010-8/Introduction_to_the_Google_Closure_Compiler.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmk2qj2i"
 ---
 

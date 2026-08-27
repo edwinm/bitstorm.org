@@ -6,6 +6,7 @@ media:
      caption: "Intl is being undervalued"
      alt: "Boyfriend looking at other woman meme with other woman being moment and luxon and the girlfriend being Intl" 
 tags: [featured]
+canonicalPath: "/weblog/2022-12/Intl.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjuw5r22"
 ---
 

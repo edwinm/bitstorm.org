@@ -2,6 +2,7 @@
 title: "newClass - a class like wrapper around prototypal OOP"
 date: 2013-03-24T11:11
 
+canonicalPath: "/weblog/2013-3/newClass_-_a_class_like_wrapper_around_prototypal_OOP.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlinta2f"
 ---
 

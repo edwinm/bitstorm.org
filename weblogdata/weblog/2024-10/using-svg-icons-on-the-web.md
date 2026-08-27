@@ -6,6 +6,7 @@ media:
     caption: ""
     alt: "Wall with web icon shaped neon lamps"
 tags: [featured]
+canonicalPath: "/weblog/2024-10/using-svg-icons-on-the-web.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdj3wjq2b"
 ---
 

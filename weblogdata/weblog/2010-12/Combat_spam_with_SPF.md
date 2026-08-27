@@ -2,6 +2,7 @@
 title: "Combat spam with SPF"
 date: 2010-12-09T22:11
 
+canonicalPath: "/weblog/2010-12/Combat_spam_with_SPF.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdm7sxu2k"
 ---
 

@@ -2,6 +2,7 @@
 title: "Push the web forward"
 date: 2016-01-17T21:59
 
+canonicalPath: "/weblog/2016-1/Push_the_web_forward.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkxucb2i"
 ---
 

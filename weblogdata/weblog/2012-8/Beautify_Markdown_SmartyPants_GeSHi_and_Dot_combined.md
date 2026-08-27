@@ -2,6 +2,7 @@
 title: "Beautify: Markdown, SmartyPants, GeSHi and Dot combined"
 date: 2012-08-26T17:37
 
+canonicalPath: "/weblog/2012-8/Beautify_Markdown_SmartyPants_GeSHi_and_Dot_combined.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdllxnq2s"
 ---
 

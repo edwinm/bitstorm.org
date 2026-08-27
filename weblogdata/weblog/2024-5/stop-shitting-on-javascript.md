@@ -5,6 +5,7 @@ media:
   - image: "javascript-cube.png"
     caption: ""
     alt: "Yellow cube with JS" 
+canonicalPath: "/weblog/2024-5/stop-shitting-on-javascript.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjjc7q26"
 ---
 

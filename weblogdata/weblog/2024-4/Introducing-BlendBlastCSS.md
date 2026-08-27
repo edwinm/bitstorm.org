@@ -5,6 +5,7 @@ media:
   - image: "colored-rectangles.webp"
     caption: "Make amazing colors with BlendBlastCSS"
     alt: "Drawing for random colored rectangles" 
+canonicalPath: "/weblog/2024-4/Introducing-BlendBlastCSS.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjnrxl2o"
 ---
 

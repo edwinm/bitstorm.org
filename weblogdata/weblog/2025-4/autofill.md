@@ -2,6 +2,7 @@
 title: "Autofill with the autocomplete attribute"
 date: 2025-04-12T09:06
 tags: [featured]
+canonicalPath: "/weblog/2025-4/autofill.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdiydwh2i"
 ---
 

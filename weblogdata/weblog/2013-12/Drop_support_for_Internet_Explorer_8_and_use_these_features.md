@@ -2,6 +2,7 @@
 title: "Drop support for Internet Explorer 8 and use these features"
 date: 2013-12-19T09:41
 
+canonicalPath: "/weblog/2013-12/Drop_support_for_Internet_Explorer_8_and_use_these_features.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlfbe32o"
 ---
 

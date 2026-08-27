@@ -5,6 +5,7 @@ media:
    - image: "home_office.png"
      caption: "Can AI help the frontend developer?"
      alt: "Drawing of a woman working on computer being assisted by a robot" 
+canonicalPath: "/weblog/2022-12/Machine-learning-for-frontend-developers.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdjydt62d"
 ---
 

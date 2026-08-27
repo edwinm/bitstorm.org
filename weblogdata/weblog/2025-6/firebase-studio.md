@@ -2,6 +2,7 @@
 title: "Vibe coding with Firebase Studio"
 date: 2025-06-14T22:02
 tags: [featured]
+canonicalPath: "/weblog/2025-6/firebase-studio.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdiutxs25"
 ---
 

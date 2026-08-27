@@ -2,6 +2,7 @@
 title: "CSS Secrets book review"
 date: 2015-08-04T14:23
 
+canonicalPath: "/weblog/2015-8/CSS_Secrets_book_review.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdl6n3r2i"
 ---
 

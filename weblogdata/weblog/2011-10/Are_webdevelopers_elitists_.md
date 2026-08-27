@@ -6,6 +6,7 @@ media:
        caption: "code = poetry"
        alt: "Christian Heilmann speaks at the Fronteers conference"
 
+canonicalPath: "/weblog/2011-10/Are_webdevelopers_elitists_.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlz5qo2y"
 ---
 

@@ -6,6 +6,7 @@ media:
     caption: ""
     alt: "Wall of wooden blocks with web related images"
 tags: [featured]
+canonicalPath: "/weblog/2024-10/creating-an-svg-icon-sprite.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdj7dt42q"
 ---
 

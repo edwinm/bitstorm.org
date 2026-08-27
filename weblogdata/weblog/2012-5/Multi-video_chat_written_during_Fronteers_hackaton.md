@@ -6,6 +6,7 @@ media:
        caption: "Our team presenting the multi-video chat"
        alt: ""
 
+canonicalPath: "/weblog/2012-5/Multi-video_chat_written_during_Fronteers_hackaton.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlpanw2d"
 ---
 

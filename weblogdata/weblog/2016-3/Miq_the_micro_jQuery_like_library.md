@@ -2,6 +2,7 @@
 title: "Miq, the micro jQuery like library"
 date: 2016-03-30T12:59
 
+canonicalPath: "/weblog/2016-3/Miq_the_micro_jQuery_like_library.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkuj7t2o"
 ---
 

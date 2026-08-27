@@ -2,6 +2,7 @@
 title: "twitterFetch: show your tweets the way you want"
 date: 2016-05-01T12:12
 
+canonicalPath: "/weblog/2016-5/twitterFetch_show_your_tweets_the_way_you_want.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkr3nq26"
 ---
 

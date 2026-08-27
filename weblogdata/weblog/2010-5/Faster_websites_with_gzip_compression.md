@@ -2,6 +2,7 @@
 title: "Faster websites with gzip compression"
 date: 2010-05-10T16:33
 
+canonicalPath: "/weblog/2010-5/Faster_websites_with_gzip_compression.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmu23z22"
 ---
 

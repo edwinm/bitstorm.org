@@ -2,6 +2,7 @@
 title: "Don't use a dark-light toggle at all"
 date: 2026-08-25T22:50
 tags: [featured]
+canonicalPath: "/weblog/2026-8/dark-light-toggle.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mtwnvnbhd52p"
 ---
 

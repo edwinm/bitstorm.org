@@ -2,6 +2,7 @@
 title: "Report of the Dutch PHP Conference 2010"
 date: 2010-06-13T13:40
 
+canonicalPath: "/weblog/2010-6/Report_of_the_Dutch_PHP_Conference_2010.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmng5z2i"
 ---
 

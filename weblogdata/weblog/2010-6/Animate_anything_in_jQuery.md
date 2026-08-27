@@ -2,6 +2,7 @@
 title: "Animate anything in jQuery"
 date: 2010-06-09T14:27
 
+canonicalPath: "/weblog/2010-6/Animate_anything_in_jQuery.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmqqmb2i"
 ---
 

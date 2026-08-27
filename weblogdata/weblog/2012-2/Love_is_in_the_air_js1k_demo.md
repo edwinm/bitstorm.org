@@ -6,6 +6,7 @@ media:
        caption: "Love is in the air"
        alt: "Screenshot of the js1k demo"
 
+canonicalPath: "/weblog/2012-2/Love_is_in_the_air_js1k_demo.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlskwy26"
 ---
 

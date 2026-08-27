@@ -2,6 +2,7 @@
 title: "You are not a webdesigner"
 date: 2015-08-30T01:27
 
+canonicalPath: "/weblog/2015-8/You_are_not_a_webdesigner.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdl3dta2b"
 ---
 

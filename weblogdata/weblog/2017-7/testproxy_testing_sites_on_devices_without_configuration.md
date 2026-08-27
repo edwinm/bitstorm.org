@@ -2,6 +2,7 @@
 title: "testproxy: testing sites on devices without configuration"
 date: 2017-07-01T16:22
 
+canonicalPath: "/weblog/2017-7/testproxy_testing_sites_on_devices_without_configuration.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdknoxh2i"
 ---
 

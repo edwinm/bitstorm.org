@@ -2,6 +2,7 @@
 title: "The JavaScript engineer and the front-end UI developer"
 date: 2019-08-18T14:14
 tags: [featured]
+canonicalPath: "/weblog/2019-8/The_JavaScript_engineer_and_the_front-end_UI_developer.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdkg6bh2m"
 ---
 

@@ -2,6 +2,7 @@
 title: "ECMAScript2015, WebAssembly and the future of JavaScript"
 date: 2015-06-22T22:58
 
+canonicalPath: "/weblog/2015-6/ECMAScript2015_WebAssembly_and_the_future_of_JavaScript.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlbvwu2k"
 ---
 

@@ -6,6 +6,7 @@ media:
        caption: "Overview of the big room in Tuschinski"
        alt: ""
 
+canonicalPath: "/weblog/2010-10/Fronteers_conference_2010.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdmgnjf2u"
 ---
 

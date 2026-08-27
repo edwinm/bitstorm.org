@@ -2,6 +2,7 @@
 title: "Deferred and promise in jQuery"
 date: 2012-01-25T21:19
 
+canonicalPath: "/weblog/2012-1/Deferred_and_promise_in_jQuery.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdlvvld2o"
 ---
 

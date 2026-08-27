@@ -2,6 +2,7 @@
 title: "How to use the jQuery queue function"
 date: 2011-02-12T14:20
 
+canonicalPath: "/weblog/2011-2/How_to_use_the_jQuery_queue_function.html"
 atUri: "at://did:plc:f55uchgkqdlfszya4tup4ddh/site.standard.document/3mshzdm4gna2f"
 ---
 
