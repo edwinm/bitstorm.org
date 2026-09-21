@@ -36,7 +36,7 @@
             box-sizing: border-box;
             margin: 0;
             color-scheme: light dark;
-            color: light-dark(var(--sage-4), var(--sage-3));
+            color: light-dark(var(--black), var(--white));
             background-color: light-dark(var(--white), var(--black));
         }
 
@@ -422,7 +422,7 @@
 
     a:not(:has(article)) {
         &:hover {
-            color: blue;
+            color: light-dark(var(--blue-5), var(--blue-2));
             text-decoration: underline;
         }
 
@@ -441,8 +441,8 @@
         }
 
         &:hover h3 {
-            color: blue;
-            text-decoration-color: blue;
+            color: light-dark(var(--blue-5), var(--blue-2));
+            text-decoration-color: light-dark(var(--blue-5), var(--blue-2));
         }
 
         & p {
