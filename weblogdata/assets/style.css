@@ -2,6 +2,8 @@
     html {
         --white: oklch(97.31% 0 0);
         --black: oklch(19.31% 0.0128 307.73);
+        --fg: light-dark(var(--black), var(--white));
+        --bg: light-dark(var(--white), var(--black));
         --blue-1:   oklch(91.84% 0.0391 262); /* #d6e5ff */
         --blue-2:   oklch(76.45% 0.1152 262); /* #8ab2fc */
         --blue-3:   oklch(63.04% 0.1491 262); /* #5686e3 */
@@ -36,8 +38,8 @@
             box-sizing: border-box;
             margin: 0;
             color-scheme: light dark;
-            color: light-dark(var(--black), var(--white));
-            background-color: light-dark(var(--white), var(--black));
+            color: var(--fg);
+            background-color: var(--bg);
         }
 
         *,
@@ -250,8 +252,6 @@
         grid-template-columns: subgrid;
         background: center/cover no-repeat url(/assets/pix/cityscape.webp), linear-gradient(to right, #1D72AA, #F0667D, #FED968, #6A2455);
         text-shadow: rgba(0 0 0 / 0.2) 5px 5px 10px;
-        box-shadow: rgba(255 255 255 / 0.6) 5px 5px 10px;
-        border-bottom: 2px solid white;
         z-index: 100;
     }
 
@@ -437,7 +437,7 @@
         & h3 {
             transition: all 200ms ease;
             text-decoration: underline;
-            text-decoration-color: #ffffff00;
+            text-decoration-color: var(--bg);
         }
 
         &:hover h3 {
@@ -445,9 +445,8 @@
             text-decoration-color: light-dark(var(--blue-5), var(--blue-2));
         }
 
-        & p {
+        & article {
             color: light-dark(black, #b9c2b3);;
-            text-decoration: none;
         }
     }
 
