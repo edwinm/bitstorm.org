@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color tokens</title>
+<meta name="description" content="Generate color scales where any two steps far enough apart are guaranteed to meet WCAG 2 contrast, in light and dark mode alike.">
+<link rel="icon" href="/assets/pix/favicon.ico">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+	<h1>Color tokens</h1>
+	<p class="lede" id="promise">Build color scales where <strong>any two tokens far enough apart</strong> are guaranteed to reach WCAG&nbsp;2 AA or AAA &mdash; whatever the hue, in light mode and dark mode alike.</p>
+</header>
+
+<main>
+
+
+<section class="controls" aria-labelledby="h-controls">
+	<h2 id="h-controls">Contrast ladder</h2>
+	<div id="ladder-error" hidden></div>
+	<div class="control-grid">
+		<div class="field">
+			<label for="steps">Contrast steps <span class="muted" id="steps-val"></span></label>
+			<input type="range" id="steps" min="9" max="15" step="1">
+		</div>
+		<div class="field">
+			<label for="level">WCAG level</label>
+			<select id="level">
+				<option value="AA">AA &mdash; 4.5:1</option>
+				<option value="AAA">AAA &mdash; 7:1</option>
+			</select>
+		</div>
+	</div>
+	<ul class="rules" id="rules"></ul>
+</section>
+
+<section aria-labelledby="h-tones">
+	<h2 id="h-tones">Light and dark</h2>
+	<div class="control-grid">
+		<div class="field">
+			<label for="anchor-bg">Light</label>
+			<div class="button-row">
+				<input type="color" id="anchor-bg">
+				<input type="text" id="anchor-bg-text" size="9" aria-label="Light hex">
+			</div>
+		</div>
+		<div class="field">
+			<label for="anchor-fg">Dark</label>
+			<div class="button-row">
+				<input type="color" id="anchor-fg">
+				<input type="text" id="anchor-fg-text" size="9" aria-label="Dark hex">
+			</div>
+		</div>
+	</div>
+</section>
+
+<section aria-labelledby="h-colors">
+	<h2 id="h-colors">Colors</h2>
+	<div id="colors"></div>
+	<div class="button-row">
+		<button type="button" id="add-color"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.4v9.2M3.4 8h9.2"/></svg>Add color</button>
+	</div>
+</section>
+
+
+<section aria-labelledby="h-ladder">
+	<h2 id="h-ladder">Scale
+		<span class="preview-toggle">
+			<label for="preview">Preview</label>
+			<select id="preview">
+				<option value="auto">Follow system</option>
+				<option value="light">Light</option>
+				<option value="dark">Dark</option>
+			</select>
+		</span>
+	</h2>
+	<p class="small muted">Every label is written in a color at least the guaranteed distance away, so the grid demonstrates its own promise. Click any swatch to copy it.</p>
+	<div class="ladder-wrap"><div class="ladder" id="ladder"></div></div>
+	<p class="small muted" id="copy-status" role="status" aria-live="polite"></p>
+</section>
+
+<section aria-labelledby="h-verify">
+	<h2 id="h-verify">Verification <span class="section-note">every pair, on the hex values</span></h2>
+	<div id="verify-summary" role="status" aria-live="polite"></div>
+	<details>
+		<summary>Contrast at every distance</summary>
+		<div class="table-wrap"><table id="distance-table"></table></div>
+	</details>
+	<details id="matrix-details">
+		<summary>Contrast matrix</summary>
+		<div class="table-wrap"><table class="matrix" id="matrix"></table></div>
+	</details>
+	<details>
+		<summary>Self-test</summary>
+		<ul class="checks" id="checks"></ul>
+		<div class="button-row" style="margin-top:.6rem">
+			<button type="button" id="run-sweep"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8a5.4 5.4 0 1 1 1.9 4.1"/><path d="M2.2 13.1V9.6h3.5"/></svg>Run full hue sweep</button>
+			<span class="small muted" id="sweep-status"></span>
+		</div>
+	</details>
+</section>
+
+<section aria-labelledby="h-export">
+	<h2 id="h-export">Export</h2>
+	<div class="control-grid">
+		<div class="field">
+			<label for="export-kind">What</label>
+			<select id="export-kind">
+				<option value="css">CSS custom properties</option>
+				<option value="json">Design tokens (JSON)</option>
+			</select>
+		</div>
+		<div class="field">
+			<label for="format">Color format</label>
+			<select id="format">
+				<option value="hex">hex</option>
+				<option value="rgb">rgb()</option>
+				<option value="hsl">hsl()</option>
+				<option value="oklch">oklch()</option>
+			</select>
+		</div>
+		<div class="field">
+			<label for="mirror">light-dark()</label>
+			<select id="mirror">
+				<option value="1">Mirrored pairs</option>
+				<option value="0">Plain values</option>
+			</select>
+		</div>
+		<div class="field">
+			<label for="layer">Wrapper</label>
+			<select id="layer">
+				<option value="1">@layer colors</option>
+				<option value="0">None</option>
+			</select>
+		</div>
+	</div>
+	<p id="guarantee-badge" style="margin:.75rem 0 0"></p>
+	<div class="button-row" style="margin-top:.6rem">
+		<button type="button" class="primary" id="copy"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="6" y="6" width="8.2" height="8.2" rx="1.6"/><path d="M11 6V3.6A1.6 1.6 0 0 0 9.4 2H3.6A1.6 1.6 0 0 0 2 3.6v5.8A1.6 1.6 0 0 0 3.6 11H6"/></svg>Copy</button>
+		<button type="button" id="download"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v7.5m0 0 2.8-2.8M8 9.5 5.2 6.7"/><path d="M2.4 11.2v1.2A1.6 1.6 0 0 0 4 14h8a1.6 1.6 0 0 0 1.6-1.6v-1.2"/></svg>Download</button>
+		<span class="small muted" role="status" aria-live="polite" id="export-status"></span>
+	</div>
+	<pre class="output" id="output" tabindex="0"></pre>
+</section>
+
+
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
