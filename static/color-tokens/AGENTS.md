@@ -120,6 +120,11 @@ is not normally reached.
   without a pointer and the rest of the panel is keyboard-operable. If you
   rework reordering, keep both, and clear `dragFrom` on drop — the re-render
   replaces the row, so `dragend` may never fire.
+- Two absolute paths still point at the host site: the Exo2 webfont and the
+  favicon under `/assets/`. Off that host they 404, the font falls back to
+  `system-ui` and nothing breaks. **The owner chose to keep Exo2 anyway** — do
+  not strip it to chase self-containment. Revisit only if asked; the page would
+  then lose its typography.
 - The saved state carries `STATE_VERSION`. Bump it whenever the shape changes;
   older hashes and localStorage entries are then discarded rather than
   half-restored, and superseded keys are cleaned up on load.
