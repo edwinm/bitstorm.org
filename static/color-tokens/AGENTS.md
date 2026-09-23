@@ -23,10 +23,12 @@ The owner set these explicitly. Do not relax them without asking.
 
 - **Only HTML, JS and CSS, and nothing outside this directory.** No build step,
   no TypeScript, no bundler, no test runner, no npm dependencies. Do not touch
-  `package.json`, `eleventy.config.js`, `.gitignore` or `nginx/nginx.conf`.
-- `static/` is passthrough-copied to the site root, so **these files are the
-  deployed artifact**. Eleventy serves them unprocessed; the brotli plugin
-  precompresses them.
+  any build, server or deployment config of whatever host it sits in.
+- **The page stands on its own.** It is plain static files with no server, no
+  templating and no site framework behind it. Open it from any static file
+  server and it works; the host it happens to live on is not a dependency.
+  (It currently sits inside a larger site's `static/` directory, which copies
+  it to the web root untouched — but nothing in the page may rely on that.)
 - **No CDN imports.** The site CSP is `script-src 'self' 'unsafe-inline'`, and
   there is no bundler to resolve a bare specifier. That is why the color maths
   in `color.js` is hand-written instead of using culori.
@@ -168,14 +170,19 @@ in well under a second.
 
 ## Running it
 
+Any static file server will do — there is nothing to build:
+
 ```bash
-npm run serve   # then open http://localhost:8099/color-tokens/
+python3 -m http.server 8100 --directory static/color-tokens
 ```
 
-No build step; edit and reload. To verify a change: self-test panel green,
-switch AA ↔ AAA, drag Steps across its whole range, flip the Scale preview to
-dark, switch the export format to oklch and confirm the warning appears, and
-run Lighthouse (it has been at 100 on all four categories).
+Edit and reload. Do not reach for the surrounding site's dev server; this page
+does not need it, and using it hides whether the page is still self-contained.
+
+To verify a change: self-test panel green, switch AA ↔ AAA, drag Steps across
+its whole range, flip the Scale preview to dark, switch the export format to
+oklch and confirm the warning appears, and run Lighthouse (it has been at 100
+on all four categories).
 
 ## Origin
 

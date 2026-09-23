@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["@11ty/eleventy", "--serve", "--port=8099"],
       "port": 8099
+    },
+    {
+      "name": "color-tokens",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8100", "--directory", "static/color-tokens"],
+      "port": 8100
     }
   ]
 }
